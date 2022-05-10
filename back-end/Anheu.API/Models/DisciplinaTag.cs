@@ -2,14 +2,14 @@
 
 namespace Anheu.API.Models
 {
-    public class MateriaTag
+    public class DisciplinaTag
     {
         [Key]
-        public int MateriaTagId { get; set; }
+        public int DisciplinaTagId { get; set; }
 
         // Fk (De lá pra cá);
-        public int MateriaId { get; set; }
-        public Materia Materias { get; set; }
+        public int DisciplinaId { get; set; }
+        public Disciplina Disciplinas { get; set; }
 
         public string? Tag { get; set; }
     }

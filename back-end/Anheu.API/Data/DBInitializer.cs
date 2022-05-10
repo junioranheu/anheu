@@ -57,40 +57,40 @@ namespace Anheu.API.Data
             }
             #endregion
 
-            #region materias
-            if (!context.Materias.Any())
+            #region Disciplinas
+            if (!context.Disciplinas.Any())
             {
-                context.Materias.Add(new Materia() { MateriaId = 1, Nome = "HTML e CSS", Subtitulo = "Uma introdução aos novícios", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Materias.Add(new Materia() { MateriaId = 2, Nome = "Javascript", Subtitulo = "Para os semi-proccs", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Materias.Add(new Materia() { MateriaId = 3, Nome = "React.js", Subtitulo = "Para os tarugueiros, apenas", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 1, Nome = "HTML e CSS", Subtitulo = "Uma introdução aos novícios", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 2, Nome = "Javascript", Subtitulo = "Para os semi-proccs", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 3, Nome = "React.js", Subtitulo = "Para os tarugueiros, apenas", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
-            if (!context.MateriaTags.Any())
+            if (!context.DisciplinaTags.Any())
             {
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 1, MateriaId = 1, Tag = "#Início" });
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 2, MateriaId = 1, Tag = "#HTML" });
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 3, MateriaId = 1, Tag = "#Css" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 1, DisciplinaId = 1, Tag = "#Início" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 2, DisciplinaId = 1, Tag = "#HTML" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 3, DisciplinaId = 1, Tag = "#Css" });
 
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 4, MateriaId = 2, Tag = "#Início ao Javascript" });
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 5, MateriaId = 2, Tag = "#O que é o JS?" });
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 6, MateriaId = 2, Tag = "#Exemplo prático" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 4, DisciplinaId = 2, Tag = "#Início ao Javascript" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 5, DisciplinaId = 2, Tag = "#O que é o JS?" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 6, DisciplinaId = 2, Tag = "#Exemplo prático" });
 
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 7, MateriaId = 3, Tag = "#Início ao React.js" });
-                context.MateriaTags.Add(new MateriaTag() { MateriaTagId = 8, MateriaId = 3, Tag = "#React.js e Next.js" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 7, DisciplinaId = 3, Tag = "#Início ao React.js" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 8, DisciplinaId = 3, Tag = "#React.js e Next.js" });
             }
 
             if (!context.Aulas.Any())
             {
-                context.Aulas.Add(new Aula() { AulaId = 1, MateriaId = 1, Nome = "HTML e CSS", Thumbnail = "aula/thumbnail/1.jpg", Video = "aula/video/1.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#1 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 2, MateriaId = 1, Nome = "SLLW?", Thumbnail = "aula/thumbnail/2.jpg", Video = "aula/video/2.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#2 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 3, MateriaId = 1, Nome = "Khaaa...", Thumbnail = "aula/thumbnail/3.jpg", Video = "/padrao/video/3.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#3 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 1, DisciplinaId = 1, Nome = "HTML e CSS", Thumbnail = "aula/thumbnail/1.jpg", Video = "aula/video/1.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#1 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 2, DisciplinaId = 1, Nome = "SLLW?", Thumbnail = "aula/thumbnail/2.jpg", Video = "aula/video/2.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#2 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 3, DisciplinaId = 1, Nome = "Khaaa...", Thumbnail = "aula/thumbnail/3.jpg", Video = "/padrao/video/3.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#3 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
 
-                context.Aulas.Add(new Aula() { AulaId = 4, MateriaId = 2, Nome = "Trabalhando e relaxando", Thumbnail = "aula/thumbnail/4.jpg", Video = "aula/video/4.mp4", Professor = "Jackson", ResumoAula = "#4 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 5, MateriaId = 2, Nome = "JS", Thumbnail = "aula/thumbnail/5.jpg", Video = "aula/video/5.mp4", Professor = "Jackson", ResumoAula = "#5 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",  DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 4, DisciplinaId = 2, Nome = "Trabalhando e relaxando", Thumbnail = "aula/thumbnail/4.jpg", Video = "aula/video/4.mp4", Professor = "Jackson", ResumoAula = "#4 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 5, DisciplinaId = 2, Nome = "JS", Thumbnail = "aula/thumbnail/5.jpg", Video = "aula/video/5.mp4", Professor = "Jackson", ResumoAula = "#5 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",  DataRegistro = dataAgora, IsAtivo = 1 });
 
-                context.Aulas.Add(new Aula() { AulaId = 6, MateriaId = 3, Nome = "Tornando-se um mictor", Thumbnail = "aula/thumbnail/6.jpg", Video = "aula/video/6.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#6 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 7, MateriaId = 3, Nome = "Como ser um perdigato?", Thumbnail = "aula/thumbnail/7.jpg", Video = "aula/video/7.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#7 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 8, MateriaId = 3, Nome = "Kapa & kapas", Thumbnail = "aula/thumbnail/8.jpg", Video = "aula/video/8.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#8 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 6, DisciplinaId = 3, Nome = "Tornando-se um mictor", Thumbnail = "aula/thumbnail/6.jpg", Video = "aula/video/6.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#6 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 7, DisciplinaId = 3, Nome = "Como ser um perdigato?", Thumbnail = "aula/thumbnail/7.jpg", Video = "aula/video/7.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#7 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 8, DisciplinaId = 3, Nome = "Kapa & kapas", Thumbnail = "aula/thumbnail/8.jpg", Video = "aula/video/8.mp4", Professor = "Mariana Scalzaretto", ResumoAula = "#8 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.AulaTimings.Any())

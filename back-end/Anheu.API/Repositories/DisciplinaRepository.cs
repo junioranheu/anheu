@@ -5,34 +5,34 @@ using Anheu.API.Models;
 
 namespace Anheu.API.Repositories
 {
-    public class MateriaRepository : IMateriaRepository
+    public class DisciplinaRepository : IDisciplinaRepository
     {
         public readonly Context _context;
 
-        public MateriaRepository(Context context)
+        public DisciplinaRepository(Context context)
         {
             _context = context;
         }
 
-        public async Task<List<Materia>> GetTodos()
+        public async Task<List<Disciplina>> GetTodos()
         {
-            var itens = await _context.Materias.
-                Include(m => m.MateriaTags).
+            var itens = await _context.Disciplinas.
+                Include(m => m.DisciplinaTags).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
         }
 
-        public async Task<Materia> GetPorId(int id)
+        public async Task<Disciplina> GetPorId(int id)
         {
-            var item = await _context.Materias.
-                Include(m => m.MateriaTags).
-                Where(p => p.MateriaId == id).AsNoTracking().FirstOrDefaultAsync();
+            var item = await _context.Disciplinas.
+                Include(m => m.DisciplinaTags).
+                Where(p => p.DisciplinaId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;
         }
 
-        public async Task<int> PostCriar(Materia m)
+        public async Task<int> PostCriar(Disciplina m)
         {
             _context.Add(m);
             var isOk = await _context.SaveChangesAsync();
@@ -40,7 +40,7 @@ namespace Anheu.API.Repositories
             return isOk;
         }
 
-        public async Task<int> PostAtualizar(Materia m)
+        public async Task<int> PostAtualizar(Disciplina m)
         {
             int isOk;
 
@@ -59,14 +59,14 @@ namespace Anheu.API.Repositories
 
         public async Task<int> PostDeletar(int id)
         {
-            var dados = await _context.Materias.FindAsync(id);
+            var dados = await _context.Disciplinas.FindAsync(id);
 
             if (dados == null)
             {
                 throw new Exception("Registro com o id " + id + " não foi encontrado");
             }
 
-            _context.Materias.Remove(dados);
+            _context.Disciplinas.Remove(dados);
             var isOk = await _context.SaveChangesAsync();
 
             return isOk;
@@ -74,7 +74,7 @@ namespace Anheu.API.Repositories
 
         private async Task<bool> IsExiste(int id)
         {
-            return await _context.Materias.AnyAsync(m => m.MateriaId == id);
+            return await _context.Disciplinas.AnyAsync(m => m.DisciplinaId == id);
         }
     }
 }

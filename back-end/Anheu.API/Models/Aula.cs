@@ -8,8 +8,8 @@ namespace Anheu.API.Models
         public int AulaId { get; set; }
 
         // Fk (De lá pra cá);
-        public int MateriaId { get; set; }
-        public Materia Materias { get; set; }
+        public int DisciplinaId { get; set; }
+        public Disciplina Disciplinas { get; set; }
 
         public string? Nome { get; set; }
         public string? Thumbnail { get; set; }

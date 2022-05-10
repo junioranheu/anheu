@@ -8,7 +8,7 @@ namespace Anheu.Biblioteca
     public class Biblioteca
     {
         // Constantes
-        public const string localApiOnline = "https://anheuapi.azurewebsites.net/";
+        public const string localApiOnline = "https://anheu.azurewebsites.net/";
         public const string localApiLocalHost = "https://localhost:7225/";
 
         public const string localReactOnline = "https://anheu.vercel.app/";

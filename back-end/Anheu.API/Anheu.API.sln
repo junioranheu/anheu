@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anheu.API", "Anheu.API.csproj", "{680220C9-6C90-40F1-8331-8F7A3E074925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anheu.API", "Anheu.API.csproj", "{680220C9-6C90-40F1-8331-8F7A3E074925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anheu.Biblioteca", "..\Anheu.Biblioteca\Anheu.Biblioteca.csproj", "{1F2A38B6-8D88-4068-A6BE-763562FEB6D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anheu.Biblioteca", "..\Anheu.Biblioteca\Anheu.Biblioteca.csproj", "{1F2A38B6-8D88-4068-A6BE-763562FEB6D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anheu.Testes", "..\Anheu.Testes\Anheu.Testes.csproj", "{77D502CD-B02E-4378-AD1A-976F6114E827}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1F2A38B6-8D88-4068-A6BE-763562FEB6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F2A38B6-8D88-4068-A6BE-763562FEB6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F2A38B6-8D88-4068-A6BE-763562FEB6D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D502CD-B02E-4378-AD1A-976F6114E827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D502CD-B02E-4378-AD1A-976F6114E827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D502CD-B02E-4378-AD1A-976F6114E827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D502CD-B02E-4378-AD1A-976F6114E827}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ export default function Padrao({ Component, pageProps }) {
     return (
         <Fragment>
             <main className='main'>
-                <section className='fundo'>
+                <section>
                     <Component {...pageProps} />
                 </section>
             </main>

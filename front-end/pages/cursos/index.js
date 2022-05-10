@@ -1,11 +1,12 @@
-import Styles from '../../styles/index.module.css';
+import React, { Fragment } from 'react';
 
 export default function Index() {
     return (
-        <section className={Styles.main}>
-            <h1 className='topico'>
-                aea
-            </h1>
-        </section>
+        <Fragment>
+            <div>
+                <span className='titulo'>Documentação</span>
+                <span className='tituloDesc'>Documentação completa da biblioteca e seus recursos.</span>
+            </div>
+        </Fragment>
     )
 } 

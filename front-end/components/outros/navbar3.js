@@ -5,10 +5,10 @@ import Styles from '../../styles/navbar3.module.css';
 
 export default function Navbar3() {
     const itens = [
-        { item: 'Visão geral', url: '/devs' },
-        { item: 'xxx', url: '' },
-        { item: 'Guias', url: '/docs/guias' },
-        { item: 'Cursos', url: '/cursos' }
+        { item: 'Disciplinas', url: '/cursos' },
+        { item: 'Ao vivo', url: '' },
+        { item: 'Exercícios', url: '/docs/guias' },
+        { item: 'Materiais de apoios', url: '/' }
     ]
 
     const { asPath } = useRouter();

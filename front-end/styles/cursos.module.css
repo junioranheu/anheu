@@ -1,0 +1,34 @@
+.secaoPrincipal {
+    background-color: var(--preto);
+    min-height: 100vh;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.secaoPrincipal aside {
+    /* background-color: red !important; */
+    width: 20vw;
+
+    border-right: 1px solid var(--cor-border-hr);
+
+    padding: 2rem;
+}
+
+.secaoPrincipal main {
+    /* background-color: blue !important; */
+    width: 80vw;
+    max-height: 100vh;
+    overflow-y: auto !important;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+    padding-left: 10rem;
+}
+
+.secaoPrincipal main div {
+    display: flex;
+    flex-direction: column;
+}

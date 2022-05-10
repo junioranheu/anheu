@@ -29,6 +29,10 @@ html, body {
   min-height: 100vh;
 }
 
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -125,14 +129,7 @@ code div button svg {
   color: var(--cor-principal) !important;
 }
 
-/* Geral */ 
-.fundo {
-  background-color: var(--preto);
-  width: 100vw;
-
-  display: flex;
-}
-
+/* =-=-=-=-=-=-=-=-=-=-=-=- Geral  =-=-=-=-=-=-=-=-=-=-=-=- */
 /* Títulos e textos */
 .titulo {
   color: var(--branco);
@@ -305,22 +302,22 @@ code div button svg {
   opacity: 0.5;
 }
 
-/* Scrollbar */
-.fundo ::-webkit-scrollbar {
-  width: 6px;
+/* =-=-=-=-=-=-=-=-=-=-= Scroll =-=-=-=-=-=-=-=-=-=-= */
+::-webkit-scrollbar {
+  width: 7px;
 }
 
-.fundo ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: var(--preto);
-  height: 6px !important;
 }
 
-.fundo ::-webkit-scrollbar-thumb {
-  background: #262626;
+::-webkit-scrollbar-thumb {
+  background: #6b6e70;
+  border-radius: 0px;
 }
 
-.fundo ::-webkit-scrollbar-thumb:hover {
-  background: #313131;
+::-webkit-scrollbar-thumb:hover {
+  background: #949799;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */

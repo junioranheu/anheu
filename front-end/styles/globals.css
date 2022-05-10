@@ -1,16 +1,339 @@
-html,
-body {
+:root {
+  --preto: #1A1A1A;
+  --super-preto: #000000;
+  --branco: #FFFFFF;
+  --cinza: #313131;
+  --cinza-secundario: #242424;
+  --cor-principal: hsl(259, 100%, 71%);
+  --cor-principal-escura: hsl(257, 80%, 60%);
+  --cor-border-hr: rgba(42, 42, 42, 100);
+  --cor-roxo-card: linear-gradient(to bottom right, var(--cor-principal), var(--cor-principal-escura));
+  --toastify-color-progress-light: var(--cor-principal);
+}
+
+html, body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+  font-family: 'GT';
+
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.main {
+  /* Definir tamanho mínimo para a tela para fixar o footer corretamente */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: var(--cor-principal);
+}
+
+.semDrag {
+  pointer-events: none;
+}
+
+.semHighlight {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.cor-principal {
+  color: var(--cor-principal) !important;
+}
+
+.cor-principal-hover:hover {
+  color: var(--cor-principal) !important;
+  transition: .3s ease-in;
+}
+
+.opacidade {
+  opacity: 1 !important;
+}
+
+.opacidade-hover:hover {
+  opacity: 1;
+  color: var(--branco);
+  transition: opacity .2s;
+}
+
+.efeito-new {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--cor-principal);
+  font-family: 'NanumPenScript';
+  font-size: 1.1em;
+  line-height: 1;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: lowercase;
+  -webkit-transform: rotate(-4deg) translateY(2px);
+  transform: rotate(-4deg) translateY(2px);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- animate.css =-=-=-=-=-=-=-=-=-=-=-=- */
+.animate__animated.delay02 {
+  -webkit-animation-delay: .2s;
+  animation-delay: .2s;
+  -webkit-animation-delay: calc(1s*.2);
+  animation-delay: calc(1s*.2)
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- react-code-blocks =-=-=-=-=-=-=-=-=-=-=-=- */
+/*  Remover o background dos blocos de código */
+code div, code div span {
+  /* color: pink !important; */
+  background: transparent !important;
+}
+
+code div button {
+  cursor: pointer !important;
+}
+
+code div button svg {
+  fill: #fff !important;
+  opacity: 0.7 !important;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Swiper react  =-=-=-=-=-=-=-=-=-=-=-=- */
+.swiper-button-next, .swiper-button-prev {
+  color: var(--cor-principal) !important;
+}
+
+/* Geral */ 
+.fundo {
+  background-color: var(--preto);
+  width: 100vw;
+
+  display: flex;
+}
+
+/* Títulos e textos */
+.titulo {
+  color: var(--branco);
+  font-size: 64px;
+  font-weight: 600;
+
+  line-height: 70px;
+}
+
+.tituloDesc {
+  color: var(--branco);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -.014em;
+
+  margin-top: 1rem;
+}
+
+.topico {
+  color: var(--branco);
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.036em;
+  cursor: pointer;
+
+  margin-top: 2.5rem;
+}
+
+.subTopico {
+  color: var(--branco);
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.036em;
+  cursor: pointer;
+
+  margin-top: 2rem;
+}
+
+.efeitoTexto {
+  padding: 0.3em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  background: var(--cinza);
+  border-radius: 0.4em;
+
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+.efeitoTextoGrande {
+  padding: 1.8em;
+  background: var(--cinza);
+  border-radius: 0.4em;
+
+  color: var(--branco);
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Mostrar o # (hashtag) no hover */
+.topico:hover:before, .subTopico:hover:before {
+  content: '#';
+  display: inline-block;
+  width: 0px;
+  font-weight: 500;
+
+  position: relative;
+
+  -webkit-transition: opacity .1s;
+  transition: opacity .1s;
+  opacity: 0.3;
+}
+
+.topico:hover:before {
+  left: -40px;
+}
+
+.subTopico:hover:before {
+  left: -25px;
+}
+
+.texto {
+  color: var(--branco);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -.012em;
+  line-height: 1.5;
+
+  opacity: 0.9;
+
+  margin-top: 2rem;
+}
+
+.codigo {
+  color: var(--branco);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: -.012em;
+  line-height: 1;
+
+  margin-top: 2rem;
+  margin-bottom: 0.3rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  min-width: 100%;
+  min-height: 3rem;
+  border-radius: 16px;
+  background-color: var(--cinza);
+  overflow: hidden;
+}
+
+.codigo code {
+  font-family: 'PTMono' !important;
+}
+
+.divIframeSandBox {
+  /* background-color: pink; */
+  margin: 2.2rem 0;
+  height: 55vh;
+}
+
+.divIframeSandBox iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.divImagemBlocoConteudo {
+  margin: 2.2rem 0;
+  width: 100%;
+  height: 100%;
+}
+
+.divImagemBlocoConteudo img {
+  border-radius: 16px;
+}
+
+/* Botão */
+.botao {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 40px;
+  padding: 0 1em;
+  border: none;
+  margin: 0;
+  background: var(--cor-principal);
+  border-radius: 12px;
+  color: var(--branco);
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  outline: none;
+  place-content: center;
+  place-items: center;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+
+.botao:hover {
+  opacity: 0.5;
+}
+
+/* Scrollbar */
+.fundo ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fundo ::-webkit-scrollbar-track {
+  background: var(--preto);
+  height: 6px !important;
+}
+
+.fundo ::-webkit-scrollbar-thumb {
+  background: #262626;
+}
+
+.fundo ::-webkit-scrollbar-thumb:hover {
+  background: #313131;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+@media (max-width:879px) {
+  .topico, .subTopico {
+    cursor: auto;
+  }
+
+  .topico:before, .subTopico::before {
+    display: none;
+  }
+
+  .card {
+    width: 50vh !important;
+  }
 }

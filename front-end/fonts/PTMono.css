@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'PTMono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./PTMono/PTMono.woff2') format('woff');
+}

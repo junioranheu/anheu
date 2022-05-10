@@ -23,6 +23,7 @@
 
 .sessao {
     /* background-color: pink; */
+    text-align: center;
     width: 100vw;
     color: var(--branco);
 }
@@ -120,6 +121,7 @@
     .principal {
         /* background-color: blue; */
         justify-content: center;
+        margin-top: 1.5rem;
     }
 }
 

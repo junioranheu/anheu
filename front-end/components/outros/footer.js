@@ -15,9 +15,9 @@ export default function Footer() {
 
                     <Link href='/'><a>Time</a></Link>
                     <Link href='/'><a>Preço</a></Link>
-                    <Link href='/'><a>Mostruário <span className='efeito-new'>novo</span></a></Link>
+                    <Link href='/'><a>Aea <span className='efeito-new'>novo</span></a></Link>
                     <Link href='/'><a>Blog</a></Link>
-                    <Link href='/'><a>Desenvolvedores</a></Link>
+                    <Link href='/'><a>Devs</a></Link>
                     <Link href='/'><a>Atualizações</a></Link>
                 </div>
 

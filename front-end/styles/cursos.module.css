@@ -19,7 +19,8 @@
     /* background-color: blue !important; */
     width: 80vw;
     max-height: 100vh;
-    overflow-y: auto !important;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;

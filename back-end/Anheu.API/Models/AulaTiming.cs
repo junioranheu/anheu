@@ -11,7 +11,7 @@ namespace Anheu.API.Models
         public int AulaId { get; set; }
         public Aula Aula { get; set; }
 
-        public string Titulo { get; set; }
-        public string TempoEmSegundos { get; set; }
+        public string? Titulo { get; set; }
+        public string? TempoEmSegundos { get; set; }
     }
 }

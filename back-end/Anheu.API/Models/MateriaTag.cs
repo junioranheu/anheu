@@ -11,6 +11,6 @@ namespace Anheu.API.Models
         public int MateriaId { get; set; }
         public Materia Materias { get; set; }
 
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
     }
 }

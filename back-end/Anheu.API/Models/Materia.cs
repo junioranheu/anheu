@@ -6,9 +6,9 @@ namespace Anheu.API.Models
     {
         [Key]
         public int MateriaId { get; set; }
-        public string Nome { get; set; }
-        public string Subtitulo { get; set; }
-        public string Thumbnail { get; set; }
+        public string? Nome { get; set; }
+        public string? Subtitulo { get; set; }
+        public string? Thumbnail { get; set; }
         public DateTime? DataRegistro { get; set; }
         public int IsAtivo { get; set; }
 

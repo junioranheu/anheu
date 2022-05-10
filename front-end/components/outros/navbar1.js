@@ -8,7 +8,9 @@ export default function Navbar1() {
 
             <span>Olá</span>
 
-            <span className='pointer cor-principal-hover' onClick={() => { window.open('https://github.com/junioranheu', '_blank'); }}>@junioranheu <Seta width={'1rem'} /></span>
+            <span className='pointer cor-principal-hover' onClick={() => { window.open('https://github.com/junioranheu', '_blank'); }}>
+                @junioranheu <Seta width='1rem' />
+            </span>
         </nav>
     )
 }

@@ -1,0 +1,33 @@
+.navbar {
+    background-color: var(--preto);
+    color: var(--branco);
+
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid var(--cor-border-hr);
+}
+
+.navbar a {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+
+    margin-right: 10px;
+    padding: 5px 0.4rem;
+
+    opacity: 0.5;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
+@media (max-width:739px) {
+    .navbar a:nth-child(2),
+    .navbar a:nth-child(3),
+    .navbar a:nth-child(4) {
+        /* color: pink; */
+        display: none;
+    }
+}

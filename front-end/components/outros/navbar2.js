@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Styles from '../../styles/navbar2.module.css';
-import Framer from '../svg/framer';
+import Anheu from '../svg/anheu';
 import Lupa from '../svg/lupa';
 import Xis from '../svg/xis';
 import Botao from './botao';
@@ -18,11 +18,11 @@ export default function Navbar2() {
             {!isLupa ? (
                 <div className={Styles.wrapper}>
                     <div className={Styles.divEsquerda}>
-                        <Link href='/'><a className={Styles.iconeCorInvertida}><Framer width='0.9rem' />&nbsp;&nbsp;Framer</a></Link>
+                        <Link href='/'><a className={Styles.iconeCorInvertida}><Anheu width='0.9rem' cor='var(--branco)' />&nbsp;&nbsp;Anheu</a></Link>
                         <Link href='/docs'><a>Documentação</a></Link>
                         <Link href='/devs'><a>Desenvolvedores</a></Link>
                         {/* <Link href='/precos'><a>Preços</a></Link> */}
-                        <a onClick={() => handleLupa()}><Lupa /></a>
+                        <a onClick={() => handleLupa()}><Lupa height='1.5rem' width='1.5rem' cor='rgba(255, 255, 255, 0.7)' /></a>
                     </div>
 
                     <div className={Styles.divDireita}>
@@ -36,9 +36,9 @@ export default function Navbar2() {
             ) : (
                 <div className={Styles.divLupa}>
                     <div>
-                        <Lupa />
+                        <Lupa width='1.5rem' cor='rgba(255, 255, 255, 0.7)' />
                         <input className={Styles.input} type='text' placeholder='Busque algo aqui...' />
-                        <button className={Styles.botaoXis} onClick={() => handleLupa()}><Xis width='1.5rem' /></button>
+                        <button className={Styles.botaoXis} onClick={() => handleLupa()}><Xis height='1.5rem' width='1.5rem' cor='rgba(255, 255, 255, 0.7)' /></button>
                     </div>
                 </div>
             )}

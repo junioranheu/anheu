@@ -11,7 +11,7 @@ export default function Footer() {
             {/* Principal */}
             <div className={Styles.principal}>
                 <div className={Styles.sessao}>
-                    <span className={Styles.tituloSessao}>Framer</span>
+                    <span className={Styles.tituloSessao}>Anheu</span>
 
                     <Link href='/'><a>Time</a></Link>
                     <Link href='/'><a>Preço</a></Link>
@@ -52,7 +52,7 @@ export default function Footer() {
                 <div className={Styles.sessao}>
                     <span className={Styles.tituloSessao}>Suporte</span>
 
-                    <Link href='/'><a>Usando o Framer</a></Link>
+                    <Link href='/'><a>Usando o Anheu</a></Link>
                     <Link href='/'><a>Contas</a></Link>
                     <Link href='/'><a>Contato</a></Link>
                 </div>
@@ -63,7 +63,7 @@ export default function Footer() {
                 {/* Esquerda */}
                 <div>
                     <span>
-                        Copyright © {new Date().getFullYear()} Framer B.V. — Desenvolvido por
+                        Copyright © {new Date().getFullYear()} Anheus B.V. — Desenvolvido por
 
                         <Link href='https://github.com/junioranheu'>
                             <a target='_blank'>

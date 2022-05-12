@@ -57,12 +57,25 @@ namespace Anheu.API.Data
             }
             #endregion
 
-            #region seed_disciplinas_e_aulas
+            #region seed_cursos_disciplinas_e_aulas
+            if (!context.Cursos.Any())
+            {
+                context.Cursos.Add(new Curso() { CursoId = 1, Nome = "Javascript pro", Thumbnail = "1.webp", Professor = "Israel", ResumoCurso = "Lorem ipsum dolor sit amet. Qui reiciendis ratione non laborum odio non minima neque in enim rerum. ", Preco = 99.99, DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 2, Nome = "Fullstack em 1 semana", Thumbnail = "2.webp", Professor = "Junior Souza", ResumoCurso = "Vel officia veritatis aut quia cumque in dolorem illo qui fugit temporibus est nihil labore et expedita ipsa. Ut dolores molestiae vel alias natus a nesciunt galisum sit quia ipsum nam laboriosam sint.", Preco = 2.99, DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 3, Nome = "Banco de dados para hackers", Thumbnail = "3.webp", Professor = "Professor 1", ResumoCurso = "Sit quaerat eligendi non nihil dolore ut libero voluptatem aut omnis facilis. Hic rerum asperiores et quam veritatis et illum quas qui accusamus totam et error impedit in necessitatibus molestias.", Preco = 50, DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 4, Nome = "Java trash", Thumbnail = "4.webp", Professor = "Professor 2", ResumoCurso = "Sit laudantium dolorem rem illo optio qui galisum nulla est possimus veritatis qui vitae vitae non odit sequi ut velit dolor? Hic voluptatem consequuntur 33 quidem impedit eum consectetur rerum et impedit exercitationem sed esse sapiente sit consequatur iure ut autem exercitationem.", Preco = 0.0, DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 5, Nome = "Testes unitários com console.log", Thumbnail = "5.webp", Professor = "Professor indiano", ResumoCurso = "Aut dolorem placeat sit perspiciatis reiciendis non modi voluptatem qui voluptatibus doloribus et fugit blanditiis ut neque voluptatem qui eligendi quia.", Preco = 20.90, DataRegistro = dataAgora, IsAtivo = 1 });
+            }
+
             if (!context.Disciplinas.Any())
             {
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 1, Nome = "HTML e CSS", Subtitulo = "Uma introdução aos novícios", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 2, Nome = "Javascript", Subtitulo = "Para os semi-proccs", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 3, Nome = "React.js", Subtitulo = "Para os tarugueiros, apenas", Thumbnail = "", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 1, Nome = "HTML e CSS", Subtitulo = "Uma introdução aos novícios", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 2, Nome = "Javascript", Subtitulo = "Para os semi-proccs", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 3, Nome = "React.js", Subtitulo = "Para os tarugueiros, apenas", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 4, Nome = "SQL Server e MySQL", Subtitulo = "Dolorem illo qui fugit temporibus", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 5, Nome = "Back-end", Subtitulo = "xxx", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 6, Nome = "xUnit", Subtitulo = "Aut dolorem placeat sit perspiciatis reiciendis", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 7, Nome = "Lógica de programação", Subtitulo = "Sit quaerat eligendi non nihil", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.DisciplinaTags.Any())
@@ -79,18 +92,42 @@ namespace Anheu.API.Data
                 context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 8, DisciplinaId = 3, Tag = "#React.js e Next.js" });
             }
 
+            if (!context.CursosDisciplinas.Any())
+            {
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 1, CursoId = 1, DisciplinaId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 2, CursoId = 1, DisciplinaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 3, CursoId = 1, DisciplinaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 4, CursoId = 2, DisciplinaId = 1, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 5, CursoId = 2, DisciplinaId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 6, CursoId = 2, DisciplinaId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 7, CursoId = 2, DisciplinaId = 4, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 8, CursoId = 2, DisciplinaId = 5, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 9, CursoId = 2, DisciplinaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 10, CursoId = 2, DisciplinaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 11, CursoId = 3, DisciplinaId = 4, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 12, CursoId = 3, DisciplinaId = 5, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 13, CursoId = 4, DisciplinaId = 5, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 14, CursoId = 4, DisciplinaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 15, CursoId = 5, DisciplinaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
+                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 16, CursoId = 5, DisciplinaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
+            }
+
             if (!context.Aulas.Any())
             {
-                context.Aulas.Add(new Aula() { AulaId = 1, DisciplinaId = 1, Nome = "HTML e CSS", Thumbnail = "1.webp", Video = "1.mp4", Professor = "Junior Souza", ResumoAula = "#1 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 2, DisciplinaId = 1, Nome = "SLLW?", Thumbnail = "2.webp", Video = "2.mp4", Professor = "Junior Souza", ResumoAula = "#2 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 3, DisciplinaId = 1, Nome = "Khaaa...", Thumbnail = "3.webp", Video = "/padrao/video/3.mp4", Professor = "Junior Souza", ResumoAula = "#3 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 1, DisciplinaId = 1, Nome = "HTML e CSS", Thumbnail = "1.webp", Video = "1.mp4", ResumoAula = "#1 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 2, DisciplinaId = 1, Nome = "SLLW?", Thumbnail = "2.webp", Video = "2.mp4", ResumoAula = "#2 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 3, DisciplinaId = 1, Nome = "Khaaa...", Thumbnail = "3.webp", Video = "/padrao/video/3.mp4", ResumoAula = "#3 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
 
-                context.Aulas.Add(new Aula() { AulaId = 4, DisciplinaId = 2, Nome = "Trabalhando e relaxando", Thumbnail = "4.webp", Video = "4.mp4", Professor = "Israel Cabrera", ResumoAula = "#4 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 5, DisciplinaId = 2, Nome = "JS", Thumbnail = "5.webp", Video = "5.mp4", Professor = "Israel Cabrera", ResumoAula = "#5 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",  DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 4, DisciplinaId = 2, Nome = "Trabalhando e relaxando", Thumbnail = "4.webp", Video = "4.mp4", ResumoAula = "#4 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 5, DisciplinaId = 2, Nome = "JS", Thumbnail = "5.webp", Video = "5.mp4", ResumoAula = "#5 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
 
-                context.Aulas.Add(new Aula() { AulaId = 6, DisciplinaId = 3, Nome = "Tornando-se um mictor", Thumbnail = "6.webp", Video = "6.mp4", Professor = "Junior Souza", ResumoAula = "#6 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 7, DisciplinaId = 3, Nome = "Como ser um perdigato?", Thumbnail = "7.webp", Video = "7.mp4", Professor = "Junior Souza", ResumoAula = "#7 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 8, DisciplinaId = 3, Nome = "Kapa & kapas", Thumbnail = "8.webp", Video = "8.mp4", Professor = "Junior Souza", ResumoAula = "#8 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 6, DisciplinaId = 3, Nome = "Tornando-se um mictor", Thumbnail = "6.webp", Video = "6.mp4", ResumoAula = "#6 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 7, DisciplinaId = 3, Nome = "Como ser um perdigato?", Thumbnail = "7.webp", Video = "7.mp4", ResumoAula = "#7 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 8, DisciplinaId = 3, Nome = "Kapa & kapas", Thumbnail = "8.webp", Video = "8.mp4", ResumoAula = "#8 - Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.AulaTimings.Any())

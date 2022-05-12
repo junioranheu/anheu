@@ -1,0 +1,3 @@
+criar tela de cursos, onde haverá listado todos os cursos para comprar
+nessa tela vai ter uma opção pra redirecionar para uma tela de configuraçao de cursos onde o usuário vai poder selecionar o curso atual 
+ai na tela de disciplinas mostra os itens desse curso. se n tiver curso, da uma outra msg

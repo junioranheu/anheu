@@ -9,7 +9,6 @@ namespace Anheu.API.Models
         public int DisciplinaId { get; set; }
         public string? Nome { get; set; }
         public string? Subtitulo { get; set; }
-        public string? Thumbnail { get; set; }
         public DateTime? DataRegistro { get; set; }
         public int IsAtivo { get; set; }
 
@@ -19,5 +18,9 @@ namespace Anheu.API.Models
         // Fk (De cá pra lá);
         [JsonIgnore]
         public ICollection<Aula> Aulas { get; set; }
+
+        // Fk (De cá pra lá);
+        [JsonIgnore]
+        public ICollection<CursoDisciplina> CursosDisciplinas { get; set; }
     }
 }

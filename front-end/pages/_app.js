@@ -24,7 +24,7 @@ export default function App({ Component, pageProps, ...appProps }) {
     function verificarLayout() {
         // console.log(`Url: ${url}`);
 
-        if (url.includes('/disciplinas')) {
+        if (url.includes('/disciplinas') || url.includes('/cursos')) {
             return <LayoutDisciplinas Component={Component} pageProps={pageProps} />
         } else {
             return <LayoutPadrao Component={Component} pageProps={pageProps} />

@@ -27,7 +27,7 @@ export default function Index({ disciplinas }) {
     return (
         <section className={Styles.flexColumn}>
             <div>
-                <span className='titulo'>Disciplinas do módulo <span className='grifar'>Lorem Ipsum</span></span>
+                <span className='titulo'>Disciplinas do curso <span className='grifar'>Lorem Ipsum</span></span>
             </div>
 
             {disciplinas.filter(x => x.isAtivo === 1).map((d, i) => (

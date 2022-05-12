@@ -19,8 +19,8 @@ export default function Navbar2() {
                 <div className={Styles.wrapper}>
                     <div className={Styles.divEsquerda}>
                         <Link href='/'><a className={Styles.iconeCorInvertida}><Anheu width='0.9rem' cor='var(--branco)' />&nbsp;&nbsp;Anheu</a></Link>
-                        <Link href='/docs'><a>Documentação</a></Link>
-                        <Link href='/devs'><a>Desenvolvedores</a></Link>
+                        <Link href='/posts'><a>Posts & tutoriais</a></Link>
+                        <Link href='/cursos'><a>Cursos</a></Link>
                         {/* <Link href='/precos'><a>Preços</a></Link> */}
                         <a onClick={() => handleLupa()}><Lupa height='1.5rem' width='1.5rem' cor='rgba(255, 255, 255, 0.7)' /></a>
                     </div>

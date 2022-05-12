@@ -41,8 +41,6 @@ export default function Disciplina({ isApiOk, disciplina }) {
 
                                 <div className={`${Styles.flexMeio} margem10`}>
                                     <div>
-                                        {console.log(`${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}`)}
-
                                         <Image
                                             className={Styles.thumb}
                                             src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}

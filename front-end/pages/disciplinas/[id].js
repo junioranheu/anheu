@@ -8,7 +8,7 @@ import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 import EmojiAleatorio from '../../utils/outros/emojiAleatorio';
 
 export default function Disciplina({ isApiOk, disciplina }) {
-    console.log(disciplina);
+    // console.log(disciplina);
 
     useEffect(() => {
         // Título da página;
@@ -18,34 +18,43 @@ export default function Disciplina({ isApiOk, disciplina }) {
     return (
         <Fragment>
             {isApiOk === false ? (
-                <section className={Styles.flex}>
+                <section className={Styles.flexColumn}>
                     <span className={Styles.titulo}>Aguarde alguns segundos, por favor.</span>
                     <span className={Styles.textoNormal}>A API está off-line.</span>
                     <span className={Styles.textoNormal}>Ela está hospedada na Azure, em um plano gratuito, por isso é necessário aguardar um pouquinho no primeiro acesso! {EmojiAleatorio()}</span>
                 </section>
             ) : (
-                <section>
-                    <div>
-                        <span className='titulo'>{disciplina.nome}</span>
-                        <span className='tituloDesc'>Professor {disciplina.aulas[0].professor}</span>
+                <section className={Styles.flexColumn}>
+                    <div className={Styles.flexColumn}>
+                        <span className='titulo'>Bem-vindo às aulas de {disciplina.nome}</span>
+                        <span className='texto'>Com o professor {disciplina.aulas[0].professor}</span>
                     </div>
 
-                    {disciplina.aulas.filter(x => x.isAtivo === 1).map((d, i) => (
-                        <div key={i}>
-                            <span className='topico'>
-                                <Link href={`/disciplinas/${d.disciplinaId}`}>
-                                    <a className='cor-principal-hover'>{d.nome}</a>
-                                </Link>
-                            </span>
+                    <div className='margem30'>
+                        {disciplina.aulas.filter(x => x.isAtivo === 1).map((d, i) => (
+                            <div key={i} className={`${Styles.divAula} margem5`}>
+                                <span className={Styles.topico}>
+                                    <Link href={`/disciplinas/${d.disciplinaId}`}>
+                                        <a className='cor-principal-hover'>{d.nome}</a>
+                                    </Link>
+                                </span>
 
-                            <div>
-                                {console.log(`${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}`)}
-                                <Image src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)} width={240} height={240} />
+                                <div className={`${Styles.flexMeio} margem10`}>
+                                    <div>
+                                        <Image
+                                            className={Styles.thumb}
+                                            src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
+                                            width={240} height={240} layout='fixed'
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <span className={`${Styles.textoHoverDivAula} texto`}>{d.resumoAula}</span>
+                                    </div>
+                                </div>
                             </div>
-
-                            <span className='tituloDesc'>{d.resumoAula}</span>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </section>
             )}
         </Fragment>

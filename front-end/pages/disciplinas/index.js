@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Router from 'next/router';
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Styles from '../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../utils/data/constDisciplinas';
 
@@ -25,13 +25,13 @@ export default function Index({ disciplinas }) {
     }
 
     return (
-        <Fragment>
+        <section className={Styles.flexColumn}>
             <div>
                 <span className='titulo'>Disciplinas</span>
             </div>
 
             {disciplinas.filter(x => x.isAtivo === 1).map((d, i) => (
-                <div key={i}>
+                <div key={i} className={`${Styles.flexColumn} margem40`}>
                     <span className='topico'>
                         <Link href={`/disciplinas/${d.disciplinaId}`}>
                             <a className='cor-principal-hover'>{d.nome}</a>
@@ -42,7 +42,7 @@ export default function Index({ disciplinas }) {
                     <div onClick={() => Router.push(`/disciplinas/${d.disciplinaId}`)}>{exibirTags(d.disciplinaTags)}</div>
                 </div>
             ))}
-        </Fragment>
+        </section>
     )
 }
 

@@ -4,7 +4,8 @@
   --branco: #FFFFFF;
   --cinza: #313131;
   --cinza-secundario: #242424;
-  --cor-principal: hsl(259, 100%, 71%);
+  --cor-principal: rgba(154, 107, 255, 1);
+  --cor-principal-opaca: rgba(154, 107, 255, 0.1);
   --cor-principal-escura: hsl(257, 80%, 60%);
   --cor-border-hr: rgba(42, 42, 42, 100);
   --cor-roxo-card: linear-gradient(to bottom right, var(--cor-principal), var(--cor-principal-escura));
@@ -70,7 +71,7 @@ a {
 
 .cor-principal-hover:hover {
   color: var(--cor-principal) !important;
-  transition: .2s ease-in;
+  transition: .2s ease-in-out;
 }
 
 .opacidade {
@@ -147,6 +148,16 @@ code div button svg {
   letter-spacing: -.014em;
 }
 
+.texto {
+  color: var(--branco);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -.012em;
+  line-height: 1.3;
+
+  opacity: 0.9;
+}
+
 .topico {
   color: var(--branco);
   font-size: 2.5rem;
@@ -154,8 +165,6 @@ code div button svg {
   line-height: 1.2;
   letter-spacing: -.036em;
   cursor: pointer;
-
-  margin-top: 2.5rem;
 }
 
 .efeitoTexto {
@@ -197,18 +206,6 @@ code div button svg {
 
 .topico:hover:before {
   left: -40px;
-}
-
-.texto {
-  color: var(--branco);
-  font-size: 1.25rem;
-  font-weight: 400;
-  letter-spacing: -.012em;
-  line-height: 1.5;
-
-  opacity: 0.9;
-
-  margin-top: 2rem;
 }
 
 .codigo {
@@ -298,7 +295,7 @@ code div button svg {
 
 .tag:hover {
   color: rgba(255, 255, 255, 0.65);
-  transition: .3s ease-in;
+  transition: .3s ease-in-out;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Scroll =-=-=-=-=-=-=-=-=-=-= */
@@ -317,6 +314,31 @@ code div button svg {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #949799;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Margens =-=-=-=-=-=-=-=-=-=-= */
+.margem5 {
+  margin-top: 5px;
+}
+
+.margem10 {
+  margin-top: 10px;
+}
+
+.margem20 {
+  margin-top: 20px;
+}
+
+.margem30 {
+  margin-top: 30px;
+}
+
+.margem40 {
+  margin-top: 40px;
+}
+
+.margem50 {
+  margin-top: 50px;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */

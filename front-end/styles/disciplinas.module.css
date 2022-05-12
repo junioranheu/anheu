@@ -28,9 +28,11 @@
 
     padding: 2rem;
     padding-left: 5rem;
+    padding-right: 5rem;
 }
 
-.secaoPrincipal main div {
+.flexColumn {
+    /* background-color: pink; */
     display: flex;
     flex-direction: column;
 }
@@ -47,13 +49,6 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- [id] =-=-=-=-=-=-=-=-=-=-=-=- */
-.flex {
-    /* background-color: pink; */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .titulo {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -80,3 +75,45 @@
     color: #A7A7A7;
 }
 
+.thumb {
+    border-radius: 10px;
+}
+
+.flexMeio {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding-right: 40%;
+}
+
+.topico {
+    color: var(--branco);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.036em;
+    cursor: pointer;
+}
+
+.divAula {
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.divAula:hover {
+    background-color: var(--cor-principal-opaca);
+    cursor: pointer;
+
+    /* Gambi para o background ficar maior que a div */
+    padding-left: 30px;
+    margin-left: -30px;
+}
+
+.divAula:hover .textoHoverDivAula {
+    color: var(--cor-principal) !important;
+    transition: .3s ease-in-out;
+}

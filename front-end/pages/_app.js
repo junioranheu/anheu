@@ -19,10 +19,6 @@ export default function App({ Component, pageProps, ...appProps }) {
 
         // Setar url no Hook, para usar em verificarLayout();
         setUrl(appProps.router.pathname);
-
-        // Título da página;
-        const titulo = (appProps.router.pathname !== '/' ? `${ajustarUrl(appProps.router.pathname)} — Anheu` : 'Anheu — xxx');
-        document.title = titulo;
     }, [appProps]);
 
     function verificarLayout() {

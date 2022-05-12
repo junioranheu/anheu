@@ -1,10 +1,15 @@
 import Link from 'next/link';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Styles from '../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../utils/data/constDisciplinas';
 
 export default function Index({ disciplinas }) {
     // console.log(disciplinas);
+
+    useEffect(() => {
+        // Título da página;
+        document.title = `Disciplinas — Anheu`;
+    }, []);
 
     function exibirTags(disciplinaTags) {
         let tags = '';

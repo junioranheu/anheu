@@ -27,7 +27,6 @@ export default function Disciplina({ isApiOk, disciplina }) {
                 <section className={Styles.flexColumn}>
                     <div className={Styles.flexColumn}>
                         <span className='titulo'>Bem-vindo às aulas de <span className='grifar'>{disciplina.nome}</span></span>
-                        <span className='texto'>Com o professor {disciplina.aulas[0].professor}</span>
                     </div>
 
                     <div className='margem30'>

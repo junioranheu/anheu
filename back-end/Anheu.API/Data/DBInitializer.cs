@@ -69,27 +69,46 @@ namespace Anheu.API.Data
 
             if (!context.Disciplinas.Any())
             {
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 1, Nome = "HTML e CSS", Subtitulo = "Uma introdução aos novícios", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 2, Nome = "Javascript", Subtitulo = "Para os semi-proccs", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 3, Nome = "React.js", Subtitulo = "Para os tarugueiros, apenas", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 4, Nome = "SQL Server e MySQL", Subtitulo = "Dolorem illo qui fugit temporibus", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 5, Nome = "Back-end", Subtitulo = "xxx", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 6, Nome = "xUnit", Subtitulo = "Aut dolorem placeat sit perspiciatis reiciendis", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 7, Nome = "Lógica de programação", Subtitulo = "Sit quaerat eligendi non nihil", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 1, Nome = "HTML e CSS", Subtitulo = "Uma introdução ao front-end", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 2, Nome = "Javascript", Subtitulo = "JQuery morreu. RIP", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 3, Nome = "React.js", Subtitulo = "By Mark Zuckerberg", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 4, Nome = "SQL Server e MySQL", Subtitulo = "Delete sem Where", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 5, Nome = "Back-end", Subtitulo = "Vai conseguir programar sem o StackOverFlow", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 6, Nome = "xUnit", Subtitulo = "Para testar sem console.log()", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 7, Nome = "Lógica de programação", Subtitulo = "Para QI's maiores que 3", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.DisciplinaTags.Any())
             {
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 1, DisciplinaId = 1, Tag = "#Início" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 2, DisciplinaId = 1, Tag = "#HTML" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 3, DisciplinaId = 1, Tag = "#Css" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 1, DisciplinaId = 1, Tag = "#HTML5" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 2, DisciplinaId = 1, Tag = "#CSS3" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 3, DisciplinaId = 1, Tag = "#DOM" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 4, DisciplinaId = 1, Tag = "#Iniciante" });
 
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 4, DisciplinaId = 2, Tag = "#Início ao Javascript" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 5, DisciplinaId = 2, Tag = "#O que é o JS?" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 6, DisciplinaId = 2, Tag = "#Exemplo prático" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 5, DisciplinaId = 2, Tag = "#JS" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 6, DisciplinaId = 2, Tag = "#Vanilla" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 7, DisciplinaId = 2, Tag = "#JQuery" });
 
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 7, DisciplinaId = 3, Tag = "#Início ao React.js" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 8, DisciplinaId = 3, Tag = "#React.js e Next.js" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 8, DisciplinaId = 3, Tag = "#JS" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 9, DisciplinaId = 3, Tag = "#React.js" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 10, DisciplinaId = 3, Tag = "#Hooks" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 11, DisciplinaId = 3, Tag = "#Visual Studio Code" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 12, DisciplinaId = 3, Tag = "#Next.js" });
+
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 13, DisciplinaId = 4, Tag = "#Banco de dados" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 14, DisciplinaId = 4, Tag = "#SQL Server" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 15, DisciplinaId = 4, Tag = "#MySQL" });
+
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 16, DisciplinaId = 5, Tag = "#Back-end" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 17, DisciplinaId = 5, Tag = "#CSharp" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 18, DisciplinaId = 5, Tag = "#Java" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 19, DisciplinaId = 5, Tag = "#API" });
+
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 20, DisciplinaId = 6, Tag = "#Testes" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 21, DisciplinaId = 6, Tag = "#xUnit" });
+
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 22, DisciplinaId = 7, Tag = "#Lógica" });
+                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 23, DisciplinaId = 7, Tag = "#Back-end" });
             }
 
             if (!context.CursosDisciplinas.Any())

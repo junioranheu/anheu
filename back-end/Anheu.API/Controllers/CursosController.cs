@@ -8,26 +8,26 @@ namespace Spotify.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DisciplinasController : BaseController<DisciplinasController>
+    public class CursosController : BaseController<CursosController>
     {
-        private readonly IDisciplinaRepository _disciplinaRepository;
+        private readonly ICursoRepository _CursoRepository;
 
-        public DisciplinasController(IDisciplinaRepository disciplinaRepository)
+        public CursosController(ICursoRepository cursoRepository)
         {
-            _disciplinaRepository = disciplinaRepository;
+            _CursoRepository = cursoRepository;
         }
 
         [HttpGet("todos")]
-        public async Task<ActionResult<List<Disciplina>>> GetTodos()
+        public async Task<ActionResult<List<Curso>>> GetTodos()
         {
-            var todos = await _disciplinaRepository.GetTodos();
+            var todos = await _CursoRepository.GetTodos();
             return Ok(todos);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Disciplina>> GetPorId(int id)
+        public async Task<ActionResult<Curso>> GetPorId(int id)
         {
-            var porId = await _disciplinaRepository.GetPorId(id);
+            var porId = await _CursoRepository.GetPorId(id);
 
             if (porId == null)
             {
@@ -39,9 +39,9 @@ namespace Spotify.Controllers
 
         [HttpPost("criar")]
         [Authorize(Roles = "1")]
-        public async Task<ActionResult<bool>> PostCriar(Disciplina disciplina)
+        public async Task<ActionResult<bool>> PostCriar(Curso curso)
         {
-            var isOk = await _disciplinaRepository.PostCriar(disciplina);
+            var isOk = await _CursoRepository.PostCriar(curso);
 
             if (isOk < 1)
             {
@@ -53,9 +53,9 @@ namespace Spotify.Controllers
 
         [HttpPost("atualizar")]
         [Authorize(Roles = "1")]
-        public async Task<ActionResult<bool>> PostAtualizar(Disciplina disciplina)
+        public async Task<ActionResult<bool>> PostAtualizar(Curso curso)
         {
-            var isOk = await _disciplinaRepository.PostAtualizar(disciplina);
+            var isOk = await _CursoRepository.PostAtualizar(curso);
 
             if (isOk < 1)
             {
@@ -69,7 +69,7 @@ namespace Spotify.Controllers
         [Authorize(Roles = "1")]
         public async Task<ActionResult<int>> PostDeletar(int id)
         {
-            var isOk = await _disciplinaRepository.PostDeletar(id);
+            var isOk = await _CursoRepository.PostDeletar(id);
 
             if (isOk < 1)
             {

@@ -70,7 +70,7 @@ a {
 
 .cor-principal-hover:hover {
   color: var(--cor-principal) !important;
-  transition: .3s ease-in;
+  transition: .2s ease-in;
 }
 
 .opacidade {
@@ -133,7 +133,7 @@ code div button svg {
 /* Títulos e textos */
 .titulo {
   color: var(--branco);
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: 600;
 
   line-height: 70px;
@@ -141,34 +141,21 @@ code div button svg {
 
 .tituloDesc {
   color: var(--branco);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -.014em;
-
-  margin-top: 1rem;
 }
 
 .topico {
   color: var(--branco);
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -.036em;
   cursor: pointer;
 
   margin-top: 2.5rem;
-}
-
-.subTopico {
-  color: var(--branco);
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -.036em;
-  cursor: pointer;
-
-  margin-top: 2rem;
 }
 
 .efeitoTexto {
@@ -195,7 +182,7 @@ code div button svg {
 }
 
 /* Mostrar o # (hashtag) no hover */
-.topico:hover:before, .subTopico:hover:before {
+.topico:hover:before {
   content: '#';
   display: inline-block;
   width: 0px;
@@ -210,10 +197,6 @@ code div button svg {
 
 .topico:hover:before {
   left: -40px;
-}
-
-.subTopico:hover:before {
-  left: -25px;
 }
 
 .texto {
@@ -322,11 +305,11 @@ code div button svg {
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 @media (max-width:879px) {
-  .topico, .subTopico {
+  .topico {
     cursor: auto;
   }
 
-  .topico:before, .subTopico::before {
+  .topico:before {
     display: none;
   }
 

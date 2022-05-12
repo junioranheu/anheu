@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../fonts/GTWalsheim.css';
 import '../fonts/NanumPenScript.css';
 import '../fonts/PTMono.css';
-import LayoutCursos from '../layouts/cursos.js';
+import LayoutDisciplinas from '../layouts/disciplinas.js';
 import LayoutPadrao from '../layouts/padrao.js';
 import '../styles/globals.css';
 
@@ -28,8 +28,8 @@ export default function App({ Component, pageProps, ...appProps }) {
     function verificarLayout() {
         // console.log(`Url: ${url}`);
 
-        if (url.includes('/cursos')) {
-            return <LayoutCursos Component={Component} pageProps={pageProps} />
+        if (url.includes('/disciplinas')) {
+            return <LayoutDisciplinas Component={Component} pageProps={pageProps} />
         } else {
             return <LayoutPadrao Component={Component} pageProps={pageProps} />
         }

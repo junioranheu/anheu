@@ -24,10 +24,16 @@
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 @media (max-width:739px) {
-    .navbar a:nth-child(2),
+    /* .navbar a:nth-child(2),
     .navbar a:nth-child(3),
     .navbar a:nth-child(4) {
-        /* color: pink; */
         display: none;
+    } */
+
+    .navbar {
+        flex-direction: column;
+        height: fit-content;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }

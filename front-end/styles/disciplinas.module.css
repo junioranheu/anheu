@@ -125,9 +125,7 @@
         /* background-color: pink; */
         width: 100%;
     }
-}
 
-@media (max-width:739px) {
     .secaoPrincipal aside {
         display: none;
     }
@@ -136,8 +134,10 @@
         /* background-color: blue !important; */
         width: 100vw;
         padding: 2rem;
-    }    
+    }
 }
+
+@media (max-width:739px) {}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {}

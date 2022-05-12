@@ -99,7 +99,7 @@
 
 .divAula {
     transition: background-color 0.2s ease-in-out;
-    border-radius: 5px;
+    border-radius: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -115,5 +115,5 @@
 
 .divAula:hover .textoHoverDivAula {
     color: var(--cor-principal) !important;
-    transition: .3s ease-in-out;
+    transition: .4s ease-in-out;
 }

@@ -9,7 +9,7 @@ import Styles from '../styles/disciplinas.module.css';
 export default function Disciplinas({ Component, pageProps }) {
     return (
         <Fragment>
-            <main className='main'>
+            <main className='main semHighlight'>
                 <Navbar1 />
                 <Navbar2 />
                 <Navbar3 />

@@ -190,6 +190,18 @@ code div button svg {
   line-height: 1.5;
 }
 
+.grifar {
+  background-image: linear-gradient(120deg, var(--cor-principal-opaca) 10%, var(--cor-principal) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% .2em;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+}
+
+.grifar:hover {
+  background-size: 100% 88%;
+}
+
 /* Mostrar o # (hashtag) no hover */
 .topico:hover:before {
   content: '#';

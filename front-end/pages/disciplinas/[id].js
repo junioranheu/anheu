@@ -44,7 +44,7 @@ export default function Disciplina({ isApiOk, disciplina }) {
                                         <Image
                                             className={Styles.thumb}
                                             src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
-                                            width={240} height={240} layout='fixed'
+                                            width={500} height={500} 
                                         />
                                     </div>
 

@@ -85,7 +85,7 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    width: 50%;
+    width: 70%;
 }
 
 .topico {
@@ -117,3 +117,29 @@
     color: var(--cor-principal) !important;
     transition: .4s ease-in-out;
 }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .flexMeio {
+        /* background-color: pink; */
+        width: 100%;
+    }
+}
+
+@media (max-width:739px) {
+    .secaoPrincipal aside {
+        display: none;
+    }
+
+    .secaoPrincipal main {
+        /* background-color: blue !important; */
+        width: 100vw;
+        padding: 2rem;
+    }    
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+@media (max-width:500px) {}

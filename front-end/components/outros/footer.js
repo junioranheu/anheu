@@ -63,13 +63,11 @@ export default function Footer() {
                 {/* Esquerda */}
                 <div>
                     <span>
-                        Copyright © {new Date().getFullYear()} Anheus B.V. — Desenvolvido por
+                        Copyright © {new Date().getFullYear()} — Anheu — Desenvolvido por
 
                         <Link href='https://github.com/junioranheu'>
-                            <a target='_blank'>
-                                <span>
-                                    <span className='cor-principal-hover'>&nbsp;@junioranheu</span>
-                                </span>
+                            <a target='_blank' className='cor-principal-hover'>
+                                &nbsp;@junioranheu
                             </a>
                         </Link>
                     </span>
@@ -79,15 +77,15 @@ export default function Footer() {
                 <div className={Styles.direita}>
                     <div className={Styles.icones}>
                         <span title='Alternar modo dark/light'>
-                            <FontAwesomeIcon className='pointer' icon={faSun} size='lg' />
+                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faSun} size='lg' />
                         </span>
 
                         <span title='GitHub'>
-                            <FontAwesomeIcon className='pointer' icon={faGithub} size='lg' onClick={() => { window.open('https://github.com/junioranheu', '_blank') }} />
+                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faGithub} size='lg' onClick={() => { window.open('https://github.com/junioranheu', '_blank') }} />
                         </span>
 
                         <span title='Instagram'>
-                            <FontAwesomeIcon className='pointer' icon={faInstagram} size='lg' onClick={() => { window.open('https://www.instagram.com/junioranheu/', '_blank') }} />
+                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faInstagram} size='lg' onClick={() => { window.open('https://www.instagram.com/junioranheu/', '_blank') }} />
                         </span>
                     </div>
                 </div>

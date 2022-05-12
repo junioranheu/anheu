@@ -256,7 +256,7 @@ code div button svg {
   border-radius: 16px;
 }
 
-/* Botão */
+/* =-=-=-=-=-=-=-=-=-=-= Botão =-=-=-=-=-=-=-=-=-=-= */
 .botao {
   position: relative;
   display: flex;
@@ -283,6 +283,22 @@ code div button svg {
 
 .botao:hover {
   opacity: 0.5;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Tag =-=-=-=-=-=-=-=-=-=-= */
+.tag {
+  color: var(--branco);
+  background: var(--cor-principal);
+  padding: 5px 10px 5px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tag:hover {
+  color: rgba(255, 255, 255, 0.65);
+  transition: .3s ease-in;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-= Scroll =-=-=-=-=-=-=-=-=-=-= */

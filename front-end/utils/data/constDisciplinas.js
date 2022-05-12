@@ -2,7 +2,7 @@ import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../outros/urlApi';
 
 const ENDPOINTS = {
     GET_TODOS: 'api/Disciplinas/todos',
-    GET_POR_ID: 'api/Disciplinas/',
+    GET_POR_ID: 'api/Disciplinas',
     POST_CRIAR: 'api/Disciplinas/criar',
     POST_ATUALIZAR: 'api/Disciplinas/atualizar',
     POST_DELETAR: 'api/Disciplinas/deletar'

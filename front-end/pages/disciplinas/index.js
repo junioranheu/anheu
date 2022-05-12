@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import React, { Fragment, useEffect } from 'react';
 import Styles from '../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../utils/data/constDisciplinas';
@@ -38,7 +39,7 @@ export default function Index({ disciplinas }) {
                     </span>
 
                     <span className='tituloDesc'>{d.subtitulo}</span>
-                    <div>{exibirTags(d.disciplinaTags)}</div>
+                    <div onClick={() => Router.push(`/disciplinas/${d.disciplinaId}`)}>{exibirTags(d.disciplinaTags)}</div>
                 </div>
             ))}
         </Fragment>

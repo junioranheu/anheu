@@ -2,6 +2,10 @@ const withVideos = require('next-videos'); // Habilitar import de vídeos; https
 
 module.exports = withVideos(
     {
-        swcMinify: true // Habilitar minify em produção: https://nextjs.org/docs/advanced-features/compiler
+        swcMinify: true, // Habilitar minify em produção: https://nextjs.org/docs/advanced-features/compiler
+
+        images: {
+            domains: ['localhost', 'anheu.azurewebsites.net'], // Permitir imagens dos domínios;
+        },
     }
 )

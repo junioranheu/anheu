@@ -18,6 +18,7 @@ namespace Anheu.API.Repositories
         {
             var itens = await _context.Disciplinas.
                 Include(m => m.DisciplinaTags).
+                Include(a => a.Aulas).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
@@ -27,6 +28,7 @@ namespace Anheu.API.Repositories
         {
             var item = await _context.Disciplinas.
                 Include(m => m.DisciplinaTags).
+                Include(a => a.Aulas).
                 Where(p => p.DisciplinaId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;

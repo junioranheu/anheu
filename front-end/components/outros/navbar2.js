@@ -26,7 +26,7 @@ export default function Navbar2() {
                     </div>
 
                     <div className={Styles.divDireita}>
-                        <Link href='/entrar'><a>Entrar</a></Link>
+                        <Link href='/usuario/entrar'><a>Entrar</a></Link>
 
                         <span className={Styles.margemBotao}>
                             <Botao texto={'Crie sua conta'} url={'/criar-conta'} isNovaAba={false} Svg='' />

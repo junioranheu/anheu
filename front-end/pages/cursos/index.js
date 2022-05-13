@@ -26,7 +26,7 @@ export default function Index({ cursos }) {
                 />
             )}
 
-            <div className={Styles.margemTopG}>
+            <div className={(isAuth ? Styles.margemTopG : '')}>
                 <span className='titulo'>Cursos disponíveis no <span className='grifar'>Anheu</span></span>
             </div>
 

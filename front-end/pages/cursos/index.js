@@ -27,7 +27,7 @@ export default function Index({ cursos }) {
 
             <div className={`${Styles.margemTopP} ${Styles.divQuatroCards}`}>
                 {cursos.filter(x => x.isAtivo === 1).map((c, i) => (
-                    <section className={StylesCards.card}>
+                    <section key={c.cursoId} className={StylesCards.card}>
                         <div className={StylesCards.cardDivTexto}>
                             <span className={StylesCards.cardTitulo}>{c.nome}</span>
                             <span className={StylesCards.cardSubtitulo}>Professor {c.professor}</span>

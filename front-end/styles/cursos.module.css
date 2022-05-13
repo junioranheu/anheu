@@ -5,7 +5,7 @@
 }
 
 /* =-=-=-=-=-=-=-=-= divQuatroCards =-=-=-=-=-=-=-=-= */
-.divQuatroCards {
+.divCards {
     /* background-color: pink; */
     width: 100%;
 
@@ -14,19 +14,19 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 30px;
-    row-gap: 10px;
+    row-gap: 30px;
 }
 
-.divQuatroCards section {
+.divCards section {
     /* background-color: blue; */
-    flex: 0 0 40%;
+    flex: 0 0 30%;
     min-height: 400px;
 
     display: flex;
     justify-content: center;
 }
 
-.divQuatroCards section div {
+.divCards section div {
     /* background-color: blue; */
     width: 100%;
 }
@@ -47,24 +47,31 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {
-    /* .principal {
-        background-color: pink;
-    } */
-
-    .divQuatroCards {
+    .divCards {
+        /* background-color: red; */
         width: 90vw;
+    }
+
+    .divCards section {
+        /* background-color: blue; */
+        flex: 0 0 40%;
     }
 }
 
 /* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {}
+@media (max-width:1025px) {
+    .divCards section {
+        /* background-color: blue; */
+        flex: 0 0 100%;
+    }
+}
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {
-    .divQuatroCards {
+    .divCards {
         display: flex;
         flex-wrap: unset;
         justify-content: center;
@@ -74,7 +81,7 @@
         row-gap: 10px;
     }
 
-    .divQuatroCards section {
+    .divCards section {
         flex: unset;
         width: 95% !important;
     }

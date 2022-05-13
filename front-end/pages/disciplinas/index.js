@@ -25,14 +25,14 @@ export default function Index({ disciplinas }) {
     }
 
     return (
-        <section className={Styles.flexColumn}>
+        <section className='flexColumn'>
             <div>
                 <span className='titulo'>Disciplinas do curso <span className='grifar'>Lorem Ipsum</span></span>
             </div>
 
             {disciplinas.filter(x => x.isAtivo === 1).map((d, i) => (
-                <div key={i} className={`${Styles.flexColumn} margem40`}>
-                    <span className='topico'>
+                <div key={i} className='flexColumn margem40'>
+                    <span className='topico' style={{ width: 'fit-content' }}>
                         <Link href={`/disciplinas/${d.disciplinaId}`}>
                             <a className='cor-principal-hover'>{d.nome}</a>
                         </Link>

@@ -1,4 +1,10 @@
-/* =-=-=-=-=-=-=-=-= divQuatroCards usada em sessao4.js =-=-=-=-=-=-=-=-= */
+.flexCenter{
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+}
+
+/* =-=-=-=-=-=-=-=-= divQuatroCards =-=-=-=-=-=-=-=-= */
 .divQuatroCards {
     /* background-color: pink; */
     width: 100%;
@@ -71,77 +77,6 @@
     .divQuatroCards section {
         flex: unset;
         width: 95% !important;
-    }
-}
-
-/* smartphones, Android phones, landscape iPhone */
-@media (max-width:480px) {}
-
-.card {
-    margin-top: 1rem;
-    padding: 2rem;
-    border-radius: 16px;
-    overflow: hidden;
-    will-change: transform;
-
-    cursor: pointer;
-    background: var(--cor-roxo-card);
-    width: 60vh;
-
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    transition: box-shadow .2s, transform .2s, -webkit-box-shadow .2s, -webkit-transform .2s;
-}
-
-.cardDivTexto {
-    /* background-color: pink; */
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Card normal */
-.cardTitulo {
-    color: var(--branco);
-    font-size: 2.2rem;
-    letter-spacing: -.032em;
-    line-height: 1.24;
-    font-weight: 600;
-}
-
-.cardTituloMenor {
-    color: var(--branco);
-    font-size: 1.5rem;
-    letter-spacing: -.032em;
-    line-height: 1.24;
-    font-weight: 600;
-}
-
-.cardSubtitulo {
-    color: var(--branco);
-    font-size: 1.2rem;
-    letter-spacing: -.012em;
-    line-height: 1.5;
-    opacity: 0.9;
-    font-weight: 500;
-}
-
-/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
-/* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {
-    .cardTitulo {
-        font-size: 1.5rem;
-    }
-}
-
-/* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (max-width:801px) {
-    .cardTitulo {
-        font-size: 1.2rem;
     }
 }
 

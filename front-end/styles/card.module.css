@@ -1,0 +1,171 @@
+.card {
+  margin-top: 1rem;
+  padding: 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  will-change: transform;
+
+  cursor: pointer;
+  background: var(--cor-roxo-card);
+  width: 60vh;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  transition: box-shadow .2s, transform .2s, -webkit-box-shadow .2s, -webkit-transform .2s;
+}
+
+.cardDivMedia {
+  display: flex;
+  justify-content: center;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
+}
+
+.cardDivMedia img {
+  /* background-color: pink !important; */
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 150px !important;
+}
+
+.cardDivTexto {
+  /* background-color: pink; */
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card normal */
+.cardTitulo {
+  color: var(--branco);
+  font-size: 2rem;
+  letter-spacing: -.032em;
+  line-height: 1.24;
+  font-weight: 600;
+}
+
+.cardTituloMenor {
+  color: var(--branco);
+  font-size: 1.5rem;
+  letter-spacing: -.032em;
+  line-height: 1.24;
+  font-weight: 600;
+}
+
+.cardSubtitulo {
+  color: var(--branco);
+  font-size: 1.2rem;
+  letter-spacing: -.012em;
+  line-height: 1.5;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Card grande =-=-=-=-=-=-=-=-=-=-= */
+.cardDivTextoGrande {
+  /* background-color: pink; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  cursor: auto !important;
+}
+
+.cardTituloGrande {
+  color: var(--branco);
+  font-size: 3rem;
+  letter-spacing: -.032em;
+  line-height: 1.24;
+  font-weight: 600;
+}
+
+.cardSubtituloGrande {
+  color: var(--branco);
+  font-size: 1.5rem;
+  letter-spacing: -.012em;
+  line-height: 1.5;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.cardTituloInicial {
+  color: var(--branco);
+  font-size: 1.2rem;
+  letter-spacing: -.012em;
+  line-height: 1.5;
+  opacity: 0.9;
+  font-weight: 500;
+
+  margin-bottom: 1rem;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Card gigante =-=-=-=-=-=-=-=-=-=-= */
+.cardGigante {
+  width: 100vh !important;
+  padding: 4rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.cardDivTextoGigante {
+  /* background-color: pink; */
+  width: 80%;
+
+  cursor: auto !important;
+}
+
+.cardDivTextoGigante span {
+  display: flex;
+  text-align: center;
+}
+
+.margemP {
+  margin-top: 2rem;
+}
+
+.botaoCustom button {
+  background-color: var(--branco);
+
+  color: var(--cor-principal);
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+  .cardTitulo {
+    font-size: 1.5rem;
+  }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+  .cardTitulo {
+    font-size: 1.2rem;
+  }
+
+  .cardGigante {
+    width: 90vw !important;
+  }
+}
+
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {
+  .cardDivTextoGigante {
+    width: 100%;
+  }
+
+  .cardTituloGrande {
+    font-size: 2rem;
+  }
+}

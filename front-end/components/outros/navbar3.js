@@ -5,6 +5,7 @@ import Styles from '../../styles/navbar3.module.css';
 
 export default function Navbar3() {
     const itens = [
+        { item: 'Meus cursos', url: '/usuario/meus-cursos' },
         { item: 'Disciplinas', url: '/disciplinas' },
         { item: 'Ao vivo', url: '/ao-vivo' },
         { item: 'Exercícios', url: '/docs/exercicios' },

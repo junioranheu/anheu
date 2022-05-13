@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Banner from '../../components/outros/banner';
 import StylesCards from '../../styles/card.module.css';
 import Styles from '../../styles/cursos.module.css';
+import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import ConcatenarItensLista from '../../utils/outros/concatenarItensLista';
 
 export default function Index({ cursos }) {
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     // console.log(cursos);
 
     useEffect(() => {
@@ -15,12 +17,14 @@ export default function Index({ cursos }) {
 
     return (
         <section className={`flexColumn ${Styles.flexCenter}`}>
-            <Banner
-                titulo='Você já adquiriu algum curso?'
-                subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
-                textoBotao='Visualizar e gerenciar meus cursos'
-                url='/usuario/meus-cursos'
-            />
+            {isAuth && (
+                <Banner
+                    titulo='Você já adquiriu algum curso?'
+                    subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
+                    textoBotao='Visualizar e gerenciar meus cursos'
+                    url='/usuario/meus-cursos'
+                />
+            )}
 
             <div className={Styles.margemTopG}>
                 <span className='titulo'>Cursos disponíveis no <span className='grifar'>Anheu</span></span>
@@ -33,7 +37,7 @@ export default function Index({ cursos }) {
                             <span className={StylesCards.cardTitulo}>{c.nome}</span>
                             <span className={StylesCards.cardSubtitulo}>Professor {c.professor}</span>
                             <span className={StylesCards.cardTituloMenor}>R$ {c.preco}</span>
-                            <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo}`}>{c.resumoCurso}</span>
+                            <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo} ${Styles.limitar4Linhas}`}>{c.resumoCurso}</span>
                             <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo}`}>{ConcatenarItensLista(c.cursosDisciplinas, 'disciplinas.nome')}</span>
                         </div>
                     </section>

@@ -7,7 +7,7 @@ import Styles from '../styles/disciplinas.module.css';
 
 export default function Cursos({ Component, pageProps }) {
     return (
-        <Fragment>
+        <Fragment> 
             <main className='main semHighlight'>
                 <Navbar1 />
                 <Navbar2 />

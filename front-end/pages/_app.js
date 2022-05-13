@@ -7,17 +7,12 @@ import LayoutCursos from '../layouts/cursos';
 import LayoutDisciplinas from '../layouts/disciplinas.js';
 import LayoutPadrao from '../layouts/padrao.js';
 import '../styles/globals.css';
+import { UsuarioProvider } from '../utils/context/usuarioContext';
 
 export default function App({ Component, pageProps, ...appProps }) {
     const [url, setUrl] = useState('');
 
     useEffect(() => {
-        function ajustarUrl(url) {
-            let urlAjustada = url.split('/').pop().trim();
-            urlAjustada = urlAjustada.charAt(0).toUpperCase() + urlAjustada.slice(1);
-            return urlAjustada;
-        }
-
         // Setar url no Hook, para usar em verificarLayout();
         setUrl(appProps.router.pathname);
     }, [appProps]);
@@ -34,5 +29,11 @@ export default function App({ Component, pageProps, ...appProps }) {
         }
     }
 
-    return url ? verificarLayout() : null;
+    return url ?
+        (
+            <UsuarioProvider>
+                {verificarLayout()}
+            </UsuarioProvider>
+        ) :
+        null;
 }

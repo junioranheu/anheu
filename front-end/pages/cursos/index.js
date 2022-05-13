@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CardGigante from '../../components/outros/cardGigante';
+import Banner from '../../components/outros/banner';
 import StylesCards from '../../styles/card.module.css';
 import Styles from '../../styles/cursos.module.css';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
@@ -14,7 +14,7 @@ export default function Index({ cursos }) {
 
     return (
         <section className={`flexColumn ${Styles.flexCenter}`}>
-            <CardGigante
+            <Banner
                 titulo='Você já adquiriu algum curso?'
                 subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
                 textoBotao='Visualizar e gerenciar meus cursos'

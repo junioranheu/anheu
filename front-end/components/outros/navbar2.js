@@ -11,7 +11,7 @@ export default function Navbar2() {
 
     function handleLupa() {
         setIsLupa(!isLupa);
-    }
+    } 
 
     return (
         <nav className={Styles.navbar}>

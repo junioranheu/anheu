@@ -6,7 +6,7 @@
   will-change: transform;
 
   cursor: pointer;
-  background: var(--cor-roxo-card);
+  background: var(--cor-principal-gradient);
   width: 60vh;
 
   display: flex;
@@ -137,6 +137,34 @@
 
   padding: 2rem;
   margin-top: 3rem;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= Banner =-=-=-=-=-=-=-=-=-=-= */
+.banner {
+  background: var(--cor-principal-gradient);
+
+  /* width: 100%; */
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* border-radius: 16px; */
+  padding: 1.5rem;
+  /* Quantidade de padding que o main tem */
+  margin-top: -2rem;
+}
+
+.botaoCustomBanner button {
+  background-color: var(--branco);
+
+  color: var(--cor-principal);
+  font-size: 1rem;
+  font-weight: 600;
+
+  padding: 1.7rem;
+  margin-top: 1.5rem;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

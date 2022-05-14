@@ -1,14 +1,17 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/entrar.module.css';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
 import Anheu from '../svg/anheu.js';
 import Google from '../svg/google.js';
 
 export default function SessaoEsquerda() {
+    const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const [opcaoContinuarEmail, setOpcaoContinuarEmail] = useState(false);
 
     const refUsuario = useRef();
@@ -40,7 +43,7 @@ export default function SessaoEsquerda() {
         }
 
         const url = `${CONSTANTS_USUARIOS.API_URL_GET_VERIFICAR_EMAIL_E_SENHA}?nomeUsuarioSistema=${formData.usuario}&senha=${formData.senha}`;
-        console.log(url);
+        // console.log(url);
 
         const resposta = await fetch(url);
         if (resposta.status !== 200) {
@@ -62,7 +65,7 @@ export default function SessaoEsquerda() {
 
     async function getToken(nomeUsuario, senha, usuario) {
         const url = `${CONSTANTS_USUARIOS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${nomeUsuario}&senha=${senha}`;
-        console.log(url);
+        // console.log(url);
 
         // Gerar token;
         const resposta = await fetch(url, {
@@ -89,7 +92,6 @@ export default function SessaoEsquerda() {
         setIsAuth(true);
 
         // Voltar à tela principal;
-        // navigate('/', { replace: true });
         Router.push('/');
         NProgress.done();
     }
@@ -107,7 +109,7 @@ export default function SessaoEsquerda() {
             <span className={Styles.subtitulo}>Não tem uma conta ainda? <Link href='/criar-conta'><a className={'cor-principal'}>Crie a sua aqui</a></Link></span>
 
             <div className={`${Styles.botaoCustom} ${Styles.margemTopXP}`}>
-                <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/docs'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} />
+                <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/docs'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} refBtn={null} />
             </div>
 
             {opcaoContinuarEmail ? (

@@ -1,17 +1,35 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+import React, { Fragment, useContext, useState } from 'react';
 import Styles from '../../styles/navbar2.module.css';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import Anheu from '../svg/anheu';
 import Lupa from '../svg/lupa';
 import Xis from '../svg/xis';
 import Botao from './botao';
 
 export default function Navbar2() {
+    const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const [isLupa, setIsLupa] = useState(false);
 
     function handleLupa() {
         setIsLupa(!isLupa);
-    } 
+    }
+
+    function deslogar() {
+        NProgress.start();
+
+        // Desatribuir autenticação ao contexto de usuário;
+        setIsAuth(false);
+
+        // Deslogar;
+        Auth.deleteUsuarioLogado();
+        NProgress.done();
+
+        // Voltar à tela principal;
+        Router.push('/');
+    }
 
     return (
         <nav className={Styles.navbar}>
@@ -26,11 +44,21 @@ export default function Navbar2() {
                     </div>
 
                     <div className={Styles.divDireita}>
-                        <Link href='/usuario/entrar'><a>Entrar</a></Link>
+                        {isAuth ? (
+                            <Fragment>
+                                <span className={Styles.margemBotao} onClick={() => deslogar()}>
+                                    <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' />
+                                </span>
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                                <Link href='/usuario/entrar'><a>Entrar</a></Link>
 
-                        <span className={Styles.margemBotao}>
-                            <Botao texto={'Crie sua conta'} url={'/criar-conta'} isNovaAba={false} Svg='' />
-                        </span>
+                                <span className={Styles.margemBotao}>
+                                    <Botao texto={'Crie sua conta'} url={'/criar-conta'} isNovaAba={false} Svg='' refBtn={null}/>
+                                </span>
+                            </Fragment>
+                        )}
                     </div>
                 </div>
             ) : (

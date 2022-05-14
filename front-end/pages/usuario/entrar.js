@@ -17,7 +17,7 @@ export default function Entrar() {
     return (
         <section className={Styles.wrapper}>
             <div className={Styles.botaoCustomAbsoluto} onClick={router.back}>
-                <Botao texto='&nbsp;&nbsp;Voltar' url={''} isNovaAba={false} Svg={<Voltar />} />
+                <Botao texto='&nbsp;&nbsp;Voltar' url={''} isNovaAba={false} Svg={<Voltar />} refBtn={null} />
             </div>
 
             <SessaoEsquerda />

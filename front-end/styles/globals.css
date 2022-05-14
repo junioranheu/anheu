@@ -9,7 +9,7 @@
   --cor-principal-escura: hsl(257, 80%, 60%);
   --cor-border-hr: rgba(42, 42, 42, 100);
   --cor-principal-gradient: linear-gradient(to bottom right, var(--cor-principal), var(--cor-principal-escura));
-  --toastify-color-progress-light: var(--cor-principal);
+  --toastify-color-progress-light: var(--cor-principal) !important;
 }
 
 html, body {
@@ -134,6 +134,32 @@ code div button svg {
 /* =-=-=-=-=-=-=-=-=-=-=-=- Swiper react  =-=-=-=-=-=-=-=-=-=-=-=- */
 .swiper-button-next, .swiper-button-prev {
   color: var(--cor-principal) !important;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-= nprogress =-=-=-=-=-=-=-=-=-=-= */
+#nprogress .bar {
+  background: var(--cor-principal) !important;
+  height: 4px !important
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--cor-principal), 0 0 5px var(--cor-principal) !important
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--cor-principal) !important;
+  border-left-color: var(--cor-principal) !important
+}
+
+#nprogress .bar, .peg {
+  background: var(--cor-principal) !important;
+  box-shadow: none !important;
+  height: 3px !important
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--cor-principal) !important;
+  border-left-color: var(--cor-principal) !important
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Geral  =-=-=-=-=-=-=-=-=-=-=-=- */

@@ -1,5 +1,8 @@
 import 'animate.css/animate.min.css';
+import 'nprogress/nprogress.css';
 import React, { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../fonts/GTWalsheim.css';
 import '../fonts/NanumPenScript.css';
 import '../fonts/PTMono.css';
@@ -32,6 +35,8 @@ export default function App({ Component, pageProps, ...appProps }) {
     return url ?
         (
             <UsuarioProvider>
+                <ToastContainer className='semHighlight' />
+
                 {verificarLayout()}
             </UsuarioProvider>
         ) :

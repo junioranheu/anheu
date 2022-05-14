@@ -73,6 +73,11 @@
     object-position: center top; */
 }
 
+.divLogin{
+    /* background-color: red; */
+    max-width: 300px;
+}
+
 /* =-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-= */
 .input {
     font-size: 16px;

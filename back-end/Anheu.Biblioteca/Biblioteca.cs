@@ -8,11 +8,11 @@ namespace Anheu.Biblioteca
     public class Biblioteca
     {
         // Constantes
-        public const string localApiOnline = "https://anheu.azurewebsites.net/";
-        public const string localApiLocalHost = "https://localhost:7225/";
+        public const string localApiOnline = "https://anheuapi.azurewebsites.net/";
+        public const string localApiLocalHost = "http://localhost:57726/";
 
         public const string localReactOnline = "https://anheu.vercel.app/";
-        public const string localReactLocalHost = "http://localhost:3000/";
+        public const string localReactLocalHost = "http://localhost:11111/";
 
         // Converter para o horário de Brasilia: https://blog.yowko.com/timezoneinfo-time-zone-id-not-found/;
         public static DateTime HorarioBrasilia()

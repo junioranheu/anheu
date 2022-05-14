@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/entrar.module.css';
+import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
 import Anheu from '../svg/anheu.js';
 import Google from '../svg/google.js';
 
@@ -38,8 +39,8 @@ export default function SessaoEsquerda() {
             return false;
         }
 
-        const url = `${CONSTANTS.API_URL_GET_VERIFICAR_EMAIL_E_SENHA}?nomeUsuarioSistema=${formData.usuario}&senha=${formData.senha}`;
-        // console.log(url);
+        const url = `${CONSTANTS_USUARIOS.API_URL_GET_VERIFICAR_EMAIL_E_SENHA}?nomeUsuarioSistema=${formData.usuario}&senha=${formData.senha}`;
+        console.log(url);
 
         const resposta = await fetch(url);
         if (resposta.status !== 200) {
@@ -48,7 +49,7 @@ export default function SessaoEsquerda() {
             formData.senha = '';
             refUsuario.current.select();
             refBtn.current.disabled = false;
-            Aviso.error('Algo deu errado<br/>Provavelmente o usuário e/ou a senha estão errados!', 5000);
+            Aviso.custom('Algo deu errado<br/>Provavelmente o usuário e/ou a senha estão errados!', 5000);
             return false;
         }
 
@@ -60,7 +61,8 @@ export default function SessaoEsquerda() {
     };
 
     async function getToken(nomeUsuario, senha, usuario) {
-        const url = `${CONSTANTS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${nomeUsuario}&senha=${senha}`;
+        const url = `${CONSTANTS_USUARIOS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${nomeUsuario}&senha=${senha}`;
+        console.log(url);
 
         // Gerar token;
         const resposta = await fetch(url, {
@@ -71,7 +73,7 @@ export default function SessaoEsquerda() {
         });
 
         if (resposta.status !== 200) {
-            Aviso.error('Algo deu errado ao se autenticar!', 5000);
+            Aviso.custom('Algo deu errado ao se autenticar!', 5000);
             return false;
         }
 

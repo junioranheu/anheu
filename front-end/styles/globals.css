@@ -391,6 +391,12 @@ code div button svg {
   margin-top: 50px;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-= Outros =-=-=-=-=-=-=-=-=-=-= */
+.espacoBottom {
+  /* background-color: pink; */
+  height: 50px;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 @media (max-width:879px) {
   .topico {

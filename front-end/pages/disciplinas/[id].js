@@ -45,6 +45,9 @@ export default function Disciplina({ disciplina }) {
                     </div>
                 ))}
             </div>
+
+            {/* Espaço a mais */}
+            <div className='espacoBottom'></div>
         </section>
     )
 }

@@ -43,6 +43,9 @@ export default function Index({ cursos }) {
                     </section>
                 ))}
             </div>
+
+            {/* Espaço a mais */}
+            <div className='espacoBottom'></div>
         </section>
     )
 }

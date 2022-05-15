@@ -42,6 +42,9 @@ export default function Index({ disciplinas }) {
                     <div onClick={() => Router.push(`/disciplinas/${d.disciplinaId}`)}>{exibirTags(d.disciplinaTags)}</div>
                 </div>
             ))}
+
+            {/* Espaço a mais */}
+            <div className='espacoBottom'></div>
         </section>
     )
 }

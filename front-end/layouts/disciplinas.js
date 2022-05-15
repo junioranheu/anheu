@@ -23,7 +23,7 @@ export default function Disciplinas({ Component, pageProps }) {
                         <Component {...pageProps} />
                     </main>
                 </section>
-
+                
                 <Footer />
             </main>
         </Fragment>

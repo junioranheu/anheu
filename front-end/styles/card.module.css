@@ -175,6 +175,11 @@
     margin-top: 1.5rem;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-= Sessão de cards pequenos =-=-=-=-=-=-=-=-=-=-= */
+.sessaoCardsPequenos{
+    background-color: pink;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* big landscape tablets, laptops, and desktops */
 @media (max-width:1025px) {

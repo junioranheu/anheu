@@ -5,36 +5,30 @@ using Anheu.API.Models;
 
 namespace Anheu.API.Repositories
 {
-    public class CursoRepository : ICursoRepository
+    public class CursoCategoriaRepository : ICursoCategoriaRepository
     {
         public readonly Context _context;
 
-        public CursoRepository(Context context)
+        public CursoCategoriaRepository(Context context)
         {
             _context = context;
         }
 
-        public async Task<List<Curso>> GetTodos()
+        public async Task<List<CursoCategoria>> GetTodos()
         {
-            var itens = await _context.Cursos.
-                Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
-                Include(cc => cc.CursosCategorias).
-                OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
+            var itens = await _context.CursosCategorias.OrderBy(n => n.Categoria).AsNoTracking().ToListAsync();
 
             return itens;
         }
 
-        public async Task<Curso> GetPorId(int id)
+        public async Task<CursoCategoria> GetPorId(int id)
         {
-            var item = await _context.Cursos.
-                Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
-                Include(cc => cc.CursosCategorias).
-                Where(p => p.CursoId == id).AsNoTracking().FirstOrDefaultAsync();
+            var item = await _context.CursosCategorias.Where(p => p.CursoCategoriaId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;
         }
 
-        public async Task<int> PostCriar(Curso m)
+        public async Task<int> PostCriar(CursoCategoria m)
         {
             _context.Add(m);
             var isOk = await _context.SaveChangesAsync();
@@ -42,7 +36,7 @@ namespace Anheu.API.Repositories
             return isOk;
         }
 
-        public async Task<int> PostAtualizar(Curso m)
+        public async Task<int> PostAtualizar(CursoCategoria m)
         {
             int isOk;
 

@@ -14,6 +14,7 @@ namespace Anheu.API.Data
         public DbSet<UsuarioTipo> UsuariosTipos { get; set; }
         public DbSet<UsuarioInformacao> UsuariosInformacoes { get; set; }
 
+        public DbSet<CursoCategoria> CursosCategorias { get; set; }
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<DisciplinaTag> DisciplinaTags { get; set; }

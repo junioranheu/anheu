@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import Banner from '../../components/outros/banner';
+import SessaoCardsPequenos from '../../components/outros/sessaoCardsPequenos';
 import StylesCards from '../../styles/card.module.css';
 import Styles from '../../styles/cursos.module.css';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
@@ -28,8 +29,10 @@ export default function Index({ cursos }) {
             )}
 
             <div className={(isAuth ? Styles.margemTopG : '')}>
-                <span className='titulo'>Cursos disponíveis no <span className='grifar'>Anheu</span></span>
+                <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>
             </div>
+
+            <SessaoCardsPequenos />
 
             <div className={`${Styles.margemTopP} ${Styles.divCards}`}>
                 {cursos.filter(x => x.isAtivo === 1).map((c, i) => (

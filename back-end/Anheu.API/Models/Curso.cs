@@ -18,6 +18,10 @@ namespace Anheu.API.Models
         public DateTime? DataRegistro { get; set; }
         public int IsAtivo { get; set; }
 
+        // Fk (De lá pra cá);
+        public int CursoCategoriaId { get; set; }
+        public CursoCategoria? CursosCategorias { get; set; }
+
         // Fk (De cá pra lá);
         [JsonIgnore]
         public ICollection<CursoDisciplina> CursosDisciplinas { get; set; }

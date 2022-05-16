@@ -32,10 +32,12 @@
 }
 
 .navbar a {
+    /* background-color: pink; */
     color: var(--branco);
     font-size: 16px;
     font-weight: 500;
     line-height: 1;
+    white-space: nowrap;
 
     padding: 5px 14px;
     opacity: 0.7;

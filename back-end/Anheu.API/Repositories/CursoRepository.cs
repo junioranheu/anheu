@@ -17,7 +17,7 @@ namespace Anheu.API.Repositories
         public async Task<List<Curso>> GetTodos()
         {
             var itens = await _context.Cursos.
-                Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).
+                Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
@@ -26,7 +26,7 @@ namespace Anheu.API.Repositories
         public async Task<Curso> GetPorId(int id)
         {
             var item = await _context.Cursos.
-                Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).
+                Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
                 Where(p => p.CursoId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;

@@ -1,17 +1,20 @@
 import Link from 'next/link';
 import Router from 'next/router';
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Styles from '../../styles/disciplinas.module.css';
-import CONSTANTS_DISCIPLINAS from '../../utils/data/constDisciplinas';
+import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
 
-export default function Index({ disciplinas }) {
-    // console.log(disciplinas);
+export default function Index({ curso }) {
+    // console.log(curso);
+    const [cursoData, setCursoData] = useState({});
 
     useEffect(() => {
         // Título da página;
         document.title = `Disciplinas — Anheu`;
-    }, []);
+
+        setCursoData(curso);
+    }, [curso]);
 
     function exibirTags(disciplinaTags) {
         let tags = '';
@@ -26,38 +29,52 @@ export default function Index({ disciplinas }) {
     }
 
     return (
-        <section className='flexColumn'>
-            <div>
-                <span className='titulo'>Disciplinas do curso <span className='grifar'>Lorem Ipsum</span></span>
-            </div>
+        <Fragment>
+            {
+                cursoData?.cursosDisciplinas?.length > 0 ? (
+                    <section className='flexColumn'>
+                        <div>
+                            <span className='titulo'>Disciplinas do curso <span className='grifar'>{cursoData?.nome}</span></span>
+                        </div>
 
-            {disciplinas.filter(x => x.isAtivo === 1).map((d, i) => (
-                <div key={i} className='flexColumn margem40'>
-                    <span className='topico' style={{ width: 'fit-content' }}>
-                        <Link href={`/disciplinas/${d.disciplinaId}/${AjustarUrl(d.nome)}`}>
-                            <a className='cor-principal-hover'>{d.nome}</a>
-                        </Link>
-                    </span>
+                        {
+                            cursoData?.cursosDisciplinas?.filter(x => x.isAtivo === 1).map((d, i) => (
+                                <div key={i} className='flexColumn margem40'>
+                                    <span className='topico' style={{ width: 'fit-content' }}>
+                                        <Link href={`/disciplinas/${d.disciplinas.disciplinaId}/${AjustarUrl(d.disciplinas.nome)}`}>
+                                            <a className='cor-principal-hover'>{d.disciplinas.nome}</a>
+                                        </Link>
+                                    </span>
 
-                    <span className='tituloDesc'>{d.subtitulo}</span>
-                    <div onClick={() => Router.push(`/disciplinas/${d.disciplinaId}/${AjustarUrl(d.nome)}`)}>{exibirTags(d.disciplinaTags)}</div>
-                </div>
-            ))}
+                                    <span className='tituloDesc'>{d.disciplinas.subtitulo}</span>
+                                    <div onClick={() => Router.push(`/disciplinas/${d.disciplinas.disciplinaId}/${AjustarUrl(d.disciplinas.nome)}`)}>
+                                        {exibirTags(d.disciplinas.disciplinaTags)}
+                                    </div>
+                                </div>
+                            ))
+                        }
 
-            {/* Espaço a mais */}
-            <div className='espacoBottom'></div>
-        </section>
+                        {/* Espaço a mais */}
+                        <div className='espacoBottom'></div>
+                    </section>
+                ) : (
+                    <section>
+                        aea
+                    </section>
+                )
+            }
+        </Fragment>
     )
 }
 
 export async function getStaticProps() {
-    const url = CONSTANTS_DISCIPLINAS.API_URL_GET_TODOS;
+    const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/1`;
     const res = await fetch(url)
-    const disciplinas = await res.json();
+    const curso = await res.json();
 
     return {
         props: {
-            disciplinas
+            curso
         },
     }
 }

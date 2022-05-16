@@ -17,7 +17,7 @@ namespace Anheu.API.Repositories
         public async Task<List<Disciplina>> GetTodos()
         {
             var itens = await _context.Disciplinas.
-                Include(m => m.DisciplinaTags).
+                Include(dt => dt.DisciplinaTags).
                 Include(a => a.Aulas).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
@@ -27,7 +27,7 @@ namespace Anheu.API.Repositories
         public async Task<Disciplina> GetPorId(int id)
         {
             var item = await _context.Disciplinas.
-                Include(m => m.DisciplinaTags).
+                Include(dt => dt.DisciplinaTags).
                 Include(a => a.Aulas).
                 Where(p => p.DisciplinaId == id).AsNoTracking().FirstOrDefaultAsync();
 

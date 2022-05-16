@@ -66,7 +66,7 @@ export default function Navbar2() {
                     <div>
                         <Lupa width='1.5rem' cor='rgba(255, 255, 255, 0.7)' />
                         <input className={Styles.input} type='text' placeholder='Busque algo aqui...' />
-                        <button className={Styles.botaoXis} onClick={() => handleLupa()}><Xis height='1.5rem' width='1.5rem' cor='rgba(255, 255, 255, 0.7)' /></button>
+                        <button className={Styles.botaoXis} onClick={() => handleLupa()}><Xis height='1rem' width='1rem' cor='rgba(255, 255, 255, 0.7)' /></button>
                     </div>
                 </div>
             )}

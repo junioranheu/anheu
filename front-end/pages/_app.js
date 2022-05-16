@@ -10,6 +10,7 @@ import LayoutCursos from '../layouts/cursos';
 import LayoutDisciplinas from '../layouts/disciplinas.js';
 import LayoutPadrao from '../layouts/padrao.js';
 import '../styles/globals.css';
+import { CursoProvider } from '../utils/context/cursoContext';
 import { UsuarioProvider } from '../utils/context/usuarioContext';
 
 export default function App({ Component, pageProps, ...appProps }) {
@@ -35,9 +36,11 @@ export default function App({ Component, pageProps, ...appProps }) {
     return url ?
         (
             <UsuarioProvider>
-                <ToastContainer className='semHighlight' />
+                <CursoProvider>
+                    <ToastContainer className='semHighlight' />
 
-                {verificarLayout()}
+                    {verificarLayout()}
+                </CursoProvider>
             </UsuarioProvider>
         ) :
         null;

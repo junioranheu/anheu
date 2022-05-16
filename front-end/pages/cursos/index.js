@@ -23,6 +23,7 @@ export default function Index({ cursos }) {
                     subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
                     textoBotao='Visualizar e gerenciar meus cursos'
                     url='/usuario/meus-cursos'
+                    isForcarFullscreen={false}
                 />
             )}
 

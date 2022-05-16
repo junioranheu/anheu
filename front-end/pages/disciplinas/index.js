@@ -1,20 +1,35 @@
 import Link from 'next/link';
 import Router from 'next/router';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import Banner from '../../components/outros/banner';
 import Styles from '../../styles/disciplinas.module.css';
+import { CursoContext } from '../../utils/context/cursoContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
 
-export default function Index({ curso }) {
+export default function Index() {
     // console.log(curso);
+    const [cursoContext] = useContext(CursoContext); // Contexto do curso selecionado;
     const [cursoData, setCursoData] = useState({});
 
     useEffect(() => {
+        async function getCurso() {
+            console.log(cursoContext);
+
+            const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/1`;
+            const res = await fetch(url)
+            const curso = await res.json();
+            setCursoData(curso);
+        }
+
         // Título da página;
         document.title = `Disciplinas — Anheu`;
 
-        setCursoData(curso);
-    }, [curso]);
+        // Pegar informações do curso com base do id que está em cursoContext;
+        if (cursoContext) {
+            getCurso();
+        }
+    }, [cursoContext]);
 
     function exibirTags(disciplinaTags) {
         let tags = '';
@@ -31,7 +46,7 @@ export default function Index({ curso }) {
     return (
         <Fragment>
             {
-                cursoData?.cursosDisciplinas?.length > 0 ? (
+                cursoContext && cursoData?.cursosDisciplinas?.length > 0 ? (
                     <section className='flexColumn'>
                         <div>
                             <span className='titulo'>Disciplinas do curso <span className='grifar'>{cursoData?.nome}</span></span>
@@ -58,23 +73,15 @@ export default function Index({ curso }) {
                         <div className='espacoBottom'></div>
                     </section>
                 ) : (
-                    <section>
-                        aea
-                    </section>
+                    <Banner
+                        titulo='Você já adquiriu algum curso?'
+                        subtitulo='Parece que você não selecionou nenhum curso ainda.<br/>Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
+                        textoBotao='Visualizar e gerenciar meus cursos'
+                        url='/usuario/meus-cursos'
+                        isForcarFullscreen={true}
+                    />
                 )
             }
         </Fragment>
     )
-}
-
-export async function getStaticProps() {
-    const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/1`;
-    const res = await fetch(url)
-    const curso = await res.json();
-
-    return {
-        props: {
-            curso
-        },
-    }
 }

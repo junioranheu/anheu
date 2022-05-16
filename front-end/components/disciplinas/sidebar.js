@@ -9,7 +9,7 @@ export default function Sidebar() {
         { item: 'Disciplinas', url: '/disciplinas' },
         { item: 'Ao vivo', url: '/ao-vivo' },
         { item: 'Exercícios', url: '/docs/exercicios' },
-        { item: 'Materiais de apoios', url: '/apoios' }
+        { item: 'Materiais de apoio', url: '/apoios' }
     ]
 
     const { asPath } = useRouter();

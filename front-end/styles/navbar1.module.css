@@ -35,9 +35,14 @@
 
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 @media (max-width:739px) {
-    .navbar span:nth-child(1),
+    .navbar span {
+        margin: 0 2px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .navbar span:nth-child(2),
     .navbar span:nth-child(3) {
-        /* color: pink; */
         display: none;
     }
 }

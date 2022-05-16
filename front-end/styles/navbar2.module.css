@@ -151,19 +151,16 @@
     }
 }
 
-@media (max-width:879px) {
-
+/* @media (max-width:879px) {
     .navbar div div:nth-child(1) a:nth-child(4),
     .navbar div div:nth-child(1) a:nth-child(5),
     .navbar div div:nth-child(1) a:nth-child(6) {
-        /* color: pink; */
         display: none;
     }
 }
 
 @media (max-width:739px) {
     .navbar div div:nth-child(1) a:nth-child(n+2) {
-        /* color: pink; */
         display: none;
     }
-}
+} */

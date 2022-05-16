@@ -60,13 +60,13 @@ namespace Anheu.API.Data
             #region seed_cursos_disciplinas_e_aulas
             if (!context.CursosCategorias.Any())
             {
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 1, Categoria = "Desenvolvimento de software", Abreviacao = "DEV", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 2, Categoria = "Banco de dados", Abreviacao = "BDA", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 3, Categoria = "Infraestrutura e redes", Abreviacao = "Infra", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 4, Categoria = "Design", Abreviacao = "Design", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 5, Categoria = "Ciências de dados e IA", Abreviacao = "Data", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 6, Categoria = "Gestão de TI", Abreviacao = "GTI", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 7, Categoria = "Business Inteligence", Abreviacao = "BI", Descricao = "xxx", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 1, Categoria = "Desenvolvimento de software", Abreviacao = "DEV", Descricao = "xxx", Imagem = "1.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 2, Categoria = "Banco de dados", Abreviacao = "BDA", Descricao = "xxx", Imagem = "2.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 3, Categoria = "Infraestrutura e redes", Abreviacao = "Infra", Descricao = "xxx", Imagem = "3.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 4, Categoria = "Design", Abreviacao = "Design", Descricao = "xxx", Imagem = "4.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 5, Categoria = "Ciências de dados e IA", Abreviacao = "Data", Descricao = "xxx", Imagem = "5.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 6, Categoria = "Gestão de TI", Abreviacao = "GTI", Descricao = "xxx", Imagem = "6.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 7, Categoria = "Business Inteligence", Abreviacao = "BI", Descricao = "xxx", Imagem = "7.webp", IsAtivo = 1, DataCriacao = dataAgora });
             }
 
             if (!context.Cursos.Any())

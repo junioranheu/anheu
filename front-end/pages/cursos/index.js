@@ -1,19 +1,31 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../../components/outros/banner';
 import SessaoCardsPequenos from '../../components/outros/sessaoCardsPequenos';
 import StylesCards from '../../styles/card.module.css';
 import Styles from '../../styles/cursos.module.css';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
+import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias';
 import ConcatenarItensLista from '../../utils/outros/concatenarItensLista';
 
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     // console.log(cursos);
 
+    const [cursosCategorias, setCursosCategorias] = useState({});
     useEffect(() => {
+        async function getCursosCategorias() {
+            const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
+            const res = await fetch(url)
+            const cursosCategorias = await res.json();
+            console.log(cursosCategorias);
+            setCursosCategorias(cursosCategorias);
+        }
+
         // Título da página;
         document.title = `Cursos — Anheu`;
+
+        getCursosCategorias();
     }, []);
 
     return (

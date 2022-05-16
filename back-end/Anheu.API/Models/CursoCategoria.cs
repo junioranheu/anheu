@@ -9,6 +9,7 @@ namespace Anheu.API.Models
         public string? Categoria { get; set; }
         public string? Abreviacao { get; set; }
         public string? Descricao { get; set; }
+        public string? Imagem { get; set; }
         public int IsAtivo { get; set; }
         public DateTime DataCriacao { get; set; }
     }

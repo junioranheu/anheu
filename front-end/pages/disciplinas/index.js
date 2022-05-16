@@ -3,6 +3,7 @@ import Router from 'next/router';
 import React, { useEffect } from 'react';
 import Styles from '../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../utils/data/constDisciplinas';
+import AjustarUrl from '../../utils/outros/ajustarUrl';
 
 export default function Index({ disciplinas }) {
     // console.log(disciplinas);
@@ -33,13 +34,13 @@ export default function Index({ disciplinas }) {
             {disciplinas.filter(x => x.isAtivo === 1).map((d, i) => (
                 <div key={i} className='flexColumn margem40'>
                     <span className='topico' style={{ width: 'fit-content' }}>
-                        <Link href={`/disciplinas/${d.disciplinaId}`}>
+                        <Link href={`/disciplinas/${d.disciplinaId}/${AjustarUrl(d.nome)}`}>
                             <a className='cor-principal-hover'>{d.nome}</a>
                         </Link>
                     </span>
 
                     <span className='tituloDesc'>{d.subtitulo}</span>
-                    <div onClick={() => Router.push(`/disciplinas/${d.disciplinaId}`)}>{exibirTags(d.disciplinaTags)}</div>
+                    <div onClick={() => Router.push(`/disciplinas/${d.disciplinaId}/${AjustarUrl(d.nome)}`)}>{exibirTags(d.disciplinaTags)}</div>
                 </div>
             ))}
 

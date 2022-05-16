@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
-import ImgCinza from '../../static/image/cinza.webp';
-import Styles from '../../styles/disciplinas.module.css';
-import CONSTANTS_DISCIPLINAS from '../../utils/data/constDisciplinas';
-import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
+import ImgCinza from '../../../static/image/cinza.webp';
+import Styles from '../../../styles/disciplinas.module.css';
+import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
+import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
+import AjustarUrl from '../../../utils/outros/ajustarUrl';
 
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
@@ -63,7 +64,10 @@ export async function getStaticPaths() {
 
     // Gerar o "paths";
     const paths = disciplinas.map(d => ({
-        params: { id: d.disciplinaId.toString() }
+        params: { 
+            id: d.disciplinaId.toString(),
+            nome: AjustarUrl(d.nome)
+         }
     }));
 
     return {

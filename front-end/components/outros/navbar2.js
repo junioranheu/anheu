@@ -52,10 +52,10 @@ export default function Navbar2() {
                             </Fragment>
                         ) : (
                             <Fragment>
-                                <Link href='/usuario/entrar'><a>Entrar</a></Link>
+                                <Link href='/usuario/criar-conta'><a>Crie sua conta</a></Link>
 
                                 <span className={Styles.margemBotao}>
-                                    <Botao texto={'Crie sua conta'} url={'/criar-conta'} isNovaAba={false} Svg='' refBtn={null}/>
+                                    <Botao texto={'Entrar'} url={'/usuario/entrar'} isNovaAba={false} Svg='' refBtn={null} />
                                 </span>
                             </Fragment>
                         )}

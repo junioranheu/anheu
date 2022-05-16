@@ -151,16 +151,38 @@
     }
 }
 
-/* @media (max-width:879px) {
-    .navbar div div:nth-child(1) a:nth-child(4),
+@media (max-width:879px) {
+    /* .navbar div div:nth-child(1) a:nth-child(4),
     .navbar div div:nth-child(1) a:nth-child(5),
     .navbar div div:nth-child(1) a:nth-child(6) {
         display: none;
+    } */
+
+    .navbar {
+        /* background-color: pink; */
+        /* height: fit-content; */
+        height: 130px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .navbar div {
+        /* background-color: red; */
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .navbar a:hover {
+        /* Remover o efeito, para tirar um bug chato */
+        height: 0px;
+        background: inherit;
     }
 }
 
 @media (max-width:739px) {
-    .navbar div div:nth-child(1) a:nth-child(n+2) {
+    /* .navbar div div:nth-child(1) a:nth-child(n+2) {
         display: none;
-    }
-} */
+    } */
+}

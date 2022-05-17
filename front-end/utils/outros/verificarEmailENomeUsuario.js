@@ -1,6 +1,7 @@
 import NProgress from 'nprogress';
 import { Aviso } from '../../components/outros/aviso';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
+import { Fetch } from '../../utils/outros/fetch';
 
 export default async function verificarEmailENomeUsuario(form, refEmail, refNomeUsuario, refSenha, refConfirmarSenha, isNovoEmail, isNovoNomeUsuario) {
     const urlIsExisteEmail = `${CONSTANTS_USUARIOS.API_URL_GET_IS_EXISTE_EMAIL}?email=${form.email}`;
@@ -9,8 +10,7 @@ export default async function verificarEmailENomeUsuario(form, refEmail, refNome
 
     // Verificar e-mail;
     if (isNovoEmail) {
-        const resposta = await fetch(urlIsExisteEmail);
-        const isJaExiste = await resposta.json();
+        const isJaExiste = await Fetch.getApi(urlIsExisteEmail, null);
  
         if (isJaExiste) {
             NProgress.done();
@@ -27,8 +27,7 @@ export default async function verificarEmailENomeUsuario(form, refEmail, refNome
     // Verificar nome de usuário;
     if (isNovoNomeUsuario) {
         if (isContinuar) {
-            const resposta = await fetch(urlIsExisteNomeUsuario);
-            const isJaExiste = await resposta.json();
+            const isJaExiste = await Fetch.getApi(urlIsExisteNomeUsuario, null);
 
             if (isJaExiste) {
                 NProgress.done();

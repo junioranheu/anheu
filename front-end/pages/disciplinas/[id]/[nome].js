@@ -6,6 +6,7 @@ import Styles from '../../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
+import { Fetch } from '../../../utils/outros/fetch';
 
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
@@ -60,8 +61,8 @@ export async function getStaticPaths() {
 
     // Todas as disciplinas;
     const url = CONSTANTS_DISCIPLINAS.API_URL_GET_TODOS;
-    const res = await fetch(url);
-    const disciplinas = await res.json();
+    const disciplinas = await Fetch.getApi(url, null);
+    
     // console.log(disciplinas);
 
     // Gerar o "paths";
@@ -83,8 +84,7 @@ export async function getStaticProps(context) {
 
     // Disciplina;
     const url = `${CONSTANTS_DISCIPLINAS.API_URL_GET_POR_ID}/${id}`;
-    const res = await fetch(url);
-    const disciplina = await res.json();
+    const disciplina = await Fetch.getApi(url, null);
 
     return {
         props: {

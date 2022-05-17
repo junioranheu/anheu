@@ -19,8 +19,7 @@ export default function Index({ }) {
 
 // export async function getStaticProps() {
 //     const url = CONSTANTS_DISCIPLINAS.API_URL_GET_TODOS;
-//     const res = await fetch(url)
-//     const disciplinas = await res.json();
+//     const disciplinas = await Fetch.getApi(url, null);
 
 //     return {
 //         props: {

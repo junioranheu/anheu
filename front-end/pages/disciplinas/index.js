@@ -7,6 +7,7 @@ import { CursoContext } from '../../utils/context/cursoContext';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
+import { Fetch } from '../../utils/outros/fetch';
 
 export default function Index() {
     // console.log(curso);
@@ -19,8 +20,8 @@ export default function Index() {
             console.log(cursoContext);
 
             const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/1`;
-            const res = await fetch(url)
-            const curso = await res.json();
+            const curso = await Fetch.getApi(url, null);
+
             setCursoData(curso);
         }
 

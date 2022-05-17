@@ -4,6 +4,7 @@ import Styles from '../../../styles/cursos.module.css';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategorias';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
+import { Fetch } from '../../../utils/outros/fetch';
 
 export default function Curso({ cursos }) {
     // console.log(cursos);
@@ -64,8 +65,7 @@ export async function getStaticPaths() {
 
     // Todas as cursos;
     const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
-    const res = await fetch(url);
-    const cursos = await res.json();
+    const cursos = await Fetch.getApi(url, null);
 
     // Gerar o "paths";
     const paths = cursos.map(c => ({
@@ -86,8 +86,7 @@ export async function getStaticProps(context) {
 
     // Disciplina;
     const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_CURSO_CATEGORIA_ID}/${id}`;
-    const res = await fetch(url);
-    const cursos = await res.json();
+    const cursos = await Fetch.getApi(url, null);
 
     return {
         props: {

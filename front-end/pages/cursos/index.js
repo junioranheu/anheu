@@ -6,6 +6,7 @@ import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias';
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
+import { Fetch } from '../../utils/outros/fetch';
 
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
@@ -15,8 +16,7 @@ export default function Index({ cursos }) {
     useEffect(() => {
         async function getCursosCategorias() {
             const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
-            const res = await fetch(url)
-            const cursosCategorias = await res.json();
+            const cursosCategorias = await Fetch.getApi(url, null);
 
             // Criar novo objeto com campos especificos;
             var obj = [{}];
@@ -69,8 +69,7 @@ export default function Index({ cursos }) {
 
 export async function getStaticProps() {
     const url = CONSTANTS_CURSOS.API_URL_GET_TODOS;
-    const res = await fetch(url)
-    const cursos = await res.json();
+    const cursos = await Fetch.getApi(url, null);
 
     return {
         props: {

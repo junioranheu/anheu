@@ -364,6 +364,13 @@ code div button svg {
     opacity: 0.5;
 }
 
+.botao:disabled, .botao[disabled] {
+    background-color: var(--branco);
+    color: var(--preto);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Tag =-=-=-=-=-=-=-=-=-=-= */
 .tag {
     color: var(--branco);

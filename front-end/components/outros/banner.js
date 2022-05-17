@@ -8,7 +8,7 @@ export default function Banner({ titulo, subtitulo, textoBotao, url, isForcarFul
             <span className={Styles.cardSubtitulo}><span dangerouslySetInnerHTML={{ __html: subtitulo }} /></span>
 
             <div className={Styles.botaoCustomBanner}>
-                <Botao texto={textoBotao} url={url} isNovaAba={false} Svg='' refBtn={null} />
+                <Botao texto={textoBotao} url={url} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
             </div>
         </section>
     )

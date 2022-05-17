@@ -6,6 +6,7 @@ import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
+import { Fetch } from '../../utils/outros/fetch';
 import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
 import PadronizarNomeCompletoUsuario from '../../utils/outros/padronizarNomeCompletoUsuario';
 import VerificarDadosCriarConta from '../../utils/outros/verificarDadosCriarConta';
@@ -39,6 +40,8 @@ export default function SessaoEsquerda() {
         NProgress.start();
         refBtnCriar.current.disabled = true;
         e.preventDefault();
+
+        return false;
 
         // Verificações;
         const isTrocouSenha = true;
@@ -193,7 +196,7 @@ export default function SessaoEsquerda() {
                 </div> */}
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit} >
-                    <Botao texto={'Criar conta'} url={''} isNovaAba={false} Svg='' refBtn={refBtnCriar} />
+                    <Botao texto={'Criar conta'} url={''} isNovaAba={false} Svg='' refBtn={refBtnCriar} isEnabled={true} />
                 </div>
             </div>
 
@@ -201,11 +204,11 @@ export default function SessaoEsquerda() {
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
-                    <Botao texto='&nbsp;&nbsp;Criar conta com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width={'25px'} />} />
+                    <Botao texto='&nbsp;&nbsp;Criar conta com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width={'25px'} />} isEnabled={true} />
                 </div>
 
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopP}`}>
-                    <Botao texto='&nbsp;&nbsp;Criar conta com o Google' url={'/'} isNovaAba={false} Svg={<Google width={'25px'} cor='white' />} />
+                    <Botao texto='&nbsp;&nbsp;Criar conta com o Google' url={'/'} isNovaAba={false} Svg={<Google width={'25px'} cor='white' />} isEnabled={true} />
                 </div>
             </div>
 

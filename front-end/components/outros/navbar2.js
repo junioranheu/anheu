@@ -55,7 +55,7 @@ export default function Navbar2() {
                         {isAuth ? (
                             <Fragment>
                                 <span className={Styles.margemBotao} onClick={() => deslogar()}>
-                                    <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' refBtn={null} />
+                                    <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
                                 </span>
                             </Fragment>
                         ) : (
@@ -63,7 +63,7 @@ export default function Navbar2() {
                                 <Link href='/usuario/criar-conta'><a>Crie sua conta</a></Link>
 
                                 <span className={Styles.margemBotao}>
-                                    <Botao texto={'Entrar'} url={'/usuario/entrar'} isNovaAba={false} Svg='' refBtn={null} />
+                                    <Botao texto={'Entrar'} url={'/usuario/entrar'} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
                                 </span>
                             </Fragment>
                         )}

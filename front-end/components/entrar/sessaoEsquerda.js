@@ -118,7 +118,7 @@ export default function SessaoEsquerda() {
                 />
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>
-                    <Botao texto={'Entrar'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} />
+                    <Botao texto={'Entrar'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} isEnabled={true}/>
                 </div>
             </div>
 
@@ -126,11 +126,11 @@ export default function SessaoEsquerda() {
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
-                    <Botao texto='&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} />
+                    <Botao texto='&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} isEnabled={true}/>
                 </div>
 
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopP}`}>
-                    <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} refBtn={null} />
+                    <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} refBtn={null} isEnabled={true} />
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ export default function CardGigante({ titulo, subtitulo, textoBotao, url }) {
             </div>
 
             <div className={Styles.botaoCustom}>
-                <Botao texto={textoBotao} url={url} isNovaAba={false} Svg='' refBtn={null} />
+                <Botao texto={textoBotao} url={url} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
             </div>
         </section>
     )

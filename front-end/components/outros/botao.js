@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-export default function Botao({ texto, url, isNovaAba, Svg, refBtn }) {
+export default function Botao({ texto, url, isNovaAba, Svg, refBtn, isEnabled }) {
     function abrirUrl() {
         // console.log(isNovaAba);
 
@@ -16,6 +16,6 @@ export default function Botao({ texto, url, isNovaAba, Svg, refBtn }) {
     }
 
     return (
-        <button className='botao' onClick={() => abrirUrl()} ref={refBtn}>{Svg ? Svg : ''}{texto}</button>
+        <button className='botao' onClick={() => abrirUrl()} ref={refBtn} disabled={!isEnabled}>{Svg ? Svg : ''}{texto}</button>
     )
 }

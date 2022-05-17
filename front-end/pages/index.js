@@ -9,11 +9,13 @@ export default function Index() {
     }, []);
 
     return (
-        <div style={{ backgroundColor: 'var(--preto)', height: '100vh' }}>
-            <span className='topico'>Index</span><br />
-
+        <div className='paddingPadrao margem50 flexColumn' style={{ backgroundColor: 'var(--preto)', height: '100vh' }}>
             <Link href='/disciplinas'>
                 <a className='topico'>Disciplinas</a>
+            </Link>
+
+            <Link href='/cursos'>
+                <a className='topico'>Cursos</a>
             </Link>
         </div>
     )

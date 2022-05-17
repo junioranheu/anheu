@@ -8,11 +8,11 @@ import Styles from '../../styles/entrar.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
 import Anheu from '../svg/anheu.js';
+import Facebook from '../svg/facebook';
 import Google from '../svg/google.js';
 
 export default function SessaoEsquerda() {
     const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
-    const [opcaoContinuarEmail, setOpcaoContinuarEmail] = useState(false);
 
     const refUsuario = useRef();
     const refSenha = useRef();
@@ -106,33 +106,40 @@ export default function SessaoEsquerda() {
         <section className={Styles.divEsquerda}>
             <Anheu width='0.9rem' cor='var(--branco)' />
             <span className={Styles.titulo}>Bem-vindo ao Anheu</span>
-            <span className={Styles.subtitulo}>Não tem uma conta ainda? <Link href='/criar-conta'><a className={'cor-principal'}>Crie a sua aqui</a></Link></span>
 
-            <div className={`${Styles.botaoCustom} ${Styles.margemTopXP}`}>
-                <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/docs'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} refBtn={null} />
+            <div className={Styles.divLogin}>
+                <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'
+                    name='usuario' onChange={handleChange} ref={refUsuario} onKeyPress={handleKeyPress}
+                />
+
+                <input className={`${Styles.input} ${Styles.margemTopP}`} type='password' placeholder='Senha'
+                    name='senha' onChange={handleChange} ref={refSenha} onKeyPress={handleKeyPress}
+                />
+
+                <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>
+                    <Botao texto={'Entrar'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} />
+                </div>
             </div>
 
-            {opcaoContinuarEmail ? (
-                <div className={Styles.divLogin}>
-                    <div className={Styles.divisao}>ou</div>
-
-                    <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'
-                        name='usuario' onChange={handleChange} ref={refUsuario} onKeyPress={handleKeyPress}
-                    />
-
-                    <input className={`${Styles.input} ${Styles.margemTopP}`} type='password' placeholder='Senha'
-                        name='senha' onChange={handleChange} ref={refSenha} onKeyPress={handleKeyPress}
-                    />
-
-                    <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>
-                        <Botao texto={'Entrar'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} />
-                    </div>
+            <div>
+                <div className={Styles.divisao}>ou</div>
+                <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
+                    <Botao texto='&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} />
                 </div>
-            ) : (
-                <div className={Styles.margemTopXP}>
-                    <a className='cor-principal pointer' onClick={() => setOpcaoContinuarEmail(true)}>Entrar com e-mail</a>
+
+                <div className={`${Styles.botaoCustom2} ${Styles.margemTopP}`}>
+                    <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} refBtn={null} />
                 </div>
-            )}
+            </div>
+
+            <div>
+                <div className={Styles.divisao}>ou</div>
+                <div className={Styles.margemTopM}>
+                    <span className={Styles.subtitulo}>
+                        Não tem uma conta ainda? <Link href='/usuario/criar-conta'><a className={'cor-principal'}>Crie a sua aqui</a></Link>
+                    </span>
+                </div>
+            </div>
         </section>
     )
 }

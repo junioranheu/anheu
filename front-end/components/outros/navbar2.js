@@ -55,7 +55,7 @@ export default function Navbar2() {
                         {isAuth ? (
                             <Fragment>
                                 <span className={Styles.margemBotao} onClick={() => deslogar()}>
-                                    <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' />
+                                    <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' refBtn={null} />
                                 </span>
                             </Fragment>
                         ) : (

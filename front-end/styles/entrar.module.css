@@ -18,7 +18,7 @@
 .divEsquerda {
     /* background-color: pink; */
     width: 50%;
-    height: 90%;
+    height: 100%;
 }
 
 .titulo {
@@ -107,6 +107,17 @@
     outline-width: 0px;
 }
 
+/* =-=-=-=-=-=-=-=-= Botão =-=-=-=-=-=-=-=-= */
+.botaoCustom button {
+    width: 300px;
+    background: var(--cor-principal);
+}
+
+.botaoCustom2 button {
+    width: 300px;
+    background: var(--cor-principal-opaca);
+}
+
 /* =-=-=-=-=-=-=-=-= Margens =-=-=-=-=-=-=-=-= */
 .margemTopXP {
     margin-top: 0.5rem;
@@ -114,6 +125,10 @@
 
 .margemTopP {
     margin-top: 1rem;
+}
+
+.margemTopM {
+    margin-top: 1.5rem;
 }
 
 /* =-=-=-=-=-=-=-=-= Checkbox =-=-=-=-=-=-=-=-= */
@@ -125,10 +140,10 @@
 .checkbox label{
     margin-left: 5px;
 }
-
+ 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
-/* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
     .divEsquerda {
         /* background-color: pink; */
         width: 100%;
@@ -137,7 +152,10 @@
     .divDireita {
         width: 0%;
     }
+}
 
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
     .titulo {
         font-size: 2rem;
     }

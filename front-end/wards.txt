@@ -4,3 +4,5 @@ ai na tela de disciplinas mostra os itens desse curso. se n tiver curso, da uma 
 
 recriar tela de cursos com base "o que vc quer estudar" de https://descomplica.com.br/pos-graduacao/
 e tambem colocar uma lista com filtro igual quando clicar em uma das opções
+
+corrigir lógica sobre estar logado ou nao e poder acessar ou nao as paginas

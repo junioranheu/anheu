@@ -79,12 +79,12 @@ namespace Anheu.API.Repositories
             return await _context.Cursos.AnyAsync(m => m.CursoId == id);
         }
 
-        public async Task<Curso> GetPorCursoCategoriaId(int cursoCategoriaId)
+        public async Task<List<Curso>> GetPorCursoCategoriaId(int cursoCategoriaId)
         {
             var item = await _context.Cursos.
                 Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
                 Include(cc => cc.CursosCategorias).
-                Where(p => p.CursoCategoriaId == cursoCategoriaId).AsNoTracking().FirstOrDefaultAsync();
+                Where(p => p.CursoCategoriaId == cursoCategoriaId).AsNoTracking().ToListAsync();
 
             return item;
         }

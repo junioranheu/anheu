@@ -8,22 +8,22 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategori
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 
-export default function Curso({ curso }) {
-    // console.log(curso);
+export default function Curso({ cursos }) {
+    console.log(cursos);
 
     useEffect(() => {
         // Título da página;
-        document.title = `${curso.nome} — Anheu`;
+        document.title = `${cursos.nome} — Anheu`;
     }, []);
 
     return (
         <section className='flexColumn'>
             <div className='flexColumn'>
-                <span className='titulo'>Bem-vindo xxxxxxx de <span className='grifar'>{curso.nome}</span></span>
+                <span className='titulo'>Bem-vindo xxxxxxx de <span className='grifar'>{cursos.nome}</span></span>
             </div>
 
             <div className='margem30'>
-                {curso.aulas.filter(x => x.isAtivo === 1).map((d, i) => (
+                {cursos.aulas.filter(x => x.isAtivo === 1).map((d, i) => (
                     <div key={i} className={`${Styles.divAula} margem5`}>
                         <span className={Styles.topico}>
                             <Link href={`/cursos/${d.disciplinaId}`}>
@@ -82,11 +82,11 @@ export async function getStaticProps(context) {
     // Disciplina;
     const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_CURSO_CATEGORIA_ID}/${id}`;
     const res = await fetch(url);
-    const curso = await res.json();
+    const cursos = await res.json();
 
     return {
         props: {
-            curso
+            cursos
         },
         // revalidate: 10 // segundos
     }

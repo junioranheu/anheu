@@ -6,3 +6,5 @@ recriar tela de cursos com base "o que vc quer estudar" de https://descomplica.c
 e tambem colocar uma lista com filtro igual quando clicar em uma das opções
 
 corrigir lógica sobre estar logado ou nao e poder acessar ou nao as paginas
+
+criar Fetch igual no fluxo

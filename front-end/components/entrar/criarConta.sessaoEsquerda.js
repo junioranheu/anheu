@@ -1,11 +1,15 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import NProgress from 'nprogress';
 import React, { useEffect, useRef, useState } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
+import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
+import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
 import PadronizarNomeCompletoUsuario from '../../utils/outros/padronizarNomeCompletoUsuario';
 import VerificarDadosCriarConta from '../../utils/outros/verificarDadosCriarConta';
+import VerificarEmailENomeUsuario from '../../utils/outros/verificarEmailENomeUsuario';
 import Facebook from '../svg/facebook.js';
 import Google from '../svg/google.js';
 
@@ -57,7 +61,7 @@ export default function SessaoEsquerda() {
         }
 
         // Criar conta;
-        const urlCriarConta = CONSTANTS.API_URL_POST_CRIAR;
+        const urlCriarConta = CONSTANTS_USUARIOS.API_URL_POST_CRIAR;
         const usuario_a_ser_criado = {
             nomeCompleto: formData.nomeCompleto,
             email: formData.email,
@@ -82,11 +86,11 @@ export default function SessaoEsquerda() {
     };
 
     async function getToken(nomeUsuarioSistema, senha, email, nomeCompleto) {
-        const urlDados = `${CONSTANTS.API_URL_GET_VERIFICAR_EMAIL_E_SENHA}?nomeUsuarioSistema=${nomeUsuarioSistema}&senha=${senha}`;
+        const urlDados = `${CONSTANTS_USUARIOS.API_URL_GET_VERIFICAR_EMAIL_E_SENHA}?nomeUsuarioSistema=${nomeUsuarioSistema}&senha=${senha}`;
         let dadosUsuarioVerificado = await Fetch.getApi(urlDados);
 
         // Gerar token;
-        const urlAutenticar = `${CONSTANTS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${nomeUsuarioSistema}&senha=${senha}`;
+        const urlAutenticar = `${CONSTANTS_USUARIOS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${nomeUsuarioSistema}&senha=${senha}`;
         let resposta = await Fetch.getApi(urlAutenticar);
 
         if (!resposta) {
@@ -99,16 +103,16 @@ export default function SessaoEsquerda() {
         Auth.setUsuarioLogado(dadosUsuarioVerificado);
 
         // Enviar e-mail de "bem-vindo";
-        const isEmailEnviado = await enviarEmail(email, nomeCompleto);
-        if (!isEmailEnviado) {
-            Aviso.error('Houve um erro ao disparar um e-mail para você! Tente logar no sistema novamente mais tarde', 5000);
-            return false;
-        }
+        // const isEmailEnviado = await enviarEmail(email, nomeCompleto);
+        // if (!isEmailEnviado) {
+        //     Aviso.error('Houve um erro ao disparar um e-mail para você! Tente logar no sistema novamente mais tarde', 5000);
+        //     return false;
+        // }
 
-        Aviso.success('Um e-mail de verificação de conta foi enviado para você!', 7000);
+        // Aviso.success('Um e-mail de verificação de conta foi enviado para você!', 7000);
 
         // Voltar à tela principal;
-        navigate('/', { replace: true });
+        Router.push('/disciplinas');
 
         // Atribuir autenticação ao contexto de usuário;
         setIsAuth(true);

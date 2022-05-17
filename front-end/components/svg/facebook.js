@@ -2,8 +2,8 @@ export default function Facebook({ width }) {
     return (
         <svg width={width} viewBox='0 0 48 48'>
             <linearGradient id='awSgIinfw5_FS5MLHI~A9a' x1='6.228' x2='42.077' y1='4.896' y2='43.432' gradientUnits='userSpaceOnUse'>
-                <stop offset='0' stop-color='#0d61a9' />
-                <stop offset='1' stop-color='#16528c' />
+                <stop offset='0' stopColor='#0d61a9' />
+                <stop offset='1' stopColor='#16528c' />
             </linearGradient>
 
             <path fill='url(#awSgIinfw5_FS5MLHI~A9a)' d='M42,40c0,1.105-0.895,2-2,2H8c-1.105,0-2-0.895-2-2V8c0-1.105,0.895-2,2-2h32	c1.105,0,2,0.895,2,2V40z' />

@@ -3,9 +3,9 @@ import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../outros/urlApi';
 const ENDPOINTS = {
     GET_AUTENTICAR: 'api/Usuarios/autenticar',
     GET_VERIFICAR_EMAIL_E_SENHA: 'api/Usuarios/verificarEmailSenha',
-    GET_IS_EXISTE_EMAIL: 'UsuariosApi/IsExistePorEmail',
-    GET_IS_EXISTE_NOME_USUARIO: 'UsuariosApi/isExistePorNomeUsuarioSistema',
-    POST_CRIAR_CONTA: 'UsuariosApi/criar',
+    GET_IS_EXISTE_EMAIL: 'api/Usuarios/IsExistePorEmail',
+    GET_IS_EXISTE_NOME_USUARIO: 'api/Usuarios/isExistePorNomeUsuarioSistema',
+    POST_CRIAR_CONTA: 'api/Usuarios/criar',
 };
 
 const DEV = {

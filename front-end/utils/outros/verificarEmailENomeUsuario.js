@@ -9,8 +9,9 @@ export default async function verificarEmailENomeUsuario(form, refEmail, refNome
 
     // Verificar e-mail;
     if (isNovoEmail) {
-        const isJaExiste = await Fetch.getApi(urlIsExisteEmail);
-
+        const resposta = await fetch(urlIsExisteEmail);
+        const isJaExiste = await resposta.json();
+ 
         if (isJaExiste) {
             NProgress.done();
             Aviso.warn('Existe outro usuário que já está usando este e-mail!', 5000);
@@ -26,7 +27,8 @@ export default async function verificarEmailENomeUsuario(form, refEmail, refNome
     // Verificar nome de usuário;
     if (isNovoNomeUsuario) {
         if (isContinuar) {
-            const isJaExiste = await Fetch.getApi(urlIsExisteNomeUsuario);
+            const resposta = await fetch(urlIsExisteNomeUsuario);
+            const isJaExiste = await resposta.json();
 
             if (isJaExiste) {
                 NProgress.done();

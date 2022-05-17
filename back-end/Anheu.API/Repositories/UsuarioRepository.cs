@@ -46,5 +46,30 @@ namespace Anheu.API.Repositories
 
             return usuarioBd;
         }
+
+        public async Task<int> PostCriar(Usuario usuario)
+        {
+            // Hora atual;
+            DateTime horaAgora = HorarioBrasilia();
+            string senhaCriptografada = Criptografar(usuario.Senha);
+
+            usuario.Senha = senhaCriptografada;
+            usuario.DataCriacao = horaAgora;
+
+            _context.Add(usuario);
+            var isOk = await _context.SaveChangesAsync();
+
+            return usuario.UsuarioId;
+        }
+
+        public async Task<bool> IsExistePorEmail(string email)
+        {
+            return await _context.Usuarios.AnyAsync(e => e.Email == email);
+        }
+
+        public async Task<bool> IsExistePorNomeUsuarioSistema(string nomeUsuarioSistema)
+        {
+            return await _context.Usuarios.AnyAsync(nus => nus.NomeUsuarioSistema == nomeUsuarioSistema);
+        }
     }
 }

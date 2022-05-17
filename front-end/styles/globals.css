@@ -10,6 +10,8 @@
     --cor-border-hr: rgba(42, 42, 42, 100);
     --cor-principal-gradient: linear-gradient(to bottom right, var(--cor-principal), var(--cor-principal-escura));
     --toastify-color-progress-light: var(--cor-principal) !important;
+    --toastify-color-progress-warning: var(--cor-principal) !important;
+    --toastify-color-progress-error: var(--cor-principal) !important;
 }
 
 html, body {

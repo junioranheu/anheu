@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import NProgress from 'nprogress';
+import React, { useEffect, useRef, useState } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
+import PadronizarNomeCompletoUsuario from '../../utils/outros/padronizarNomeCompletoUsuario';
+import VerificarDadosCriarConta from '../../utils/outros/verificarDadosCriarConta';
 import Facebook from '../svg/facebook.js';
 import Google from '../svg/google.js';
 
@@ -19,6 +22,7 @@ export default function SessaoEsquerda() {
     }, []);
 
     // Ao alterar os valores dos inputs, insira os valores nas variaveis do formData;
+    const [formData, setFormData] = useState(null);
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -29,16 +33,14 @@ export default function SessaoEsquerda() {
     // Ao clicar no botão para entrar;
     async function handleSubmit(e) {
         NProgress.start();
-        setIsLoading(true);
         refBtnCriar.current.disabled = true;
         e.preventDefault();
 
         // Verificações;
         const isTrocouSenha = true;
-        let isContinuarUm = VerificarDadosFluxo(formData, refNomeCompleto, refEmail, refNomeUsuario, refSenha, refConfirmarSenha, isTrocouSenha);
+        let isContinuarUm = VerificarDadosCriarConta(formData, refNomeCompleto, refEmail, refNomeUsuario, refSenha, refConfirmarSenha, isTrocouSenha);
         if (!isContinuarUm) {
             refBtnCriar.current.disabled = false;
-            setIsLoading(false);
             return false;
         }
 
@@ -51,7 +53,6 @@ export default function SessaoEsquerda() {
         let isContinuarDois = await VerificarEmailENomeUsuario(formData, refEmail, refNomeUsuario, refSenha, refConfirmarSenha, isNovoEmail, isNovoNomeUsuario);
         if (!isContinuarDois) {
             refBtnCriar.current.disabled = false;
-            setIsLoading(false);
             return false;
         }
 
@@ -73,7 +74,6 @@ export default function SessaoEsquerda() {
         let resposta = await Fetch.postApi(urlCriarConta, usuario_a_ser_criado);
         if (!resposta) {
             refBtnCriar.current.disabled = false;
-            setIsLoading(false);
             Aviso.error('Algo deu errado ao criar sua nova conta<br/>Consulte o F12!', 5000);
             return false;
         }
@@ -91,7 +91,6 @@ export default function SessaoEsquerda() {
 
         if (!resposta) {
             Aviso.error('Algo deu errado ao se autenticar!', 5000);
-            setIsLoading(false);
             return false;
         }
 
@@ -152,6 +151,7 @@ export default function SessaoEsquerda() {
             <Anheu width='0.9rem' cor='var(--branco)' />
             <span className={Styles.titulo}>Crie sua conta no Anheu</span>
 
+            {/* Inputs */}
             <div>
                 <div className={Styles.margemTopP}>
                     <input className={Styles.input} type='text' placeholder='Nome completo' name='nomeCompleto'
@@ -183,16 +183,17 @@ export default function SessaoEsquerda() {
                     />
                 </div>
 
-                <div className={`${Styles.checkbox} ${Styles.margemTopP}`}>
+                {/* <div className={`${Styles.checkbox} ${Styles.margemTopP}`}>
                     <input type='checkbox' />
                     <label>Concordo com os termos de uso</label>
-                </div>
+                </div> */}
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit} >
                     <Botao texto={'Criar conta'} url={''} isNovaAba={false} Svg='' refBtn={refBtnCriar} />
                 </div>
             </div>
 
+            {/* Ou #1 */}
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
@@ -204,6 +205,7 @@ export default function SessaoEsquerda() {
                 </div>
             </div>
 
+            {/* Ou #2 */}
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={Styles.margemTopM}>

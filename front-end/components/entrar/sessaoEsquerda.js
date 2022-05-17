@@ -35,7 +35,7 @@ export default function SessaoEsquerda() {
 
         if (!formData || !formData.usuario || !formData.senha) {
             NProgress.done();
-            Aviso.custom('O nome de usuário e/ou e-mail estão vazios!', 5000);
+            Aviso.warn('O nome de usuário e/ou e-mail estão vazios!', 5000);
             refSenha.current.value = '';
             refUsuario.current.select();
             refBtn.current.disabled = false;
@@ -52,7 +52,7 @@ export default function SessaoEsquerda() {
             formData.senha = '';
             refUsuario.current.select();
             refBtn.current.disabled = false;
-            Aviso.custom('Algo deu errado<br/>Provavelmente o usuário e/ou a senha estão errados!', 5000);
+            Aviso.warn('Algo deu errado<br/>Provavelmente o usuário e/ou a senha estão errados!', 5000);
             return false;
         }
 
@@ -76,7 +76,7 @@ export default function SessaoEsquerda() {
         });
 
         if (resposta.status !== 200) {
-            Aviso.custom('Algo deu errado ao se autenticar!', 5000);
+            Aviso.error('Algo deu errado ao se autenticar!', 5000);
             return false;
         }
 
@@ -107,6 +107,7 @@ export default function SessaoEsquerda() {
             <Anheu width='0.9rem' cor='var(--branco)' />
             <span className={Styles.titulo}>Bem-vindo ao Anheu</span>
 
+            {/* Inputs */}
             <div className={Styles.divLogin}>
                 <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'
                     name='usuario' onChange={handleChange} ref={refUsuario} onKeyPress={handleKeyPress}
@@ -121,6 +122,7 @@ export default function SessaoEsquerda() {
                 </div>
             </div>
 
+            {/* Ou #1 */}
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
@@ -132,6 +134,7 @@ export default function SessaoEsquerda() {
                 </div>
             </div>
 
+            {/* Ou #2 */}
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={Styles.margemTopM}>

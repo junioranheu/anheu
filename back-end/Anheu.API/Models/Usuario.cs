@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Anheu.API.Models
 {
@@ -23,6 +24,7 @@ namespace Anheu.API.Models
         public int IsVerificado { get; set; }
 
         // Fk (De cá pra lá);
+        [JsonIgnore]
         public UsuarioInformacao? UsuariosInformacoes { get; set; }
     }
 }

@@ -103,5 +103,32 @@ namespace Anheu.API.Controllers
                 return null;
             }
         }
+
+        [HttpPost("criar")]
+        public async Task<ActionResult<int>> PostCriar(Usuario usuario)
+        {
+            var idUsuarioCriado = await _usuarios.PostCriar(usuario);
+
+            if (idUsuarioCriado < 1)
+            {
+                return NotFound();
+            }
+
+            return idUsuarioCriado;
+        }
+
+        [HttpGet("isExistePorEmail")]
+        public async Task<ActionResult<bool>> IsExistePorEmail(string email)
+        {
+            bool isExiste = await _usuarios.IsExistePorEmail(email);
+            return isExiste;
+        }
+
+        [HttpGet("isExistePorNomeUsuarioSistema")]
+        public async Task<ActionResult<bool>> IsExistePorNomeUsuarioSistema(string nomeUsuarioSistema)
+        {
+            bool isExiste = await _usuarios.IsExistePorNomeUsuarioSistema(nomeUsuarioSistema);
+            return isExiste;
+        }
     }
 }

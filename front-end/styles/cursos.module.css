@@ -49,6 +49,58 @@
     text-align: center;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-=-=- [nome].js =-=-=-=-=-=-=-=-=-=-=-=- */
+.topico {
+    color: var(--branco);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.036em;
+    cursor: pointer;
+}
+
+.divCurso {
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: .4s ease-in-out;
+}
+
+.divCurso:hover {
+    background-color: var(--cor-principal-opaca);
+    cursor: pointer;
+    transition: .4s ease-in-out;
+
+    /* Gambi para o background ficar maior que a div */
+    padding-left: 30px;
+    margin-left: -30px;
+}
+
+.input {
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: 100%;
+    padding: 0 3.2em 0 1rem;
+    border: none;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+    background: transparent;
+    color: var(--branco);
+    font-family: inherit;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1;
+    outline: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px white solid;
+}
+
+.input:focus + label {
+    color: #005EB8;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

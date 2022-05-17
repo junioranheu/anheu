@@ -250,6 +250,10 @@
 
         background-size: 120%;
     }
+
+    .divSessaoCardsPequenos:hover {
+        background-size: 130%;
+    }
 }
 
 /* big landscape tablets, laptops, and desktops */
@@ -277,6 +281,10 @@
         flex: 0 0 90%;
 
         background-size: 100%;
+    }
+
+    .divSessaoCardsPequenos:hover {
+        background-size: 110%;
     }
 }
 

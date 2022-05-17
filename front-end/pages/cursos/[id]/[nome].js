@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Banner from '../../../components/outros/banner';
 import Styles from '../../../styles/cursos.module.css';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
@@ -8,6 +8,7 @@ import AjustarUrl from '../../../utils/outros/ajustarUrl';
 export default function Curso({ cursos }) {
     // console.log(cursos);
 
+    const [filtroCurso, setFiltroCurso] = useState('');
     useEffect(() => {
         // Título da página;
         document.title = cursos.length > 0 ? `${cursos[0]?.cursosCategorias.categoria} — Anheu` : 'Anheu';
@@ -23,15 +24,17 @@ export default function Curso({ cursos }) {
                         </div>
 
                         <div className='margem30'>
+                            <input className={Styles.input} type='text' placeholder='Busque por um curso...' onChange={(e) => setFiltroCurso(e.target.value)} />
+                        </div>
+
+                        <div className='margem30'>
                             {
-                                cursos.filter(x => x.isAtivo === 1).map((c, i) => (
-                                    <div key={i} className={`${Styles.divAula} margem5`}>
+                                cursos.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso)).map((c, i) => (
+                                    <div key={i} className={`${Styles.divCurso} margem5`}>
                                         <span className={Styles.topico}>{c.nome}</span>
 
                                         <div className={`${Styles.flexMeio} margem10`}>
-                                            <div>
-                                                <span className={`${Styles.textoHoverDivAula} texto`}>{c.resumoAula}</span>
-                                            </div>
+                                            <span className={`${Styles.textoHoverDivAula} texto`}>{c.resumoCurso}</span>
                                         </div>
                                     </div>
                                 ))

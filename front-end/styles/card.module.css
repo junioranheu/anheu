@@ -186,8 +186,9 @@
 }
 
 .divSessaoCardsPequenos {
-    background-color: blue !important;
-    border-radius: 10px;
+    /* background-color: blue !important; */
+    /* border-radius: 10px; */
+    border-radius: 1px;
     height: 12rem;
 
     /* Flex */
@@ -202,10 +203,11 @@
 
 .divSessaoCardsPequenos:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: translateY(-4px);
+    transition: box-shadow .2s, transform .2s, -webkit-box-shadow .2s, -webkit-transform .2s;
 }
 
-.efeitoBlur {
+.efeitoBlur {    
     /* background-color: red; */
     width: 100%;
     height: 100%;

@@ -6,14 +6,14 @@ import Styles from '../../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
- 
+
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
 
     useEffect(() => {
         // Título da página;
         document.title = `${disciplina.nome} — Anheu`;
-    }, []);
+    }, [disciplina]);
 
     return (
         <section className='flexColumn'>
@@ -35,7 +35,9 @@ export default function Disciplina({ disciplina }) {
                                 <Image
                                     className={Styles.thumb}
                                     src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
-                                    width={500} height={500}
+                                    width={500} 
+                                    height={500}
+                                    alt=''
                                 />
                             </div>
 
@@ -64,10 +66,10 @@ export async function getStaticPaths() {
 
     // Gerar o "paths";
     const paths = disciplinas.map(d => ({
-        params: { 
+        params: {
             id: d.disciplinaId.toString(),
             nome: AjustarUrl(d.nome)
-         }
+        }
     }));
 
     return {

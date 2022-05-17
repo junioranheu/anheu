@@ -12,7 +12,7 @@ export default function Curso({ cursos }) {
     useEffect(() => {
         // Título da página;
         document.title = cursos.length > 0 ? `${cursos[0]?.cursosCategorias.categoria} — Anheu` : 'Anheu';
-    }, []);
+    }, [cursos]);
 
     return (
         <Fragment>

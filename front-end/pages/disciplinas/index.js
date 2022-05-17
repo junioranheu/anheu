@@ -14,11 +14,6 @@ export default function Index() {
     const [cursoContext] = useContext(CursoContext); // Contexto do curso selecionado;
     const [cursoData, setCursoData] = useState({});
 
-    if (!isAuth) {
-        Router.push('/404');
-        return false;
-    }
-
     useEffect(() => {
         async function getCurso() {
             console.log(cursoContext);
@@ -48,6 +43,11 @@ export default function Index() {
         return (
             <div className={Styles.divTags} dangerouslySetInnerHTML={{ __html: tags }}></div>
         )
+    }
+
+    if (!isAuth) {
+        Router.push('/404');
+        return false;
     }
 
     return (

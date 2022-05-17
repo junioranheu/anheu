@@ -40,15 +40,6 @@
     -webkit-box-orient: vertical;
 }
 
-/* =-=-=-=-=-=-=-=-= Margens =-=-=-=-=-=-=-=-= */
-.margemTopP {
-    margin-top: 2rem;
-}
-
-.margemTopG {
-    margin-top: 4rem;
-}
-
 .margemTitulo {
     margin-top: 10rem;
 }

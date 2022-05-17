@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../../components/outros/banner';
 import SessaoCardsPequenos from '../../components/outros/sessaoCardsPequenos';
-import StylesCards from '../../styles/card.module.css';
 import Styles from '../../styles/cursos.module.css';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias';
-import ConcatenarItensLista from '../../utils/outros/concatenarItensLista';
+import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
@@ -25,8 +24,8 @@ export default function Index({ cursos }) {
                 const o = {
                     id: c.cursoCategoriaId,
                     titulo: c.categoria,
-                    desc: 1,
-                    imagem: c.imagem
+                    desc: (c.qtdCursos === 1 ? '1 curso' : `${c.qtdCursos} cursos`),
+                    imagem: `${CONSTANTS_UPLOAD.API_URL_GET_CURSOS_CATEGORIAS}/${c.imagem}`
                 }
 
                 obj[i] = o;
@@ -54,26 +53,12 @@ export default function Index({ cursos }) {
                 />
             )}
 
-            <div className={(isAuth ? Styles.margemTopG : '')}>
+            <div className={(isAuth ? 'margem50' : 'margem20')}>
                 <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>
             </div>
 
-            <SessaoCardsPequenos lista={cursosCategorias} />
-
-            <div className={`${Styles.margemTopP} ${Styles.divCards}`}>
-                {
-                    cursos.filter(x => x.isAtivo === 1).map((c, i) => (
-                        <section key={c.cursoId} className={StylesCards.card}>
-                            <div className={StylesCards.cardDivTexto}>
-                                <span className={StylesCards.cardTitulo}>{c.nome}</span>
-                                <span className={StylesCards.cardSubtitulo}>Professor {c.professor}</span>
-                                <span className={StylesCards.cardTituloMenor}>R$ {c.preco}</span>
-                                <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo} ${Styles.limitar4Linhas}`}>{c.resumoCurso}</span>
-                                <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo}`}>{ConcatenarItensLista(c.cursosDisciplinas, 'disciplinas.nome')}</span>
-                            </div>
-                        </section>
-                    ))
-                }
+            <div className='margem50'>
+                <SessaoCardsPequenos lista={cursosCategorias} />
             </div>
 
             {/* Espaço a mais */}

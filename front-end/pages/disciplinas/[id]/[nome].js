@@ -6,7 +6,7 @@ import Styles from '../../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
-
+ 
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
 

@@ -9,5 +9,6 @@ namespace Anheu.API.Interfaces
         Task<int> PostCriar(Curso c);
         Task<int> PostAtualizar(Curso c);
         Task<int> PostDeletar(int id);
+        Task<Curso> GetPorCursoCategoriaId(int cursoCategoriaId);
     }
 }

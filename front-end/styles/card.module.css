@@ -188,7 +188,7 @@
 .divSessaoCardsPequenos {
     /* background-color: blue !important; */
     /* border-radius: 10px; */
-    border-radius: 1px;
+    border-radius: 10px;
     height: 12rem;
 
     /* Flex */
@@ -198,16 +198,18 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    transition: transform 0.4s ease-in-out;
+    background-size: 112%;
+
+    transition: all .7s;
 }
 
 .divSessaoCardsPequenos:hover {
     cursor: pointer;
-    transform: translateY(-4px);
-    transition: box-shadow .2s, transform .2s, -webkit-box-shadow .2s, -webkit-transform .2s;
+    transition: all 1s;
+    background-size: 120%;
 }
 
-.efeitoBlur {    
+.efeitoBlur {
     /* background-color: red; */
     width: 100%;
     height: 100%;
@@ -222,6 +224,34 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+@media (max-width:1600px) {
+    .sessaoCardsPequenos {
+        /* background-color: pink; */
+        justify-content: space-evenly;
+    }
+
+    .divSessaoCardsPequenos {
+        /* background-color: blue !important; */
+        height: 8rem;
+
+        /* Flex */
+        flex: 0 0 40%;
+    }
+}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .divSessaoCardsPequenos {
+        /* background-color: blue !important; */
+        height: 8rem;
+
+        /* Flex */
+        flex: 0 0 40%;
+
+        background-size: 120%;
+    }
+}
+
 /* big landscape tablets, laptops, and desktops */
 @media (max-width:1025px) {
     .cardTitulo {
@@ -238,8 +268,20 @@
     .cardGigante {
         width: 90vw !important;
     }
+
+    .divSessaoCardsPequenos {
+        /* background-color: blue !important; */
+        height: 8rem;
+
+        /* Flex */
+        flex: 0 0 90%;
+
+        background-size: 100%;
+    }
 }
 
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
 
 /* smartphones, Android phones, landscape iPhone */
 @media (max-width:480px) {

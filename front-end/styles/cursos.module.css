@@ -44,6 +44,11 @@
     margin-top: 10rem;
 }
 
+.centralizar{
+    /* background-color: pink; */
+    text-align: center;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

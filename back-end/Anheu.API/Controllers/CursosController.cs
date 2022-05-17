@@ -78,5 +78,18 @@ namespace Spotify.Controllers
 
             return Ok(true);
         }
+
+        [HttpGet("porCursoCategoriaId/{cursoCategoriaId}")]
+        public async Task<ActionResult<Curso>> GetPorCursoCategoriaId(int cursoCategoriaId)
+        {
+            var porId = await _cursoRepository.GetPorCursoCategoriaId(cursoCategoriaId);
+
+            if (porId == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(porId);
+        }
     }
 }

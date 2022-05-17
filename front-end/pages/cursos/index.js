@@ -53,12 +53,12 @@ export default function Index({ cursos }) {
                 />
             )}
 
-            <div className={(isAuth ? 'margem50' : 'margem20')}>
+            <div className={`${(isAuth ? 'margem50' : 'margem20')} ${Styles.centralizar}`}>
                 <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>
             </div>
 
             <div className='margem50'>
-                <SessaoCardsPequenos lista={cursosCategorias} />
+                <SessaoCardsPequenos lista={cursosCategorias} rota={'cursos'} />
             </div>
 
             {/* Espaço a mais */}

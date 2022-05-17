@@ -19,6 +19,7 @@ namespace Anheu.API.Data
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<DisciplinaTag> DisciplinaTags { get; set; }
         public DbSet<CursoDisciplina> CursosDisciplinas { get; set; }
+        public DbSet<UsuarioCurso> UsuariosCursos { get; set; }
 
         public DbSet<Aula> Aulas { get; set; }
         public DbSet<AulaTiming> AulaTimings { get; set; }

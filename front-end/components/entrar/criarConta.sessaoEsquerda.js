@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
 import { Fetch } from '../../utils/outros/fetch';
 import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
@@ -15,6 +16,8 @@ import Facebook from '../svg/facebook.js';
 import Google from '../svg/google.js';
 
 export default function SessaoEsquerda() {
+    const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    
     const refNomeCompleto = useRef();
     const refEmail = useRef();
     const refNomeUsuario = useRef();
@@ -40,8 +43,6 @@ export default function SessaoEsquerda() {
         NProgress.start();
         refBtnCriar.current.disabled = true;
         e.preventDefault();
-
-        return false;
 
         // Verificações;
         const isTrocouSenha = true;
@@ -119,6 +120,7 @@ export default function SessaoEsquerda() {
 
         // Atribuir autenticação ao contexto de usuário;
         setIsAuth(true);
+        NProgress.done();
     }
 
     async function enviarEmail(email, nomeCompleto) {

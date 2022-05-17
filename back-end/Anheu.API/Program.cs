@@ -67,6 +67,7 @@ builder.Services.AddDbContext<Context>(options => options.UseMySql(con, ServerVe
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ICursoCategoriaRepository, CursoCategoriaRepository>();
 builder.Services.AddScoped<ICursoRepository, CursoRepository>();
+builder.Services.AddScoped<IUsuarioCursoRepository, UsuarioCursoRepository>();
 builder.Services.AddScoped<IDisciplinaRepository, DisciplinaRepository>();
 
 // Cors;

@@ -170,6 +170,13 @@ namespace Anheu.API.Data
                 context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 5, AulaId = 2, Titulo = "bbb", TempoEmSegundos = "8.4" });
                 context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 6, AulaId = 2, Titulo = "ccc", TempoEmSegundos = "145.3" });
             }
+
+            if (!context.UsuariosCursos.Any())
+            {
+                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 1, UsuarioId = 1, CursoId = 4, IsAtivo = 1, DataRegistro = dataAgora });
+                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 2, UsuarioId = 2, CursoId = 2, IsAtivo = 1, DataRegistro = dataAgora });
+                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 3, UsuarioId = 2, CursoId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+            }
             #endregion
 
             context.SaveChanges();

@@ -1,7 +1,10 @@
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Auth, UsuarioContext } from '../utils/context/usuarioContext';
 
 export default function Index() {
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const nomeUsuario = isAuth ? Auth?.getUsuarioLogado()?.nomeUsuarioSistema : 'amigo';
 
     useEffect(() => {
         // Título da página;
@@ -9,7 +12,7 @@ export default function Index() {
     }, []);
 
     return (
-        <div className='paddingPadrao margem50 flexColumn' style={{ backgroundColor: 'var(--preto)', height: '100vh' }}>
+        <div className='paddingPadrao margem50 flexColumn'>
             <Link href='/disciplinas'>
                 <a className='topico'>Disciplinas</a>
             </Link>
@@ -17,6 +20,8 @@ export default function Index() {
             <Link href='/cursos'>
                 <a className='topico'>Cursos</a>
             </Link>
+
+            <span className='topico'>Olá, {nomeUsuario}</span>
         </div>
     )
 } 

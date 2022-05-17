@@ -18,8 +18,22 @@ export default function Index({ cursos }) {
             const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
             const res = await fetch(url)
             const cursosCategorias = await res.json();
-            console.log(cursosCategorias);
-            setCursosCategorias(cursosCategorias);
+
+            // Criar novo objeto com campos especificos;
+            var obj = [{}];
+            cursosCategorias.forEach(function (c, i) {
+                const o = {
+                    id: c.cursoCategoriaId,
+                    titulo: c.categoria,
+                    desc: 1,
+                    imagem: c.imagem
+                }
+
+                obj[i] = o;
+            });
+
+            // console.log(obj);
+            setCursosCategorias(obj);
         }
 
         // Título da página;
@@ -44,20 +58,22 @@ export default function Index({ cursos }) {
                 <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>
             </div>
 
-            <SessaoCardsPequenos />
+            <SessaoCardsPequenos lista={cursosCategorias} />
 
             <div className={`${Styles.margemTopP} ${Styles.divCards}`}>
-                {cursos.filter(x => x.isAtivo === 1).map((c, i) => (
-                    <section key={c.cursoId} className={StylesCards.card}>
-                        <div className={StylesCards.cardDivTexto}>
-                            <span className={StylesCards.cardTitulo}>{c.nome}</span>
-                            <span className={StylesCards.cardSubtitulo}>Professor {c.professor}</span>
-                            <span className={StylesCards.cardTituloMenor}>R$ {c.preco}</span>
-                            <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo} ${Styles.limitar4Linhas}`}>{c.resumoCurso}</span>
-                            <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo}`}>{ConcatenarItensLista(c.cursosDisciplinas, 'disciplinas.nome')}</span>
-                        </div>
-                    </section>
-                ))}
+                {
+                    cursos.filter(x => x.isAtivo === 1).map((c, i) => (
+                        <section key={c.cursoId} className={StylesCards.card}>
+                            <div className={StylesCards.cardDivTexto}>
+                                <span className={StylesCards.cardTitulo}>{c.nome}</span>
+                                <span className={StylesCards.cardSubtitulo}>Professor {c.professor}</span>
+                                <span className={StylesCards.cardTituloMenor}>R$ {c.preco}</span>
+                                <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo} ${Styles.limitar4Linhas}`}>{c.resumoCurso}</span>
+                                <span className={`${Styles.margemTopP} ${StylesCards.cardSubtitulo}`}>{ConcatenarItensLista(c.cursosDisciplinas, 'disciplinas.nome')}</span>
+                            </div>
+                        </section>
+                    ))
+                }
             </div>
 
             {/* Espaço a mais */}

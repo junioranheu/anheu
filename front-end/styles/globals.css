@@ -107,6 +107,39 @@ a {
     transform-origin: 0 100%;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-=-=- Layout =-=-=-=-=-=-=-=-=-=-=-=- */
+.secaoPrincipal {
+    background-color: var(--preto);
+    min-height: 100vh;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.secaoPrincipal aside {
+    /* background-color: red !important; */
+    width: 20vw;
+
+    border-right: 1px solid var(--cor-border-hr);
+
+    padding: 2rem;
+}
+
+.secaoPrincipal main {
+    /* background-color: blue !important; */
+    /* width: 80vw; */
+    width: 100vw;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- animate.css =-=-=-=-=-=-=-=-=-=-=-=- */
 .animate__animated.delay02 {
     -webkit-animation-delay: .2s;
@@ -400,6 +433,32 @@ code div button svg {
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {
+    .secaoPrincipal {
+        /* background-color: pink; */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .secaoPrincipal aside {
+        /* background-color: pink; */
+        width: 100vw;
+        height: 40px;
+        padding: 0rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-right: none;
+        border-bottom: 1px solid var(--cor-border-hr);
+    }
+
+    .secaoPrincipal main {
+        /* background-color: blue !important; */
+        width: 100vw;
+        padding: 2rem;
+    }
+
     .topico:before {
         display: none !important;
     }
@@ -416,6 +475,11 @@ code div button svg {
 
     .card {
         width: 50vh !important;
+    }
+
+    .secaoPrincipal aside {
+        /* background-color: pink; */
+        height: fit-content;
     }
 }
 

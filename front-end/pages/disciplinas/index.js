@@ -4,13 +4,20 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import Banner from '../../components/outros/banner';
 import Styles from '../../styles/disciplinas.module.css';
 import { CursoContext } from '../../utils/context/cursoContext';
+import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
 
 export default function Index() {
     // console.log(curso);
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const [cursoContext] = useContext(CursoContext); // Contexto do curso selecionado;
     const [cursoData, setCursoData] = useState({});
+
+    if (!isAuth) {
+        Router.push('/404');
+        return false;
+    }
 
     useEffect(() => {
         async function getCurso() {

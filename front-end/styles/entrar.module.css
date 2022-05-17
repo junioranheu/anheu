@@ -18,6 +18,7 @@
 .divEsquerda {
     /* background-color: pink; */
     width: 50%;
+    height: 90%;
 }
 
 .titulo {
@@ -113,23 +114,6 @@
 
 .margemTopP {
     margin-top: 1rem;
-}
-
-/* =-=-=-=-=-=-=-=-= Botão =-=-=-=-=-=-=-=-= */
-.botaoCustom button {
-    width: 300px;
-}
-
-.botaoCustomAbsoluto {
-    /* background-color: pink; */
-    position: absolute;
-    left: 1.5rem;
-    top: 1.5rem;
-}
-
-.botaoCustomAbsoluto button {
-    background-color: rgb(59, 59, 59);
-    opacity: 0.7;
 }
 
 /* =-=-=-=-=-=-=-=-= Checkbox =-=-=-=-=-=-=-=-= */

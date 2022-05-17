@@ -44,7 +44,7 @@
     margin-top: 10rem;
 }
 
-.centralizar{
+.centralizar {
     /* background-color: pink; */
     text-align: center;
 }
@@ -97,8 +97,16 @@
     border-bottom: 1px white solid;
 }
 
-.input:focus + label {
-    color: #005EB8;
+.divDescCurso {
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5rem;
+}
+
+.divDescCurso span {
+    flex: 0 0 45%;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
@@ -112,6 +120,16 @@
     .divCards section {
         /* background-color: blue; */
         flex: 0 0 40%;
+    }
+    
+    .divDescCurso {
+        /* background-color: red; */
+        gap: 0.5rem;
+    }
+
+    .divDescCurso span {
+        /* background-color: red; */
+        flex: 0 0 90%;
     }
 }
 

@@ -18,8 +18,8 @@ export default function Curso({ cursos }) {
         <Fragment>
             {
                 cursos.length > 0 ? (
-                    <section className='flexColumn'>
-                        <div>
+                    <section className='flexColumn margem50'>
+                        <div style={{textAlign: 'center'}}>
                             <span className='titulo'>Cursos de <span className='grifar'>{cursos[0]?.cursosCategorias.categoria}</span></span>
                         </div>
 
@@ -33,8 +33,9 @@ export default function Curso({ cursos }) {
                                     <div key={i} className={`${Styles.divCurso} margem5`}>
                                         <span className={Styles.topico}>{c.nome}</span>
 
-                                        <div className={`${Styles.flexMeio} margem10`}>
-                                            <span className={`${Styles.textoHoverDivAula} texto`}>{c.resumoCurso}</span>
+                                        <div className={`${Styles.divDescCurso} margem10`}>
+                                            <span className='texto'>{c.resumoCurso}</span>
+                                            <span className='texto'>R$ {c.preco}</span>
                                         </div>
                                     </div>
                                 ))

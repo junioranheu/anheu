@@ -1,56 +1,57 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect } from 'react';
-import ImgCinza from '../../../static/image/cinza.webp';
+import React, { Fragment, useEffect } from 'react';
+import Banner from '../../../components/outros/banner';
 import Styles from '../../../styles/cursos.module.css';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategorias';
-import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 
 export default function Curso({ cursos }) {
-    console.log(cursos);
+    // console.log(cursos);
 
     useEffect(() => {
         // Título da página;
-        document.title = `${cursos.nome} — Anheu`;
+        document.title = cursos.length > 0 ? `${cursos[0]?.cursosCategorias.categoria} — Anheu` : 'Anheu';
     }, []);
 
     return (
-        <section className='flexColumn'>
-            <div className='flexColumn'>
-                <span className='titulo'>Bem-vindo xxxxxxx de <span className='grifar'>{cursos.nome}</span></span>
-            </div>
-
-            <div className='margem30'>
-                {cursos.aulas.filter(x => x.isAtivo === 1).map((d, i) => (
-                    <div key={i} className={`${Styles.divAula} margem5`}>
-                        <span className={Styles.topico}>
-                            <Link href={`/cursos/${d.disciplinaId}`}>
-                                <a className='cor-principal-hover'>{d.nome}</a>
-                            </Link>
-                        </span>
-
-                        <div className={`${Styles.flexMeio} margem10`}>
-                            <div>
-                                <Image
-                                    className={Styles.thumb}
-                                    src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
-                                    width={500} height={500}
-                                />
-                            </div>
-
-                            <div>
-                                <span className={`${Styles.textoHoverDivAula} texto`}>{d.resumoAula}</span>
-                            </div>
+        <Fragment>
+            {
+                cursos.length > 0 ? (
+                    <section className='flexColumn'>
+                        <div>
+                            <span className='titulo'>Cursos de <span className='grifar'>{cursos[0]?.cursosCategorias.categoria}</span></span>
                         </div>
-                    </div>
-                ))}
-            </div>
 
-            {/* Espaço a mais */}
-            <div className='espacoBottom'></div>
-        </section>
+                        <div className='margem30'>
+                            {
+                                cursos.filter(x => x.isAtivo === 1).map((c, i) => (
+                                    <div key={i} className={`${Styles.divAula} margem5`}>
+                                        <span className={Styles.topico}>{c.nome}</span>
+
+                                        <div className={`${Styles.flexMeio} margem10`}>
+                                            <div>
+                                                <span className={`${Styles.textoHoverDivAula} texto`}>{c.resumoAula}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+
+                        {/* Espaço a mais */}
+                        <div className='espacoBottom'></div>
+                    </section>
+                ) : (
+                    <Banner
+                        titulo='Opa...'
+                        subtitulo='Parece que ainda não existe nenhum curso nessa categoria'
+                        textoBotao='Visualizar outras categorias'
+                        url='/cursos'
+                        isForcarFullscreen={true}
+                    />
+                )
+            }
+        </Fragment>
     )
 }
 

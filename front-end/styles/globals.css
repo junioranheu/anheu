@@ -135,9 +135,6 @@ a {
 
     display: flex;
     flex-direction: column;
-
-    padding-left: 5rem;
-    padding-right: 5rem;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- animate.css =-=-=-=-=-=-=-=-=-=-=-=- */
@@ -424,6 +421,12 @@ code div button svg {
     margin-top: 50px;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-= Padding =-=-=-=-=-=-=-=-=-=-= */
+.paddingPadrao {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Outros =-=-=-=-=-=-=-=-=-=-= */
 .espacoBottom {
     /* background-color: pink; */
@@ -456,11 +459,15 @@ code div button svg {
     .secaoPrincipal main {
         /* background-color: blue !important; */
         width: 100vw;
-        padding: 2rem;
     }
 
     .topico:before {
         display: none !important;
+    }
+
+    .paddingPadrao {
+        padding-left: 3rem;
+        padding-right: 3rem;
     }
 }
 
@@ -481,10 +488,20 @@ code div button svg {
         /* background-color: pink; */
         height: fit-content;
     }
+
+    .paddingPadrao {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-@media (max-width:600px) {}
+@media (max-width:600px) {
+    .paddingPadrao {
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+    }
+}
 
 /* smartphones, Android phones, landscape iPhone */
 @media (max-width:480px) {}

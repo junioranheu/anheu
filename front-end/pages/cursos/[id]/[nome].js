@@ -18,7 +18,7 @@ export default function Curso({ cursos }) {
         <Fragment>
             {
                 cursos.length > 0 ? (
-                    <section className='flexColumn margem50'>
+                    <section className='flexColumn paddingPadrao margem50'>
                         <div style={{textAlign: 'center'}}>
                             <span className='titulo'>Cursos de <span className='grifar'>{cursos[0]?.cursosCategorias.categoria}</span></span>
                         </div>

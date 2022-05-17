@@ -142,7 +142,11 @@
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (max-width:801px) {}
+@media (max-width:801px) {
+    .input {
+        font-size: 2rem;
+    }    
+}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {
@@ -160,6 +164,10 @@
         flex: unset;
         width: 95% !important;
     }
+
+    .input {
+        font-size: 1.5rem;
+    }   
 }
 
 /* smartphones, Android phones, landscape iPhone */

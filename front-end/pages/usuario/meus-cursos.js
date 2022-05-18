@@ -10,12 +10,14 @@ export default function MeusCursos() {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const usuarioId = isAuth ? Auth?.getUsuarioLogado()?.usuarioId : null;
 
+    const [isLoaded, setIsLoaded] = useState(false);
     const [meusCursos, setMeusCursos] = useState({});
     useEffect(() => {
         async function getUsuarioCursos() {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
             const cursos = await Fetch.getApi(url, null);
             setMeusCursos(cursos);
+            setIsLoaded(true);
         }
 
         // Título da página;
@@ -29,6 +31,10 @@ export default function MeusCursos() {
 
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
+        return false;
+    }
+
+    if (!isLoaded) {
         return false;
     }
 

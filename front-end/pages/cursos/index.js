@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../../components/outros/banner';
 import SessaoCardsPequenos from '../../components/outros/sessaoCardsPequenos';
 import Styles from '../../styles/cursos.module.css';
-import { UsuarioContext } from '../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias';
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
+import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
 
 export default function Index({ cursos }) {
@@ -13,6 +14,7 @@ export default function Index({ cursos }) {
     // console.log(cursos);
 
     const [cursosCategorias, setCursosCategorias] = useState({});
+    const [qtdUsuarioCursos, setQtdUsuarioCursos] = useState(0);
     useEffect(() => {
         async function getCursosCategorias() {
             const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
@@ -35,16 +37,29 @@ export default function Index({ cursos }) {
             setCursosCategorias(obj);
         }
 
+        async function getQtdUsuarioCursos() {
+            const usuarioId = Auth?.getUsuarioLogado()?.usuarioId;
+            const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
+            const usuarioCursos = await Fetch.getApi(url, null);
+            setQtdUsuarioCursos(usuarioCursos.length);
+        }
+
         // Título da página;
         document.title = 'Anheu — Cursos';
 
+        // Cursos;
         getCursosCategorias();
+
+        // Qtd de cursos do usuário logado;
+        if (isAuth) {
+            getQtdUsuarioCursos();
+        }
     }, []);
 
     return (
         <section className={`flexColumn ${Styles.flexCenter}`}>
             {
-                isAuth && (
+                (isAuth && qtdUsuarioCursos > 0) && (
                     <Banner
                         titulo='Você já adquiriu algum curso?'
                         subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'

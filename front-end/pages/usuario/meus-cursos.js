@@ -17,7 +17,7 @@ export default function MeusCursos() {
         }
 
         // Título da página;
-        document.title = `Meus cursos — Anheu`;
+        document.title = 'Anheu — Meus cursos';
 
         // Meus cursos;
         if (usuarioId) {

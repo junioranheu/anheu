@@ -13,7 +13,7 @@ export default function Disciplina({ disciplina }) {
 
     useEffect(() => {
         // Título da página;
-        document.title = `${disciplina.nome} — Anheu`;
+        document.title = `Anheu — ${disciplina.nome}`;
     }, [disciplina]);
 
     return (

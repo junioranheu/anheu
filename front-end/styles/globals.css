@@ -96,7 +96,7 @@ a {
     position: relative;
     display: inline-block;
     margin-left: 8px;
-    color: var(--cor-principal);
+    color: var(--cor-principal) !important;
     font-family: 'NanumPenScript';
     font-size: 1.1em;
     line-height: 1;
@@ -515,9 +515,8 @@ code div button svg {
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {
-    .paddingPadrao {
-        padding-left: 3rem;
-        padding-right: 3rem;
+    .titulo {
+        font-size: 2rem;
     }
 }
 

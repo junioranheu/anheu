@@ -26,7 +26,7 @@ export default function Index() {
         }
 
         // Título da página;
-        document.title = `Disciplinas — Anheu`;
+        document.title = 'Anheu — Disciplinas';
 
         // Pegar informações do curso com base do id que está em cursoContext;
         if (cursoContext) {

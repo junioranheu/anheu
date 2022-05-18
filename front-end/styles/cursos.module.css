@@ -65,6 +65,11 @@
     padding-top: 20px;
     padding-bottom: 20px;
     transition: .4s ease-in-out;
+
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }
 
 .divCurso:hover {
@@ -100,13 +105,9 @@
 .divDescCurso {
     /* background-color: red; */
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5rem;
-}
-
-.divDescCurso span {
-    flex: 0 0 45%;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 45%;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
@@ -121,15 +122,10 @@
         /* background-color: blue; */
         flex: 0 0 40%;
     }
-    
-    .divDescCurso {
-        /* background-color: red; */
-        gap: 0.5rem;
-    }
 
-    .divDescCurso span {
-        /* background-color: red; */
-        flex: 0 0 90%;
+    .divDescCurso {
+        /* background-color: blue; */
+        max-width: 60%;
     }
 }
 
@@ -139,13 +135,26 @@
         /* background-color: blue; */
         flex: 0 0 100%;
     }
+
+    .divCurso {
+        /* background-color: pink; */
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        gap: 0.5rem;
+    }
+    
+    .divDescCurso {
+        /* background-color: red; */
+        max-width: 100%;
+    }
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {
     .input {
         font-size: 2rem;
-    }    
+    }
 }
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
@@ -167,7 +176,7 @@
 
     .input {
         font-size: 1.5rem;
-    }   
+    }
 }
 
 /* smartphones, Android phones, landscape iPhone */

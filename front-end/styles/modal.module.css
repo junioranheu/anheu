@@ -183,14 +183,23 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
 @media (max-width:1281px) {
     .modal {
         width: 50vw !important;
     }
 }
 
-@media (max-width:800px) {
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
     .modal {
         width: 80vw !important;
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .modal {
+        width: 95vw !important;
     }
 }

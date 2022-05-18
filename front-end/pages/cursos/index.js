@@ -36,7 +36,7 @@ export default function Index({ cursos }) {
         }
 
         // Título da página;
-        document.title = `Cursos — Anheu`;
+        document.title = 'Anheu — Cursos';
 
         getCursosCategorias();
     }, []);

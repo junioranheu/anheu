@@ -8,7 +8,7 @@ export default function Index() {
 
     useEffect(() => {
         // Título da página;
-        document.title = `Início — Anheu`;
+        document.title = 'Anheu — Início';
     }, []);
 
     return (

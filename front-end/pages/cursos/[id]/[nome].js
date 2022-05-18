@@ -15,7 +15,7 @@ export default function Curso({ cursos }) {
     const [filtroCurso, setFiltroCurso] = useState('');
     useEffect(() => {
         // Título da página;
-        document.title = cursos.length > 0 ? `${cursos[0]?.cursosCategorias.categoria} — Anheu` : 'Anheu';
+        document.title = cursos.length > 0 ? `Anheu — Cursos de ${cursos[0]?.cursosCategorias.categoria}` : 'Anheu';
     }, [cursos]);
 
     const [modalComprarCurso, setModalComprarCurso] = useState(false);

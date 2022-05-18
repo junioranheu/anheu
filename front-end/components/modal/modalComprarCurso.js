@@ -6,14 +6,12 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
     // console.log(cursoSelecionado);
 
     function fecharModalClicandoNoBotao() {
-        document.documentElement.style.setProperty('--overflow-y', 'auto');
         handleModal();
     }
 
     function fecharModalClicandoNoFundo(e) {
         // console.log(e.target);
         if (e.target.className.toString().includes('fundo')) {
-            document.documentElement.style.setProperty('--overflow-y', 'auto');
             handleModal();
         }
     }

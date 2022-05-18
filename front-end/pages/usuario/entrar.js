@@ -11,7 +11,7 @@ export default function Entrar() {
     const [isPrimeiroLoading, setIsPrimeiroLoading] = useState(true);
     useEffect(() => {
         // Título da página;
-        document.title = `Entrar — Anheu`;
+        document.title = 'Anheu — Entrar';
 
         // Criar variável para que o Router.push abaixo não bugue;
         // Se for o primeiro loading, permita o push acontecer, já que o usuário estaria entrando na tela por querer, mesmo estando logado;

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import React, { useContext, useRef, useState } from 'react';
+import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
@@ -11,7 +12,6 @@ import { Fetch } from '../../utils/outros/fetch';
 import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
 import PadronizarNomeCompletoUsuario from '../../utils/outros/padronizarNomeCompletoUsuario';
 import VerificarDadosCriarConta from '../../utils/outros/verificarDadosCriarConta';
-import VerificarEmailENomeUsuario from '../../utils/outros/verificarEmailENomeUsuario';
 import Facebook from '../svg/facebook.js';
 import Google from '../svg/google.js';
 
@@ -51,17 +51,8 @@ export default function SessaoEsquerda() {
         // Atribuir o nome formatado para a variavel nome, novamente;
         formData.nomeCompleto = PadronizarNomeCompletoUsuario(formData.nomeCompleto);
 
-        // Verificar se o processo deve continuar, caso e-mail e senha estejam disponíveis para uso;
-        const isNovoEmail = true;
-        const isNovoNomeUsuario = true;
-        let isContinuarDois = await VerificarEmailENomeUsuario(formData, refEmail, refNomeUsuario, refSenha, refConfirmarSenha, isNovoEmail, isNovoNomeUsuario);
-        if (!isContinuarDois) {
-            refBtnCriar.current.disabled = false;
-            return false;
-        }
-
         // Criar conta;
-        const urlCriarConta = CONSTANTS_USUARIOS.API_URL_POST_CRIAR;
+        const urlCriarConta = CONSTANTS_USUARIOS.API_URL_POST_CRIAR_CONTA_COM_VALIDACOES;
         const usuario_a_ser_criado = {
             nomeCompleto: formData.nomeCompleto,
             email: formData.email,
@@ -77,8 +68,13 @@ export default function SessaoEsquerda() {
 
         let resposta = await Fetch.postApi(urlCriarConta, usuario_a_ser_criado);
         if (!resposta) {
+            NProgress.done();
+            refEmail.current.select();
+            refSenha.current.value = '';
+            refConfirmarSenha.current.value = '';
+            formData.senha = '';
             refBtnCriar.current.disabled = false;
-            Aviso.error('Algo deu errado ao criar sua nova conta<br/>Consulte o F12!', 5000);
+            Aviso.error('Algo deu errado ao criar sua nova conta<br/><br/>Provavelmente outro usuário já está usando este e-mail e/ou nome de usuário!', 10000);
             return false;
         }
 

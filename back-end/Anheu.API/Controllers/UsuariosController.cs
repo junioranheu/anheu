@@ -104,19 +104,6 @@ namespace Anheu.API.Controllers
             }
         }
 
-        [HttpPost("criar")]
-        public async Task<ActionResult<int>> PostCriar(Usuario usuario)
-        {
-            var idUsuarioCriado = await _usuarios.PostCriar(usuario);
-
-            if (idUsuarioCriado < 1)
-            {
-                return NotFound();
-            }
-
-            return idUsuarioCriado;
-        }
-
         [HttpGet("isExistePorEmail")]
         public async Task<ActionResult<bool>> IsExistePorEmail(string email)
         {
@@ -129,6 +116,27 @@ namespace Anheu.API.Controllers
         {
             bool isExiste = await _usuarios.IsExistePorNomeUsuarioSistema(nomeUsuarioSistema);
             return isExiste;
+        }
+
+        [HttpPost("criarComValidacoes")]
+        public async Task<ActionResult<bool>> PostCriarComValidacoes(Usuario usuario)
+        {
+            bool isExistePorEmail = await _usuarios.IsExistePorEmail(usuario.Email);
+            bool isExistePorNomeUsuarioSistema = await _usuarios.IsExistePorNomeUsuarioSistema(usuario.NomeUsuarioSistema);
+
+            if (isExistePorEmail || isExistePorNomeUsuarioSistema)
+            {
+                return false;
+            }
+
+            var idUsuarioCriado = await _usuarios.PostCriar(usuario);
+
+            if (idUsuarioCriado < 1)
+            {
+                return NotFound();
+            }
+
+            return true;
         }
     }
 }

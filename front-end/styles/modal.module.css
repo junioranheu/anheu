@@ -115,6 +115,13 @@
     line-height: 36px;
 }
 
+.subTitulo {
+    color: rgba(34, 34, 34, 1);
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 26px;
+}
+
 .conteudo {
     color: rgb(34, 34, 34);
     font-weight: 100;

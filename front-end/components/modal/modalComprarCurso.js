@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Styles from '../../styles/modal.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
@@ -17,10 +17,16 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
         handleModal();
     }
 
+    const [animarDiv, setAnimarDiv] = useState('');
     function fecharModalClicandoNoFundo(e) {
         // console.log(e.target);
         if (e.target.className.toString().includes('fundo')) {
             // handleModal();
+            setAnimarDiv('animate__animated animate__shakeX');
+
+            setTimeout(function () {
+                setAnimarDiv('');
+            }, 1000);
         }
     }
 
@@ -53,22 +59,23 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
 
     return (
         <div className={Styles.fundo} onMouseDown={(e) => fecharModalClicandoNoFundo(e)}>
-            <div className={`${Styles.modal} ${Styles.modalGrande} animate__animated animate__fadeInUp animate__faster`}>
-                <div className={Styles.divCabecalho}>
-                    <BotaoFecharModal style={Styles} height='16px' width='16px' fecharModal={() => fecharModalClicandoNoBotao()} />
+            <div className={animarDiv}>
+                <div className={`${Styles.modal} ${Styles.modalGrande} animate__animated animate__fadeInUp animate__faster`}>
+                    <div className={Styles.divCabecalho}>
+                        <BotaoFecharModal style={Styles} height='16px' width='16px' fecharModal={() => fecharModalClicandoNoBotao()} />
 
-                    {/* <div className={Styles.cabecalhoTitulo}>
-                        <span>xxx</span>
-                    </div> */}
-                </div>
- 
-                <div className={Styles.divPrincipal}>
-                    <h2 className={Styles.titulo}>
-                        Finge que aqui tem um modal para comprar o curso <span className='cor-principal'>{cursoSelecionado.nome}</span> (id {cursoSelecionado.cursoId})
-                    </h2>
+                        {/* <div className={Styles.cabecalhoTitulo}>
+                            <span>xxx</span>
+                        </div> */}
+                    </div>
 
-                    <div className={Styles.conteudo}>
-                        {/* <ul className={Styles.itens}>
+                    <div className={Styles.divPrincipal}>
+                        <h2 className={Styles.titulo}>
+                            Finge que aqui tem um modal para comprar o curso <span className='cor-principal'>{cursoSelecionado.nome}</span> (id {cursoSelecionado.cursoId})
+                        </h2>
+
+                        <div className={Styles.conteudo}>
+                            {/* <ul className={Styles.itens}>
                             {
                                 Idiomas('idioma').map((item, i) => (
                                     <li className={Styles.itemLi} key={item.id} onClick={() => handleClick(item)}>
@@ -81,8 +88,9 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
                             }
                         </ul> */}
 
-                        <div className={Styles.botaoCustom} onClick={() => funcaoTemporariaComprarCurso(cursoSelecionado)} >
-                            <Botao texto={'Comprar curso'} url={''} isNovaAba={false} Svg='' refBtn={refBtnComprar} isEnabled={true} />
+                            <div className={Styles.botaoCustom} onClick={() => funcaoTemporariaComprarCurso(cursoSelecionado)} >
+                                <Botao texto={'Comprar curso'} url={''} isNovaAba={false} Svg='' refBtn={refBtnComprar} isEnabled={true} />
+                            </div>
                         </div>
                     </div>
                 </div>

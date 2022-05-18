@@ -1,6 +1,8 @@
 import Router from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import CursoRow from '../../components/cursos/cursoRow';
+import ModalSelecionarCurso from '../../components/modal/modalSelecionarCurso';
+import ModalWrapper from '../../components/modal/_modalWrapper';
 import Banner from '../../components/outros/banner';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
@@ -29,6 +31,12 @@ export default function MeusCursos() {
         }
     }, [usuarioId]);
 
+    const [isModalCursoOpen, setIsModalCursoOpen] = useState(false);
+    const [cursoSelecionado, setCursoSelecionado] = useState({});
+    function handleModalCurso() {
+        setIsModalCursoOpen(!isModalCursoOpen);
+    }
+
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;
@@ -40,11 +48,22 @@ export default function MeusCursos() {
 
     return (
         <Fragment>
+            {/* Modal */}
+            {
+                isModalCursoOpen && (
+                    <ModalWrapper isOpen={isModalCursoOpen} key={1}>
+                        <ModalSelecionarCurso handleModal={() => handleModalCurso()} cursoSelecionado={cursoSelecionado} />
+                    </ModalWrapper>
+                )
+            }
+
+            {/* Conteúdo */}
             {
                 meusCursos && meusCursos?.length > 0 ? (
                     <section className='flexColumn paddingPadrao margem50'>
-                        <div className='centralizarTexto'>
+                        <div className='centralizarTexto flexColumn'>
                             <span className='titulo'>Meus cursos</span>
+                            <span className='tituloDesc'>Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃</span>
                         </div>
 
                         <div className='margem30'>
@@ -54,7 +73,7 @@ export default function MeusCursos() {
                                         <CursoRow
                                             key={i}
                                             curso={c.cursos}
-                                            handleClick={null}
+                                            handleClick={() => { handleModalCurso(), setCursoSelecionado(c.cursos) }}
                                         />
                                     ))
                                 )

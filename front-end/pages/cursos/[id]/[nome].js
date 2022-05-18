@@ -18,18 +18,18 @@ export default function Curso({ cursos }) {
         document.title = cursos.length > 0 ? `Anheu — Cursos de ${cursos[0]?.cursosCategorias.categoria}` : 'Anheu';
     }, [cursos]);
 
-    const [modalComprarCurso, setModalComprarCurso] = useState(false);
+    const [isModalComprarCursoOpen, setIsModalComprarCursoOpen] = useState(false);
     const [cursoSelecionado, setCursoSelecionado] = useState({});
     function handleModalComprarCurso() {
-        setModalComprarCurso(!modalComprarCurso);
+        setIsModalComprarCursoOpen(!isModalComprarCursoOpen);
     }
 
     return (
         <Fragment>
             {/* Modal */}
             {
-                modalComprarCurso && (
-                    <ModalWrapper isOpen={modalComprarCurso} key={1}>
+                isModalComprarCursoOpen && (
+                    <ModalWrapper isOpen={isModalComprarCursoOpen} key={1}>
                         <ModalComprarCurso handleModal={() => handleModalComprarCurso()} cursoSelecionado={cursoSelecionado} />
                     </ModalWrapper>
                 )

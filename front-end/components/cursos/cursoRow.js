@@ -4,7 +4,7 @@ export default function CursoRow({ curso, handleClick }) {
     // console.log(curso);
 
     return (
-        <div className={`${Styles.divCurso} margem5`} onClick={() => handleClick(curso)}>
+        <div className={`${Styles.divCurso} margem5`} onClick={() => (handleClick ? handleClick(curso) : null)}>
             <div className={Styles.divDescCurso}>
                 <span className={Styles.topico}>{curso.nome} <span className='efeito-new texto'>Professor {curso.professor}</span></span>
                 <span className='texto'>{curso.resumoCurso}</span>

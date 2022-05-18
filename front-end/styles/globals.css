@@ -201,6 +201,17 @@ code div button svg {
     flex-direction: column;
 }
 
+.flexCenter {
+    /* background-color: pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centralizarTexto {
+    text-align: center;
+}
+
 /* Títulos e textos */
 .titulo {
     color: var(--branco);
@@ -235,10 +246,6 @@ code div button svg {
     line-height: 1.2;
     letter-spacing: -.036em;
     cursor: pointer;
-}
-
-.centralizarTexto {
-    text-align: center;
 }
 
 .efeitoTexto {

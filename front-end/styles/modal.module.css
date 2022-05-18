@@ -188,6 +188,13 @@
     width: fit-content;
 }
 
+.botaoCustom button:disabled, .botaoCustom button[disabled] {
+    background-color: var(--cor-principal-escura) !important;
+    color: var(--branco) !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Styles from '../../styles/modal.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
@@ -11,6 +11,7 @@ import BotaoFecharModal from '../svg/botaoFecharModal';
 export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
     // console.log(cursoSelecionado);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const refBtnComprar = useRef();
 
     function fecharModalClicandoNoBotao() {
         handleModal();
@@ -43,6 +44,7 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
         let resposta = await Fetch.postApi(url, data, token);
         if (!resposta) {
             Aviso.error('Algo deu errado ao finalizar a compra<br/><br/>Verifique se você já adquiriu este curso, e, caso necessário, informe ao administrador!', 10000);
+            refBtnComprar.current.disabled = true;
             return false;
         }
 
@@ -59,7 +61,7 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
                         <span>xxx</span>
                     </div> */}
                 </div>
-
+ 
                 <div className={Styles.divPrincipal}>
                     <h2 className={Styles.titulo}>
                         Finge que aqui tem um modal para comprar o curso <span className='cor-principal'>{cursoSelecionado.nome}</span> (id {cursoSelecionado.cursoId})
@@ -80,7 +82,7 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
                         </ul> */}
 
                         <div className={Styles.botaoCustom} onClick={() => funcaoTemporariaComprarCurso(cursoSelecionado)} >
-                            <Botao texto={'Comprar curso'} url={''} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                            <Botao texto={'Comprar curso'} url={''} isNovaAba={false} Svg='' refBtn={refBtnComprar} isEnabled={true} />
                         </div>
                     </div>
                 </div>

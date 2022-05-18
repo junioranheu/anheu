@@ -181,6 +181,6 @@
 @media (max-width:739px) {
     .navbar {
         /* background-color: red; */
-        height: 160px;
+        height: fit-content;
     }
 }

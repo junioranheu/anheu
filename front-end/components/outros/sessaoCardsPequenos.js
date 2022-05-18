@@ -12,7 +12,7 @@ export default function SessaoCardsPequenos({ lista, rota }) {
     return (
         <section className={Styles.sessaoCardsPequenos}>
             {
-                lista.map((l, i) => (
+                lista?.map((l, i) => (
                     <div
                         key={l.id}
                         className={Styles.divSessaoCardsPequenos}

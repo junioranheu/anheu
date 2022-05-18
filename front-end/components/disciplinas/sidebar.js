@@ -22,7 +22,7 @@ export default function Sidebar() {
     return (
         <section className={Styles.sessaoNavbar}>
             {/* <b style={{ color: 'white' }}>Oi né<span className='efeito-new'>teste</span></b> */}
-            {itens.map((item, i) => (
+            {itens?.map((item, i) => (
                 <Link key={i} href={item.url}>
                     <a className={`opacidade-hover ${(urlAtual === item.url ? 'opacidade' : '')}`}>{item.item}</a>
                 </Link>

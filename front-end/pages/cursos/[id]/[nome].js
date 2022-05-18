@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import CursoRow from '../../../components/cursos/cursoRow';
 import Banner from '../../../components/outros/banner';
 import Styles from '../../../styles/cursos.module.css';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
@@ -20,7 +21,7 @@ export default function Curso({ cursos }) {
             {
                 cursos.length > 0 ? (
                     <section className='flexColumn paddingPadrao margem50'>
-                        <div style={{textAlign: 'center'}}>
+                        <div className='centralizarTexto'>
                             <span className='titulo'>Cursos de <span className='grifar'>{cursos[0]?.cursosCategorias.categoria}</span></span>
                         </div>
 
@@ -30,15 +31,8 @@ export default function Curso({ cursos }) {
 
                         <div className='margem30'>
                             {
-                                cursos.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso)).map((c, i) => (
-                                    <div key={i} className={`${Styles.divCurso} margem5`}>
-                                        <span className={Styles.topico}>{c.nome}</span>
-
-                                        <div className={`${Styles.divDescCurso} margem10`}>
-                                            <span className='texto'>{c.resumoCurso}</span>
-                                            <span className='texto'>R$ {c.preco}</span>
-                                        </div>
-                                    </div>
+                                cursos?.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso)).map((c, i) => (
+                                    <CursoRow key={i} nome={c.nome} resumo={c.resumoCurso} preco={c.preco} />
                                 ))
                             }
                         </div>
@@ -68,7 +62,7 @@ export async function getStaticPaths() {
     const cursos = await Fetch.getApi(url, null);
 
     // Gerar o "paths";
-    const paths = cursos.map(c => ({
+    const paths = cursos?.map(c => ({
         params: {
             id: c.cursoCategoriaId.toString(),
             nome: AjustarUrl(c.categoria)

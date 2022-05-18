@@ -23,31 +23,33 @@ export default function Disciplina({ disciplina }) {
             </div>
 
             <div className='margem30'>
-                {disciplina.aulas.filter(x => x.isAtivo === 1).map((d, i) => (
-                    <div key={i} className={`${Styles.divAula} margem5`}>
-                        <span className={Styles.topico}>
-                            <Link href={`/disciplinas/${d.disciplinaId}`}>
-                                <a className='cor-principal-hover'>{d.nome}</a>
-                            </Link>
-                        </span>
+                {
+                    disciplina?.aulas?.filter(x => x.isAtivo === 1).map((d, i) => (
+                        <div key={i} className={`${Styles.divAula} margem5`}>
+                            <span className={Styles.topico}>
+                                <Link href={`/disciplinas/${d.disciplinaId}`}>
+                                    <a className='cor-principal-hover'>{d.nome}</a>
+                                </Link>
+                            </span>
 
-                        <div className={`${Styles.flexMeio} margem10`}>
-                            <div>
-                                <Image
-                                    className={Styles.thumb}
-                                    src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
-                                    width={500} 
-                                    height={500}
-                                    alt=''
-                                />
-                            </div>
+                            <div className={`${Styles.flexMeio} margem10`}>
+                                <div>
+                                    <Image
+                                        className={Styles.thumb}
+                                        src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
+                                        width={500}
+                                        height={500}
+                                        alt=''
+                                    />
+                                </div>
 
-                            <div>
-                                <span className={`${Styles.textoHoverDivAula} texto`}>{d.resumoAula}</span>
+                                <div>
+                                    <span className={`${Styles.textoHoverDivAula} texto`}>{d.resumoAula}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
 
             {/* Espaço a mais */}
@@ -62,11 +64,11 @@ export async function getStaticPaths() {
     // Todas as disciplinas;
     const url = CONSTANTS_DISCIPLINAS.API_URL_GET_TODOS;
     const disciplinas = await Fetch.getApi(url, null);
-    
+
     // console.log(disciplinas);
 
     // Gerar o "paths";
-    const paths = disciplinas.map(d => ({
+    const paths = disciplinas?.map(d => ({
         params: {
             id: d.disciplinaId.toString(),
             nome: AjustarUrl(d.nome)

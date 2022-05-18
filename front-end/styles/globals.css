@@ -237,6 +237,10 @@ code div button svg {
     cursor: pointer;
 }
 
+.centralizarTexto {
+    text-align: center;
+}
+
 .efeitoTexto {
     padding: 0.3em;
     margin-left: 0.1em;
@@ -485,6 +489,10 @@ code div button svg {
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {
+    .titulo {
+        font-size: 3rem;
+    }
+
     .topico {
         cursor: auto;
     }
@@ -495,6 +503,7 @@ code div button svg {
 
     .secaoPrincipal aside {
         /* background-color: pink; */
+        min-height: 40px;
         height: fit-content;
     }
 
@@ -507,8 +516,8 @@ code div button svg {
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {
     .paddingPadrao {
-        padding-left: 0.3rem;
-        padding-right: 0.3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
     }
 }
 

@@ -1,0 +1,196 @@
+.fundo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(72, 72, 72, 0.6);
+    z-index: 9999;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    z-index: 999;
+
+    width: 40vw;
+    max-height: 90%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modalGrande {
+    width: 60vw !important;
+}
+
+.modalPequeno {
+    width: 30vw !important;
+}
+
+.modal::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.divCabecalho {
+    border-bottom: 1px solid rgb(235, 235, 235);
+    height: 65px;
+    max-height: 65px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecalhoTitulo {
+    /* color: pink; */
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.botaoFechar {
+    appearance: none;
+    display: inline-block;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    margin: 0px;
+    cursor: pointer;
+    touch-action: manipulation;
+    padding: 0px;
+    background: transparent;
+    color: rgb(34, 34, 34);
+    transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
+
+    position: absolute;
+    top: 25px;
+    right: 50px;
+}
+
+.botaoFechar::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.botaoFechar:hover .spanBotaoFechar {
+    color: #000;
+    z-index: 1;
+    position: relative;
+}
+
+.botaoFechar:hover::before {
+    background: #F7F7F7;
+}
+
+.divPrincipal {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+
+.titulo {
+    color: rgb(34, 34, 34);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+.conteudo {
+    color: rgb(34, 34, 34);
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: pre-wrap;
+}
+
+.link {
+    font-size: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    line-height: inherit;
+    color: rgb(34, 34, 34);
+    text-decoration: underline;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: inherit;
+    outline: none;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Modal que tem itens =-=-=-=-=-=-=-=-=-=-=-=- */
+.itens {
+    list-style: none;
+    padding: 0px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemLi {
+    display: inline-block;
+    padding: 8px;
+    flex: 1 0 21%;
+}
+
+.itemA {
+    outline: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    margin: 0px;
+    text-align: inherit;
+    text-decoration: none;
+    user-select: auto;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 8px;
+    color: rgb(34, 34, 34);
+    display: block;
+    padding: 9px 12px;
+    width: 100%;
+}
+
+.itemASelecionado {
+    border: 1px solid currentcolor;
+}
+
+.itemA:hover {
+    background-color: rgb(247, 247, 247);
+}
+
+.itemA div:nth-child(2) {
+    color: rgb(113, 113, 113);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+@media (max-width:1281px) {
+    .modal {
+        width: 50vw !important;
+    }
+}
+
+@media (max-width:800px) {
+    .modal {
+        width: 80vw !important;
+    }
+}

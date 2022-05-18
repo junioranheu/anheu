@@ -35,7 +35,11 @@ export default function MeusCursos() {
                 {
                     meusCursos?.length > 0 && (
                         meusCursos?.filter(x => x.isAtivo === 1).map((c, i) => (
-                            <CursoRow key={i} nome={c.cursos.nome} resumo={c.cursos.resumoCurso} preco={c.cursos.preco} />
+                            <CursoRow
+                                key={i}
+                                curso={c.cursos}
+                                handleClick={null}
+                            />
                         ))
                     )
                 }

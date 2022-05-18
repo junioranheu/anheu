@@ -34,9 +34,14 @@ export default function App({ Component, pageProps, ...appProps }) {
         (
             <UsuarioProvider>
                 <CursoProvider>
+                    {/* Toaster de aviso */}
                     <ToastContainer className='semHighlight' />
 
+                    {/* Conteúdo */}
                     {verificarLayout()}
+
+                    {/* Elemento para os modais */}
+                    <div id='modalWrapper'></div>
                 </CursoProvider>
             </UsuarioProvider>
         ) :

@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import CursoRow from '../../../components/cursos/cursoRow';
+import ModalComprarCurso from '../../../components/modal/modalComprarCurso';
+import ModalWrapper from '../../../components/modal/_modalWrapper';
 import Banner from '../../../components/outros/banner';
 import Styles from '../../../styles/cursos.module.css';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
@@ -16,8 +18,24 @@ export default function Curso({ cursos }) {
         document.title = cursos.length > 0 ? `${cursos[0]?.cursosCategorias.categoria} — Anheu` : 'Anheu';
     }, [cursos]);
 
+    const [modalComprarCurso, setModalComprarCurso] = useState(false);
+    const [cursoSelecionado, setCursoSelecionado] = useState({});
+    function handleModalComprarCurso() {
+        setModalComprarCurso(!modalComprarCurso);
+    }
+
     return (
         <Fragment>
+            {/* Modal */}
+            {
+                modalComprarCurso && (
+                    <ModalWrapper isOpen={modalComprarCurso} key={1}>
+                        <ModalComprarCurso handleModal={() => handleModalComprarCurso()} cursoSelecionado={cursoSelecionado} />
+                    </ModalWrapper>
+                )
+            }
+
+            {/* Conteúdo */}
             {
                 cursos.length > 0 ? (
                     <section className='flexColumn paddingPadrao margem50'>
@@ -32,7 +50,11 @@ export default function Curso({ cursos }) {
                         <div className='margem30'>
                             {
                                 cursos?.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso)).map((c, i) => (
-                                    <CursoRow key={i} nome={c.nome} resumo={c.resumoCurso} preco={c.preco} />
+                                    <CursoRow
+                                        key={i}
+                                        curso={c}
+                                        handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}
+                                    />
                                 ))
                             }
                         </div>

@@ -1,0 +1,3 @@
+--
+melhorar responsividade em notebooks
+verificar a questao do Context de curso, mudar o nome do Context concatenando o ID do usuário logado

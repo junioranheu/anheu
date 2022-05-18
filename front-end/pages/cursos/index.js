@@ -59,7 +59,7 @@ export default function Index({ cursos }) {
     return (
         <section className={`flexColumn ${Styles.flexCenter}`}>
             {
-                (isAuth && qtdUsuarioCursos > 0) && (
+                isAuth && qtdUsuarioCursos > 0 && (
                     <Banner
                         titulo='Você já adquiriu algum curso?'
                         subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'

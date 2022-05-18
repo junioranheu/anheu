@@ -4,8 +4,9 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import Banner from '../../components/outros/banner';
 import Styles from '../../styles/disciplinas.module.css';
 import { CursoContext } from '../../utils/context/cursoContext';
-import { UsuarioContext } from '../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../utils/data/constCursos';
+import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
 import { Fetch } from '../../utils/outros/fetch';
 
@@ -16,6 +17,7 @@ export default function Index() {
     const [cursoData, setCursoData] = useState({});
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [qtdUsuarioCursos, setQtdUsuarioCursos] = useState(0);
     useEffect(() => {
         async function getCurso() {
             const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/${cursoContext}`;
@@ -23,6 +25,13 @@ export default function Index() {
 
             setCursoData(curso);
             setIsLoaded(true);
+        }
+
+        async function getQtdUsuarioCursos() {
+            const usuarioId = Auth?.getUsuarioLogado()?.usuarioId;
+            const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
+            const usuarioCursos = await Fetch.getApi(url, null);
+            setQtdUsuarioCursos(usuarioCursos.length);
         }
 
         // Título da página;
@@ -33,6 +42,11 @@ export default function Index() {
             getCurso();
         } else {
             setIsLoaded(true);
+        }
+
+        // Qtd de cursos do usuário logado;
+        if (isAuth) {
+            getQtdUsuarioCursos();
         }
     }, [cursoContext]);
 
@@ -90,13 +104,23 @@ export default function Index() {
                         <div className='espacoBottom'></div>
                     </section>
                 ) : (
-                    <Banner
-                        titulo='Você já adquiriu algum curso?'
-                        subtitulo='Parece que você não selecionou nenhum curso ainda.<br/>Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
-                        textoBotao='Visualizar e gerenciar meus cursos'
-                        url='/usuario/meus-cursos'
-                        isForcarFullscreen={true}
-                    />
+                    qtdUsuarioCursos > 0 ? (
+                        <Banner
+                            titulo='Você já adquiriu algum curso?'
+                            subtitulo='Parece que você não selecionou nenhum curso ainda.<br/>Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
+                            textoBotao='Visualizar e gerenciar meus cursos'
+                            url='/usuario/meus-cursos'
+                            isForcarFullscreen={true}
+                        />
+                    ) : (
+                        <Banner
+                            titulo='Parece que você ainda não não adquiriu nenhum curso'
+                            subtitulo='Visualize os cursos disponíveis aqui no Anheu e adquira um agora mesmo! 🙃'
+                            textoBotao='Visualizar cursos'
+                            url='/cursos'
+                            isForcarFullscreen={true}
+                        />
+                    )
                 )
             }
         </Fragment>

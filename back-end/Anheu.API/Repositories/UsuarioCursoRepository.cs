@@ -88,5 +88,12 @@ namespace Anheu.API.Repositories
 
             return itens;
         }
+
+        public async Task<bool> VerificarUsuarioJaTemCurso(int usuarioId, int cursoId)
+        {
+            var isJaTem = await _context.UsuariosCursos.AnyAsync(u => u.UsuarioId == usuarioId && u.CursoId == cursoId);
+
+            return isJaTem;
+        }
     }
 }

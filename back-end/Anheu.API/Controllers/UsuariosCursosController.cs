@@ -49,12 +49,21 @@ namespace Spotify.Controllers
 
         [HttpPost("criar")]
         [Authorize]
-        public async Task<ActionResult<bool>> PostCriar(UsuarioCurso u, int usuarioId)
+        public async Task<ActionResult<bool>> PostCriar(UsuarioCurso u)
         {
-            var isMesmoUsuario = await IsUsuarioSolicitadoMesmoDoToken(usuarioId);
+            var isMesmoUsuario = await IsUsuarioSolicitadoMesmoDoToken(u.UsuarioId);
 
             if (isMesmoUsuario)
             {
+                // Verificar se o usuário já tem esse curso em questão;
+                bool isJaTem = await _usuarioCursoRepository.VerificarUsuarioJaTemCurso(u.UsuarioId, u.CursoId);
+
+                if (isJaTem)
+                {
+                    return Ok(false);
+                }
+
+                // Criar registro;
                 var isOk = await _usuarioCursoRepository.PostCriar(u);
 
                 if (isOk < 1)

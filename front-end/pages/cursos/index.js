@@ -43,15 +43,17 @@ export default function Index({ cursos }) {
 
     return (
         <section className={`flexColumn ${Styles.flexCenter}`}>
-            {isAuth && (
-                <Banner
-                    titulo='Você já adquiriu algum curso?'
-                    subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
-                    textoBotao='Visualizar e gerenciar meus cursos'
-                    url='/usuario/meus-cursos'
-                    isForcarFullscreen={false}
-                />
-            )}
+            {
+                isAuth && (
+                    <Banner
+                        titulo='Você já adquiriu algum curso?'
+                        subtitulo='Gerencie seus cursos para assistir às outras aulas, sem perder seu progresso 🙃'
+                        textoBotao='Visualizar e gerenciar meus cursos'
+                        url='/usuario/meus-cursos'
+                        isForcarFullscreen={false}
+                    />
+                )
+            }
 
             <div className={`margem50 ${Styles.centralizar}`}>
                 <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>

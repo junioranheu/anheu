@@ -5,7 +5,7 @@
     bottom: 0;
     left: 0;
     background: rgba(72, 72, 72, 0.6);
-    z-index: 9999;
+    z-index: 999;
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
@@ -180,6 +180,12 @@
 
 .itemA div:nth-child(2) {
     color: rgb(113, 113, 113);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Botão =-=-=-=-=-=-=-=-=-=-=-=- */
+.botaoCustom {
+    /* background-color: pink; */
+    width: fit-content;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

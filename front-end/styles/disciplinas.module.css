@@ -2,6 +2,7 @@
 .divTags {
     /* background-color: pink; */
     margin-top: 10px;
+    width: fit-content;
 
     display: flex;
     align-items: center;

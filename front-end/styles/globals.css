@@ -76,6 +76,10 @@ a {
     transition: .2s ease-in-out;
 }
 
+.cor-branco {
+    color: var(--branco) !important;
+}
+
 .opacidade {
     opacity: 1 !important;
 }
@@ -217,7 +221,6 @@ code div button svg {
     color: var(--branco);
     font-size: 4rem;
     font-weight: 600;
-
     line-height: 70px;
 }
 
@@ -498,6 +501,7 @@ code div button svg {
 @media (max-width:801px) {
     .titulo {
         font-size: 3rem;
+        line-height: 70px;
     }
 
     .topico {

@@ -74,6 +74,7 @@ export default function MeusCursos() {
                                             key={i}
                                             curso={c.cursos}
                                             handleClick={() => { handleModalCurso(), setCursoSelecionado(c.cursos) }}
+                                            isMostrarPreco={false}
                                         />
                                     ))
                                 )

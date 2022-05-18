@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Styles from '../../styles/modal.module.css';
+import { CursoContext, CursoStorage } from '../../utils/context/cursoContext';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
 import Botao from '../outros/botao';
 import BotaoFecharModal from '../svg/botaoFecharModal';
@@ -8,6 +9,7 @@ import BotaoFecharModal from '../svg/botaoFecharModal';
 export default function ModalSelecionarCurso({ handleModal, cursoSelecionado }) {
     // console.log(cursoSelecionado);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const [cursoContext, setCursoContext] = useContext(CursoContext); // Contexto do curso selecionado;
     const refBtnComprar = useRef();
 
     function fecharModalClicandoNoBotao() {
@@ -33,13 +35,17 @@ export default function ModalSelecionarCurso({ handleModal, cursoSelecionado }) 
             return false;
         }
 
-        alert('aea');
+        CursoStorage.setCurso(cursoSelecionado.cursoId);
+        setCursoContext(cursoSelecionado.cursoId);
+        Aviso.success(`O curso "${cursoSelecionado.nome}" foi definido como o atual`, 5000);
+
+        handleModal();
     }
 
     return (
         <div className={Styles.fundo} onMouseDown={(e) => fecharModalClicandoNoFundo(e)}>
             <div className={animarDiv}>
-                <div className={`${Styles.modal} ${Styles.modalGrande} animate__animated animate__fadeInUp animate__faster`}>
+                <div className={`${Styles.modal} animate__animated animate__fadeInUp animate__faster`}>
                     <div className={Styles.divCabecalho}>
                         <BotaoFecharModal style={Styles} height='16px' width='16px' fecharModal={() => fecharModalClicandoNoBotao()} />
                     </div>

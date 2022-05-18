@@ -15,14 +15,14 @@ export default function Index() {
     const [cursoContext] = useContext(CursoContext); // Contexto do curso selecionado;
     const [cursoData, setCursoData] = useState({});
 
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         async function getCurso() {
-            console.log(cursoContext);
-
-            const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/1`;
+            const url = `${CONSTANTS_CURSOS.API_URL_GET_POR_ID}/${cursoContext}`;
             const curso = await Fetch.getApi(url, null);
 
             setCursoData(curso);
+            setIsLoaded(true);
         }
 
         // Título da página;
@@ -31,6 +31,8 @@ export default function Index() {
         // Pegar informações do curso com base do id que está em cursoContext;
         if (cursoContext) {
             getCurso();
+        } else {
+            setIsLoaded(true);
         }
     }, [cursoContext]);
 
@@ -47,7 +49,11 @@ export default function Index() {
     }
 
     if (!isAuth) {
-        Router.push({ pathname: '/404', query: { msg: 'sem-acesso' }});
+        Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
+        return false;
+    }
+
+    if (!isLoaded) {
         return false;
     }
 
@@ -55,7 +61,7 @@ export default function Index() {
         <Fragment>
             {
                 cursoContext && cursoData?.cursosDisciplinas?.length > 0 ? (
-                    <section className='flexColumn'>
+                    <section className='flexColumn paddingPadrao margem50'>
                         <div>
                             <span className='titulo'>Disciplinas do curso <span className='grifar'>{cursoData?.nome}</span></span>
                         </div>
@@ -70,7 +76,10 @@ export default function Index() {
                                     </span>
 
                                     <span className='tituloDesc'>{d.disciplinas.subtitulo}</span>
-                                    <div onClick={() => Router.push(`/disciplinas/${d.disciplinas.disciplinaId}/${AjustarUrl(d.disciplinas.nome)}`)}>
+                                    <div
+                                        style={{ width: 'fit-content' }}
+                                        onClick={() => Router.push(`/disciplinas/${d.disciplinas.disciplinaId}/${AjustarUrl(d.disciplinas.nome)}`)}
+                                    >
                                         {exibirTags(d.disciplinas.disciplinaTags)}
                                     </div>
                                 </div>

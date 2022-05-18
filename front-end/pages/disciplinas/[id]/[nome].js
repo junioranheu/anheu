@@ -17,7 +17,7 @@ export default function Disciplina({ disciplina }) {
     }, [disciplina]);
 
     return (
-        <section className='flexColumn'>
+        <section className='flexColumn paddingPadrao margem50'>
             <div className='flexColumn'>
                 <span className='titulo'>Bem-vindo às aulas de <span className='grifar'>{disciplina.nome}</span></span>
             </div>

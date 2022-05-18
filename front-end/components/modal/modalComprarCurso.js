@@ -60,7 +60,7 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
     return (
         <div className={Styles.fundo} onMouseDown={(e) => fecharModalClicandoNoFundo(e)}>
             <div className={animarDiv}>
-                <div className={`${Styles.modal} ${Styles.modalGrande} animate__animated animate__fadeInUp animate__faster`}>
+                <div className={`${Styles.modal} animate__animated animate__fadeInUp animate__faster`}>
                     <div className={Styles.divCabecalho}>
                         <BotaoFecharModal style={Styles} height='16px' width='16px' fecharModal={() => fecharModalClicandoNoBotao()} />
 
@@ -88,13 +88,15 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
                             }
                         </ul> */}
 
-                            <div className={Styles.botaoCustom} onClick={() => funcaoTemporariaComprarCurso(cursoSelecionado)} >
-                                <Botao texto={'Comprar curso'} url={''} isNovaAba={false} Svg='' refBtn={refBtnComprar} isEnabled={true} />
+                            <div className={`${Styles.conteudo} flexCenter margem40`}>
+                                <div className={Styles.botaoCustom} onClick={() => funcaoTemporariaComprarCurso(cursoSelecionado)} >
+                                    <Botao texto={'Comprar curso'} url={''} isNovaAba={false} Svg='' refBtn={refBtnComprar} isEnabled={true} />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

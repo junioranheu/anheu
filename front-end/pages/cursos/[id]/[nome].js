@@ -54,6 +54,7 @@ export default function Curso({ cursos }) {
                                         key={i}
                                         curso={c}
                                         handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}
+                                        isMostrarPreco={true}
                                     />
                                 ))
                             }

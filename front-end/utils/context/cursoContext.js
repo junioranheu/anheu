@@ -19,13 +19,13 @@ export const CursoProvider = props => {
     }
 }
 
-export const Storage = {
-    setCursoLogado(cursoId) {
+export const CursoStorage = {
+    setCurso(cursoId) {
         // console.log(cursoId);
         localStorage.setItem('cursoSelecionado', cursoId);
     },
 
-    getCursoLogado() {
+    getCurso() {
         let data = localStorage.getItem('cursoSelecionado');
         // console.log(dataJson);
 
@@ -36,11 +36,11 @@ export const Storage = {
         return data;
     },
 
-    deleteCursoLogado() {
+    deleteCurso() {
         localStorage.removeItem('cursoSelecionado');
     },
 
-    updateCursoLogado(cursoId) {
+    updateCurso(cursoId) {
         // console.log(data);
         localStorage.setItem('cursoSelecionado', cursoId);
     }

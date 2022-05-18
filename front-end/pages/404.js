@@ -1,12 +1,37 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import Botao from '../components/outros/botao';
 import Styles from '../styles/404.module.css';
 
 export default function Erro() {
+    const router = useRouter();
+
+    const [msg, setMsg] = useState(null);
+    useEffect(() => {
+        function verificarMsg(msg) {
+            // console.log(msg);
+            let msgFinal = '';
+
+            if (msg === 'sem-acesso') {
+                msgFinal = 'Você não está autenticado para executar a ação requisitada';
+            } else if (msg === 'autenticado') {
+                msgFinal = 'Você já está autenticado, portanto não pode mais executar a ação requisitada';
+            }
+
+            setMsg(msgFinal);
+        }
+
+        if (router.query.msg) {
+            verificarMsg(router.query.msg);
+        } else {
+            setMsg('Tente novamente mais tarde');
+        }
+    }, [router]);
+
     return (
-        <section className={Styles.wrapper}>
+        <section className={`${Styles.wrapper} paddingPadrao`}>
             <span className='titulo'>Opa...</span>
-            <span className='tituloDesc margem10'>Parece que algo deu errado.<br />Você tem certeza que tinha acesso à ação requisitada?</span>
+            <span className='tituloDesc margem10'>Parece que algo deu errado<br />{msg}</span>
 
             <div className='margem50'>
                 <Botao texto='Voltar ao início' url={'/'} isNovaAba={false} Svg={null} refBtn={null} isEnabled={true} />

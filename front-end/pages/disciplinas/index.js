@@ -47,7 +47,7 @@ export default function Index() {
     }
 
     if (!isAuth) {
-        Router.push('/404');
+        Router.push({ pathname: '/404', query: { msg: 'sem-acesso' }});
         return false;
     }
 

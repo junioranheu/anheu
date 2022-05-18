@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
@@ -24,10 +24,6 @@ export default function SessaoEsquerda() {
     const refSenha = useRef();
     const refConfirmarSenha = useRef();
     const refBtnCriar = useRef();
-
-    useEffect(() => {
-        document.title = 'Criar conta - Anheu';
-    }, []);
 
     // Ao alterar os valores dos inputs, insira os valores nas variaveis do formData;
     const [formData, setFormData] = useState(null);

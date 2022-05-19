@@ -22,16 +22,14 @@ export default function Index() {
         async function getCursoDefinidoAtual() {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
             const cursoDefinido = await Fetch.getApi(url, null);
-            // console.log(cursoDefinido);
-
             setCursoDefinidoAtual(cursoDefinido);
-            setIsLoaded(true);
         }
 
         async function getQtdUsuarioCursos() {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
             const usuarioCursos = await Fetch.getApi(url, null);
             setQtdUsuarioCursos(usuarioCursos.length);
+            setIsLoaded(true);
         }
 
         // Verificar qual é o curso definido como atual pelo usuário;
@@ -40,6 +38,8 @@ export default function Index() {
         // Qtd de cursos do usuário logado;
         if (isAuth) {
             getQtdUsuarioCursos();
+        } else {
+            setIsLoaded(true);
         }
     }, [cursoDefinidoAtual?.cursoId]);
 

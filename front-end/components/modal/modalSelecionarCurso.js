@@ -50,7 +50,7 @@ export default function ModalSelecionarCurso({ handleModal, cursoSelecionado, ge
             return false;
         }
 
-        Aviso.success(`O curso "${cursoSelecionado.nome}" foi definido como o atual`, 5000);
+        Aviso.success(`O curso <b class="cor-principal">${cursoSelecionado.nome}</b> foi definido como o atual`, 5000);
         getCursoDefinidoAtual(); // Atualizar o curso definido em meus-cursos.js;
         handleModal();
         NProgress.done();

@@ -1,3 +1,2 @@
 --
-melhorar questao do console.log() que esta dando erro quando o usuário n tem nenhum curso selecionado
 melhorar responsividade em notebooks

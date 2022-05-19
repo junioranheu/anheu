@@ -173,9 +173,9 @@ namespace Anheu.API.Data
 
             if (!context.UsuariosCursos.Any())
             {
-                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 1, UsuarioId = 1, CursoId = 4, IsAtivo = 1, DataRegistro = dataAgora });
-                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 2, UsuarioId = 2, CursoId = 2, IsAtivo = 1, DataRegistro = dataAgora });
-                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 3, UsuarioId = 2, CursoId = 3, IsAtivo = 1, DataRegistro = dataAgora });
+                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 1, UsuarioId = 1, CursoId = 4, IsDefinidoComoAtual = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 2, UsuarioId = 2, CursoId = 2, IsDefinidoComoAtual = 0, IsAtivo = 1, DataRegistro = dataAgora });
+                context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 3, UsuarioId = 2, CursoId = 3, IsDefinidoComoAtual = 1, IsAtivo = 1, DataRegistro = dataAgora });
             }
             #endregion
 

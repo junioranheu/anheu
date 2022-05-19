@@ -79,9 +79,9 @@ namespace Spotify.Controllers
 
         [HttpPost("atualizar")]
         [Authorize]
-        public async Task<ActionResult<bool>> PostAtualizar(UsuarioCurso u, int usuarioId)
+        public async Task<ActionResult<bool>> PostAtualizar(UsuarioCurso u)
         {
-            var isMesmoUsuario = await IsUsuarioSolicitadoMesmoDoToken(usuarioId);
+            var isMesmoUsuario = await IsUsuarioSolicitadoMesmoDoToken(u.UsuarioId);
 
             if (isMesmoUsuario)
             {
@@ -130,6 +130,40 @@ namespace Spotify.Controllers
             }
 
             return Ok(porUsuarioId);
+        }
+
+        [HttpGet("getCursoDefinidoAtualPorUsuarioId/{usuarioId}")]
+        public async Task<ActionResult<List<Curso>>> GetCursoDefinidoAtualPorUsuarioId(int usuarioId)
+        {
+            var item = await _usuarioCursoRepository.GetCursoDefinidoAtualPorUsuarioId(usuarioId);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(item);
+        }
+
+        [HttpPost("postDefinirCursoComoAtual")]
+        [Authorize]
+        public async Task<ActionResult<bool>> PostDefinirCursoComoAtual(int usuarioId, int cursoId)
+        {
+            var isMesmoUsuario = await IsUsuarioSolicitadoMesmoDoToken(usuarioId);
+
+            if (isMesmoUsuario)
+            {
+                var isOk = await _usuarioCursoRepository.PostDefinirCursoComoAtual(usuarioId, cursoId);
+
+                if (!isOk)
+                {
+                    return NotFound();
+                }
+
+                return Ok(true);
+            }
+
+            return Unauthorized();
         }
     }
 }

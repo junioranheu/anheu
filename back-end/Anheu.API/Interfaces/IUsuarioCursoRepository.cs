@@ -11,5 +11,7 @@ namespace Anheu.API.Interfaces
         Task<int> PostDeletar(int id);
         Task<List<UsuarioCurso>> GetPorUsuarioId(int usuarioId);
         Task<bool> VerificarUsuarioJaTemCurso(int usuarioId, int cursoId);
+        Task<Curso> GetCursoDefinidoAtualPorUsuarioId(int usuarioId);
+        Task<bool> PostDefinirCursoComoAtual(int usuarioId, int cursoId);
     }
 }

@@ -9,25 +9,34 @@ import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
 
 export default function MeusCursos() {
+    document.title = 'Anheu — Meus cursos';
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const usuarioId = isAuth ? Auth?.getUsuarioLogado()?.usuarioId : null;
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [meusCursos, setMeusCursos] = useState({});
+    const [cursoDefinidoAtual, setCursoDefinidoAtual] = useState({});
+
+    async function getCursoDefinidoAtual() {
+        const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
+        const cursoDefinido = await Fetch.getApi(url, null);
+        // console.log(cursoDefinido);
+
+        setCursoDefinidoAtual(cursoDefinido);
+        setIsLoaded(true);
+    }
+
     useEffect(() => {
         async function getUsuarioCursos() {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
             const cursos = await Fetch.getApi(url, null);
             setMeusCursos(cursos);
-            setIsLoaded(true);
         }
-
-        // Título da página;
-        document.title = 'Anheu — Meus cursos';
 
         // Meus cursos;
         if (usuarioId) {
             getUsuarioCursos();
+            getCursoDefinidoAtual();
         }
     }, [usuarioId]);
 
@@ -52,7 +61,7 @@ export default function MeusCursos() {
             {
                 isModalCursoOpen && (
                     <ModalWrapper isOpen={isModalCursoOpen} key={1}>
-                        <ModalSelecionarCurso handleModal={() => handleModalCurso()} cursoSelecionado={cursoSelecionado} />
+                        <ModalSelecionarCurso handleModal={() => handleModalCurso()} cursoSelecionado={cursoSelecionado} getCursoDefinidoAtual={getCursoDefinidoAtual} />
                     </ModalWrapper>
                 )
             }
@@ -75,6 +84,7 @@ export default function MeusCursos() {
                                             curso={c.cursos}
                                             handleClick={() => { handleModalCurso(), setCursoSelecionado(c.cursos) }}
                                             isMostrarPreco={false}
+                                            cursoDefinidoAtualId={cursoDefinidoAtual?.cursoId}
                                         />
                                     ))
                                 )

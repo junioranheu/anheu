@@ -17,7 +17,7 @@ import Google from '../svg/google.js';
 
 export default function SessaoEsquerda() {
     const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
-    
+
     const refNomeCompleto = useRef();
     const refEmail = useRef();
     const refNomeUsuario = useRef();
@@ -66,7 +66,7 @@ export default function SessaoEsquerda() {
             IsVerificado: 0
         };
 
-        let resposta = await Fetch.postApi(urlCriarConta, usuario_a_ser_criado);
+        const resposta = await Fetch.postApi(urlCriarConta, usuario_a_ser_criado, null);
         if (!resposta) {
             NProgress.done();
             refEmail.current.select();
@@ -124,7 +124,7 @@ export default function SessaoEsquerda() {
             isAtivo: 1
         };
         const urlGerarUrlTemporaria = `${CONSTANTS_URL_TEMPORARIA.API_URL_POST_CRIAR}?urlTipo=${urlTipo}`;
-        let urlTemporaria = await Fetch.postApi(urlGerarUrlTemporaria, jsonGerarUrlTemporaria);
+        let urlTemporaria = await Fetch.postApi(urlGerarUrlTemporaria, jsonGerarUrlTemporaria, null);
         if (!urlTemporaria) {
             // Aviso.error('Houve um erro ao gerar uma url temporária!', 5000);
             return false;
@@ -132,7 +132,7 @@ export default function SessaoEsquerda() {
 
         // Disparar e-mail;
         const urlEnviarEmail = `${CONSTANTS.API_URL_POST_ENVIAR_EMAIL_BEM_VINDO}?email=${email}&nomeUsuario=${nomeCompleto}&urlTemporaria=${urlTemporaria}`;
-        const enviarEmail = await Fetch.postApi(urlEnviarEmail);
+        const enviarEmail = await Fetch.postApi(urlEnviarEmail, null, null);
         if (!enviarEmail) {
             // Aviso.error('Houve um erro ao disparar um e-mail para você!', 5000);
             return false;

@@ -9,7 +9,6 @@ import '../fonts/PTMono.css';
 import LayoutDisciplinas from '../layouts/disciplinas.js';
 import LayoutPadrao from '../layouts/padrao.js';
 import '../styles/globals.css';
-import { CursoProvider } from '../utils/context/cursoContext';
 import { UsuarioProvider } from '../utils/context/usuarioContext';
 
 export default function App({ Component, pageProps, ...appProps }) {
@@ -33,16 +32,14 @@ export default function App({ Component, pageProps, ...appProps }) {
     return url ?
         (
             <UsuarioProvider>
-                <CursoProvider>
-                    {/* Toaster de aviso */}
-                    <ToastContainer className='semHighlight' />
+                {/* Toaster de aviso */}
+                <ToastContainer className='semHighlight' />
 
-                    {/* Conteúdo */}
-                    {verificarLayout()}
+                {/* Conteúdo */}
+                {verificarLayout()}
 
-                    {/* Elemento para os modais */}
-                    <div id='modalWrapper'></div>
-                </CursoProvider>
+                {/* Elemento para os modais */}
+                <div id='modalWrapper'></div>
             </UsuarioProvider>
         ) :
         null;

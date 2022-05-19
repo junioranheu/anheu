@@ -1,15 +1,17 @@
+import NProgress from 'nprogress';
 import React, { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Styles from '../../styles/modal.module.css';
-import { CursoContext, CursoStorage } from '../../utils/context/cursoContext';
-import { UsuarioContext } from '../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
+import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
+import { Fetch } from '../../utils/outros/fetch';
 import Botao from '../outros/botao';
 import BotaoFecharModal from '../svg/botaoFecharModal';
 
-export default function ModalSelecionarCurso({ handleModal, cursoSelecionado }) {
+export default function ModalSelecionarCurso({ handleModal, cursoSelecionado, getCursoDefinidoAtual }) {
     // console.log(cursoSelecionado);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
-    const [cursoContext, setCursoContext] = useContext(CursoContext); // Contexto do curso selecionado;
+    const usuarioId = isAuth ? Auth?.getUsuarioLogado()?.usuarioId : null;
     const refBtnComprar = useRef();
 
     function fecharModalClicandoNoBotao() {
@@ -35,11 +37,23 @@ export default function ModalSelecionarCurso({ handleModal, cursoSelecionado }) 
             return false;
         }
 
-        CursoStorage.setCurso(cursoSelecionado.cursoId);
-        setCursoContext(cursoSelecionado.cursoId);
-        Aviso.success(`O curso "${cursoSelecionado.nome}" foi definido como o atual`, 5000);
+        NProgress.start();
 
+        // Definir curso como atual;
+        const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_POST_DEFINIR_CURSO_COMO_ATUAL}?usuarioId=${usuarioId}&cursoId=${cursoSelecionado.cursoId}`;
+        const token = Auth.getUsuarioLogado().token;
+        const resposta = await Fetch.postApi(url, null, token);
+
+        if (!resposta) {
+            NProgress.done();
+            Aviso.error('Algo deu errado ao definir este curso como o atual', 5000);
+            return false;
+        }
+
+        Aviso.success(`O curso "${cursoSelecionado.nome}" foi definido como o atual`, 5000);
+        getCursoDefinidoAtual(); // Atualizar o curso definido em meus-cursos.js;
         handleModal();
+        NProgress.done();
     }
 
     return (

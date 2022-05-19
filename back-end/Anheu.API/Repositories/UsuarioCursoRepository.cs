@@ -84,7 +84,7 @@ namespace Anheu.API.Repositories
             var itens = await _context.UsuariosCursos.
             Include(u => u.Usuarios).
             Include(c => c.Cursos).
-            Where(p => p.UsuarioId == usuarioId).AsNoTracking().ToListAsync();
+            Where(u => u.UsuarioId == usuarioId).AsNoTracking().ToListAsync();
 
             return itens;
         }
@@ -94,6 +94,43 @@ namespace Anheu.API.Repositories
             var isJaTem = await _context.UsuariosCursos.AnyAsync(u => u.UsuarioId == usuarioId && u.CursoId == cursoId);
 
             return isJaTem;
+        }
+
+        public async Task<Curso> GetCursoDefinidoAtualPorUsuarioId(int usuarioId)
+        {
+            var itemUsuariosCursos = await _context.UsuariosCursos.
+            Include(u => u.Usuarios).
+            Include(c => c.Cursos).ThenInclude(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(t => t.DisciplinaTags).
+            Where(u => u.UsuarioId == usuarioId && u.IsDefinidoComoAtual == 1).AsNoTracking().FirstOrDefaultAsync();
+
+            var itemCurso = itemUsuariosCursos?.Cursos;
+
+            return itemCurso;
+        }
+
+        public async Task<bool> PostDefinirCursoComoAtual(int usuarioId, int cursoId)
+        {
+            // #01 - Buscar todos os cursos do usuário;
+            var itens = await _context.UsuariosCursos.Where(u => u.UsuarioId == usuarioId).
+            //Include(u => u.Usuarios).
+            //Include(c => c.Cursos).
+            AsNoTracking().ToListAsync();
+
+            if (itens == null)
+            {
+                return false;
+            }
+
+            // #02 - Iterar todos os cursos do usuário. Se for o cursoId, defina como 1, senão 2;
+            foreach (var item in itens)
+            {
+                item.IsDefinidoComoAtual = item.CursoId == cursoId ? 1 : 0;
+                _context.Update(item);
+            }
+     
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

@@ -1,21 +1,37 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import CursoRow from '../../../components/cursos/cursoRow';
 import ModalComprarCurso from '../../../components/modal/modalComprarCurso';
 import ModalWrapper from '../../../components/modal/_modalWrapper';
 import Banner from '../../../components/outros/banner';
 import Styles from '../../../styles/cursos.module.css';
+import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategorias';
+import CONSTANTS_USUARIOS_CURSOS from '../../../utils/data/constUsuariosCursos';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
 
 export default function Curso({ cursos }) {
     // console.log(cursos);
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const usuarioId = isAuth ? Auth?.getUsuarioLogado()?.usuarioId : null;
 
     const [filtroCurso, setFiltroCurso] = useState('');
+    const [cursoDefinidoAtual, setCursoDefinidoAtual] = useState({});
     useEffect(() => {
+        async function getCursoDefinidoAtual() {
+            const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
+            const cursoDefinido = await Fetch.getApi(url, null);
+            // console.log(cursoDefinido);
+
+            setCursoDefinidoAtual(cursoDefinido);
+        }
+
         // Título da página;
         document.title = cursos.length > 0 ? `Anheu — Cursos de ${cursos[0]?.cursosCategorias.categoria}` : 'Anheu';
+
+        // Verificar qual é o curso definido como atual pelo usuário;
+        getCursoDefinidoAtual();
     }, [cursos]);
 
     const [isModalComprarCursoOpen, setIsModalComprarCursoOpen] = useState(false);
@@ -55,6 +71,7 @@ export default function Curso({ cursos }) {
                                         curso={c}
                                         handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}
                                         isMostrarPreco={true}
+                                        cursoDefinidoAtualId={cursoDefinidoAtual?.cursoId}
                                     />
                                 ))
                             }

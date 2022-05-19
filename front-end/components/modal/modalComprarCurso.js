@@ -55,6 +55,7 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
         }
 
         alert(`Curso ${cursoSelecionado.cursoId} adquirido`);
+        handleModal();
     }
 
     return (

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Anheu.API.Models
 {
@@ -15,6 +16,7 @@ namespace Anheu.API.Models
         public int CursoId { get; set; }
         public Curso? Cursos { get; set; }
 
+        public int IsDefinidoComoAtual { get; set; }
         public int IsAtivo { get; set; }
         public DateTime DataRegistro { get; set; }
     }

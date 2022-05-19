@@ -25,10 +25,5 @@ namespace Anheu.API.Models
         // Fk (De cá pra lá);
         [JsonIgnore]
         public ICollection<CursoDisciplina> CursosDisciplinas { get; set; }
-
-        // APAGAR DEPOISSSSSSSS;
-        //// Fk (De cá pra lá);
-        //[JsonIgnore]
-        //public ICollection<UsuarioCurso> UsuariosCursos { get; set; }
     }
 }

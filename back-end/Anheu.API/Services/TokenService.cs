@@ -17,7 +17,7 @@ namespace Anheu.API.Services
             };
 
             // Aqui em específico, o Token NÃO pode ter a data no formato/fuso brasileiro;
-            DateTime horaAgora = DateTime.UtcNow.AddHours(1);
+            DateTime horarioExpiracao = DateTime.UtcNow.AddHours(720);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -27,7 +27,7 @@ namespace Anheu.API.Services
                     new Claim(ClaimTypes.Role, usuarioTipoid.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, usuarioId.ToString())
                 }),
-                Expires = horaAgora,
+                Expires = horarioExpiracao,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(chave), SecurityAlgorithms.HmacSha256Signature)
             };
 

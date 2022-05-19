@@ -13,7 +13,6 @@ import { UsuarioProvider } from '../utils/context/usuarioContext';
 
 export default function App({ Component, pageProps, ...appProps }) {
     const [url, setUrl] = useState('');
-
     useEffect(() => {
         // Setar url no Hook, para usar em verificarLayout();
         setUrl(appProps.router.pathname);

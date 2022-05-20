@@ -8,7 +8,7 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias'
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
-
+ 
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     // console.log(cursos);

@@ -23,10 +23,10 @@ export default function Padrao({ Component, pageProps }) {
 
             // Foi definido na API, no método ServicoGerarToken() em Services/TokenService.cs, que o token JWT expira em 1 mês;
             // Simular um comportamento parecido aqui... caso a diferença seja de xxx horas, limpe o token e mostre uma mensagem ao usuário;
-            const limiteExpirarTokenHoras = 1;
+            const limiteExpirarTokenHoras = 24;
             if (diferencaHoras >= limiteExpirarTokenHoras) {
                 NProgress.start();
-                Aviso.warn('A sua sessão expirou!<br/><br/>Renove sua sessão fazendo login novamente no Anheu 😎', 15000);
+                Aviso.custom('A sua sessão expirou!<br/><br/>Renove sua sessão fazendo login novamente no Anheu 😎', 15000);
 
                 // Desatribuir autenticação ao contexto de usuário;
                 setIsAuth(false);

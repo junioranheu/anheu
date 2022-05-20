@@ -1,2 +1,1 @@
 --
-melhorar responsividade em notebooks

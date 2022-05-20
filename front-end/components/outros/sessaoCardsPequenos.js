@@ -8,7 +8,7 @@ export default function SessaoCardsPequenos({ lista, rota }) {
     if (!lista.length) {
         return null;
     }
-
+ 
     return (
         <section className={Styles.sessaoCardsPequenos}>
             {
@@ -20,8 +20,8 @@ export default function SessaoCardsPequenos({ lista, rota }) {
                         onClick={() => Router.push(`/${rota}/${l.id}/${AjustarUrl(l.titulo)}`)}
                     >
                         <div className={Styles.efeitoBlur}>
-                            <span className={Styles.cardTituloMenor}>{l.titulo}</span>
-                            <span className={Styles.cardSubtitulo}>{l.desc}</span>
+                            <span className={`${Styles.cardTituloMenor} ${Styles.sombra}`}>{l.titulo}</span>
+                            <span className={`${Styles.cardSubtitulo} ${Styles.sombra}`}>{l.desc}</span>
                         </div>
                     </div>
                 ))

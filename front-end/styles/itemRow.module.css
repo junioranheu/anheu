@@ -1,0 +1,75 @@
+.topico {
+    color: var(--branco);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.036em;
+    cursor: pointer;
+}
+
+.divCurso {
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: .4s ease-in-out;
+
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.divCurso:hover {
+    background-color: var(--cor-principal-opaca);
+    cursor: pointer;
+    transition: .4s ease-in-out;
+
+    /* Gambi para o background ficar maior que a div */
+    padding-left: 30px;
+    margin-left: -30px;
+}
+
+.divDescCurso {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 45%;
+}
+
+.divTags {
+    /* background-color: pink; */
+    margin-top: 10px;
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+    gap: 10px;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .divDescCurso {
+        /* background-color: blue; */
+        max-width: 60%;
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+    .divCurso {
+        /* background-color: pink; */
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        gap: 0.5rem;
+    }
+
+    .divDescCurso {
+        /* background-color: red; */
+        max-width: 100%;
+    }
+}

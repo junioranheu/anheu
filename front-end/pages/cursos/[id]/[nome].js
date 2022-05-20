@@ -1,8 +1,8 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import CursoRow from '../../../components/cursos/cursoRow';
 import ModalComprarCurso from '../../../components/modal/modalComprarCurso';
 import ModalWrapper from '../../../components/modal/_modalWrapper';
 import Banner from '../../../components/outros/banner';
+import ItemRow from '../../../components/outros/itemRow';
 import Styles from '../../../styles/cursos.module.css';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
@@ -42,8 +42,8 @@ export default function Curso({ cursos }) {
 
     return (
         <Fragment>
-            {/* Modal */}
             {
+                // Modal
                 isModalComprarCursoOpen && (
                     <ModalWrapper isOpen={isModalComprarCursoOpen} key={1}>
                         <ModalComprarCurso handleModal={() => handleModalComprarCurso()} cursoSelecionado={cursoSelecionado} />
@@ -51,8 +51,8 @@ export default function Curso({ cursos }) {
                 )
             }
 
-            {/* Conteúdo */}
             {
+                // Conteúdo
                 cursos.length > 0 ? (
                     <section className='flexColumn paddingPadrao margem50'>
                         <div className='centralizarTexto'>
@@ -66,12 +66,18 @@ export default function Curso({ cursos }) {
                         <div className='margem30'>
                             {
                                 cursos?.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso)).map((c, i) => (
-                                    <CursoRow
+                                    <ItemRow
                                         key={i}
-                                        curso={c}
-                                        handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}
-                                        isMostrarPreco={true}
-                                        cursoDefinidoAtualId={cursoDefinidoAtual?.cursoId}
+                                        data={c}
+                                        id={c.cursoId}
+                                        titulo={c.nome}
+                                        descricao={c.resumoCurso}
+                                        itemzinho={`Professor ${c.professor}`}
+                                        itemzao={`R$ ${c.preco}`}
+                                        isMostrarItemzao={true}
+                                        handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}           
+                                        idReferenciaParaAlterarCor={cursoDefinidoAtual?.cursoId}
+                                        tags={null}
                                     />
                                 ))
                             }

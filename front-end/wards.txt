@@ -1,1 +1,2 @@
 --
+ajustar bug de aparecer banner antes de carregar a página

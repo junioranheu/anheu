@@ -1,9 +1,9 @@
 import Router from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import CursoRow from '../../components/cursos/cursoRow';
 import ModalSelecionarCurso from '../../components/modal/modalSelecionarCurso';
 import ModalWrapper from '../../components/modal/_modalWrapper';
 import Banner from '../../components/outros/banner';
+import ItemRow from '../../components/outros/itemRow';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
@@ -79,12 +79,18 @@ export default function MeusCursos() {
                             {
                                 meusCursos?.length > 0 && (
                                     meusCursos?.filter(x => x.isAtivo === 1).map((c, i) => (
-                                        <CursoRow
+                                        <ItemRow
                                             key={i}
-                                            curso={c.cursos}
+                                            data={c.cursos}
+                                            id={c.cursos.cursoId}
+                                            titulo={c.cursos.nome}
+                                            descricao={c.cursos.resumoCurso}
+                                            itemzinho={`Professor ${c.cursos.professor}`}
+                                            itemzao={`R$ ${c.cursos.preco}`}
+                                            isMostrarItemzao={false}
                                             handleClick={() => { handleModalCurso(), setCursoSelecionado(c.cursos) }}
-                                            isMostrarPreco={false}
-                                            cursoDefinidoAtualId={cursoDefinidoAtual?.cursoId}
+                                            idReferenciaParaAlterarCor={cursoDefinidoAtual?.cursoId}
+                                            tags={null}
                                         />
                                     ))
                                 )

@@ -44,7 +44,7 @@ export default function Navbar2() {
 
                         {
                             isAuth && (
-                                <Link href='/disciplinas'><a>Minhas aulas</a></Link>
+                                <Link href='/disciplinas'><a>Minhas disciplinas & aulas</a></Link>
                             )
                         }
 

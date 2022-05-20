@@ -1,7 +1,7 @@
 import Moment from 'moment';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Aviso } from '../components/outros/aviso';
 import Footer from '../components/outros/footer';
 import Navbar1 from '../components/outros/navbar1';
@@ -10,6 +10,7 @@ import { Auth, UsuarioContext } from '../utils/context/usuarioContext';
 import HorarioBrasilia from '../utils/outros/horarioBrasilia';
 
 export default function Padrao({ Component, pageProps }) {
+    const router = useRouter();
     const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
     // Verificar se o token ainda é válido;
@@ -39,20 +40,28 @@ export default function Padrao({ Component, pageProps }) {
         }
     }, [isAuth]);
 
+    // Renovar animação a cada mudança de URL (router.asPath);
+    const [efeitoAnimar, setEfeitoAnimar] = useState('');
+    useEffect(() => {
+        setEfeitoAnimar('animate__animated animate__fadeIn delay02');
+
+        setTimeout(function () {
+            setEfeitoAnimar('');
+        }, 1000);
+    }, [router.asPath]);
+
     return (
-        <Fragment>
-            <main className='main semHighlight'>
-                <Navbar1 />
-                <Navbar2 />
+        <section className='main semHighlight'>
+            <Navbar1 />
+            <Navbar2 />
 
-                <section className='secaoPrincipal'>
-                    <main>
-                        <Component {...pageProps} />
-                    </main>
-                </section>
+            <section className='secaoPrincipal'>
+                <main className={`${efeitoAnimar}`}>
+                    <Component {...pageProps} />
+                </main>
+            </section>
 
-                <Footer />
-            </main>
-        </Fragment>
+            <Footer />
+        </section>
     )
 }

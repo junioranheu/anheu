@@ -8,13 +8,14 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias'
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
- 
+
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     // console.log(cursos);
 
     const [cursosCategorias, setCursosCategorias] = useState({});
     const [qtdUsuarioCursos, setQtdUsuarioCursos] = useState(0);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         async function getCursosCategorias() {
             const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
@@ -42,6 +43,10 @@ export default function Index({ cursos }) {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
             const usuarioCursos = await Fetch.getApi(url, null);
             setQtdUsuarioCursos(usuarioCursos.length);
+
+            setTimeout(function () {
+                setIsLoaded(true);
+            }, 200);
         }
 
         // Título da página;
@@ -53,8 +58,16 @@ export default function Index({ cursos }) {
         // Qtd de cursos do usuário logado;
         if (isAuth) {
             getQtdUsuarioCursos();
+        } else {
+            setTimeout(function () {
+                setIsLoaded(true);
+            }, 200);
         }
     }, []);
+
+    if (!isLoaded) {
+        return false;
+    }
 
     return (
         <section className={`flexColumn ${Styles.flexCenter}`}>
@@ -74,7 +87,7 @@ export default function Index({ cursos }) {
                 <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>
             </div>
 
-            <div className='margem50'>
+            <div className='margem50 animate__animated animate__fadeIn delay02'>
                 <SessaoCardsPequenos lista={cursosCategorias} rota={'cursos'} />
             </div>
 

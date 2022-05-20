@@ -15,30 +15,27 @@ export default function Index() {
     const usuarioNome = isAuth ? Auth?.getUsuarioLogado()?.nome : 'Olá';
 
     const [cursoDefinidoAtual, setCursoDefinidoAtual] = useState({});
-    const [isLoaded, setIsLoaded] = useState(false);
     const [qtdUsuarioCursos, setQtdUsuarioCursos] = useState(0);
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
-        async function getCursoDefinidoAtual() {
-            const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
-            const cursoDefinido = await Fetch.getApi(url, null);
+        async function getCursoDefinidoAtualEQtdUsuarioCursos() {
+            const url1 = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
+            const cursoDefinido = await Fetch.getApi(url1, null);
             setCursoDefinidoAtual(cursoDefinido);
-        }
 
-        async function getQtdUsuarioCursos() {
-            const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
-            const usuarioCursos = await Fetch.getApi(url, null);
+            const url2 = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_POR_USUARIO_ID}/${usuarioId}`;
+            const usuarioCursos = await Fetch.getApi(url2, null);
             setQtdUsuarioCursos(usuarioCursos.length);
-            setIsLoaded(true);
+
+            setTimeout(function () {
+                setIsLoaded(true);
+            }, 200);
         }
 
-        // Verificar qual é o curso definido como atual pelo usuário;
-        getCursoDefinidoAtual();
-
-        // Qtd de cursos do usuário logado;
         if (isAuth) {
-            getQtdUsuarioCursos();
-        } else {
-            setIsLoaded(true);
+            // Verificar qual é o curso definido como atual pelo usuário;
+            // Qtd de cursos do usuário logado;
+            getCursoDefinidoAtualEQtdUsuarioCursos();
         }
     }, [cursoDefinidoAtual?.cursoId]);
 

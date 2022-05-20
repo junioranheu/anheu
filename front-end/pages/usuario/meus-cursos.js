@@ -23,7 +23,10 @@ export default function MeusCursos() {
         // console.log(cursoDefinido);
 
         setCursoDefinidoAtual(cursoDefinido);
-        setIsLoaded(true);
+
+        setTimeout(function () {
+            setIsLoaded(true);
+        }, 200);
     }
 
     useEffect(() => {

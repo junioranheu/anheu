@@ -1,3 +1,4 @@
 --
 ajustar bug de aparecer banner antes de carregar a página
 mudar o ItemRow do disciplinas
+nao permitir espaços no username

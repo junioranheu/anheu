@@ -147,6 +147,10 @@ export default function SessaoEsquerda() {
         }
     }
 
+    function handleKeyPressNaoPermitirEspaco(e) {
+        e.target.value = e.target.value.replace(' ', '');
+    }
+
     return (
         <section className={Styles.divEsquerda}>
             <Anheu width='0.9rem' cor='var(--branco)' />
@@ -168,7 +172,7 @@ export default function SessaoEsquerda() {
 
                 <div className={Styles.margemTopP}>
                     <input className={Styles.input} type='text' placeholder='Nome de usuário' name='nomeUsuarioSistema'
-                        onChange={handleChange} onKeyPress={handleKeyPress} ref={refNomeUsuario}
+                        onChange={(e) => (handleChange(e), handleKeyPressNaoPermitirEspaco(e))} onKeyPress={handleKeyPress} ref={refNomeUsuario}
                     />
                 </div>
 

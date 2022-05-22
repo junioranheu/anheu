@@ -5,8 +5,8 @@ import Styles from '../../styles/disciplinas.module.css';
 
 export default function Sidebar() {
     const itens = [
-        { item: 'Meus cursos', url: '/usuario/meus-cursos' },
         { item: 'Disciplinas', url: '/disciplinas' },
+        { item: 'Meus cursos', url: '/usuario/meus-cursos' },
         { item: 'Ao vivo', url: '/ao-vivo' },
         { item: 'Exercícios', url: '/docs/exercicios' },
         { item: 'Materiais de apoio', url: '/apoios' }

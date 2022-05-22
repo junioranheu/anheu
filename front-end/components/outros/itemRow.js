@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import React, { Fragment } from 'react';
 import Styles from '../../styles/itemRow.module.css';
 
-export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemzao, isMostrarItemzao, handleClick, idReferenciaParaAlterarCor, tags }) {
+export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemzao, isMostrarItemzao, handleClick, idReferenciaParaAlterarCor, tags, imagem }) {
 
     function exibirTagsDisciplinas(disciplinaTags) {
         let tags = '';
@@ -17,6 +18,18 @@ export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemza
 
     return (
         <div className={`${Styles.divCurso} margem5`} onClick={() => (handleClick ? handleClick(data) : null)}>
+            {
+                imagem && (
+                    <Image
+                        className={Styles.thumb}
+                        src={imagem}
+                        width={250}
+                        height={250}
+                        alt=''
+                    />
+                )
+            }
+
             <div className={Styles.divDescCurso}>
                 <span className={Styles.topico}>
                     <span className={`${(id == idReferenciaParaAlterarCor ? 'cor-principal' : '')}`}>

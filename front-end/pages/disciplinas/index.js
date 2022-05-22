@@ -72,6 +72,7 @@ export default function Index() {
                                         handleClick={() => Router.push(`/disciplinas/${d.disciplinas.disciplinaId}/${AjustarUrl(d.disciplinas.nome)}`)}
                                         idReferenciaParaAlterarCor={null}
                                         tags={d.disciplinas.disciplinaTags}
+                                        imagem={null}
                                     />
                                 ))
                             }

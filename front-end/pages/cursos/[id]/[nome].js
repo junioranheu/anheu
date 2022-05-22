@@ -78,6 +78,7 @@ export default function Curso({ cursos }) {
                                         handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}           
                                         idReferenciaParaAlterarCor={cursoDefinidoAtual?.cursoId}
                                         tags={null}
+                                        imagem={null}
                                     />
                                 ))
                             }

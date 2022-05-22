@@ -94,6 +94,7 @@ export default function MeusCursos() {
                                             handleClick={() => { handleModalCurso(), setCursoSelecionado(c.cursos) }}
                                             idReferenciaParaAlterarCor={cursoDefinidoAtual?.cursoId}
                                             tags={null}
+                                            imagem={null}
                                         />
                                     ))
                                 )

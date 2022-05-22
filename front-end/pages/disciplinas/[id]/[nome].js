@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Router from 'next/router';
 import React, { useEffect } from 'react';
+import ItemRow from '../../../components/outros/itemRow';
 import ImgCinza from '../../../static/image/cinza.webp';
-import Styles from '../../../styles/disciplinas.module.css';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
@@ -24,30 +23,21 @@ export default function Disciplina({ disciplina }) {
 
             <div className='margem30'>
                 {
-                    disciplina?.aulas?.filter(x => x.isAtivo === 1).map((d, i) => (
-                        <div key={i} className={`${Styles.divAula} margem5`}>
-                            <span className={Styles.topico}>
-                                <Link href={`/disciplinas/${d.disciplinaId}`}>
-                                    <a className='cor-principal-hover'>{d.nome}</a>
-                                </Link>
-                            </span>
-
-                            <div className={`${Styles.flexMeio} margem10`}>
-                                <div>
-                                    <Image
-                                        className={Styles.thumb}
-                                        src={(d.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${d.thumbnail}` : ImgCinza)}
-                                        width={500}
-                                        height={500}
-                                        alt=''
-                                    />
-                                </div>
-
-                                <div>
-                                    <span className={`${Styles.textoHoverDivAula} texto`}>{d.resumoAula}</span>
-                                </div>
-                            </div>
-                        </div>
+                    disciplina?.aulas?.filter(x => x.isAtivo === 1).map((a, i) => (
+                        <ItemRow
+                            key={i}
+                            data={a}
+                            id={a.aulaId}
+                            titulo={a.nome}
+                            descricao={a.resumoAula}
+                            itemzinho={null}
+                            itemzao={null}
+                            isMostrarItemzao={false}
+                            handleClick={() => Router.push(`/aula/${a.aulaId}/${AjustarUrl(a.nome)}`)}
+                            idReferenciaParaAlterarCor={null}
+                            tags={null}
+                            imagem={(a.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${a.thumbnail}` : ImgCinza)}
+                        />
                     ))
                 }
             </div>

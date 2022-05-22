@@ -1,4 +1,5 @@
 import 'animate.css/animate.min.css';
+import { useRouter } from 'next/router';
 import 'nprogress/nprogress.css';
 import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -11,12 +12,14 @@ import LayoutPadrao from '../layouts/padrao.js';
 import '../styles/globals.css';
 import { UsuarioProvider } from '../utils/context/usuarioContext';
 
-export default function App({ Component, pageProps, ...appProps }) {
+export default function App({ Component, pageProps }) {
+    const { asPath } = useRouter();
+    
     const [url, setUrl] = useState('');
     useEffect(() => {
         // Setar url no Hook, para usar em verificarLayout();
-        setUrl(appProps.router.pathname);
-    }, [appProps]);
+        setUrl(asPath);
+    }, [asPath]);
 
     function verificarLayout() {
         // console.log(`Url: ${url}`);

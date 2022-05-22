@@ -28,6 +28,8 @@
     /* Gambi para o background ficar maior que a div */
     padding-left: 30px;
     margin-left: -30px;
+    padding-right: 30px;
+    margin-right: -30px;
 }
 
 .divDescCurso {

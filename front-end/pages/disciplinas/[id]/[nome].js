@@ -1,7 +1,8 @@
 import Router from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ItemRow from '../../../components/outros/itemRow';
 import ImgCinza from '../../../static/image/cinza.webp';
+import { UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
@@ -9,11 +10,17 @@ import { Fetch } from '../../../utils/outros/fetch';
 
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — ${disciplina.nome}`;
     }, [disciplina]);
+
+    if (!isAuth) {
+        Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
+        return false;
+    }
 
     return (
         <section className='flexColumn paddingPadrao margem50'>

@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import NProgress from 'nprogress';
 import React, { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
@@ -54,6 +55,7 @@ export default function ModalSelecionarCurso({ handleModal, cursoSelecionado, ge
         getCursoDefinidoAtual(); // Atualizar o curso definido em meus-cursos.js;
         handleModal();
         NProgress.done();
+        Router.push({ pathname: '/disciplinas'});
     }
 
     return (

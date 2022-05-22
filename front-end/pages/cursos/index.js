@@ -87,7 +87,7 @@ export default function Index({ cursos }) {
                 <span className='titulo'>O que você quer estudar no <span className='grifar'>Anheu</span>?</span>
             </div>
 
-            <div className='margem50 animate__animated animate__fadeIn delay02'>
+            <div className='margem50 animate__animated animate__fadeIn delay03'>
                 <SessaoCardsPequenos lista={cursosCategorias} rota={'cursos'} />
             </div>
 

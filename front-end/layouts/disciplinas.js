@@ -12,7 +12,7 @@ export default function Disciplinas({ Component, pageProps }) {
     // Renovar animação a cada mudança de URL (router.asPath);
     const [efeitoAnimar, setEfeitoAnimar] = useState('');
     useEffect(() => {
-        setEfeitoAnimar('animate__animated animate__fadeIn delay02');
+        setEfeitoAnimar('animate__animated animate__fadeIn delay03');
 
         setTimeout(function () {
             setEfeitoAnimar('');

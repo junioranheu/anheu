@@ -39,7 +39,7 @@ export default function Curso({ cursos }) {
     function handleModalComprarCurso() {
         setIsModalComprarCursoOpen(!isModalComprarCursoOpen);
     }
-
+    
     return (
         <Fragment>
             {

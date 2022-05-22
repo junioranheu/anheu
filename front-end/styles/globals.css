@@ -149,11 +149,11 @@ a {
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- animate.css =-=-=-=-=-=-=-=-=-=-=-=- */
-.animate__animated.delay02 {
-    -webkit-animation-delay: .2s;
-    animation-delay: .2s;
-    -webkit-animation-delay: calc(1s*.2);
-    animation-delay: calc(1s*.2)
+.animate__animated.delay03 {
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+    -webkit-animation-delay: calc(1s*.3);
+    animation-delay: calc(1s*.3)
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- react-code-blocks =-=-=-=-=-=-=-=-=-=-=-=- */

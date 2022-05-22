@@ -73,6 +73,7 @@ a {
 
 .cor-principal {
     color: var(--cor-principal) !important;
+    opacity: 1 !important;
 }
 
 .cor-principal-hover:hover {
@@ -87,6 +88,10 @@ a {
 
 .opacidade {
     opacity: 1 !important;
+}
+
+.sombraTexto {
+    text-shadow: 0px 0px 12px var(--cor-principal);
 }
 
 .opacidade-hover:hover {

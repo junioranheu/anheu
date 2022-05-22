@@ -20,8 +20,8 @@ export default function SessaoCardsPequenos({ lista, rota }) {
                         onClick={() => Router.push(`/${rota}/${l.id}/${AjustarUrl(l.titulo)}`)}
                     >
                         <div className={Styles.efeitoBlur}>
-                            <span className={`${Styles.cardTituloMenor} ${Styles.sombra}`}>{l.titulo}</span>
-                            <span className={`${Styles.cardSubtitulo} ${Styles.sombra}`}>{l.desc}</span>
+                            <span className={`${Styles.cardTituloMenor} sombraTexto`}>{l.titulo}</span>
+                            <span className={`${Styles.cardSubtitulo} sombraTexto`}>{l.desc}</span>
                         </div>
                     </div>
                 ))

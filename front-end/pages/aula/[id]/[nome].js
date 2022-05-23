@@ -21,7 +21,7 @@ export default function Aula({ aula }) {
 
     return (
         <section className='flexColumn paddingPadrao margem50'>
-            {aula.nome}
+            <span className='topico'>{aula.nome}</span>
         </section>
     )
 }

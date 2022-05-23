@@ -2,7 +2,7 @@ import Router from 'next/router';
 import React, { useContext, useEffect } from 'react';
 import ItemRow from '../../../components/outros/itemRow';
 import ImgCinza from '../../../static/image/cinza.webp';
-import { UsuarioContext } from '../../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
@@ -11,6 +11,7 @@ import { Fetch } from '../../../utils/outros/fetch';
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const usuarioGenero = isAuth ? Auth?.getUsuarioLogado()?.genero : 'o';
 
     useEffect(() => {
         // Título da página;
@@ -25,7 +26,7 @@ export default function Disciplina({ disciplina }) {
     return (
         <section className='flexColumn paddingPadrao margem50'>
             <div className='flexColumn'>
-                <span className='titulo'>Bem-vindo às aulas de <span className='grifar'>{disciplina.nome}</span></span>
+                <span className='titulo'>Bem-vind{usuarioGenero} às aulas de <span className='grifar'>{disciplina.nome}</span></span>
             </div>
 
             <div className='margem30'>

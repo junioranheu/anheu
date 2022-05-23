@@ -15,6 +15,7 @@ import Google from '../svg/google.js';
 
 export default function SessaoEsquerda() {
     const [isAuth, setIsAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const usuarioGenero = isAuth ? Auth?.getUsuarioLogado()?.genero : 'o';
 
     const refUsuario = useRef();
     const refSenha = useRef();
@@ -104,12 +105,12 @@ export default function SessaoEsquerda() {
             refBtn.current.click();
         }
     }
-
+ 
     return (
         <section className={Styles.divEsquerda}>
             <Anheu width='0.9rem' cor='var(--branco)' />
-            <span className={Styles.titulo}>Bem-vindo ao Anheu</span>
-
+            <span className={Styles.titulo}>Bem-vind{usuarioGenero} ao Anheu</span>
+ 
             {/* Inputs */}
             <div className={Styles.divLogin}>
                 <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'

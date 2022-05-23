@@ -4,7 +4,7 @@ import SessaoDireita from '../../components/entrar/sessaoDireita.js';
 import SessaoEsquerda from '../../components/entrar/sessaoEsquerda.js';
 import Styles from '../../styles/entrar.module.css';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
-
+ 
 export default function Entrar() {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 

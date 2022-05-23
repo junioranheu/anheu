@@ -8,9 +8,11 @@ import Anheu from '../../components/svg/anheu';
 import Styles from '../../styles/entrar.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
+import consultarGeneroPorNomePessoa from '../../utils/outros/consultarGeneroPorNomePessoa';
 import { Fetch } from '../../utils/outros/fetch';
 import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
 import PadronizarNomeCompletoUsuario from '../../utils/outros/padronizarNomeCompletoUsuario';
+import pegarPrimeiraPalavraDaFrase from '../../utils/outros/pegarPrimeiraPalavraDaFrase';
 import VerificarDadosCriarConta from '../../utils/outros/verificarDadosCriarConta';
 import Facebook from '../svg/facebook.js';
 import Google from '../svg/google.js';
@@ -96,6 +98,7 @@ export default function SessaoEsquerda() {
 
         // Inserir o token no json final para gravar localmente a sessão do login;
         dadosUsuarioVerificado.token = resposta;
+        dadosUsuarioVerificado.genero = consultarGeneroPorNomePessoa(pegarPrimeiraPalavraDaFrase(nomeCompleto));
         Auth.setUsuarioLogado(dadosUsuarioVerificado);
 
         // Enviar e-mail de "bem-vindo";

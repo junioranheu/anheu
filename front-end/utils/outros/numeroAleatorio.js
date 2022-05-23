@@ -1,5 +1,4 @@
-function numeroAleatorio(min, max) {
+export default function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-export default numeroAleatorio;

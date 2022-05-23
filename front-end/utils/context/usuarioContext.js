@@ -34,7 +34,8 @@ export const Auth = {
             foto: data.foto,
             isVerificado: data.isVerificado,
             token: data.token,
-            dataAutenticacao: HorarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
+            dataAutenticacao: HorarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+            genero: data.genero
         };
         // console.log(dadosUsuario);
 
@@ -75,7 +76,8 @@ export const Auth = {
             foto: (data.foto ? data.foto : Auth.getUsuarioLogado().foto),
             token: (data.token ? data.token : Auth.getUsuarioLogado().token),
             isVerificado: (data.isVerificado ? data.isVerificado : Auth.getUsuarioLogado().isVerificado),
-            dataAutenticacao: (data.dataAutenticacao ? data.dataAutenticacao : Auth.getUsuarioLogado().dataAutenticacao)
+            dataAutenticacao: (data.dataAutenticacao ? data.dataAutenticacao : Auth.getUsuarioLogado().dataAutenticacao),
+            genero: (data.genero ? data.genero : Auth.getUsuarioLogado().genero)
         };
         // console.log(dadosUsuario);
 

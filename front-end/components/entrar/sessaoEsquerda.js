@@ -7,6 +7,8 @@ import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/entrar.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
+import consultarGeneroPorNomePessoa from '../../utils/outros/consultarGeneroPorNomePessoa';
+import pegarPrimeiraPalavraDaFrase from '../../utils/outros/pegarPrimeiraPalavraDaFrase';
 import Anheu from '../svg/anheu.js';
 import Facebook from '../svg/facebook';
 import Google from '../svg/google.js';
@@ -60,11 +62,11 @@ export default function SessaoEsquerda() {
         const usuario = await resposta.json();
 
         // Gerar token e autenticar/entrar;
-        getToken(formData.usuario, formData.senha, usuario);
+        getToken(formData.senha, usuario);
     };
 
-    async function getToken(nomeUsuario, senha, usuario) {
-        const url = `${CONSTANTS_USUARIOS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${nomeUsuario}&senha=${senha}`;
+    async function getToken(senha, usuario) {
+        const url = `${CONSTANTS_USUARIOS.API_URL_GET_AUTENTICAR}?nomeUsuarioSistema=${usuario.nomeUsuarioSistema}&senha=${senha}`;
         // console.log(url);
 
         // Gerar token;
@@ -86,6 +88,7 @@ export default function SessaoEsquerda() {
 
         // Inserir o token no json final para gravar localmente a sessão do login;
         usuario.token = token;
+        usuario.genero = consultarGeneroPorNomePessoa(pegarPrimeiraPalavraDaFrase(usuario.nomeCompleto));
         Auth.setUsuarioLogado(usuario);
 
         // Atribuir autenticação ao contexto de usuário;
@@ -118,7 +121,7 @@ export default function SessaoEsquerda() {
                 />
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>
-                    <Botao texto={'Entrar'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} isEnabled={true}/>
+                    <Botao texto={'Entrar'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} isEnabled={true} />
                 </div>
             </div>
 
@@ -126,7 +129,7 @@ export default function SessaoEsquerda() {
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
-                    <Botao texto='&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} isEnabled={true}/>
+                    <Botao texto='&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} isEnabled={true} />
                 </div>
 
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopP}`}>

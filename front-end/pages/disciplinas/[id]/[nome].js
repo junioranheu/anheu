@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ItemRow from '../../../components/outros/itemRow';
 import ImgCinza from '../../../static/image/cinza.webp';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
@@ -13,13 +13,23 @@ export default function Disciplina({ disciplina }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const usuarioGenero = isAuth ? Auth?.getUsuarioLogado()?.genero : 'o';
 
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — ${disciplina.nome}`;
+
+        setTimeout(function () {
+            setIsLoaded(true);
+            console.log('a');
+        }, 200);
     }, [disciplina]);
 
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
+        return false;
+    }
+
+    if (!isLoaded) {
         return false;
     }
 

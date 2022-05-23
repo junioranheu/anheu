@@ -1,8 +1,11 @@
 import Image from 'next/image';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import ImgCinza from '../../static/image/cinza.webp';
 import Styles from '../../styles/itemRow.module.css';
 
 export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemzao, isMostrarItemzao, handleClick, idReferenciaParaAlterarCor, tags, imagem }) {
+
+    const [src, setSrc] = useState(imagem);
 
     function exibirTagsDisciplinas(disciplinaTags) {
         let tags = '';
@@ -22,10 +25,10 @@ export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemza
                 imagem && (
                     <Image
                         className={Styles.thumb}
-                        src={imagem}
-                        width={250}
-                        height={250}
-                        alt=''
+                        src={src}
+                        width={200}
+                        height={200}
+                        onError={() => setSrc(ImgCinza)}
                     />
                 )
             }

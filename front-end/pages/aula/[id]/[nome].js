@@ -24,7 +24,7 @@ export default function Aula({ aula }) {
             <span className='topico'>{aula.nome}</span>
         </section>
     )
-}
+} 
 
 export async function getStaticPaths() {
     // Tutorial de getStaticPaths: https://www.youtube.com/watch?v=V2T_bkOs0xA&ab_channel=FilipeDeschamps

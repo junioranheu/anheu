@@ -1,0 +1,24 @@
+.wrapper {
+    /* background-color: pink; */
+    height: 100vh;
+
+    display: flex;
+}
+
+.divVideo {
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+
+    width: 70vw;
+}
+
+.divOutros {
+    background-color: blue;
+
+    display: flex;
+    justify-content: center;
+
+    width: 30vw;
+}

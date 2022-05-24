@@ -1,5 +1,6 @@
 import Router from 'next/router';
 import React, { useContext, useEffect } from 'react';
+import Styles from '../../../styles/aula.module.css';
 import { UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
@@ -20,11 +21,17 @@ export default function Aula({ aula }) {
     }
 
     return (
-        <section className='flexColumn paddingPadrao margem50'>
-            <span className='topico'>{aula.nome}</span>
+        <section className={Styles.wrapper}>
+            <div className={Styles.divVideo}>
+                <span className='topico'>Vídeo aqui</span>
+            </div>
+
+            <div className={Styles.divOutros}>
+                <span className='topico'>{aula.nome}</span>
+            </div>
         </section>
     )
-} 
+}
 
 export async function getStaticPaths() {
     // Tutorial de getStaticPaths: https://www.youtube.com/watch?v=V2T_bkOs0xA&ab_channel=FilipeDeschamps

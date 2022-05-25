@@ -17,7 +17,7 @@ export default function Aula({ aula }) {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         // Título da página;
-        document.title = `Anheu — ${aula.nome}`;
+        document.title = `Anheu — Aula: ${aula.nome}`;
 
         NProgress.start();
         setTimeout(function () {

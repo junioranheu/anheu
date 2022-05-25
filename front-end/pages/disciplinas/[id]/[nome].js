@@ -16,11 +16,10 @@ export default function Disciplina({ disciplina }) {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         // Título da página;
-        document.title = `Anheu — ${disciplina.nome}`;
+        document.title = `Anheu — Disciplina: ${disciplina.nome}`;
 
         setTimeout(function () {
             setIsLoaded(true);
-            console.log('a');
         }, 200);
     }, [disciplina]);
 

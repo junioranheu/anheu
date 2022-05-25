@@ -6,12 +6,20 @@
 }
 
 .divVideo {
-    background-color: red;
+    /* background-color: red; */
 
     display: flex;
     justify-content: center;
 
     width: 70vw;
+}
+
+.video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius:0px;
 }
 
 .divOutros {

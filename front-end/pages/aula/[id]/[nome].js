@@ -1,5 +1,6 @@
 import Router from 'next/router';
-import React, { useContext, useEffect } from 'react';
+import NProgress from 'nprogress';
+import React, { useContext, useEffect, useState } from 'react';
 import ImgCinza from '../../../static/image/cinza.webp';
 import Styles from '../../../styles/aula.module.css';
 import { UsuarioContext } from '../../../utils/context/usuarioContext';
@@ -7,14 +8,22 @@ import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
+import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
 
 export default function Aula({ aula }) {
     console.log(aula);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — ${aula.nome}`;
+
+        NProgress.start();
+        setTimeout(function () {
+            setIsLoaded(true);
+            NProgress.done();
+        }, numeroAleatorio(200, 800));
     }, [aula]);
 
     if (!isAuth) {
@@ -22,10 +31,14 @@ export default function Aula({ aula }) {
         return false;
     }
 
+    if (!isLoaded) {
+        return false;
+    }
+
     return (
         <section className={Styles.wrapper}>
             <div className={Styles.divVideo}>
-                <video className={Styles.video} loop playsInline disablePictureInPicture controls controlsList='nofullscreen nodownload'>
+                <video className={Styles.video} loop={false} playsInline disablePictureInPicture controls controlsList='nodownload noplaybackrate'>
                     <source src={(aula.video ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}` : ImgCinza)} type='video/mp4' />
                 </video>
             </div>

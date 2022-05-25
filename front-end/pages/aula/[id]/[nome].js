@@ -1,8 +1,10 @@
 import Router from 'next/router';
 import React, { useContext, useEffect } from 'react';
+import ImgCinza from '../../../static/image/cinza.webp';
 import Styles from '../../../styles/aula.module.css';
 import { UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
+import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
 
@@ -23,7 +25,9 @@ export default function Aula({ aula }) {
     return (
         <section className={Styles.wrapper}>
             <div className={Styles.divVideo}>
-                <span className='topico'>Vídeo aqui</span>
+                <video className={Styles.video} loop playsInline disablePictureInPicture controls controlsList='nofullscreen nodownload'>
+                    <source src={(aula.video ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}` : ImgCinza)} type='video/mp4' />
+                </video>
             </div>
 
             <div className={Styles.divOutros}>

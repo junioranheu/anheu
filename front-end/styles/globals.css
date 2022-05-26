@@ -290,10 +290,12 @@ code div button svg {
     background-size: 100% .2em;
     background-position: 0 88%;
     transition: background-size 0.25s ease-in;
+    padding: 10px;
 }
 
 .grifar:hover {
     background-size: 100% 88%;
+    border-radius: 10px;
 }
 
 /* Mostrar o # (hashtag) no hover */

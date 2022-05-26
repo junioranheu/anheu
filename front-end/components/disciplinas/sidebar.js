@@ -20,7 +20,7 @@ export default function Sidebar() {
     }, [asPath]);
 
     return (
-        <section className={Styles.sessaoNavbar}>
+        <section className={`${Styles.sessaoNavbar} animate__animated animate__fadeIn delay03`}>
             {
                 itens?.map((item, i) => (
                     <Link key={i} href={item.url}>

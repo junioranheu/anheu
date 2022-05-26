@@ -7,7 +7,7 @@ import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
-import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
+import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
@@ -19,9 +19,7 @@ export default function Disciplina({ disciplina }) {
         // Título da página;
         document.title = `Anheu — Disciplina: ${disciplina.nome}`;
 
-        setTimeout(function () {
-            setIsLoaded(true);
-        }, numeroAleatorio(200, 500));
+        paginaCarregada(true, 200, 500, setIsLoaded);
     }, [disciplina]);
 
     if (!isAuth) {

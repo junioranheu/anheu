@@ -10,7 +10,7 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategori
 import CONSTANTS_USUARIOS_CURSOS from '../../../utils/data/constUsuariosCursos';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
-import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
+import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
 export default function Curso({ cursos }) {
     // console.log(cursos);
@@ -28,9 +28,7 @@ export default function Curso({ cursos }) {
 
             setCursoDefinidoAtual(cursoDefinido);
 
-            setTimeout(function () {
-                setIsLoaded(true);
-            }, numeroAleatorio(200, 500));
+            paginaCarregada(true, 200, 500, setIsLoaded);
         }
 
         // Título da página;

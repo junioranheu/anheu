@@ -105,12 +105,12 @@ export default function SessaoEsquerda() {
             refBtn.current.click();
         }
     }
- 
+
     return (
         <section className={Styles.divEsquerda}>
             <Anheu width='0.9rem' cor='var(--branco)' />
             <span className={Styles.titulo}>Bem-vind{usuarioGenero} ao Anheu</span>
- 
+
             {/* Inputs */}
             <div className={Styles.divLogin}>
                 <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'
@@ -130,11 +130,11 @@ export default function SessaoEsquerda() {
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
-                    <Botao texto='&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} isEnabled={true} />
+                    <Botao texto='&nbsp;&nbsp;&nbsp;Continuar com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width='25px' />} refBtn={null} isEnabled={true} />
                 </div>
 
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopP}`}>
-                    <Botao texto='&nbsp;&nbsp;Continuar com o Google' url={'/'} isNovaAba={false} Svg={<Google width='25px' cor='white' />} refBtn={null} isEnabled={true} />
+                    <Botao texto='&nbsp;&nbsp;&nbsp;Continuar com o Google' url={'/'} isNovaAba={false} Svg={<Google width='18px' />} refBtn={null} isEnabled={true} />
                 </div>
             </div>
 

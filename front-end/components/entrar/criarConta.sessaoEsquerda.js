@@ -205,11 +205,11 @@ export default function SessaoEsquerda() {
             <div>
                 <div className={Styles.divisao}>ou</div>
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopM}`}>
-                    <Botao texto='&nbsp;&nbsp;Criar conta com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width={'25px'} />} isEnabled={true} />
+                    <Botao texto='&nbsp;&nbsp;&nbsp;Criar conta com o Facebook' url={'/'} isNovaAba={false} Svg={<Facebook width={'25px'} />} isEnabled={true} />
                 </div>
 
                 <div className={`${Styles.botaoCustom2} ${Styles.margemTopP}`}>
-                    <Botao texto='&nbsp;&nbsp;Criar conta com o Google' url={'/'} isNovaAba={false} Svg={<Google width={'25px'} cor='white' />} isEnabled={true} />
+                    <Botao texto='&nbsp;&nbsp;&nbsp;Criar conta com o Google' url={'/'} isNovaAba={false} Svg={<Google width={'18px'} />} isEnabled={true} />
                 </div>
             </div>
 

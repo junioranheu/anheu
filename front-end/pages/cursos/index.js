@@ -8,7 +8,7 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias'
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
-import numeroAleatorio from '../../utils/outros/numeroAleatorio';
+import paginaCarregada from '../../utils/outros/paginaCarregada';
 
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
@@ -45,9 +45,7 @@ export default function Index({ cursos }) {
             const usuarioCursos = await Fetch.getApi(url, null);
             setQtdUsuarioCursos(usuarioCursos.length);
 
-            setTimeout(function () {
-                setIsLoaded(true);
-            }, numeroAleatorio(200, 500));
+            paginaCarregada(true, 200, 500, setIsLoaded);
         }
 
         // Título da página;
@@ -60,9 +58,7 @@ export default function Index({ cursos }) {
         if (isAuth) {
             getQtdUsuarioCursos();
         } else {
-            setTimeout(function () {
-                setIsLoaded(true);
-            }, numeroAleatorio(200, 500));
+            paginaCarregada(true, 200, 500, setIsLoaded);
         }
     }, []);
 

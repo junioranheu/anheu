@@ -6,7 +6,7 @@ import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
 import { Fetch } from '../../utils/outros/fetch';
-import numeroAleatorio from '../../utils/outros/numeroAleatorio';
+import paginaCarregada from '../../utils/outros/paginaCarregada';
 
 export default function Index() {
     // console.log(curso);
@@ -28,9 +28,7 @@ export default function Index() {
             const usuarioCursos = await Fetch.getApi(url2, null);
             setQtdUsuarioCursos(usuarioCursos.length);
 
-            setTimeout(function () {
-                setIsLoaded(true);
-            }, numeroAleatorio(200, 500));
+            paginaCarregada(true, 200, 500, setIsLoaded);
         }
 
         if (isAuth) {

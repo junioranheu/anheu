@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import NProgress from 'nprogress';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ImgCinza from '../../../static/image/cinza.webp';
 import Styles from '../../../styles/aula.module.css';
@@ -8,7 +7,7 @@ import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
-import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
+import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
 export default function Aula({ aula }) {
     // console.log(aula);
@@ -19,11 +18,7 @@ export default function Aula({ aula }) {
         // Título da página;
         document.title = `Anheu — Aula: ${aula.nome}`;
 
-        NProgress.start();
-        setTimeout(function () {
-            setIsLoaded(true);
-            NProgress.done();
-        }, numeroAleatorio(200, 500));
+        paginaCarregada(true, 200, 500, setIsLoaded);
     }, [aula]);
 
     if (!isAuth) {

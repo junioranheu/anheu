@@ -466,6 +466,23 @@ code div button svg {
     height: 50px;
 }
 
+.botaoAbsoluteCustom {
+    /* background-color: pink; */
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5em;
+    z-index: 999 !important;
+}
+
+.botaoAbsoluteCustom button {
+    background-color: rgb(59, 59, 59);
+    opacity: 0.7;
+}
+
+.botaoAbsoluteCustom button:hover {
+    opacity: 1;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

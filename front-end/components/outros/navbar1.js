@@ -5,7 +5,7 @@ import Seta from '../svg/seta';
 export default function Navbar1() {
     return (
         <nav className={Styles.navbar}>
-            <span>Anheu: Plataforma de ensino on-line de técnologia e programação</span>
+            <span>Anheu: Plataforma de ensino on-line de tecnologia e programação</span>
 
             <span>{EmojiAleatorio()}</span>
 

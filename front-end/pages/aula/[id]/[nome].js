@@ -1,5 +1,6 @@
 import Router from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
+import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
 import ImgCinza from '../../../static/image/cinza.webp';
 import Styles from '../../../styles/aula.module.css';
 import { UsuarioContext } from '../../../utils/context/usuarioContext';
@@ -32,6 +33,8 @@ export default function Aula({ aula }) {
 
     return (
         <section className={Styles.wrapper}>
+            <BotaoAbsolute textoBotao='&nbsp;&nbsp;Voltar' routerBack={() => Router.back()} isNovaAba={false} />
+
             <div className={Styles.divVideo}>
                 <video className={Styles.video} loop={false} playsInline disablePictureInPicture controls controlsList='nodownload noplaybackrate'>
                     <source src={(aula.video ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}` : ImgCinza)} type='video/mp4' />

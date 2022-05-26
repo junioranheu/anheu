@@ -7,6 +7,7 @@ import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
+import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
 
 export default function Disciplina({ disciplina }) {
     // console.log(disciplina);
@@ -20,7 +21,7 @@ export default function Disciplina({ disciplina }) {
 
         setTimeout(function () {
             setIsLoaded(true);
-        }, 200);
+        }, numeroAleatorio(200, 500));
     }, [disciplina]);
 
     if (!isAuth) {

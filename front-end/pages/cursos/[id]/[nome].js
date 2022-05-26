@@ -10,6 +10,7 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategori
 import CONSTANTS_USUARIOS_CURSOS from '../../../utils/data/constUsuariosCursos';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
+import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
 
 export default function Curso({ cursos }) {
     // console.log(cursos);
@@ -18,6 +19,7 @@ export default function Curso({ cursos }) {
 
     const [filtroCurso, setFiltroCurso] = useState('');
     const [cursoDefinidoAtual, setCursoDefinidoAtual] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         async function getCursoDefinidoAtual() {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
@@ -25,6 +27,10 @@ export default function Curso({ cursos }) {
             // console.log(cursoDefinido);
 
             setCursoDefinidoAtual(cursoDefinido);
+
+            setTimeout(function () {
+                setIsLoaded(true);
+            }, numeroAleatorio(200, 500));
         }
 
         // Título da página;
@@ -39,7 +45,11 @@ export default function Curso({ cursos }) {
     function handleModalComprarCurso() {
         setIsModalComprarCursoOpen(!isModalComprarCursoOpen);
     }
-    
+
+    if (!isLoaded) {
+        return false;
+    }
+
     return (
         <Fragment>
             {
@@ -75,7 +85,7 @@ export default function Curso({ cursos }) {
                                         itemzinho={`Professor ${c.professor}`}
                                         itemzao={`R$ ${c.preco}`}
                                         isMostrarItemzao={true}
-                                        handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}           
+                                        handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}
                                         idReferenciaParaAlterarCor={cursoDefinidoAtual?.cursoId}
                                         tags={null}
                                         imagem={null}

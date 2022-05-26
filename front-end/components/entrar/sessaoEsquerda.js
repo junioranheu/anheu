@@ -55,7 +55,7 @@ export default function SessaoEsquerda() {
             formData.senha = '';
             refUsuario.current.select();
             refBtn.current.disabled = false;
-            Aviso.warn('Algo deu errado<br/>Provavelmente o usuário e/ou a senha estão errados!', 5000);
+            Aviso.warn('Algo deu errado<br/><br/>Provavelmente o usuário e/ou a senha estão errados!', 5000);
             return false;
         }
 

@@ -6,6 +6,7 @@ import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import AjustarUrl from '../../utils/outros/ajustarUrl';
 import { Fetch } from '../../utils/outros/fetch';
+import numeroAleatorio from '../../utils/outros/numeroAleatorio';
 
 export default function Index() {
     // console.log(curso);
@@ -29,7 +30,7 @@ export default function Index() {
 
             setTimeout(function () {
                 setIsLoaded(true);
-            }, 200);
+            }, numeroAleatorio(200, 500));
         }
 
         if (isAuth) {

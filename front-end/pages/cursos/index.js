@@ -8,6 +8,7 @@ import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias'
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
+import numeroAleatorio from '../../utils/outros/numeroAleatorio';
 
 export default function Index({ cursos }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
@@ -46,7 +47,7 @@ export default function Index({ cursos }) {
 
             setTimeout(function () {
                 setIsLoaded(true);
-            }, 200);
+            }, numeroAleatorio(200, 500));
         }
 
         // Título da página;
@@ -61,7 +62,7 @@ export default function Index({ cursos }) {
         } else {
             setTimeout(function () {
                 setIsLoaded(true);
-            }, 200);
+            }, numeroAleatorio(200, 500));
         }
     }, []);
 

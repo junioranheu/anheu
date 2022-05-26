@@ -7,6 +7,7 @@ import ItemRow from '../../components/outros/itemRow';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
+import numeroAleatorio from '../../utils/outros/numeroAleatorio';
 
 export default function MeusCursos() {
     document.title = 'Anheu — Meus cursos';
@@ -26,7 +27,7 @@ export default function MeusCursos() {
 
         setTimeout(function () {
             setIsLoaded(true);
-        }, 200);
+        }, numeroAleatorio(200, 500));
     }
 
     useEffect(() => {

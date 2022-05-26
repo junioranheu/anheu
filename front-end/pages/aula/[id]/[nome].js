@@ -23,7 +23,7 @@ export default function Aula({ aula }) {
         setTimeout(function () {
             setIsLoaded(true);
             NProgress.done();
-        }, numeroAleatorio(200, 800));
+        }, numeroAleatorio(200, 500));
     }, [aula]);
 
     if (!isAuth) {

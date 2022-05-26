@@ -22,6 +22,16 @@ export default function Aula({ aula }) {
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, [aula]);
 
+    function handleClickNaoPermitirClickDireito(e) {
+        if (e.type === 'click') {
+            // console.log('Click esquerdo');
+        } else if (e.type === 'contextmenu') {
+            // console.log('Click direito');
+            e.preventDefault(); // "Bloquear" opções do click com o direito;
+            return false;
+        }
+    }
+
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;
@@ -36,7 +46,16 @@ export default function Aula({ aula }) {
             <BotaoAbsolute textoBotao='&nbsp;&nbsp;Voltar' routerBack={() => Router.back()} isNovaAba={false} />
 
             <div className={Styles.divVideo}>
-                <video className={Styles.video} loop={false} playsInline disablePictureInPicture controls controlsList='nodownload noplaybackrate'>
+                <video
+                    className={Styles.video}
+                    loop={false}
+                    playsInline
+                    disablePictureInPicture
+                    controls
+                    controlsList='nodownload noplaybackrate'
+                    onClick={(e) => handleClickNaoPermitirClickDireito(e)}
+                    onContextMenu={(e) => handleClickNaoPermitirClickDireito(e)}
+                >
                     <source src={(aula.video ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}` : ImgCinza)} type='video/mp4' />
                 </video>
             </div>
@@ -71,7 +90,7 @@ export async function getStaticPaths() {
     const url = CONSTANTS_AULAS.API_URL_GET_TODOS;
     const aulas = await Fetch.getApi(url, null);
 
-    // Gerar o "paths";
+    // Gerar o 'paths';
     const paths = aulas?.map(d => ({
         params: {
             id: d.aulaId.toString(),

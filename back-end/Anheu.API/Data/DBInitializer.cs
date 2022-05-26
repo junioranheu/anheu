@@ -187,13 +187,18 @@ namespace Anheu.API.Data
 
             if (!context.AulaTimings.Any())
             {
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 1, AulaId = 1, Titulo = "xxx", TempoEmSegundos = "8.4" });
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 2, AulaId = 1, Titulo = "yyy", TempoEmSegundos = "145.3" });
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 3, AulaId = 1, Titulo = "zzz", TempoEmSegundos = "240.6" });
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 4, AulaId = 1, Titulo = "aaa", TempoEmSegundos = "300.6" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 1, AulaId = 1, Titulo = "Desgraçado, rapaz", TempoEmSegundos = "1" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 2, AulaId = 1, Titulo = "Ó o lanchin dele", TempoEmSegundos = "2" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 3, AulaId = 1, Titulo = "Fdp", TempoEmSegundos = "4" });
 
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 5, AulaId = 2, Titulo = "bbb", TempoEmSegundos = "8.4" });
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 6, AulaId = 2, Titulo = "ccc", TempoEmSegundos = "145.3" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 4, AulaId = 2, Titulo = "Que paso ahora?", TempoEmSegundos = "1.2" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 5, AulaId = 2, Titulo = "Risada", TempoEmSegundos = "2" });
+
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 6, AulaId = 3, Titulo = "Will sendo ajusticiado", TempoEmSegundos = "4" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 7, AulaId = 3, Titulo = "Will dando TP", TempoEmSegundos = "7" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 8, AulaId = 3, Titulo = "Will fazendo kk", TempoEmSegundos = "8.2" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 9, AulaId = 3, Titulo = "Will morrendo igual um 0k", TempoEmSegundos = "13.1" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 10, AulaId = 3, Titulo = "Will sendo zoado", TempoEmSegundos = "17.3" });
             }
 
             if (!context.UsuariosCursos.Any())

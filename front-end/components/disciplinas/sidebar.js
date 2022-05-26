@@ -18,15 +18,16 @@ export default function Sidebar() {
         // console.log(asPath);
         setUrlAtual(asPath);
     }, [asPath]);
- 
+
     return (
         <section className={Styles.sessaoNavbar}>
-            {itens?.map((item, i) => (
-                <Link key={i} href={item.url}>
-                    <a className={`cor-principal-hover ${(urlAtual === item.url ? 'opacidade' : '')}`}>{item.item}</a>
-                </Link>
-            ))}
+            {
+                itens?.map((item, i) => (
+                    <Link key={i} href={item.url}>
+                        <a className={`cor-principal-hover ${(urlAtual === item.url ? 'opacidade' : '')}`}>{item.item}</a>
+                    </Link>
+                ))
+            }
         </section>
     )
 }
- 

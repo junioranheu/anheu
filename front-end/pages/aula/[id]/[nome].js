@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ImgCinza from '../../../static/image/cinza.webp';
 import Styles from '../../../styles/aula.module.css';
 import { UsuarioContext } from '../../../utils/context/usuarioContext';
@@ -11,7 +11,7 @@ import { Fetch } from '../../../utils/outros/fetch';
 import numeroAleatorio from '../../../utils/outros/numeroAleatorio';
 
 export default function Aula({ aula }) {
-    console.log(aula);
+    // console.log(aula);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -45,6 +45,22 @@ export default function Aula({ aula }) {
 
             <div className={Styles.divOutros}>
                 <span className='topico'>{aula.nome}</span>
+                <span className='tituloDesc'>{aula.resumoAula}</span>
+
+                {
+                    aula?.aulasTimings.length > 0 && (
+                        <Fragment>
+                            <br />
+                            <span className='tituloDesc'>Timestamps:</span>
+                            {
+                                aula?.aulasTimings?.map((at, i) => (
+                                    <span key={i} className='tituloDesc'>{at.titulo} - {at.tempoEmSegundos} segundos</span>
+                                ))
+                            }
+
+                        </Fragment>
+                    )
+                }
             </div>
         </section>
     )

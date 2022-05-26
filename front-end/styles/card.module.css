@@ -184,7 +184,6 @@
 
 .divSessaoCardsPequenos {
     /* background-color: blue !important; */
-    /* border-radius: 10px; */
     border-radius: 10px;
     height: 12rem;
 
@@ -229,7 +228,7 @@
 
     .divSessaoCardsPequenos {
         /* background-color: blue !important; */
-        height: 8rem;
+        height: 10rem;
 
         /* Flex */
         flex: 0 0 40%;
@@ -240,7 +239,7 @@
 @media (max-width:1281px) {
     .divSessaoCardsPequenos {
         /* background-color: blue !important; */
-        height: 8rem;
+        height: 10rem;
 
         /* Flex */
         flex: 0 0 40%;
@@ -272,7 +271,7 @@
 
     .divSessaoCardsPequenos {
         /* background-color: blue !important; */
-        height: 8rem;
+        height: 10rem;
 
         /* Flex */
         flex: 0 0 90%;

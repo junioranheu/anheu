@@ -1,5 +1,1 @@
 --
-convert video para blob 
-https://stackoverflow.com/questions/69567276/convert-a-video-blob-url-to-video-mp4-file
-
-ou encontrar uma forma de nao deixar escancarado o video...

@@ -1,7 +1,6 @@
 import Router from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
-import ImgCinza from '../../../static/image/cinza.webp';
 import Styles from '../../../styles/aula.module.css';
 import { UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
@@ -14,12 +13,27 @@ export default function Aula({ aula }) {
     // console.log(aula);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
+    const [video, setVideo] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — Aula: ${aula.nome}`;
 
-        paginaCarregada(true, 200, 500, setIsLoaded);
+        async function getVideo() {
+            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}`;
+            // console.log(urlVideo);
+            const blob = await fetch(urlVideo).then(r => r.blob());
+            // console.log(blob);
+            const arquivoBlobFinal = window.URL.createObjectURL(new Blob([blob], { type: 'video/mp4' }));
+            // console.log(arquivoBlobFinal);
+            setVideo(arquivoBlobFinal);
+
+            paginaCarregada(true, 200, 500, setIsLoaded);
+        }
+
+        if (aula) {
+            getVideo();
+        }
     }, [aula]);
 
     function handleClickNaoPermitirClickDireito(e) {
@@ -56,7 +70,7 @@ export default function Aula({ aula }) {
                     onClick={(e) => handleClickNaoPermitirClickDireito(e)}
                     onContextMenu={(e) => handleClickNaoPermitirClickDireito(e)}
                 >
-                    <source src={(aula.video ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}` : ImgCinza)} type='video/mp4' />
+                    <source src={video} type='video/mp4' />
                 </video>
             </div>
 

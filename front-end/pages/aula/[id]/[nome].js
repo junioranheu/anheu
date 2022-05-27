@@ -27,7 +27,7 @@ export default function Aula({ aula }) {
             const arquivoBlobFinal = window.URL.createObjectURL(new Blob([blob], { type: 'video/mp4' }));
             // console.log(arquivoBlobFinal);
             setVideo(arquivoBlobFinal);
-
+ 
             paginaCarregada(true, 200, 500, setIsLoaded);
         }
 

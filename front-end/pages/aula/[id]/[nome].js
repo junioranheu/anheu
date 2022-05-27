@@ -41,7 +41,7 @@ export default function Aula({ aula }) {
             // console.log('Click esquerdo');
         } else if (e.type === 'contextmenu') {
             // console.log('Click direito');
-            e.preventDefault(); // "Bloquear" opções do click com o direito;
+            e.preventDefault(); // 'Bloquear' opções do click com o direito;
             return false;
         }
     }
@@ -61,6 +61,7 @@ export default function Aula({ aula }) {
 
             <div className={Styles.divVideo}>
                 <video
+                    id='videoPlayer'
                     className={Styles.video}
                     loop={false}
                     playsInline

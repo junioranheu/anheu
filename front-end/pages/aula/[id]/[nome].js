@@ -35,7 +35,7 @@ export default function Aula({ aula }) {
             getVideo();
         }
     }, [aula]);
-
+ 
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {
             // console.log('Click esquerdo');

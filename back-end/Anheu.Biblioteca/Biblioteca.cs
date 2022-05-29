@@ -237,5 +237,17 @@ namespace Anheu.Biblioteca
 
             return isValidated;
         }
+
+        public static string GetMimeType(string caminhoArquivo)
+        {
+            string mimeType = "application/unknown";
+            string ext = System.IO.Path.GetExtension(caminhoArquivo).ToLower();
+            Microsoft.Win32.RegistryKey regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+
+            if (regKey != null && regKey.GetValue("Content Type") != null)
+                mimeType = regKey.GetValue("Content Type").ToString();
+
+            return mimeType;
+        }
     }
 }

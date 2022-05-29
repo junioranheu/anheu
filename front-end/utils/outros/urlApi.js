@@ -1,4 +1,4 @@
-// let API_BASE_URL_DEV = 'https://localhost:44387';
+// let API_BASE_URL_DEV = 'https://localhost:7263';
 let API_BASE_URL_DEV = 'http://localhost:57726';
 let API_BASE_URL_PROD = 'https://anheuapi.azurewebsites.net';
 

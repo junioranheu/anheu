@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using static Anheu.Biblioteca.Biblioteca;
 
 namespace Anheu.API.Controllers
 {
@@ -14,28 +13,24 @@ namespace Anheu.API.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [HttpGet("getArquivo")]
-        public FileStreamResult GetArquivo(string nomePasta, string? nomeSubpasta, string nomeArquivo, bool isVerificar = true)
+        [HttpGet("getArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}&isVerificar={isVerificar}")]
+        public async Task<string> GetArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
         {
-            if (isVerificar)
+            if (!User.Identity.IsAuthenticated)
             {
-                if (!User.Identity.IsAuthenticated)
-                {
-                    return null;
-                }
+                return null;
             }
 
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
-            string caminho = $"{wwwPath}/upload/{nomePasta}/{(nomeSubpasta?.Trim().Length > 0 ? $"/{nomeSubpasta}" : null)}/{nomeArquivo}";
+            string caminho = $"{wwwPath}upload/{nomePasta}/{(nomeSubpasta?.Trim().Length > 0 ? $"{nomeSubpasta}" : null)}/{nomeArquivo}";
 
             if (!String.IsNullOrEmpty(caminho))
             {
                 if (System.IO.File.Exists(caminho))
                 {
-                    var arquivo = System.IO.File.OpenRead(caminho);
-                    string mimeType = GetMimeType(caminho);
-                    var arquivoConvertido = File(arquivo, mimeType);
-                    return arquivoConvertido;
+                    Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
+                    string arquivoBase64 = Convert.ToBase64String(bytes);
+                    return arquivoBase64;
                 }
                 else
                 {

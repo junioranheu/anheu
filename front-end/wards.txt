@@ -1,1 +1,4 @@
 --
+arrumar o getStaticProps de cursos
+arrumar as outras imagens
+arrumar o User.Identity.IsAuthenticated do GetArquivo

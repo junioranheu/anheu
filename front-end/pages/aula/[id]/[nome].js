@@ -1,25 +1,30 @@
 import Router from 'next/router';
+import NProgress from 'nprogress';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
+import { Aviso } from '../../../components/outros/aviso';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
+import thumbnailPadrao from '../../../static/image/iconeGrande.webp';
 import Styles from '../../../styles/aula.module.css';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
-import paginaCarregada from '../../../utils/outros/paginaCarregada';
+import tamanhoString from '../../../utils/outros/tamanhoString';
 
 export default function Aula({ aula }) {
     // console.log(aula);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const isDebug = true;
 
     const [video, setVideo] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isJaExecutou, setIsJaExecutou] = useState(false);
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — Aula: ${aula.nome}`;
 
         async function getVideo() {
+            NProgress.start();
             const nomePasta = 'aulas';
             const nomeSubpasta = 'video';
             const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO_PROTEGIDO}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
@@ -29,13 +34,20 @@ export default function Aula({ aula }) {
             // console.log(videoBase64);
 
             setVideo(videoBase64);
-            paginaCarregada(true, 200, 500, setIsLoaded);
+            NProgress.done();
+
+            if (isDebug) {
+                Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)} `, 3000);
+            }
         }
 
-        if (aula && isAuth) {
+        if (aula && isAuth && !isJaExecutou) {
+            setIsJaExecutou(true);
             getVideo();
+        } else {
+            Aviso.error('Parece que ocorreu um erro ao encontrar o vídeo dessa aula...', 10000);
         }
-    }, [aula]);
+    }, [aula, isJaExecutou]);
 
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {
@@ -52,10 +64,6 @@ export default function Aula({ aula }) {
         return false;
     }
 
-    if (!isLoaded) {
-        return false;
-    }
-
     return (
         <section className={Styles.wrapper}>
             <BotaoAbsolute textoBotao='&nbsp;&nbsp;Voltar' routerBack={() => Router.back()} isNovaAba={false} />
@@ -63,6 +71,7 @@ export default function Aula({ aula }) {
             <div className={Styles.divVideo}>
                 <video
                     id='videoPlayer'
+                    poster={thumbnailPadrao.src}
                     className={Styles.video}
                     loop={false}
                     playsInline
@@ -72,7 +81,12 @@ export default function Aula({ aula }) {
                     onClick={(e) => handleClickNaoPermitirClickDireito(e)}
                     onContextMenu={(e) => handleClickNaoPermitirClickDireito(e)}
                 >
-                    <source src={video} type='video/mp4' />
+                    {
+                        video && (
+                            <source src={video} type='video/mp4' />
+                        )
+                    }
+
                 </video>
             </div>
 

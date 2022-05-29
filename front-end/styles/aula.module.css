@@ -1,6 +1,6 @@
 .wrapper {
     /* background-color: pink; */
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
 }
@@ -31,3 +31,37 @@
     width: 30vw;
     padding: 2rem;
 }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+@media (max-width:1600px) {}
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .wrapper {
+        /* background-color: pink; */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .divVideo {
+        width: 100vw;
+    }
+
+    .divOutros {
+        /* background-color: blue; */
+        width: 100vw;
+        padding: 2rem;
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

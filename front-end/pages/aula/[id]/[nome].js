@@ -86,7 +86,6 @@ export default function Aula({ aula }) {
                             <source src={video} type='video/mp4' />
                         )
                     }
-
                 </video>
             </div>
 

@@ -2,7 +2,7 @@ import Router from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
 import Styles from '../../../styles/aula.module.css';
-import { UsuarioContext } from '../../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
@@ -20,22 +20,23 @@ export default function Aula({ aula }) {
         document.title = `Anheu — Aula: ${aula.nome}`;
 
         async function getVideo() {
-            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO}/${aula.video}`;
+            const nomePasta = 'aulas';
+            const nomeSubpasta = 'video';
+            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO_PROTEGIDO}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
             // console.log(urlVideo);
-            const blob = await fetch(urlVideo).then(r => r.blob());
-            // console.log(blob);
-            const arquivoBlobFinal = window.URL.createObjectURL(new Blob([blob], { type: 'video/mp4' }));
-            // console.log(arquivoBlobFinal);
-            setVideo(arquivoBlobFinal);
- 
+            const token = Auth.getUsuarioLogado().token;
+            const videoBase64 = await Fetch.getApi(urlVideo, token);
+            // console.log(videoBase64);
+
+            setVideo(videoBase64);
             paginaCarregada(true, 200, 500, setIsLoaded);
         }
 
-        if (aula) {
+        if (aula && isAuth) {
             getVideo();
         }
     }, [aula]);
- 
+
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {
             // console.log('Click esquerdo');

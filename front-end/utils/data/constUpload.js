@@ -1,9 +1,12 @@
 import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../outros/urlApi';
 
 const ENDPOINTS = {
+    // "Não-protegido", arquivos da pasta Upload, que estão liberados;
     GET_AULAS_THUMBNAIL: 'Upload/aulas/imagem',
-    GET_AULAS_VIDEO_PROTEGIDO: 'UploadProtegido/aulas/video',
     GET_CURSOS_CATEGORIAS: 'Upload/cursosCategorias/imagem',
+
+    // "Protegidos", arquivos que estaõ na pasta UploadProtegido e devem ser chamados pela API;
+    GET_AULAS_VIDEO_PROTEGIDO: 'api/Uploads/getArquivoProtegido',
 };
 
 const DEV = {

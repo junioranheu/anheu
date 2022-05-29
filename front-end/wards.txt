@@ -1,3 +1,1 @@
 --
-arrumar as outras imagens
-arrumar o User.Identity.IsAuthenticated do GetArquivo

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using static Anheu.Biblioteca.Biblioteca;
 
 namespace Anheu.API.Controllers
 {
@@ -13,16 +15,12 @@ namespace Anheu.API.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [HttpGet("getArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}&isVerificar={isVerificar}")]
-        public async Task<string> GetArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
+        [HttpGet("getArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
+        [Authorize] // Precisa estar autorizado com token para acessar isso!
+        public async Task<ActionResult<string>> GetArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return null;
-            }
-
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
-            string caminho = $"{wwwPath}upload/{nomePasta}/{(nomeSubpasta?.Trim().Length > 0 ? $"{nomeSubpasta}" : null)}/{nomeArquivo}";
+            string caminho = $"{wwwPath}UploadProtegido/{nomePasta}/{nomeSubpasta}/{nomeArquivo}";
 
             if (!String.IsNullOrEmpty(caminho))
             {
@@ -30,15 +28,23 @@ namespace Anheu.API.Controllers
                 {
                     Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
                     string arquivoBase64 = Convert.ToBase64String(bytes);
-                    return arquivoBase64;
+                    string extensaoArquivo = GetMimeType(caminho);
+
+                    if (String.IsNullOrEmpty(arquivoBase64) || String.IsNullOrEmpty(extensaoArquivo))
+                    {
+                        return Problem();
+                    }
+
+                    string arquivoBase64Final = $"data:{extensaoArquivo};base64,{arquivoBase64}";
+                    return arquivoBase64Final;
                 }
                 else
                 {
-                    return null;
+                    return NotFound();
                 }
             }
 
-            return null;
+            return NotFound();
         }
     }
 }

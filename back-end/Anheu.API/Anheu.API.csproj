@@ -30,6 +30,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Upload\aulas\thumbnail\" />
+		<!-- https://stackoverflow.com/questions/32754616/how-to-change-the-properties-of-all-the-files-of-a-folder-to-copy-always-autom -->
+		<None Update="UploadProtegido\**">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 </Project>

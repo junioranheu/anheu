@@ -3,14 +3,14 @@ import Banner from '../../components/outros/banner';
 import SessaoCardsPequenos from '../../components/outros/sessaoCardsPequenos';
 import Styles from '../../styles/cursos.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
-import CONSTANTS_CURSOS from '../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../utils/data/constCursosCategorias';
 import CONSTANTS_UPLOAD from '../../utils/data/constUpload';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
 import paginaCarregada from '../../utils/outros/paginaCarregada';
 
-export default function Index({ cursos }) {
+export default function Index({ cc }) {
+    document.title = 'Anheu — Cursos';
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     // console.log(cursos);
 
@@ -18,13 +18,10 @@ export default function Index({ cursos }) {
     const [qtdUsuarioCursos, setQtdUsuarioCursos] = useState(0);
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
-        async function getCursosCategorias() {
-            const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
-            const cursosCategorias = await Fetch.getApi(url, null);
-
+        async function ajustarCursosCategorias(cc) {
             // Criar novo objeto com campos especificos;
             var obj = [{}];
-            cursosCategorias.forEach(function (c, i) {
+            cc.forEach(function (c, i) {
                 const o = {
                     id: c.cursoCategoriaId,
                     titulo: c.categoria,
@@ -48,11 +45,8 @@ export default function Index({ cursos }) {
             paginaCarregada(true, 200, 500, setIsLoaded);
         }
 
-        // Título da página;
-        document.title = 'Anheu — Cursos';
-
-        // Cursos;
-        getCursosCategorias();
+        // Ajustar as categorias com base no que vem do getStaticProps;
+        ajustarCursosCategorias(cc);
 
         // Qtd de cursos do usuário logado;
         if (isAuth) {
@@ -60,7 +54,7 @@ export default function Index({ cursos }) {
         } else {
             paginaCarregada(true, 200, 500, setIsLoaded);
         }
-    }, []);
+    }, [cc]);
 
     if (!isLoaded) {
         return false;
@@ -95,12 +89,12 @@ export default function Index({ cursos }) {
 }
 
 export async function getStaticProps() {
-    const url = CONSTANTS_CURSOS.API_URL_GET_TODOS;
-    const cursos = await Fetch.getApi(url, null);
+    const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
+    const cc = await Fetch.getApi(url, null);
 
     return {
         props: {
-            cursos
+            cc
         },
     }
 }

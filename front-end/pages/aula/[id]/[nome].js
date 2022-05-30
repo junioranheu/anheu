@@ -10,36 +10,46 @@ import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import AjustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
+import paginaCarregada from '../../../utils/outros/paginaCarregada';
 import tamanhoString from '../../../utils/outros/tamanhoString';
 
-export default function Aula({ aula }) {
+export default function Aula({ aulaStaticProps }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
-    const [video, setVideo] = useState(false);
-    useEffect(() => {
-        // Título da página;
-        document.title = `Anheu — Aula: ${aula.nome}`;
+    const [aula, setAula] = useState({});
 
+    useEffect(() => {
+        // Gambiarra para parar de executar misteriosamente duas vezes o useEffect;
+        if (aulaStaticProps?.aulaId) {
+            setAula(aulaStaticProps);
+        }
+    }, [aulaStaticProps]);
+
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [video, setVideo] = useState(null);
+    useEffect(() => {
         async function getVideo() {
             NProgress.start();
             const nomePasta = 'aulas';
             const nomeSubpasta = 'video';
             const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO_PROTEGIDO}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
-            // console.log(urlVideo);
             const token = Auth.getUsuarioLogado().token;
             const videoBase64 = await Fetch.getApi(urlVideo, token);
-            console.log(`Videoaula importada em ${videoBase64.item2} MS`);
-
             setVideo(videoBase64.item1);
+
+            Aviso.info(`Videoaula de ${tamanhoString(videoBase64.item1)} importada em ${videoBase64.item2} milissegundos`, 3000);
             NProgress.done();
-            Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)}`, 3000);
         }
 
-        if (aula.aulaId) {
-            // getVideo();
-            console.log(aula);
+        if (aula?.aulaId) {
+            // Título da página;
+            document.title = `Anheu — Aula: ${aulaStaticProps.nome}`;
+            paginaCarregada(false, 200, 500, setIsLoaded);
+
+            // "Baixar" a videoaula em questão;
+            getVideo();
         }
-    }, [aula.aulaId, aula.nome, aula.video]);
+    }, [aula]);
 
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {
@@ -56,7 +66,7 @@ export default function Aula({ aula }) {
         return false;
     }
 
-    if (!aula.aulaId) {
+    if (!isLoaded) {
         return false;
     }
 
@@ -134,11 +144,11 @@ export async function getStaticProps(context) {
 
     // Aula;
     const url = `${CONSTANTS_AULAS.API_URL_GET_POR_ID}/${id}`;
-    const aula = await Fetch.getApi(url, null);
+    const aulaStaticProps = await Fetch.getApi(url, null);
 
     return {
         props: {
-            aula
+            aulaStaticProps
         },
         // revalidate: 10 // segundos
     }

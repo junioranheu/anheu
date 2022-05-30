@@ -17,8 +17,9 @@ namespace Anheu.API.Controllers
 
         [HttpGet("getArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
         [Authorize] // Precisa estar autorizado com token para acessar isso!
-        public async Task<ActionResult<string>> GetArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
+        public async Task<ActionResult<Tuple<string, string>>> GetArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
             string caminho = $"{wwwPath}UploadProtegido/{nomePasta}/{nomeSubpasta}/{nomeArquivo}";
 
@@ -35,8 +36,14 @@ namespace Anheu.API.Controllers
                         return Problem();
                     }
 
+                    // Gerar o base64 final;
                     string arquivoBase64Final = $"data:{extensaoArquivo};base64,{arquivoBase64}";
-                    return arquivoBase64Final;
+
+                    // Parar o Stopwatch;
+                    watch.Stop();
+                    var elapsedMs = watch.ElapsedMilliseconds;
+
+                    return new Tuple<string, string>(arquivoBase64Final, elapsedMs.ToString());
                 }
                 else
                 {

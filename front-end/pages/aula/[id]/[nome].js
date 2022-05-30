@@ -13,12 +13,10 @@ import { Fetch } from '../../../utils/outros/fetch';
 import tamanhoString from '../../../utils/outros/tamanhoString';
 
 export default function Aula({ aula }) {
-    // console.log(aula);
+    //console.log(aula);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
-    const isDebug = true;
 
     const [video, setVideo] = useState(false);
-    const [isJaExecutou, setIsJaExecutou] = useState(false);
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — Aula: ${aula.nome}`;
@@ -31,21 +29,17 @@ export default function Aula({ aula }) {
             // console.log(urlVideo);
             const token = Auth.getUsuarioLogado().token;
             const videoBase64 = await Fetch.getApi(urlVideo, token);
-            // console.log(videoBase64);
+            console.log(`${videoBase64.item2} MS`);
 
-            setVideo(videoBase64);
+            setVideo(videoBase64.item1);
             NProgress.done();
-
-            if (isDebug) {
-                Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)}`, 3000);
-            }
+            Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)}`, 3000);
         }
 
-        if (aula && isAuth && !isJaExecutou) {
-            setIsJaExecutou(true);
+        if (!video) {
             getVideo();
         }
-    }, [aula, isJaExecutou]);
+    }, [aula, isAuth, video]);
 
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {

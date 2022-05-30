@@ -36,7 +36,7 @@ export default function Curso({ cursos }) {
 
         // Verificar qual é o curso definido como atual pelo usuário;
         getCursoDefinidoAtual();
-    }, [cursos]);
+    }, [usuarioId, cursos]);
 
     const [isModalComprarCursoOpen, setIsModalComprarCursoOpen] = useState(false);
     const [cursoSelecionado, setCursoSelecionado] = useState({});

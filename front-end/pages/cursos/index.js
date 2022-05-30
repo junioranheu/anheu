@@ -54,7 +54,7 @@ export default function Index({ cc }) {
         } else {
             paginaCarregada(true, 200, 500, setIsLoaded);
         }
-    }, [cc]);
+    }, [isAuth, cc]);
 
     if (!isLoaded) {
         return false;

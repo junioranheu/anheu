@@ -36,7 +36,7 @@ export default function Index() {
             // Qtd de cursos do usuário logado;
             getCursoDefinidoAtualEQtdUsuarioCursos();
         }
-    }, [cursoDefinidoAtual?.cursoId]);
+    }, [isAuth, usuarioId, cursoDefinidoAtual?.cursoId]);
 
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });

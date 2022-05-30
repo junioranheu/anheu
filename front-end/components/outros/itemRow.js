@@ -29,6 +29,7 @@ export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemza
                         width={200}
                         height={200}
                         onError={() => setSrc(ImgCinza)}
+                        alt=''
                     />
                 )
             }

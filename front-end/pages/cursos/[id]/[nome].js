@@ -73,7 +73,7 @@ export default function Curso({ cursos }) {
 
                         <div className='margem30'>
                             {
-                                cursos?.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso)).map((c, i) => (
+                                cursos?.filter(x => x.isAtivo === 1 && x.nome.toLowerCase().includes(filtroCurso.toLowerCase())).map((c, i) => (
                                     <ItemRow
                                         key={i}
                                         data={c}

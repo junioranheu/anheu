@@ -17,7 +17,6 @@ export default function Aula({ aulaStaticProps }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
     const [aula, setAula] = useState({});
-
     useEffect(() => {
         // Gambiarra para parar de executar misteriosamente duas vezes o useEffect;
         if (aulaStaticProps?.aulaId) {

@@ -1,3 +1,1 @@
 --
-ajustar algum canplay
-verificar se é possivel comprimir o base64: https://stackoverflow.com/questions/16606552/compress-and-decompress-string-in-c-sharp

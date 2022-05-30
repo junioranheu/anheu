@@ -36,7 +36,7 @@ export default function Disciplina({ disciplina }) {
             <div className='flexColumn'>
                 <span className='titulo'>Bem-vind{usuarioGenero} às aulas de <span className='grifar'>{disciplina.nome}</span></span>
             </div>
-
+ 
             <div className='margem30'>
                 {
                     disciplina?.aulas?.filter(x => x.isAtivo === 1).map((a, i) => (

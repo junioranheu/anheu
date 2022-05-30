@@ -13,7 +13,6 @@ import { Fetch } from '../../../utils/outros/fetch';
 import tamanhoString from '../../../utils/outros/tamanhoString';
 
 export default function Aula({ aula }) {
-    //console.log(aula);
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
 
     const [video, setVideo] = useState(false);
@@ -29,17 +28,18 @@ export default function Aula({ aula }) {
             // console.log(urlVideo);
             const token = Auth.getUsuarioLogado().token;
             const videoBase64 = await Fetch.getApi(urlVideo, token);
-            console.log(`${videoBase64.item2} MS`);
+            console.log(`Videoaula importada em ${videoBase64.item2} MS`);
 
             setVideo(videoBase64.item1);
             NProgress.done();
             Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)}`, 3000);
         }
 
-        if (!video) {
-            getVideo();
+        if (aula.aulaId) {
+            // getVideo();
+            console.log(aula);
         }
-    }, [aula, isAuth, video]);
+    }, [aula.aulaId, aula.nome, aula.video]);
 
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {
@@ -53,6 +53,10 @@ export default function Aula({ aula }) {
 
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
+        return false;
+    }
+
+    if (!aula.aulaId) {
         return false;
     }
 

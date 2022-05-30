@@ -37,15 +37,13 @@ export default function Aula({ aula }) {
             NProgress.done();
 
             if (isDebug) {
-                Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)} `, 3000);
+                Aviso.info(`Videoaula importada: ${tamanhoString(videoBase64)}`, 3000);
             }
         }
 
         if (aula && isAuth && !isJaExecutou) {
             setIsJaExecutou(true);
             getVideo();
-        } else {
-            Aviso.error('Parece que ocorreu um erro ao encontrar o vídeo dessa aula...', 10000);
         }
     }, [aula, isJaExecutou]);
 

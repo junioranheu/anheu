@@ -35,49 +35,53 @@ export default function Navbar2() {
 
     return (
         <nav className={Styles.navbar}>
-            {!isLupa ? (
-                <div className={Styles.wrapper}>
-                    <div className={Styles.divEsquerda}>
-                        <Link href='/'><a className={Styles.iconeCorInvertida}><Anheu width='0.9rem' cor='var(--branco)' />&nbsp;&nbsp;Anheu</a></Link>
-                        <Link href='/posts'><a>Posts & tutoriais</a></Link>
-                        <Link href='/cursos'><a>Cursos</a></Link>
+            {
+                !isLupa ? (
+                    <div className={Styles.wrapper}>
+                        <div className={Styles.divEsquerda}>
+                            <Link href='/'><a className={Styles.iconeCorInvertida}><Anheu width='0.9rem' cor='var(--branco)' />&nbsp;&nbsp;Anheu</a></Link>
+                            <Link href='/posts'><a>Posts & tutoriais</a></Link>
+                            <Link href='/cursos'><a>Cursos</a></Link>
 
-                        {
-                            isAuth && (
-                                <Link href='/disciplinas'><a>Minhas disciplinas & aulas</a></Link>
-                            )
-                        }
+                            {
+                                isAuth && (
+                                    <Link href='/disciplinas'><a>Minhas disciplinas & aulas</a></Link>
+                                )
+                            }
 
-                        <a onClick={() => handleLupa()}><Lupa height='1.5rem' width='1.5rem' cor='rgba(255, 255, 255, 0.7)' /></a>
+                            <a onClick={() => handleLupa()}><Lupa height='1.5rem' width='1.5rem' cor='rgba(255, 255, 255, 0.7)' /></a>
+                        </div>
+
+                        <div className={Styles.divDireita}>
+                            {
+                                isAuth ? (
+                                    <Fragment>
+                                        <span className={Styles.margemBotao} onClick={() => deslogar()}>
+                                            <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                                        </span>
+                                    </Fragment>
+                                ) : (
+                                    <Fragment>
+                                        <Link href='/usuario/criar-conta'><a>Crie sua conta</a></Link>
+
+                                        <span className={Styles.margemBotao}>
+                                            <Botao texto={'Entrar'} url={'/usuario/entrar'} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                                        </span>
+                                    </Fragment>
+                                )
+                            }
+                        </div>
                     </div>
-
-                    <div className={Styles.divDireita}>
-                        {isAuth ? (
-                            <Fragment>
-                                <span className={Styles.margemBotao} onClick={() => deslogar()}>
-                                    <Botao texto={'Sair'} url={''} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
-                                </span>
-                            </Fragment>
-                        ) : (
-                            <Fragment>
-                                <Link href='/usuario/criar-conta'><a>Crie sua conta</a></Link>
-
-                                <span className={Styles.margemBotao}>
-                                    <Botao texto={'Entrar'} url={'/usuario/entrar'} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
-                                </span>
-                            </Fragment>
-                        )}
+                ) : (
+                    <div className={`${Styles.divLupa} animate__animated animate__fadeIn`}>
+                        <div>
+                            <Lupa width='1.5rem' cor='rgba(255, 255, 255, 0.7)' />
+                            <input className={Styles.input} type='text' placeholder='Busque algo aqui...' />
+                            <button className={Styles.botaoXis} onClick={() => handleLupa()}><Xis height='1rem' width='1rem' cor='rgba(255, 255, 255, 0.7)' /></button>
+                        </div>
                     </div>
-                </div>
-            ) : (
-                <div className={Styles.divLupa}>
-                    <div>
-                        <Lupa width='1.5rem' cor='rgba(255, 255, 255, 0.7)' />
-                        <input className={Styles.input} type='text' placeholder='Busque algo aqui...' />
-                        <button className={Styles.botaoXis} onClick={() => handleLupa()}><Xis height='1rem' width='1rem' cor='rgba(255, 255, 255, 0.7)' /></button>
-                    </div>
-                </div>
-            )}
+                )
+            }
         </nav>
     )
 }

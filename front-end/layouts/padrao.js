@@ -34,7 +34,7 @@ export default function Padrao({ Component, pageProps }) {
 
                 // Deslogar;
                 Auth.deleteUsuarioLogado();
-                Router.push({ pathname: '/usuario/entrar' });
+                Router.push({ pathname: '/' });
                 NProgress.done();
             }
         }

@@ -9,7 +9,7 @@
     flex-direction: column;
 
     padding-bottom: 6rem;
-} 
+}
 
 .corSecundaria {
     background-color: var(--cinza-secundario);
@@ -20,11 +20,19 @@
     height: fit-content;
 }
 
+.botaoCustom button {
+    background-color: var(--cor-principal);
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 2rem;
+}
+
 .tituloPrincipal {
     color: var(--branco);
     font-size: 7rem;
     font-weight: 600;
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: -.046em;
 
     display: flex;
@@ -48,7 +56,7 @@
     color: var(--branco);
     font-size: 5rem;
     font-weight: 600;
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: -.046em;
 
     display: flex;
@@ -179,6 +187,10 @@
 
 .margemTopG {
     margin-top: 4rem;
+}
+
+.margemTopGG {
+    margin-top: 6rem;
 }
 
 .margemTitulo {

@@ -1,6 +1,6 @@
 .divIcones {
     /* background-color: pink; */
-
+ 
     margin-top: 6rem;
     width: 55vw;
 
@@ -63,7 +63,7 @@
     border-radius: 0.6rem;
     padding: 3px;
     margin-bottom: 1rem;
-    background: var(--cor-principal);
+    background: var(--cor-principal-gradient);
 
     display: flex;
     justify-content: center;

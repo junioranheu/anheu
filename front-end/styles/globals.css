@@ -79,7 +79,10 @@ a {
 }
 
 .cor-principal {
-    color: var(--cor-principal) !important;
+    /* color: var(--cor-principal) !important; */
+    background: -webkit-linear-gradient(var(--cor-principal), var(--cor-principal-escura)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     opacity: 1 !important;
 }
 
@@ -406,7 +409,7 @@ code div button svg {
     padding: 0 1em;
     border: none;
     margin: 0;
-    background: var(--cor-principal);
+    background: var(--cor-principal-gradient);
     border-radius: 12px;
     color: var(--branco);
     cursor: pointer;
@@ -436,7 +439,7 @@ code div button svg {
 /* =-=-=-=-=-=-=-=-=-=-= Tag =-=-=-=-=-=-=-=-=-=-= */
 .tag {
     color: var(--branco);
-    background: var(--cor-principal);
+    background: var(--cor-principal-gradient);
     padding: 5px 10px 5px;
     border-radius: 5px;
     font-size: 0.8rem;

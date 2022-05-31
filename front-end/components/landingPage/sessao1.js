@@ -1,40 +1,39 @@
-import Link from 'next/link';
 import React from 'react';
+import Botao from '../../components/outros/botao.js';
 import Video1 from '../../static/landingPage/1.mp4';
 import Styles from '../../styles/index.module.css';
 import EmojiAleatorio from '../../utils/outros/emojiAleatorio';
 import CardGrande from '../outros/cardGrande.js';
-import Seta from '../svg/seta.js';
 
 export default function Sessao1({ isAuth, nomeUsuario, usuarioGenero }) {
     return (
         <section className={Styles.principal}>
             <div className={`${Styles.sessaoTituloPrincipal} ${Styles.margemTitulo}`}>
-                <span className={Styles.tituloPrincipal}>{(isAuth ? `Ei, @${nomeUsuario}.` : 'Ei, você!')}</span>
+                <span className={Styles.tituloPrincipal}>{(isAuth && nomeUsuario?.length > 0 ? `Ei, @${nomeUsuario}.` : 'Ei, você!')}</span>
                 <span className={Styles.tituloPrincipal}>Já conhece o&nbsp;<span className='cor-principal'>Anheu</span>?</span>
             </div>
 
             <div className={Styles.margemTopP}>
                 <span className={Styles.descricaoTituloPrincipal}>O Anheu é uma plataforma de ensino de tecnologia.</span>
-                <span className={Styles.descricaoTituloPrincipal}>Aqui você pode aprender hardware, software, clouding, gestão, BI, etc.</span>
+                <span className={Styles.descricaoTituloPrincipal}>Aqui você pode aprender sobre software, hardware, clouding, gestão, BI, etc.</span>
                 <span className={Styles.descricaoTituloPrincipal}>Seja muito bem-vind{usuarioGenero}. {EmojiAleatorio()}</span>
             </div>
 
             <div className={Styles.margemTopP}>
                 {
                     isAuth ? (
-                        <Link href='/disciplinas'>
-                            <a className={Styles.link}>Veja suas disciplinas <Seta width={'1.9rem'} /></a>
-                        </Link>
+                        <div className={Styles.botaoCustom}>
+                            <Botao texto={'Assistir às aulas'} url={'/disciplinas'} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                        </div>
                     ) : (
-                        <Link href='/usuario/entrar'>
-                            <a className={Styles.link}>Entre agora mesmo <Seta width={'1.9rem'} /></a>
-                        </Link>
+                        <div className={Styles.botaoCustom}>
+                            <Botao texto={'Entre agora mesmo'} url={'/usuario/entrar'} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                        </div>
                     )
                 }
             </div>
 
-            <div className={`${Styles.divMedia} ${Styles.margemTopG}`}>
+            <div className={`${Styles.divMedia} ${Styles.margemTopGG}`}>
                 <video className={Styles.video} autoPlay loop muted playsInline disablePictureInPicture controls={false}>
                     <source src={Video1} type='video/mp4' />
                 </video>
@@ -61,6 +60,6 @@ export default function Sessao1({ isAuth, nomeUsuario, usuarioGenero }) {
                     url=''
                 />
             </div>
-        </section>
+        </section >
     )
 }

@@ -1,1 +1,3 @@
 --
+finalizar landing page
+verificar porque está dando um reload no layout padrao

@@ -1,9 +1,305 @@
-.main {
-    background-color: var(--cor-principal);
-    height: 100vh;
+.principal {
+    /* background-color: pink !important; */
     width: 100vw;
-  
+    min-height: 100vh;
+    overflow-y: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-bottom: 6rem;
+} 
+
+.corSecundaria {
+    background-color: var(--cinza-secundario);
+}
+
+.sessaoTituloPrincipal {
+    /* background-color: red; */
+    height: fit-content;
+}
+
+.tituloPrincipal {
+    color: var(--branco);
+    font-size: 7rem;
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -.046em;
+
+    display: flex;
+    justify-content: center;
+}
+
+.descricaoTituloPrincipal {
+    color: var(--branco);
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -.014em;
+
+    opacity: 0.7;
+
+    display: flex;
+    justify-content: center;
+}
+
+.tituloPrincipalMedio {
+    color: var(--branco);
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -.046em;
+
+    display: flex;
+    justify-content: center;
+}
+
+.link {
+    color: var(--cor-principal);
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -.014em;
+
+    display: flex;
+    justify-content: center;
+}
+
+.link:hover {
+    opacity: 0.8;
+    transition: opacity .2s, color .2s;
+}
+
+.divMedia {
+    /* background-color: pink; */
+    width: 70vw;
+}
+
+.video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 16px;
+}
+
+.divCards {
+    /* background-color: pink; */
+    margin-top: 1rem;
+    width: 70vw;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.divCards section {
+    width: 50%;
+}
+
+.efeitoTextoCorPrincipal {
+    padding: 0.5em;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    background: var(--cinza);
+    border-radius: 0.4em;
+
+    color: var(--cor-principal);
+    font-size: 0.9em;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+}
+
+.imagem {
+    border-radius: 16px;
+}
+
+/* =-=-=-=-=-=-=-=-= divQuatroCards usada em sessao4.js =-=-=-=-=-=-=-=-= */
+.divQuatroCards {
+    /* background-color: pink; */
+    width: 70vw;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    row-gap: 10px;
+}
+
+.divQuatroCards section {
+    /* background-color: blue; */
+    flex: 0 0 40%;
+}
+
+.divQuatroCards section div {
+    /* background-color: blue; */
+    width: 100%;
+}
+
+/* =-=-=-=-=-=-=-=-= div comentário do usuário usada em sessao5.js =-=-=-=-=-=-=-=-= */
+.divUsuarioComentario {
+    /* background-color: pink; */
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+
+    width: 50vw;
+    gap: 15px;
+}
+
+.divUsuarioComentario div:nth-child(1) img {
+    /* background-color: red; */
+    width: 50px !important;
+    border-radius: 50%;
+}
+
+.divUsuarioComentario div:nth-child(2) {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.divUsuarioComentario div:nth-child(2) span:nth-child(2) {
+    opacity: 0.7;
+}
+
+/* =-=-=-=-=-=-=-=-= Margens =-=-=-=-=-=-=-=-= */
+.margemTopP {
+    margin-top: 2rem;
+}
+
+.margemTopG {
+    margin-top: 4rem;
+}
+
+.margemTitulo {
+    margin-top: 10rem;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    /* .principal {
+        background-color: pink;
+    } */
+
+    .divQuatroCards {
+        width: 90vw;
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+    /* .principal {
+        background-color: red;
+    } */
+
+    .divMedia {
+        width: 80vw;
+    }
+
+    .divCards {
+        width: 80vw;
+    }
+
+    .tituloPrincipalMedio {
+        font-size: 3.5rem;
+    }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+    /* .principal {
+        background-color: purple;
+    } */
+
+    .divMedia {
+        width: 90vw;
+    }
+
+    .divCards {
+        width: 90vw;
+    }
+
+    .tituloPrincipalMedio {
+        font-size: 3rem;
+    }
+
+    .descricaoTituloPrincipal {
+        font-size: 1.45rem;
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    /* .principal {
+        background-color: blue;
+    } */
+
+    .margemTitulo {
+        margin-top: 5rem;
+    }
+
+    .divMedia {
+        width: 95vw;
+    }
+
+    .divCards {
+        width: 95vw;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .divCards section {
+        width: 100%;
+    }
+
+    .tituloPrincipalMedio {
+        font-size: 2.2rem;
+    }
+
+    .descricaoTituloPrincipal {
+        font-size: 1.2rem;
+    }
+
+    .divQuatroCards {
+        display: flex;
+        flex-wrap: unset;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        row-gap: 10px;
+    }
+
+    .divQuatroCards section {
+        flex: unset;
+        width: 95% !important;
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {
+    /* .principal {
+        background-color: yellow;
+    } */
+
+    .tituloPrincipal {
+        font-size: 5rem;
+    }
+
+    .descricaoTituloPrincipal {
+        font-size: 1rem;
+    }
+}

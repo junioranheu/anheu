@@ -48,13 +48,13 @@ export default function Aula({ aulaStaticProps }) {
 
         if (aula?.aulaId) {
             // Título da página;
-            document.title = `Anheu — Aula: ${aulaStaticProps.nome}`;
+            document.title = `Anheu — Aula: ${aula.nome}`;
             paginaCarregada(false, 200, 500, setIsLoaded);
 
             // "Baixar" a videoaula em questão;
             getVideo();
         }
-    }, [aula]);
+    }, [aula.aulaId, aula.nome, aula.video]);
 
     function handleClickNaoPermitirClickDireito(e) {
         if (e.type === 'click') {

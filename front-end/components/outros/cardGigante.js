@@ -1,7 +1,7 @@
 import Styles from '../../styles/card.module.css';
 import Botao from './botao';
 
-export default function CardGigante({ titulo, subtitulo, textoBotao, url }) {
+export default function CardGigante({ titulo, subtitulo, textoBotao, url, isNovaAba }) {
     return (
         <section className={`${Styles.card} ${Styles.cardGigante}`}>
             <div className={Styles.cardDivTextoGigante}>
@@ -10,7 +10,7 @@ export default function CardGigante({ titulo, subtitulo, textoBotao, url }) {
             </div>
 
             <div className={Styles.botaoCustom}>
-                <Botao texto={textoBotao} url={url} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                <Botao texto={textoBotao} url={url} isNovaAba={isNovaAba} Svg='' refBtn={null} isEnabled={true} />
             </div>
         </section>
     )

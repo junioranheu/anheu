@@ -1,0 +1,86 @@
+.divIcones {
+    /* background-color: pink; */
+
+    margin-top: 6rem;
+    width: 55vw;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 4rem;
+    column-gap: 3rem;
+}
+
+.divIcone {
+    /* background-color: blue; */
+    flex: 0 0 30%;
+}
+
+.divIcone div {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo {
+    color: var(--branco);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -.032em;
+    line-height: 1.24;
+}
+
+.desc {
+    color: var(--branco);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: -.032em;
+    line-height: 1.24;
+
+    margin-top: 0.6em;
+}
+
+.link {
+    color: var(--cor-principal);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -.032em;
+    line-height: 1.24;
+    margin-top: 1em;
+
+    display: flex;
+    align-items: center;
+}
+
+.link:hover {
+    opacity: 0.8;
+    transition: opacity .2s, color .2s;
+}
+
+.icone {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.6rem;
+    padding: 3px;
+    margin-bottom: 1rem;
+    background: var(--cor-principal);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+    .divIcones {
+        width: 80vw;
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .divIcones {
+        width: 98vw;
+    }
+}

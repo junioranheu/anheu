@@ -3,7 +3,7 @@ import Imagem1 from '../../static/landingPage/imgSessao4img1.webp';
 import Imagem2 from '../../static/landingPage/imgSessao4img2.webp';
 import Imagem3 from '../../static/landingPage/imgSessao4img3.webp';
 import Imagem4 from '../../static/landingPage/imgSessao4img4.webp';
-import Styles from '../../styles/index.module.css';
+import Styles from '../../styles/landingPage.module.css';
 import Card from '../outros/card';
 
 export default function Sessao4() {

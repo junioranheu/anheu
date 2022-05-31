@@ -18,6 +18,7 @@
 .sessaoTituloPrincipal {
     /* background-color: red; */
     height: fit-content;
+    text-align: center;
 }
 
 .botaoCustom button {
@@ -34,9 +35,6 @@
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -.046em;
-
-    display: flex;
-    justify-content: center;
 }
 
 .descricaoTituloPrincipal {
@@ -50,6 +48,8 @@
 
     display: flex;
     justify-content: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .tituloPrincipalMedio {
@@ -58,9 +58,7 @@
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: -.046em;
-
-    display: flex;
-    justify-content: center;
+    display: block;
 }
 
 .link {
@@ -223,6 +221,10 @@
         width: 80vw;
     }
 
+    .tituloPrincipal {
+        font-size: 5rem;
+    }
+
     .tituloPrincipalMedio {
         font-size: 3.5rem;
     }
@@ -240,6 +242,10 @@
 
     .divCards {
         width: 90vw;
+    }
+
+    .tituloPrincipal {
+        font-size: 4rem;
     }
 
     .tituloPrincipalMedio {
@@ -308,7 +314,7 @@
     } */
 
     .tituloPrincipal {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 
     .descricaoTituloPrincipal {

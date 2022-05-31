@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Video1 from '../../static/landingPage/1.mp4';
-import Styles from '../../styles/index.module.css';
+import Styles from '../../styles/landingPage.module.css';
 import EmojiAleatorio from '../../utils/outros/emojiAleatorio';
 import CardGrande from '../outros/cardGrande.js';
 
@@ -13,14 +13,15 @@ export default function Sessao1({ isAuth, nomeUsuario, usuarioGenero }) {
                     (isAuth && nomeUsuario?.length > 0 ?
                         (
                             <Fragment>
-                                <span className={Styles.tituloPrincipalMedio}>Ei,&nbsp;<span className='cor-principal'>@{nomeUsuario}</span></span>
+                                <span className={Styles.tituloPrincipalMedio}>Ei, <span className='cor-principal'>@{nomeUsuario}</span></span>
                                 <span className={Styles.tituloPrincipal}>Você já aprendeu algo</span>
-                                <span className={Styles.tituloPrincipal}>no&nbsp;<span className='cor-principal'>Anheu</span>&nbsp;hoje?</span>
+                                <br />
+                                <span className={Styles.tituloPrincipal}>no <span className='cor-principal'>Anheu</span> hoje?</span>
                             </Fragment>
                         ) : (
                             <Fragment>
                                 <span className={Styles.tituloPrincipalMedio}>Ei, você!</span>
-                                <span className={Styles.tituloPrincipal}>Já conhece o&nbsp;<span className='cor-principal'>Anheu</span>?</span>
+                                <span className={Styles.tituloPrincipal}>Já conhece o <span className='cor-principal'>Anheu</span>?</span>
                             </Fragment>
                         ))
                 }

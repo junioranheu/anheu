@@ -1,5 +1,5 @@
 import React from 'react';
-import Styles from '../../styles/index.module.css';
+import Styles from '../../styles/landingPage.module.css';
 
 export default function Sessao3() {
     return (

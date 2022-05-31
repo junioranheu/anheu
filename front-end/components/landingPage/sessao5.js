@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Chaleco from '../../static/landingPage/chaleco.webp';
-import Styles from '../../styles/index.module.css';
+import Styles from '../../styles/landingPage.module.css';
 import CardGigante from '../outros/cardGigante.js';
 
 export default function Sessao5({ isAuth }) {

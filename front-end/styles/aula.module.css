@@ -36,9 +36,15 @@
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {
     .wrapper {
+        min-height: fit-content;
+    }
+
+    .wrapper {
         /* background-color: pink; */
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
     }
 
     .divVideo {

@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Anheu.API.Interfaces;
+﻿using Anheu.API.Interfaces;
 using Anheu.API.Models;
-using Anheu.API.Controllers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Spotify.Controllers
+namespace Anheu.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

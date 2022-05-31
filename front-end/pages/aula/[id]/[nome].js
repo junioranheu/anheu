@@ -1,6 +1,8 @@
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import Collapse from 'rc-collapse'; // https://www.npmjs.com/package/rc-collapse;
+import 'rc-collapse/assets/index.css'; // https://www.npmjs.com/package/rc-collapse;
+import React, { useContext, useEffect, useState } from 'react';
 import { Aviso } from '../../../components/outros/aviso';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
 import thumbnailPadrao from '../../../static/image/iconeGrande.webp';
@@ -15,6 +17,7 @@ import tamanhoString from '../../../utils/outros/tamanhoString';
 
 export default function Aula({ aulaStaticProps }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const Painelcollapsible = Collapse.Panel;
 
     const [aula, setAula] = useState({});
     useEffect(() => {
@@ -100,16 +103,15 @@ export default function Aula({ aulaStaticProps }) {
 
                 {
                     aula?.aulasTimings.length > 0 && (
-                        <Fragment>
-                            <br />
-                            <span className='tituloDesc'>Timestamps:</span>
-                            {
-                                aula?.aulasTimings?.map((at, i) => (
-                                    <span key={i} className='tituloDesc'>{at.titulo} - {at.tempoEmSegundos} segundos</span>
-                                ))
-                            }
-
-                        </Fragment>
+                        <Collapse accordion={true} className='painelCollapse margem20'>
+                            <Painelcollapsible header='Timestamps da aula'>
+                                {
+                                    aula?.aulasTimings?.map((at, i) => (
+                                        <span key={i} className='textoTimestamps margem10'>{at.titulo} - {at.tempoEmSegundos} segundos xxx</span>
+                                    ))
+                                }
+                            </Painelcollapsible>
+                        </Collapse>
                     )
                 }
             </div>

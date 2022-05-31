@@ -368,6 +368,35 @@ code div button svg {
     border-radius: 16px;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-= Collapse =-=-=-=-=-=-=-=-=-=-= */
+.painelCollapse {
+    border-color: var(--branco) !important;
+}
+
+.painelCollapse span {
+    color: var(--branco) !important;
+}
+
+.painelCollapse div {
+    background-color: var(--preto) !important;
+}
+
+.textoTimestamps {
+    color: var(--branco);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: -.012em;
+    opacity: 0.9;
+    display: block;
+}
+
+.textoTimestamps:hover {
+    color: var(--cor-principal) !important;
+    opacity: 1 !important;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Botão =-=-=-=-=-=-=-=-=-=-= */
 .botao {
     position: relative;

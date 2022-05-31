@@ -2,10 +2,12 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Botao from '../components/outros/botao';
 import Styles from '../styles/404.module.css';
+import paginaCarregada from '../utils/outros/paginaCarregada';
 
 export default function Erro() {
     const router = useRouter();
 
+    const [isLoaded, setIsLoaded] = useState(false);
     const [msg, setMsg] = useState(null);
     useEffect(() => {
         function verificarMsg(msg) {
@@ -26,7 +28,13 @@ export default function Erro() {
         } else {
             setMsg('Tente novamente mais tarde');
         }
+
+        paginaCarregada(true, 200, 500, setIsLoaded);
     }, [router]);
+
+    if (!isLoaded) {
+        return false;
+    }
 
     return (
         <section className={`${Styles.wrapper} paddingPadrao`}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Video1 from '../../static/landingPage/1.mp4';
 import Styles from '../../styles/index.module.css';
@@ -9,8 +9,21 @@ export default function Sessao1({ isAuth, nomeUsuario, usuarioGenero }) {
     return (
         <section className={Styles.principal}>
             <div className={`${Styles.sessaoTituloPrincipal} ${Styles.margemTitulo}`}>
-                <span className={Styles.tituloPrincipal}>{(isAuth && nomeUsuario?.length > 0 ? `Ei, @${nomeUsuario}.` : 'Ei, você!')}</span>
-                <span className={Styles.tituloPrincipal}>Já conhece o&nbsp;<span className='cor-principal'>Anheu</span>?</span>
+                {
+                    (isAuth && nomeUsuario?.length > 0 ?
+                        (
+                            <Fragment>
+                                <span className={Styles.tituloPrincipalMedio}>Ei,&nbsp;<span className='cor-principal'>@{nomeUsuario}</span></span>
+                                <span className={Styles.tituloPrincipal}>Você já aprendeu algo</span>
+                                <span className={Styles.tituloPrincipal}>no&nbsp;<span className='cor-principal'>Anheu</span>&nbsp;hoje?</span>
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                                <span className={Styles.tituloPrincipalMedio}>Ei, você!</span>
+                                <span className={Styles.tituloPrincipal}>Já conhece o&nbsp;<span className='cor-principal'>Anheu</span>?</span>
+                            </Fragment>
+                        ))
+                }
             </div>
 
             <div className={Styles.margemTopP}>

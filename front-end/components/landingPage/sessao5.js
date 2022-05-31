@@ -4,7 +4,7 @@ import Chaleco from '../../static/landingPage/chaleco.webp';
 import Styles from '../../styles/index.module.css';
 import CardGigante from '../outros/cardGigante.js';
 
-export default function Sessao4() {
+export default function Sessao5({ isAuth }) {
     return (
         <section className={`${Styles.principal} ${Styles.corSecundaria}`}>
             {/* Comentário */}
@@ -14,27 +14,40 @@ export default function Sessao4() {
                 </div>
 
                 <div>
-                    <span>Israel Chaleco:</span>
+                    <span>Israel Cabrera Chaleco</span>
                     <span>Estudante de Ciência da Computação em Santiago</span>
                 </div>
             </div>
 
             <div className={Styles.margemTopP}>
-                <span className={Styles.descricaoTituloPrincipal}>“Com a possibilidade de programar qualquer coisa</span>
-                <span className={Styles.descricaoTituloPrincipal}>com a ajuda do Framer, foi possível criar componentes</span>
-                <span className={Styles.descricaoTituloPrincipal}>super dinâmicos muito facilmente — eu sei que,</span>
-                <span className={Styles.descricaoTituloPrincipal}>isso seria bem difícil fazendo à mão ou usando outra ferramenta.”</span>
+                <span className={Styles.descricaoTituloPrincipal}>“Com a possibilidade de aprender a programar,</span>
+                <span className={Styles.descricaoTituloPrincipal}>com a ajuda do Anheu, consegui aprender desde o HTML e CSS</span>
+                <span className={Styles.descricaoTituloPrincipal}>até o React.js e Next.js em apenas 3 semanas — eu sei que,</span>
+                <span className={Styles.descricaoTituloPrincipal}>isso seria bem difícil aprendendo sozinho.”</span>
             </div>
 
             {/* Card gigante */}
             <div className={Styles.margemTopG}>
-                <CardGigante
-                    titulo='Entre no nosso servidor do Discord agora mesmo'
-                    subtitulo='Tenha suporte dedicado nos nossos canais, explore novas ideias e mostre seu trabalho.'
-                    textoBotao='Entrar'
-                    url='https://discord.gg/RdKDenAu8d'
-                    isNovaAba={true}
-                />
+                {
+                    isAuth ? (
+                        <CardGigante
+                            titulo='Assista às suas aulas no Anheu agora mesmo'
+                            subtitulo=''
+                            textoBotao='Assistir'
+                            url='disciplinas'
+                            isNovaAba={false}
+                        />
+                    ) : (
+                        <CardGigante
+                            titulo='Entre no Anheu agora mesmo'
+                            subtitulo=''
+                            textoBotao='Entrar'
+                            url='usuario/entrar'
+                            isNovaAba={false}
+                        />
+                    )
+                }
+
             </div>
         </section>
     )

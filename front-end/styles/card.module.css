@@ -129,8 +129,7 @@
 }
 
 .botaoCustom button {
-    background-color: var(--branco);
-
+    background: var(--branco) !important;
     color: var(--cor-principal);
     font-size: 1.2rem;
     font-weight: 600;

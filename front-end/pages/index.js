@@ -18,7 +18,7 @@ export default function Index() {
             <Sessao2 />
             <Sessao3 />
             <Sessao4 />
-            <Sessao5 />
+            <Sessao5 isAuth={isAuth} />
         </section>
     )
 } 

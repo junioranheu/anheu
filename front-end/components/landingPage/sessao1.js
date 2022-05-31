@@ -26,8 +26,8 @@ export default function Sessao1({ isAuth, nomeUsuario, usuarioGenero }) {
                         ))
                 }
             </div>
-
-            <div className={Styles.margemTopP}>
+ 
+            <div className={`${Styles.margemTopP} ${Styles.forcarCentralizar}`}>
                 <span className={Styles.descricaoTituloPrincipal}>O Anheu é uma plataforma de ensino de tecnologia.</span>
                 <span className={Styles.descricaoTituloPrincipal}>Aqui você pode aprender sobre software, hardware, clouding, gestão, BI, etc.</span>
                 <span className={Styles.descricaoTituloPrincipal}>Seja muito bem-vind{usuarioGenero}. {EmojiAleatorio()}</span>

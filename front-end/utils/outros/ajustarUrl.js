@@ -4,6 +4,7 @@ export default function ajustarUrl(url) {
     urlAjustada = urlAjustada.replace(/\s+/g, '-').toLowerCase(); // Trocar espaços por traços e deixar em minúsculo;
     urlAjustada = urlAjustada.replace('?', '');
     urlAjustada = urlAjustada.replace('!', '');
+    urlAjustada = urlAjustada.replace('#', 'sharp'); // # por Sharp;
 
     return urlAjustada;
 }

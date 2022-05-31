@@ -21,6 +21,10 @@
     text-align: center;
 }
 
+.forcarCentralizar{
+    text-align: center;
+}
+
 .botaoCustom button {
     background-color: var(--cor-principal);
     color: var(--branco);

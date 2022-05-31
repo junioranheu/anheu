@@ -4,6 +4,7 @@ import Collapse from 'rc-collapse'; // https://www.npmjs.com/package/rc-collapse
 import 'rc-collapse/assets/index.css'; // https://www.npmjs.com/package/rc-collapse;
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Aviso } from '../../../components/outros/aviso';
+import Botao from '../../../components/outros/botao';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
 import thumbnailPadrao from '../../../static/image/iconeGrande.webp';
 import Styles from '../../../styles/aula.module.css';
@@ -19,6 +20,7 @@ export default function Aula({ aulaStaticProps }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const Painelcollapsible = Collapse.Panel;
     const refVideo = useRef(null);
+    const [objectFitStyleVideo, setObjectFitStyleVideo] = useState(true);
 
     const [aula, setAula] = useState({});
     useEffect(() => {
@@ -85,6 +87,7 @@ export default function Aula({ aulaStaticProps }) {
 
             <div className={Styles.divVideo}>
                 <video
+                    style={{ objectFit: (objectFitStyleVideo ? 'cover' : 'contain') }}
                     ref={refVideo}
                     id='videoPlayer'
                     poster={thumbnailPadrao.src}
@@ -106,7 +109,7 @@ export default function Aula({ aulaStaticProps }) {
             </div>
 
             <div className={Styles.divOutros}>
-                <span className='topico'>{aula.nome}</span>
+                <span className={Styles.topico}>{aula.nome}</span>
                 <span className='tituloDesc'>{aula.resumoAula}</span>
 
                 {
@@ -124,6 +127,10 @@ export default function Aula({ aulaStaticProps }) {
                         </Collapse>
                     )
                 }
+
+                <div className='margem20' onClick={() => setObjectFitStyleVideo(!objectFitStyleVideo)}>
+                    <Botao texto={'Alterar formato do vídeo'} url={''} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                </div>
             </div>
         </section>
     )

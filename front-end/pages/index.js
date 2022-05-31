@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import Sessao1 from '../components/landingPage/sessao1';
 import Sessao2 from '../components/landingPage/sessao2';
 import Sessao3 from '../components/landingPage/sessao3';
-import Sessao4 from '../components/landingPage/Sessao4';
-import Sessao5 from '../components/landingPage/Sessao5';
+import Sessao4 from '../components/landingPage/sessao4';
+import Sessao5 from '../components/landingPage/sessao5';
 import { Auth, UsuarioContext } from '../utils/context/usuarioContext';
 
 export default function Index() {

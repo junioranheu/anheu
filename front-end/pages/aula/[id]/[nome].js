@@ -2,7 +2,7 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import Collapse from 'rc-collapse'; // https://www.npmjs.com/package/rc-collapse;
 import 'rc-collapse/assets/index.css'; // https://www.npmjs.com/package/rc-collapse;
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Aviso } from '../../../components/outros/aviso';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
 import thumbnailPadrao from '../../../static/image/iconeGrande.webp';
@@ -18,6 +18,7 @@ import tamanhoString from '../../../utils/outros/tamanhoString';
 export default function Aula({ aulaStaticProps }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const Painelcollapsible = Collapse.Panel;
+    const refVideo = useRef(null);
 
     const [aula, setAula] = useState({});
     useEffect(() => {
@@ -63,6 +64,12 @@ export default function Aula({ aulaStaticProps }) {
         }
     }
 
+    function handleClickTimestamp(tempoEmSegundos) {
+        // console.log(tempoEmSegundos);
+        refVideo.current.currentTime = tempoEmSegundos;
+        refVideo.current.play();
+    }
+
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;
@@ -78,6 +85,7 @@ export default function Aula({ aulaStaticProps }) {
 
             <div className={Styles.divVideo}>
                 <video
+                    ref={refVideo}
                     id='videoPlayer'
                     poster={thumbnailPadrao.src}
                     className={Styles.video}
@@ -107,7 +115,9 @@ export default function Aula({ aulaStaticProps }) {
                             <Painelcollapsible header='Timestamps da aula'>
                                 {
                                     aula?.aulasTimings?.map((at, i) => (
-                                        <span key={i} className='textoTimestamps margem10'>{at.titulo} - {at.tempoEmSegundos} segundos xxx</span>
+                                        <span key={i} className='textoTimestamps margem10' onClick={() => handleClickTimestamp(at.tempoEmSegundos)}>
+                                            • {at.titulo}
+                                        </span>
                                     ))
                                 }
                             </Painelcollapsible>

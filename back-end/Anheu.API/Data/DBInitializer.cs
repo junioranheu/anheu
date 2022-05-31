@@ -191,8 +191,8 @@ namespace Anheu.API.Data
                 context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 2, AulaId = 1, Titulo = "Ó o lanchin dele", TempoEmSegundos = "2" });
                 context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 3, AulaId = 1, Titulo = "Fdp", TempoEmSegundos = "4" });
 
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 4, AulaId = 2, Titulo = "Que paso ahora?", TempoEmSegundos = "1.2" });
-                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 5, AulaId = 2, Titulo = "Risada", TempoEmSegundos = "2" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 4, AulaId = 2, Titulo = "Que pasó ahora?", TempoEmSegundos = "0.5" });
+                context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 5, AulaId = 2, Titulo = "Risada", TempoEmSegundos = "1.6" });
 
                 context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 6, AulaId = 3, Titulo = "Will sendo ajusticiado", TempoEmSegundos = "4" });
                 context.AulaTimings.Add(new AulaTiming() { AulaTimingId = 7, AulaId = 3, Titulo = "Will dando TP", TempoEmSegundos = "7" });

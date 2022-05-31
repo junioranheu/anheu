@@ -18,8 +18,8 @@ export default function Sessao2() {
             </div>
 
             <div className={Styles.margemTopP}>
-                <span className={Styles.descricaoTituloPrincipal}>Juntando o canvas com código, você se expressa facilmente.</span>
-                <span className={Styles.descricaoTituloPrincipal}>Se é possível no browser, é possível no Framer.</span>
+                <span className={Styles.descricaoTituloPrincipal}>Poder na palma da sua mão — ou no seu monitor.</span>
+                <span className={Styles.descricaoTituloPrincipal}>Aprenda tudo e um pouco mais.</span>
             </div>
 
             <div className={StylesDivIcones.divIcones}>

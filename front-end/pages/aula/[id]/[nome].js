@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Aviso } from '../../../components/outros/aviso';
 import Botao from '../../../components/outros/botao';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
+import Toggle from '../../../components/svg/toggle';
 import thumbnailPadrao from '../../../static/image/iconeGrande.webp';
 import Styles from '../../../styles/aula.module.css';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
@@ -129,7 +130,7 @@ export default function Aula({ aulaStaticProps }) {
                 }
 
                 <div className='margem20' onClick={() => setObjectFitStyleVideo(!objectFitStyleVideo)}>
-                    <Botao texto={'Alterar formato do vídeo'} url={''} isNovaAba={false} Svg='' refBtn={null} isEnabled={true} />
+                    <Botao texto={''} url={''} isNovaAba={false} Svg={<Toggle width='16px' />} refBtn={null} isEnabled={true} />
                 </div>
             </div>
         </section>

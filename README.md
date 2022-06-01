@@ -7,7 +7,7 @@ Anheu - @junioranheu
 
 ## 📃 Sobre o projeto
 
-Anheu, uma plataforma de ensino on-line de tecnologia em geral, inspirada no Framer e levemente baseada no Descomplica com um toque de Rocketseat, talvez.
+Anheu, uma plataforma de ensino on-line de tecnologia em geral, visualmente inspirada no Framer e levemente baseada no Descomplica com um toque de Rocketseat, no objetivo.
 
 Desenvolvido para aprender e praticar React.js, Next.js, .NET, API Rest, JWT token, e etc.
 

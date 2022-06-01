@@ -4,6 +4,7 @@ const ENDPOINTS = {
     // "Não-protegido", arquivos da pasta Upload, que estão liberados;
     GET_AULAS_THUMBNAIL: 'Upload/aulas/imagem',
     GET_CURSOS_CATEGORIAS: 'Upload/cursosCategorias/imagem',
+    GET_POSTS_CATEGORIAS: 'Upload/postsCategorias/imagem',
 
     // "Protegidos", arquivos que estaõ na pasta UploadProtegido e devem ser chamados pela API;
     GET_AULAS_VIDEO_PROTEGIDO: 'api/Uploads/getArquivoProtegido',

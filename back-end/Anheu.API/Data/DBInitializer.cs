@@ -63,13 +63,13 @@ namespace Anheu.API.Data
             #region seed_cursos_disciplinas_e_aulas
             if (!context.CursosCategorias.Any())
             {
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 1, Categoria = "Desenvolvimento de software", Abreviacao = "DEV", Descricao = "xxx", Imagem = "1.webp", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 2, Categoria = "Banco de dados", Abreviacao = "BDA", Descricao = "xxx", Imagem = "2.webp", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 3, Categoria = "Infraestrutura e redes", Abreviacao = "Infra", Descricao = "xxx", Imagem = "3.webp", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 4, Categoria = "Design", Abreviacao = "Design", Descricao = "xxx", Imagem = "4.webp", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 5, Categoria = "Ciências de dados e IA", Abreviacao = "Data", Descricao = "xxx", Imagem = "5.webp", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 6, Categoria = "Gestão de TI", Abreviacao = "GTI", Descricao = "xxx", Imagem = "6.webp", IsAtivo = 1, DataCriacao = dataAgora });
-                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 7, Categoria = "Business Inteligence", Abreviacao = "BI", Descricao = "xxx", Imagem = "7.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 1, Categoria = "Desenvolvimento de software", Abreviacao = "DEV", Descricao = "O desenvolvimento de software é o segmento da computação que, utilizando das linguagens de programação, cria e implementa as soluções de informática.", Imagem = "1.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 2, Categoria = "Banco de dados", Abreviacao = "BD", Descricao = "Um banco de dados é uma coleção organizada de informações - ou dados - estruturadas, normalmente armazenadas eletronicamente em um sistema de computador.", Imagem = "2.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 3, Categoria = "Infraestrutura e redes", Abreviacao = "Infra", Descricao = "A infraestrutura de tecnologias da informação ou a infraestrutura de TI refere-se a um conjunto de componentes necessários para a operação e gerenciamento de serviços de TI corporativos e ambientes de TI.", Imagem = "3.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 4, Categoria = "Design, UX e UI", Abreviacao = "Design", Descricao = "O design é responsável pela melhoria de um produto, sempre levando em conta as necessidades dos consumidores ou usuários.", Imagem = "4.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 5, Categoria = "Ciências de dados e IA", Abreviacao = "Data", Descricao = "A ciência de dados combina vários campos, incluindo estatísticas, métodos científicos, inteligência artificial (IA) e análise de dados para extrair valor dos dados.", Imagem = "5.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 6, Categoria = "Gestão de TI", Abreviacao = "GTI", Descricao = "A gestão de TI pode ser definida como o gerenciamento de software, hardwares e também de pessoas de uma organização.", Imagem = "6.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.CursosCategorias.Add(new CursoCategoria() { CursoCategoriaId = 7, Categoria = "Business Intelligence", Abreviacao = "BI", Descricao = "O Business Intelligence (BI) oferece o apoio para as decisões de forma inteligente, por meio de um processo de captação de dados.", Imagem = "7.webp", IsAtivo = 1, DataCriacao = dataAgora });
             }
 
             if (!context.Cursos.Any())
@@ -209,6 +209,25 @@ namespace Anheu.API.Data
                 context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 1, UsuarioId = 1, CursoId = 4, IsDefinidoComoAtual = 0, IsAtivo = 1, DataRegistro = dataAgora });
                 context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 2, UsuarioId = 2, CursoId = 2, IsDefinidoComoAtual = 1, IsAtivo = 1, DataRegistro = dataAgora });
                 context.UsuariosCursos.Add(new UsuarioCurso() { UsuarioCursoId = 3, UsuarioId = 2, CursoId = 3, IsDefinidoComoAtual = 0, IsAtivo = 1, DataRegistro = dataAgora });
+            }
+            #endregion
+
+            #region posts
+            if (!context.PostsCategorias.Any())
+            {
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 1, Categoria = "Desenvolvimento de software", Imagem = "1.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 2, Categoria = "Banco de dados", Imagem = "2.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 3, Categoria = "Infraestrutura e redes", Imagem = "3.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 4, Categoria = "Design, UX e UI", Imagem = "4.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 5, Categoria = "Ciências de dados e IA", Imagem = "5.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 6, Categoria = "Gestão de TI", Imagem = "6.webp", IsAtivo = 1, DataCriacao = dataAgora });
+                context.PostsCategorias.Add(new PostCategoria() { PostCategoriaId = 7, Categoria = "Business Intelligence", Imagem = "7.webp", IsAtivo = 1, DataCriacao = dataAgora });
+            }
+
+            if (!context.Posts.Any())
+            {
+                context.Posts.Add(new Post() { PostId = 1, Titulo = "Post teste #1", ConteudoPost = "<div><span>Oi, isso é um <b>teste</b></span></div>", UsuarioId = 1, DataRegistro = dataAgora, PostCategoriaId = 1, IsAtivo = 1 });
+            
             }
             #endregion
 

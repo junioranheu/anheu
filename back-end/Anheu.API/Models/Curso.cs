@@ -16,9 +16,7 @@ namespace Anheu.API.Models
         public Usuario? Usuarios{ get; set; }
 
         public string? ResumoCurso { get; set; }
-
         public double? Preco { get; set; }
-
         public DateTime? DataRegistro { get; set; }
         public int IsAtivo { get; set; }
 

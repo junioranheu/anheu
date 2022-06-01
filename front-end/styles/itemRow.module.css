@@ -75,11 +75,18 @@
         flex-direction: column;
         /* align-items: flex-start; */
         gap: 0.5rem;
+        margin-top: 1rem;
     }
 
     .divCurso span img {
         /* background-color: pink; */
-        align-items: center !important;
+        align-items: center;
+    }
+
+    .divDescCurso {
+        /* background-color: blue; */
+        align-items: center;
+        margin-top: 0.5rem;
     }
 
     .divDescCurso {

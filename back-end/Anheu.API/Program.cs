@@ -11,7 +11,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+ 
 // ----------------------------------------------------- Services -----------------------------------------------------
 
 // Habilitar API por IP em vez de apenas localhost: https://stackoverflow.com/questions/69532898/asp-net-core-6-0-kestrel-server-is-not-working;

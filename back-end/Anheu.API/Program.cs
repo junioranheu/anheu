@@ -70,6 +70,7 @@ builder.Services.AddScoped<ICursoRepository, CursoRepository>();
 builder.Services.AddScoped<IUsuarioCursoRepository, UsuarioCursoRepository>();
 builder.Services.AddScoped<IDisciplinaRepository, DisciplinaRepository>();
 builder.Services.AddScoped<IAulaRepository, AulaRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 // Cors;
 builder.Services.AddCors();

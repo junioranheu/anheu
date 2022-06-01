@@ -19,6 +19,6 @@ namespace Anheu.API.Models
 
         // Fk (De lá pra cá);
         public int PostCategoriaId { get; set; }
-        public PostCategoria? PostCategorias { get; set; }
+        public PostCategoria? PostsCategorias { get; set; }
     }
 }

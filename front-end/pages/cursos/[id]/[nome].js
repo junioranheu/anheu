@@ -24,8 +24,6 @@ export default function Curso({ cursos }) {
         async function getCursoDefinidoAtual() {
             const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
             const cursoDefinido = await Fetch.getApi(url, null);
-            // console.log(cursoDefinido);
-
             setCursoDefinidoAtual(cursoDefinido);
 
             paginaCarregada(true, 200, 500, setIsLoaded);
@@ -35,7 +33,11 @@ export default function Curso({ cursos }) {
         document.title = cursos.length > 0 ? `Anheu — Cursos de ${cursos[0]?.cursosCategorias.categoria}` : 'Anheu';
 
         // Verificar qual é o curso definido como atual pelo usuário;
-        getCursoDefinidoAtual();
+        if (usuarioId){
+            getCursoDefinidoAtual();
+        } else {
+            paginaCarregada(true, 200, 500, setIsLoaded);
+        }
     }, [usuarioId, cursos]);
 
     const [isModalComprarCursoOpen, setIsModalComprarCursoOpen] = useState(false);

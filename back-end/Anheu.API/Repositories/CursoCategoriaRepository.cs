@@ -42,21 +42,21 @@ namespace Anheu.API.Repositories
             return item;
         }
 
-        public async Task<int> PostCriar(CursoCategoria m)
+        public async Task<int> PostCriar(CursoCategoria cc)
         {
-            _context.Add(m);
+            _context.Add(cc);
             var isOk = await _context.SaveChangesAsync();
 
             return isOk;
         }
 
-        public async Task<int> PostAtualizar(CursoCategoria m)
+        public async Task<int> PostAtualizar(CursoCategoria cc)
         {
             int isOk;
 
             try
             {
-                _context.Update(m);
+                _context.Update(cc);
                 isOk = await _context.SaveChangesAsync();
             }
             catch (Exception ex)

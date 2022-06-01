@@ -7,26 +7,26 @@ namespace Anheu.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CursosCategoriasController : BaseController<CursosCategoriasController>
+    public class PostsCategoriasController : BaseController<PostsCategoriasController>
     {
-        private readonly ICursoCategoriaRepository _cursoCategoriaRepository;
+        private readonly IPostCategoriaRepository _postCategoriaRepository;
 
-        public CursosCategoriasController(ICursoCategoriaRepository cursoCategoriaRepository)
+        public PostsCategoriasController(IPostCategoriaRepository postCategoriaRepository)
         {
-            _cursoCategoriaRepository = cursoCategoriaRepository;
+            _postCategoriaRepository = postCategoriaRepository;
         }
 
         [HttpGet("todos")]
-        public async Task<ActionResult<List<CursoCategoria>>> GetTodos()
+        public async Task<ActionResult<List<PostCategoria>>> GetTodos()
         {
-            var todos = await _cursoCategoriaRepository.GetTodos();
+            var todos = await _postCategoriaRepository.GetTodos();
             return Ok(todos);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CursoCategoria>> GetPorId(int id)
+        public async Task<ActionResult<PostCategoria>> GetPorId(int id)
         {
-            var porId = await _cursoCategoriaRepository.GetPorId(id);
+            var porId = await _postCategoriaRepository.GetPorId(id);
 
             if (porId == null)
             {
@@ -38,9 +38,9 @@ namespace Anheu.API.Controllers
 
         [HttpPost("criar")]
         [Authorize(Roles = "1")]
-        public async Task<ActionResult<bool>> PostCriar(CursoCategoria cc)
+        public async Task<ActionResult<bool>> PostCriar(PostCategoria pc)
         {
-            var isOk = await _cursoCategoriaRepository.PostCriar(cc);
+            var isOk = await _postCategoriaRepository.PostCriar(pc);
 
             if (isOk < 1)
             {
@@ -52,9 +52,9 @@ namespace Anheu.API.Controllers
 
         [HttpPost("atualizar")]
         [Authorize(Roles = "1")]
-        public async Task<ActionResult<bool>> PostAtualizar(CursoCategoria cc)
+        public async Task<ActionResult<bool>> PostAtualizar(PostCategoria pc)
         {
-            var isOk = await _cursoCategoriaRepository.PostAtualizar(cc);
+            var isOk = await _postCategoriaRepository.PostAtualizar(pc);
 
             if (isOk < 1)
             {
@@ -68,7 +68,7 @@ namespace Anheu.API.Controllers
         [Authorize(Roles = "1")]
         public async Task<ActionResult<int>> PostDeletar(int id)
         {
-            var isOk = await _cursoCategoriaRepository.PostDeletar(id);
+            var isOk = await _postCategoriaRepository.PostDeletar(id);
 
             if (isOk < 1)
             {

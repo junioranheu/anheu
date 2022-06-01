@@ -5,8 +5,8 @@ import Styles from '../../styles/posts.module.css';
 
 export default function SidebarDireita() {
     const itens = [
-        { item: 'xxx', url: '/disciplinas' },
-        { item: 'xxx', url: '/usuario/meus-cursos' }
+        // { item: 'xxx', url: '/disciplinas' },
+        // { item: 'xxx', url: '/usuario/meus-cursos' }
     ]
 
     const { asPath } = useRouter();

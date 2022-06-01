@@ -6,10 +6,12 @@ import { Fetch } from '../../../../utils/outros/fetch';
 import paginaCarregada from '../../../../utils/outros/paginaCarregada';
 
 export default function Post({ posts }) {
-    // console.log(posts);
+    console.log(posts);
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
+        // Título da página;
+        document.title = (posts.length ? `Anheu — Posts sobre ${posts[0].postsCategorias?.categoria.toLowerCase()}` : 'Anheu — Posts & tutoriais');
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, []);
 

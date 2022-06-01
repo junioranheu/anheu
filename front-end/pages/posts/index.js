@@ -10,7 +10,7 @@ import paginaCarregada from '../../utils/outros/paginaCarregada';
 
 export default function Index({ postsCategorias }) {
     document.title = 'Anheu — Posts & tutoriais';
-    
+
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         paginaCarregada(true, 200, 500, setIsLoaded);
@@ -27,14 +27,14 @@ export default function Index({ postsCategorias }) {
 
             <div className='margem30'>
                 {
-                    postsCategorias?.map((p, i) => (
+                    postsCategorias?.filter(x => x.isAtivo === 1).map((p, i) => (
                         <ItemRow
                             key={i}
                             data={p}
                             id={p.postCategoriaId}
                             titulo={p.categoria}
                             descricao={null}
-                            itemzinho={null}
+                            itemzinho={`${p.qtdPosts} ${(p.qtdPosts === 1 ? 'post' : 'posts')}`}
                             itemzao={null}
                             isMostrarItemzao={false}
                             handleClick={() => Router.push(`/posts/categoria/${p.postCategoriaId}/${ajustarUrl(p.categoria)}`)}

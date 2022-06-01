@@ -18,7 +18,6 @@ export default function Disciplina({ disciplina }) {
     useEffect(() => {
         // Título da página;
         document.title = `Anheu — Disciplina: ${disciplina.nome}`;
-
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, [disciplina]);
 

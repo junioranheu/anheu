@@ -6,9 +6,10 @@ import Styles from '../../styles/posts.module.css';
 export default function SidebarEsquerda() {
     const itens = [
         { item: 'Início', url: '/posts' },
-        { item: 'xxx', url: '/xxx' },
-        { item: 'xxx', url: '/xxx' },
-        { item: 'xxx', url: '/xxx' }
+        { item: 'Post mais recente', url: '/xxx' },
+        { item: 'Post mais visto do dia', url: '/xxx' },
+        { item: 'Sobre', url: '/xxx' },
+        { item: 'Contribua', url: '/xxx' }
     ]
 
     const { asPath } = useRouter();

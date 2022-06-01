@@ -12,7 +12,7 @@ import Styles from '../../../styles/aula.module.css';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
-import AjustarUrl from '../../../utils/outros/ajustarUrl';
+import ajustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 import tamanhoString from '../../../utils/outros/tamanhoString';
@@ -148,7 +148,7 @@ export async function getStaticPaths() {
     const paths = aulas?.map(d => ({
         params: {
             id: d.aulaId.toString(),
-            nome: AjustarUrl(d.nome)
+            nome: ajustarUrl(d.nome)
         }
     }));
 

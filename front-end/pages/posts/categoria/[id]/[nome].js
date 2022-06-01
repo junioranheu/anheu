@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CONSTANTS_POSTS from '../../../../utils/data/constPosts';
 import CONSTANTS_POSTS_CATEGORIAS from '../../../../utils/data/constPostsCategorias';
-import AjustarUrl from '../../../../utils/outros/ajustarUrl';
+import ajustarUrl from '../../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../../utils/outros/fetch';
+import paginaCarregada from '../../../../utils/outros/paginaCarregada';
 
 export default function Post({ posts }) {
     // console.log(posts);
+
+    const [isLoaded, setIsLoaded] = useState(false);
+    useEffect(() => {
+        paginaCarregada(true, 200, 500, setIsLoaded);
+    }, []);
+
+    if (!isLoaded) {
+        return false;
+    }
 
     return (
         <section>
@@ -25,7 +35,7 @@ export async function getStaticPaths() {
     const paths = posts?.map(p => ({
         params: {
             id: p.postCategoriaId.toString(),
-            nome: AjustarUrl(p.categoria)
+            nome: ajustarUrl(p.categoria)
         }
     }));
 

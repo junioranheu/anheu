@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import Styles from '../../styles/card.module.css';
-import AjustarUrl from '../../utils/outros/ajustarUrl';
+import ajustarUrl from '../../utils/outros/ajustarUrl';
 
 export default function SessaoCardsPequenos({ lista, rota }) {
     // console.log(lista);
@@ -17,7 +17,7 @@ export default function SessaoCardsPequenos({ lista, rota }) {
                         key={l.id}
                         className={Styles.divSessaoCardsPequenos}
                         style={{ backgroundImage: `url(${l.imagem})` }}
-                        onClick={() => Router.push(`/${rota}/${l.id}/${AjustarUrl(l.titulo)}`)}
+                        onClick={() => Router.push(`/${rota}/${l.id}/${ajustarUrl(l.titulo)}`)}
                     >
                         <div className={Styles.efeitoBlur}>
                             <span className={`${Styles.cardTituloMenor} sombraTexto`}>{l.titulo}</span>

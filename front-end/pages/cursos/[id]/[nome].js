@@ -8,7 +8,7 @@ import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategorias';
 import CONSTANTS_USUARIOS_CURSOS from '../../../utils/data/constUsuariosCursos';
-import AjustarUrl from '../../../utils/outros/ajustarUrl';
+import ajustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
@@ -122,7 +122,7 @@ export async function getStaticPaths() {
     const paths = cursos?.map(c => ({
         params: {
             id: c.cursoCategoriaId.toString(),
-            nome: AjustarUrl(c.categoria)
+            nome: ajustarUrl(c.categoria)
         }
     }));
 

@@ -4,7 +4,7 @@ import Banner from '../../components/outros/banner';
 import ItemRow from '../../components/outros/itemRow';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
-import AjustarUrl from '../../utils/outros/ajustarUrl';
+import ajustarUrl from '../../utils/outros/ajustarUrl';
 import { Fetch } from '../../utils/outros/fetch';
 import paginaCarregada from '../../utils/outros/paginaCarregada';
 
@@ -68,7 +68,7 @@ export default function Index() {
                                         itemzinho={null}
                                         itemzao={null}
                                         isMostrarItemzao={false}
-                                        handleClick={() => Router.push(`/disciplinas/${d.disciplinas.disciplinaId}/${AjustarUrl(d.disciplinas.nome)}`)}
+                                        handleClick={() => Router.push(`/disciplinas/${d.disciplinas.disciplinaId}/${ajustarUrl(d.disciplinas.nome)}`)}
                                         idReferenciaParaAlterarCor={null}
                                         tags={d.disciplinas.disciplinaTags}
                                         imagem={null}

@@ -55,6 +55,7 @@
 
 .thumb {
     border-radius: 10px;
+    object-fit: contain;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

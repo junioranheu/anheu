@@ -5,7 +5,7 @@ import ImgCinza from '../../../static/image/cinza.webp';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_DISCIPLINAS from '../../../utils/data/constDisciplinas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
-import AjustarUrl from '../../../utils/outros/ajustarUrl';
+import ajustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
@@ -49,7 +49,7 @@ export default function Disciplina({ disciplina }) {
                             itemzinho={null}
                             itemzao={null}
                             isMostrarItemzao={false}
-                            handleClick={() => Router.push(`/aula/${a.aulaId}/${AjustarUrl(a.nome)}`)}
+                            handleClick={() => Router.push(`/aula/${a.aulaId}/${ajustarUrl(a.nome)}`)}
                             idReferenciaParaAlterarCor={null}
                             tags={null}
                             imagem={(a.thumbnail ? `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_THUMBNAIL}/${a.thumbnail}` : ImgCinza)}
@@ -77,7 +77,7 @@ export async function getStaticPaths() {
     const paths = disciplinas?.map(d => ({
         params: {
             id: d.disciplinaId.toString(),
-            nome: AjustarUrl(d.nome)
+            nome: ajustarUrl(d.nome)
         }
     }));
 

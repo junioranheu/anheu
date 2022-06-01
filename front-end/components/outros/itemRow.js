@@ -4,7 +4,6 @@ import ImgCinza from '../../static/image/cinza.webp';
 import Styles from '../../styles/itemRow.module.css';
 
 export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemzao, isMostrarItemzao, handleClick, idReferenciaParaAlterarCor, tags, imagem }) {
-
     const [src, setSrc] = useState(imagem);
 
     function exibirTagsDisciplinas(disciplinaTags) {
@@ -49,7 +48,11 @@ export default function ItemRow({ data, id, titulo, descricao, itemzinho, itemza
                     }
                 </span>
 
-                <span className='texto'>{descricao}</span>
+                {
+                    descricao && (
+                        <span className='texto'>{descricao}</span>
+                    )
+                }
 
                 {
                     tags && (

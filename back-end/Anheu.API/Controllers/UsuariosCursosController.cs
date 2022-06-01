@@ -25,6 +25,7 @@ namespace Anheu.API.Controllers
             foreach (var item in todos)
             {
                 item.Usuarios.Senha = "";
+                item.Cursos.Usuarios.Senha = "";
             }
 
             return Ok(todos);
@@ -42,6 +43,7 @@ namespace Anheu.API.Controllers
 
             // Esconder alguns atributos;
             porId.Usuarios.Senha = "";
+            porId.Cursos.Usuarios.Senha = "";
 
             return Ok(porId);
         }
@@ -126,6 +128,13 @@ namespace Anheu.API.Controllers
             if (porUsuarioId == null)
             {
                 return NotFound();
+            }
+
+            // Esconder alguns atributos;
+            foreach (var item in porUsuarioId)
+            {
+                item.Usuarios.Senha = "";
+                item.Cursos.Usuarios.Senha = "";
             }
 
             return Ok(porUsuarioId);

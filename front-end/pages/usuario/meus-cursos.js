@@ -21,8 +21,6 @@ export default function MeusCursos() {
     async function getCursoDefinidoAtual() {
         const url = `${CONSTANTS_USUARIOS_CURSOS.API_URL_GET_CURSO_DEFINIDO_ATUAL_POR_USUARIO_ID}/${usuarioId}`;
         const cursoDefinido = await Fetch.getApi(url, null);
-        // console.log(cursoDefinido);
-
         setCursoDefinidoAtual(cursoDefinido);
 
         paginaCarregada(true, 200, 500, setIsLoaded);
@@ -87,7 +85,7 @@ export default function MeusCursos() {
                                             id={c.cursos.cursoId}
                                             titulo={c.cursos.nome}
                                             descricao={c.cursos.resumoCurso}
-                                            itemzinho={`Professor ${c.cursos.professor}`}
+                                            itemzinho={`Professor ${c.cursos.usuarios?.nomeCompleto}`}
                                             itemzao={`R$ ${c.cursos.preco}`}
                                             isMostrarItemzao={false}
                                             handleClick={() => { handleModalCurso(), setCursoSelecionado(c.cursos) }}

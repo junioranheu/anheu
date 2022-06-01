@@ -20,6 +20,13 @@ namespace Anheu.API.Controllers
         public async Task<ActionResult<List<Curso>>> GetTodos()
         {
             var todos = await _cursoRepository.GetTodos();
+
+            // Esconder alguns atributos;
+            foreach (var item in todos)
+            {
+                item.Usuarios.Senha = "";
+            }
+
             return Ok(todos);
         }
 
@@ -32,6 +39,9 @@ namespace Anheu.API.Controllers
             {
                 return NotFound();
             }
+
+            // Esconder alguns atributos;
+            porId.Usuarios.Senha = "";
 
             return Ok(porId);
         }
@@ -86,6 +96,12 @@ namespace Anheu.API.Controllers
             if (porCursoCategoriaId == null)
             {
                 return NotFound();
+            }
+
+            // Esconder alguns atributos;
+            foreach (var item in porCursoCategoriaId)
+            {
+                item.Usuarios.Senha = "";
             }
 
             return Ok(porCursoCategoriaId);

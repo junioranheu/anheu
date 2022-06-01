@@ -19,6 +19,7 @@ namespace Anheu.API.Repositories
             var itens = await _context.Cursos.
                 Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
                 Include(cc => cc.CursosCategorias).
+                Include(u => u.Usuarios).
                 OrderBy(n => n.Nome).AsNoTracking().ToListAsync();
 
             return itens;
@@ -29,6 +30,7 @@ namespace Anheu.API.Repositories
             var item = await _context.Cursos.
                 Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
                 Include(cc => cc.CursosCategorias).
+                Include(u => u.Usuarios).
                 Where(p => p.CursoId == id).AsNoTracking().FirstOrDefaultAsync();
 
             return item;
@@ -84,6 +86,7 @@ namespace Anheu.API.Repositories
             var itens = await _context.Cursos.
                 Include(cd => cd.CursosDisciplinas).ThenInclude(d => d.Disciplinas).ThenInclude(dt => dt.DisciplinaTags).
                 Include(cc => cc.CursosCategorias).
+                Include(u => u.Usuarios).
                 Where(p => p.CursoCategoriaId == cursoCategoriaId).AsNoTracking().ToListAsync();
 
             return itens;

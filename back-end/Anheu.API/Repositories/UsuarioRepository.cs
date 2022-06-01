@@ -18,7 +18,7 @@ namespace Anheu.API.Repositories
         public async Task<List<Usuario>> GetTodos()
         {
             var itens = await _context.Usuarios.
-                Include(ut => ut.UsuarioTipos).
+                Include(ut => ut.UsuariosTipos).
                 Include(ui => ui.UsuariosInformacoes).
                 OrderBy(ui => ui.UsuarioId).AsNoTracking().ToListAsync();
 
@@ -28,7 +28,7 @@ namespace Anheu.API.Repositories
         public async Task<Usuario> GetPorId(int id)
         {
             var item = await _context.Usuarios.
-                Include(ut => ut.UsuarioTipos).
+                Include(ut => ut.UsuariosTipos).
                 Include(ui => ui.UsuariosInformacoes).
                 Where(ui => ui.UsuarioId == id).AsNoTracking().FirstOrDefaultAsync();
 

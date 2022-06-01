@@ -29,13 +29,16 @@ namespace Anheu.API.Data
             {
                 context.UsuariosTipos.Add(new UsuarioTipo() { UsuarioTipoId = 1, Tipo = "Administrador", Descricao = "Administrador do sistema", IsAtivo = 1, DataCriacao = dataAgora });
                 context.UsuariosTipos.Add(new UsuarioTipo() { UsuarioTipoId = 2, Tipo = "Usuário", Descricao = "Usuário comum", IsAtivo = 1, DataCriacao = dataAgora });
+                context.UsuariosTipos.Add(new UsuarioTipo() { UsuarioTipoId = 3, Tipo = "Professor", Descricao = "Professor que criar conteúdo para os cursos", IsAtivo = 1, DataCriacao = dataAgora });
             }
 
             if (!context.Usuarios.Any())
             {
-                context.Usuarios.Add(new Usuario() { UsuarioId = 1, NomeCompleto = "Adm Anheu", Email = "adm@Hotmail.com", NomeUsuarioSistema = "adm", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 1, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
-                context.Usuarios.Add(new Usuario() { UsuarioId = 2, NomeCompleto = "Junior", Email = "juninholorena@Hotmail.com", NomeUsuarioSistema = "junioranheu", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
-                context.Usuarios.Add(new Usuario() { UsuarioId = 3, NomeCompleto = "Usuário", Email = "usuario@Hotmail.com", NomeUsuarioSistema = "usuario", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 1, NomeCompleto = "Administrador do Anheu", Email = "adm@Hotmail.com", NomeUsuarioSistema = "adm", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 1, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 2, NomeCompleto = "Junior Souza", Email = "juninholorena@Hotmail.com", NomeUsuarioSistema = "junioranheu", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 3, NomeCompleto = "Usuário Comum", Email = "usuario@Hotmail.com", NomeUsuarioSistema = "usuario", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 4, NomeCompleto = "Usuário Professor 1", Email = "professor@Hotmail.com", NomeUsuarioSistema = "professor", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 3, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 5, NomeCompleto = "Usuário Professor 2", Email = "professor2@Hotmail.com", NomeUsuarioSistema = "professor2", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 3, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
             }
 
             if (!context.UsuariosInformacoes.Any())
@@ -71,11 +74,11 @@ namespace Anheu.API.Data
 
             if (!context.Cursos.Any())
             {
-                context.Cursos.Add(new Curso() { CursoId = 1, Nome = "Javascript pro", Thumbnail = "1.webp", Professor = "Israel", ResumoCurso = "Lorem ipsum dolor sit amet. Qui reiciendis ratione non laborum odio non minima neque in enim rerum. ", Preco = 99.99, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
-                context.Cursos.Add(new Curso() { CursoId = 2, Nome = "Fullstack em 1 semana", Thumbnail = "2.webp", Professor = "Junior Souza", ResumoCurso = "Vel officia veritatis aut quia cumque in dolorem illo qui fugit temporibus est nihil labore et expedita ipsa. Ut dolores molestiae vel alias natus a nesciunt galisum sit quia ipsum nam laboriosam sint.", Preco = 2.99, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
-                context.Cursos.Add(new Curso() { CursoId = 3, Nome = "Banco de dados para hackers", Thumbnail = "3.webp", Professor = "dos deuses", ResumoCurso = "Sit quaerat eligendi non nihil dolore ut libero voluptatem aut omnis facilis. Hic rerum asperiores et quam veritatis et illum quas qui accusamus totam et error impedit in necessitatibus molestias.", Preco = 50, DataRegistro = dataAgora, CursoCategoriaId = 2, IsAtivo = 1 });
-                context.Cursos.Add(new Curso() { CursoId = 4, Nome = "Java trash", Thumbnail = "4.webp", Professor = "Willians Carvalho", ResumoCurso = "Sit laudantium dolorem rem illo optio qui galisum nulla est possimus veritatis qui vitae vitae non odit sequi ut velit dolor?", Preco = 0.0, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
-                context.Cursos.Add(new Curso() { CursoId = 5, Nome = "Testes unitários com console.log", Thumbnail = "5.webp", Professor = "Professor indiano", ResumoCurso = "Aut dolorem placeat sit perspiciatis reiciendis non modi voluptatem qui voluptatibus doloribus et fugit blanditiis ut neque voluptatem qui eligendi quia.", Preco = 20.90, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 1, Nome = "Javascript pro", Thumbnail = "1.webp", UsuarioId = 4, ResumoCurso = "Lorem ipsum dolor sit amet. Qui reiciendis ratione non laborum odio non minima neque in enim rerum. ", Preco = 99.99, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 2, Nome = "Fullstack em 1 semana", Thumbnail = "2.webp", UsuarioId = 5, ResumoCurso = "Vel officia veritatis aut quia cumque in dolorem illo qui fugit temporibus est nihil labore et expedita ipsa. Ut dolores molestiae vel alias natus a nesciunt galisum sit quia ipsum nam laboriosam sint.", Preco = 2.99, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 3, Nome = "Banco de dados para hackers", Thumbnail = "3.webp", UsuarioId = 4, ResumoCurso = "Sit quaerat eligendi non nihil dolore ut libero voluptatem aut omnis facilis. Hic rerum asperiores et quam veritatis et illum quas qui accusamus totam et error impedit in necessitatibus molestias.", Preco = 50, DataRegistro = dataAgora, CursoCategoriaId = 2, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 4, Nome = "Java trash", Thumbnail = "4.webp", UsuarioId = 5, ResumoCurso = "Sit laudantium dolorem rem illo optio qui galisum nulla est possimus veritatis qui vitae vitae non odit sequi ut velit dolor?", Preco = 0.0, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
+                context.Cursos.Add(new Curso() { CursoId = 5, Nome = "Testes unitários com console.log", Thumbnail = "5.webp", UsuarioId = 4, ResumoCurso = "Aut dolorem placeat sit perspiciatis reiciendis non modi voluptatem qui voluptatibus doloribus et fugit blanditiis ut neque voluptatem qui eligendi quia.", Preco = 20.90, DataRegistro = dataAgora, CursoCategoriaId = 1, IsAtivo = 1 });
             }
 
             if (!context.Disciplinas.Any())

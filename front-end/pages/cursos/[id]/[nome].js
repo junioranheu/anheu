@@ -82,7 +82,7 @@ export default function Curso({ cursos }) {
                                         id={c.cursoId}
                                         titulo={c.nome}
                                         descricao={c.resumoCurso}
-                                        itemzinho={`Professor ${c.professor}`}
+                                        itemzinho={`Professor ${c.usuarios?.nomeCompleto}`}
                                         itemzao={`R$ ${c.preco}`}
                                         isMostrarItemzao={true}
                                         handleClick={() => { handleModalComprarCurso(), setCursoSelecionado(c) }}

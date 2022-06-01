@@ -14,7 +14,7 @@ namespace Anheu.API.Models
 
         // Fk (De lá pra cá);
         public int UsuarioTipoId { get; set; }
-        public UsuarioTipo? UsuarioTipos { get; set; }
+        public UsuarioTipo? UsuariosTipos { get; set; }
 
         public string? Foto { get; set; }
         public DateTime DataCriacao { get; set; }

@@ -10,7 +10,11 @@ namespace Anheu.API.Models
 
         public string? Nome { get; set; }
         public string? Thumbnail { get; set; }
-        public string? Professor { get; set; }
+
+        // Fk (De lá pra cá);
+        public int UsuarioId { get; set; }
+        public Usuario? Usuarios{ get; set; }
+
         public string? ResumoCurso { get; set; }
 
         public double? Preco { get; set; }

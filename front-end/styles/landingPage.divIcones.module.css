@@ -1,6 +1,6 @@
 .divIcones {
-    /* background-color: pink; */
- 
+    /* background-color: blue; */
+
     margin-top: 6rem;
     width: 55vw;
 
@@ -70,13 +70,33 @@
     align-items: center;
 }
 
+.icone:hover {
+    transform: translateY(-4px);
+    transition: box-shadow .2s, transform .2s, -webkit-box-shadow .2s, -webkit-transform .2s;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
-/* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {
+@media (max-width:1800px) {
     .divIcones {
+        /* background-color: red; */
         width: 80vw;
     }
 }
+
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .divIcones {
+        /* background-color: blue; */
+        width: 90vw;
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {}
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {
@@ -84,3 +104,6 @@
         width: 98vw;
     }
 }
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

@@ -7,7 +7,7 @@ export default function Index() {
     useEffect(() => {
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, []);
-
+ 
     if (!isLoaded) {
         return false;
     }

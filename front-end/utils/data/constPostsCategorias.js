@@ -1,12 +1,11 @@
 import { API_BASE_URL_DEV, API_BASE_URL_PROD } from '../outros/urlApi';
 
 const ENDPOINTS = {
-    GET_TODOS: 'api/Posts/todos',
-    GET_POR_ID: 'api/Posts',
-    POST_CRIAR: 'api/Posts/criar',
-    POST_ATUALIZAR: 'api/Posts/atualizar',
-    POST_DELETAR: 'api/Posts/deletar',
-    GET_POR_POST_CATEGORIA_ID: 'api/Posts/porPostCategoriaId'
+    GET_TODOS: 'api/PostsCategorias/todos',
+    GET_POR_ID: 'api/PostsCategorias',
+    POST_CRIAR: 'api/PostsCategorias/criar',
+    POST_ATUALIZAR: 'api/PostsCategorias/atualizar',
+    POST_DELETAR: 'api/PostsCategorias/deletar'
 };
 
 const DEV = {
@@ -14,8 +13,7 @@ const DEV = {
     API_URL_GET_POR_ID: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_POR_ID}`,
     API_URL_POST_CRIAR: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_CRIAR}`,
     API_URL_POST_ATUALIZAR: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_ATUALIZAR}`,
-    API_URL_POST_DELETAR: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_DELETAR}`,
-    API_URL_GET_POR_POST_CATEGORIA_ID: `${API_BASE_URL_DEV}/${ENDPOINTS.GET_POR_POST_CATEGORIA_ID}`
+    API_URL_POST_DELETAR: `${API_BASE_URL_DEV}/${ENDPOINTS.POST_DELETAR}`
 };
 
 const PROD = {
@@ -23,8 +21,7 @@ const PROD = {
     API_URL_GET_POR_ID: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_POR_ID}`,
     API_URL_POST_CRIAR: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_CRIAR}`,
     API_URL_POST_ATUALIZAR: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_ATUALIZAR}`,
-    API_URL_POST_DELETAR: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_DELETAR}`,
-    API_URL_GET_POR_POST_CATEGORIA_ID: `${API_BASE_URL_PROD}/${ENDPOINTS.GET_POR_POST_CATEGORIA_ID}`
+    API_URL_POST_DELETAR: `${API_BASE_URL_PROD}/${ENDPOINTS.POST_DELETAR}`
 };
  
 // Definir se as constantes para a API é DEV ou PROD;

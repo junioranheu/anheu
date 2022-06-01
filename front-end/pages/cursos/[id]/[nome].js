@@ -114,7 +114,7 @@ export default function Curso({ cursos }) {
 export async function getStaticPaths() {
     // Tutorial de getStaticPaths: https://www.youtube.com/watch?v=V2T_bkOs0xA&ab_channel=FilipeDeschamps
 
-    // Todas as cursos;
+    // Todas os cursos;
     const url = CONSTANTS_CURSOS_CATEGORIAS.API_URL_GET_TODOS;
     const cursos = await Fetch.getApi(url, null);
 

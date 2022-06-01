@@ -1,0 +1,118 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=- Layout =-=-=-=-=-=-=-=-=-=-=-=- */
+.secaoPrincipalPosts {
+    background-color: var(--preto);
+    min-height: 100vh;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.secaoPrincipalPosts aside {
+    /* background-color: red !important; */
+    /* width: 20vw; */
+    height: 100vh;
+    padding: 2rem;
+}
+
+.secaoPrincipalPosts main {
+    /* background-color: blue !important; */
+    /* width: 80vw; */
+    width: 100vw;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Sidebar =-=-=-=-=-=-=-=-=-=-=-=- */
+.sessaoNavbar {
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sessaoNavbar a {
+    color: var(--branco);
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0.5;
+}
+
+.bordaDireita {
+    border-right: 1px solid var(--cor-border-hr);
+}
+
+.bordaEsquerda {
+    border-left: 1px solid var(--cor-border-hr);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .secaoPrincipalPosts {
+        /* background-color: red; */
+        flex-direction: column;
+    }
+
+    .secaoPrincipalPosts aside {
+        /* background-color: blue !important; */
+        width: 100vw;
+        height: fit-content;
+        padding: 1rem;
+    }
+
+    .bordaDireita {
+        /* background-color: pink; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid var(--cor-border-hr);
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .sessaoNavbar {
+        /* background-color: pink; */
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .sessaoNavbar a {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1;
+        opacity: 0.5;
+    }
+
+    .sidebarDireita {
+        /* background-color: yellow; */
+        display: none;
+    }
+}
+
+@media (max-width:739px) {
+    .sessaoNavbar {
+        /* background-color: pink; */
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+        gap: 1.2rem;
+    }
+
+    .sessaoNavbar a {
+        flex: 0 0 25%
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {}
+
+@media (max-width:500px) {}

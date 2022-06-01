@@ -9,6 +9,7 @@ import '../fonts/NanumPenScript.css';
 import '../fonts/PTMono.css';
 import LayoutDisciplinas from '../layouts/disciplinas.js';
 import LayoutPadrao from '../layouts/padrao.js';
+import LayoutPosts from '../layouts/posts.js';
 import '../styles/globals.css';
 import { UsuarioProvider } from '../utils/context/usuarioContext';
 
@@ -26,6 +27,8 @@ export default function App({ Component, pageProps }) {
 
         if (url.includes('/disciplinas') || url.includes('/usuario/meus-cursos')) {
             return <LayoutDisciplinas Component={Component} pageProps={pageProps} />
+        } if (url.includes('/posts')) {
+            return <LayoutPosts Component={Component} pageProps={pageProps} />
         } else {
             return <LayoutPadrao Component={Component} pageProps={pageProps} />
         }

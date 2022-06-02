@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import Banner from '../../../../components/outros/banner';
 import CONSTANTS_POSTS from '../../../../utils/data/constPosts';
 import CONSTANTS_POSTS_CATEGORIAS from '../../../../utils/data/constPostsCategorias';
 import ajustarUrl from '../../../../utils/outros/ajustarUrl';
@@ -20,9 +21,25 @@ export default function Post({ posts }) {
     }
 
     return (
-        <section>
-            <h1>Teste</h1>
-        </section>
+        <Fragment>
+            {
+                posts.length > 0 ? (
+                    <section className='flexColumn paddingPadrao margem50'>
+                            <div className='centralizarTexto'>
+                            <span className='titulo'>Posts sobre <span className='grifar'>{posts[0]?.postsCategorias.categoria.toLowerCase()}</span></span>
+                        </div>
+                    </section>
+                ) : (
+                    <Banner
+                        titulo='Opa...'
+                        subtitulo='Parece que ainda não existe nenhum post nessa categoria'
+                        textoBotao='Visualizar outros posts'
+                        url='/posts'
+                        isForcarFullscreen={true}
+                    />
+                )
+            }
+        </Fragment>
     )
 }
 

@@ -94,7 +94,7 @@ namespace Anheu.API.Repositories
             var item = await _context.Posts.
                 Include(pc => pc.PostsCategorias).
                 Include(u => u.Usuarios).
-                Where(p => p.IsAtivo == 1).OrderByDescending(p => p.PostId).AsNoTracking().FirstOrDefaultAsync();
+                Where(p => p.IsAtivo == 1).OrderByDescending(p => p.DataRegistro).AsNoTracking().FirstOrDefaultAsync();
 
             return item;
         }

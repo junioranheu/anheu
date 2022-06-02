@@ -1,4 +1,3 @@
-import Moment from 'moment';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import React, { useContext, useEffect, useState } from 'react';
@@ -7,6 +6,7 @@ import Footer from '../components/outros/footer';
 import Navbar1 from '../components/outros/navbar1';
 import Navbar2 from '../components/outros/navbar2';
 import { Auth, UsuarioContext } from '../utils/context/usuarioContext';
+import diferencaEmHoras from '../utils/outros/diferencaEmHoras';
 import HorarioBrasilia from '../utils/outros/horarioBrasilia';
 
 export default function Padrao({ Component, pageProps }) {
@@ -18,8 +18,7 @@ export default function Padrao({ Component, pageProps }) {
         if (isAuth) {
             const horaAgora = HorarioBrasilia();
             const dataAutenticacao = Auth.getUsuarioLogado()?.dataAutenticacao;
-            var duracao = Moment.duration(horaAgora.diff(dataAutenticacao));
-            var diferencaHoras = duracao.asHours();
+            var diferencaHoras = diferencaEmHoras(horaAgora, dataAutenticacao);
             // console.log(diferencaHoras);
 
             // Foi definido na API, no método ServicoGerarToken() em Services/TokenService.cs, que o token JWT expira em 1 mês;

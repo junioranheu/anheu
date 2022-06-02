@@ -226,8 +226,11 @@ namespace Anheu.API.Data
 
             if (!context.Posts.Any())
             {
-                context.Posts.Add(new Post() { PostId = 1, Titulo = "Post teste #1", ConteudoPost = "<div><span>Oi, isso é um <b>teste</b></span></div>", UsuarioId = 1, DataRegistro = dataAgora, PostCategoriaId = 1, IsAtivo = 1 });
-            
+                for (int i = 0; i < 100; i++)
+                {
+                    string conteudoPlaceholder = $"<div><span>Oi, isso é um <b>teste (${i + 1})</b></span><br/><span>{GerarPalavraAleatoria(10)}</span></div>";
+                    context.Posts.Add(new Post() { PostId = i + 1, Titulo = $"Post @{GerarPalavraAleatoria(5)}", ConteudoPost = conteudoPlaceholder, UsuarioId = 1, DataRegistro = dataAgora.AddMinutes(-NumeroAleatorioRange(720, 7200)), PostCategoriaId = NumeroAleatorioRange(1, 7), IsAtivo = 1 });
+                }  
             }
             #endregion
 

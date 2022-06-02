@@ -1,13 +1,18 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Banner from '../../../../components/outros/banner';
+import ItemRow from '../../../../components/outros/itemRow';
 import CONSTANTS_POSTS from '../../../../utils/data/constPosts';
 import CONSTANTS_POSTS_CATEGORIAS from '../../../../utils/data/constPostsCategorias';
 import ajustarUrl from '../../../../utils/outros/ajustarUrl';
+import diferencaEmHoras from '../../../../utils/outros/diferencaEmHoras';
+import diferencaEmSegundos from '../../../../utils/outros/diferencaEmSegundos';
 import { Fetch } from '../../../../utils/outros/fetch';
+import horarioBrasilia from '../../../../utils/outros/horarioBrasilia';
 import paginaCarregada from '../../../../utils/outros/paginaCarregada';
+import segundosParaDHMS from '../../../../utils/outros/segundosParaDHMS';
 
 export default function Post({ posts }) {
-    console.log(posts);
+    // console.log(posts);
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
@@ -25,9 +30,33 @@ export default function Post({ posts }) {
             {
                 posts.length > 0 ? (
                     <section className='flexColumn paddingPadrao margem50'>
-                            <div className='centralizarTexto'>
+                        <div className='centralizarTexto'>
                             <span className='titulo'>Posts sobre <span className='grifar'>{posts[0]?.postsCategorias.categoria.toLowerCase()}</span></span>
                         </div>
+
+                        <div className='margem30'>
+                            {
+                                posts?.filter(x => x.isAtivo === 1).map((p, i) => (
+                                    <ItemRow
+                                        key={i}
+                                        data={p}
+                                        id={p.postId}
+                                        titulo={p.titulo}
+                                        descricao={`Postado por @${p?.usuarios?.nomeUsuarioSistema}, ${segundosParaDHMS(diferencaEmSegundos(horarioBrasilia(), p.dataRegistro))}`}
+                                        itemzinho={(diferencaEmHoras(horarioBrasilia(), p.dataRegistro) <= 48 ? 'Novo post' : '')}
+                                        itemzao={null}
+                                        isMostrarItemzao={false}
+                                        handleClick={() => null}
+                                        idReferenciaParaAlterarCor={null}
+                                        tags={null}
+                                        imagem={null}
+                                    />
+                                ))
+                            }
+                        </div>
+
+                        {/* Espaço a mais */}
+                        <div className='espacoBottom'></div>
                     </section>
                 ) : (
                     <Banner

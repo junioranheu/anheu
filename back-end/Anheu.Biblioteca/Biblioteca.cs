@@ -122,6 +122,13 @@ namespace Anheu.Biblioteca
             return codigoAleatorio;
         }
 
+        public static int NumeroAleatorioRange(int min, int max)
+        {
+            Random rand = new();
+            int numeroAleatorio = rand.Next(min, max + 1);
+            return numeroAleatorio;
+        }
+
         public static string FormatarBytes(long bytes)
         {
             string[] Suffix = { "B", "KB", "MB", "GB", "TB" };

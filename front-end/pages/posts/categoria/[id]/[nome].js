@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import React, { Fragment, useEffect, useState } from 'react';
 import Banner from '../../../../components/outros/banner';
 import InputFiltro from '../../../../components/outros/inputFiltro';
@@ -52,7 +53,7 @@ export default function Post({ posts }) {
                                         itemzinho={(diferencaEmHoras(horarioBrasilia(), p.dataRegistro) <= 48 ? 'Novo post' : '')}
                                         itemzao={null}
                                         isMostrarItemzao={false}
-                                        handleClick={() => null}
+                                        handleClick={() => Router.push(`/posts/${p.postId}/${ajustarUrl(p.titulo)}`)}
                                         idReferenciaParaAlterarCor={null}
                                         tags={null}
                                         imagem={null}
@@ -81,7 +82,7 @@ export default function Post({ posts }) {
 export async function getStaticPaths() {
     // Tutorial de getStaticPaths: https://www.youtube.com/watch?v=V2T_bkOs0xA&ab_channel=FilipeDeschamps
 
-    // Todas os posts;
+    // Todas as categorias de posts;
     const url = CONSTANTS_POSTS_CATEGORIAS.API_URL_GET_TODOS;
     const posts = await Fetch.getApi(url, null);
 
@@ -102,7 +103,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const id = context.params.id;
 
-    // Disciplina;
+    // Posts;
     const url = `${CONSTANTS_POSTS.API_URL_GET_POR_POST_CATEGORIA_ID}/${id}`;
     const posts = await Fetch.getApi(url, null);
 

@@ -22,7 +22,7 @@ export default function Post({ posts }) {
         // Título da página;
         document.title = (posts.length ? `Anheu — Posts sobre ${posts[0].postsCategorias?.categoria.toLowerCase()}` : 'Anheu — Posts & tutoriais');
         paginaCarregada(true, 200, 500, setIsLoaded);
-    }, []);
+    }, [posts]);
 
     if (!isLoaded) {
         return false;

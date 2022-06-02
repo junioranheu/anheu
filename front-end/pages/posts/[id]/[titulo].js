@@ -9,6 +9,7 @@ export default function Post({ post }) {
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
+        document.title = post ? `Anheu — ${post.titulo}` : 'Anheu - Post';
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, [post]);
 

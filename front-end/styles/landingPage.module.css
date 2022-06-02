@@ -11,6 +11,20 @@
     padding-bottom: 6rem;
 }
 
+.principalFitContent {
+    /* background-color: pink !important; */
+    width: 100vw;
+    min-height: fit-content;
+    overflow-y: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-bottom: 6rem;
+}
+
+
 .corSecundaria {
     background-color: var(--cinza-secundario);
 }
@@ -21,7 +35,7 @@
     text-align: center;
 }
 
-.forcarCentralizar{
+.forcarCentralizar {
     text-align: center;
 }
 
@@ -197,6 +211,24 @@
 
 .margemTitulo {
     margin-top: 10rem;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Outros =-=-=-=-=-=-=-=-=-=-=-=- */
+.personalizarItemRow > div {
+    /* background-color: pink !important; */
+
+    /* Forçar texto na mesma linha */
+    white-space: nowrap;
+
+    /* CSS igual do .divCurso:hover em itemRow.module.css */ 
+    background-color: var(--cor-principal-opaca);
+    cursor: pointer;
+
+    /* Gambi para o background ficar maior que a div */
+    padding-left: 30px;
+    margin-left: -30px;
+    padding-right: 30px;
+    margin-right: -30px;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

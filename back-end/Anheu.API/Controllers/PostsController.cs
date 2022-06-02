@@ -106,5 +106,21 @@ namespace Anheu.API.Controllers
 
             return Ok(porPostCategoriaId);
         }
+
+        [HttpGet("getUltimoPost")]
+        public async Task<ActionResult<Post>> GetUltimoPost()
+        {
+            var ultimoPost = await _postRepository.GetUltimoPost();
+
+            if (ultimoPost == null)
+            {
+                return NotFound();
+            }
+
+            // Esconder alguns atributos;
+            ultimoPost.Usuarios.Senha = "";
+
+            return Ok(ultimoPost);
+        }
     }
 }

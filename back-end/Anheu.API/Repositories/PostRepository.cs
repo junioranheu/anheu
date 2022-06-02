@@ -88,5 +88,15 @@ namespace Anheu.API.Repositories
 
             return itens;
         }
+
+        public async Task<Post> GetUltimoPost()
+        {
+            var item = await _context.Posts.
+                Include(pc => pc.PostsCategorias).
+                Include(u => u.Usuarios).
+                Where(p => p.IsAtivo == 1).OrderByDescending(p => p.PostId).AsNoTracking().FirstOrDefaultAsync();
+
+            return item;
+        }
     }
 }

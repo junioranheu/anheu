@@ -10,5 +10,6 @@ namespace Anheu.API.Interfaces
         Task<int> PostAtualizar(Post p);
         Task<int> PostDeletar(int id);
         Task<List<Post>> GetPorPostCategoriaId(int postCategoriaId);
+        Task<Post> GetUltimoPost();
     }
 }

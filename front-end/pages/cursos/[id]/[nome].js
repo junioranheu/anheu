@@ -2,8 +2,8 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ModalComprarCurso from '../../../components/modal/modalComprarCurso';
 import ModalWrapper from '../../../components/modal/_modalWrapper';
 import Banner from '../../../components/outros/banner';
+import InputFiltro from '../../../components/outros/inputFiltro';
 import ItemRow from '../../../components/outros/itemRow';
-import Styles from '../../../styles/cursos.module.css';
 import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_CURSOS from '../../../utils/data/constCursos';
 import CONSTANTS_CURSOS_CATEGORIAS from '../../../utils/data/constCursosCategorias';
@@ -33,7 +33,7 @@ export default function Curso({ cursos }) {
         document.title = cursos.length > 0 ? `Anheu — Cursos de ${cursos[0]?.cursosCategorias.categoria}` : 'Anheu';
 
         // Verificar qual é o curso definido como atual pelo usuário;
-        if (usuarioId){
+        if (usuarioId) {
             getCursoDefinidoAtual();
         } else {
             paginaCarregada(true, 200, 500, setIsLoaded);
@@ -70,7 +70,7 @@ export default function Curso({ cursos }) {
                         </div>
 
                         <div className='margem30'>
-                            <input className={Styles.input} type='text' placeholder='Busque por um curso...' onChange={(e) => setFiltroCurso(e.target.value)} />
+                            <InputFiltro placeholder='Busque por um curso...' filtrar={setFiltroCurso} />
                         </div>
 
                         <div className='margem30'>

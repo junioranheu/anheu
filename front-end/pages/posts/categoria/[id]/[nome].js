@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Banner from '../../../../components/outros/banner';
+import InputFiltro from '../../../../components/outros/inputFiltro';
 import ItemRow from '../../../../components/outros/itemRow';
 import CONSTANTS_POSTS from '../../../../utils/data/constPosts';
 import CONSTANTS_POSTS_CATEGORIAS from '../../../../utils/data/constPostsCategorias';
@@ -14,6 +15,7 @@ import segundosParaDHMS from '../../../../utils/outros/segundosParaDHMS';
 export default function Post({ posts }) {
     // console.log(posts);
 
+    const [filtroCurso, setFiltroCurso] = useState('');
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         // Título da página;
@@ -35,8 +37,12 @@ export default function Post({ posts }) {
                         </div>
 
                         <div className='margem30'>
+                            <InputFiltro placeholder='Busque por um post...' filtrar={setFiltroCurso} />
+                        </div>
+
+                        <div className='margem30'>
                             {
-                                posts?.filter(x => x.isAtivo === 1).map((p, i) => (
+                                posts?.filter(x => x.isAtivo === 1 && x.titulo.toLowerCase().includes(filtroCurso.toLowerCase())).map((p, i) => (
                                     <ItemRow
                                         key={i}
                                         data={p}

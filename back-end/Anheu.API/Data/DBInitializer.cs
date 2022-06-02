@@ -36,9 +36,9 @@ namespace Anheu.API.Data
             {
                 context.Usuarios.Add(new Usuario() { UsuarioId = 1, NomeCompleto = "Administrador do Anheu", Email = "adm@Hotmail.com", NomeUsuarioSistema = "adm", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 1, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
                 context.Usuarios.Add(new Usuario() { UsuarioId = 2, NomeCompleto = "Junior Souza", Email = "juninholorena@Hotmail.com", NomeUsuarioSistema = "junioranheu", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
-                context.Usuarios.Add(new Usuario() { UsuarioId = 3, NomeCompleto = "Usuário Comum", Email = "usuario@Hotmail.com", NomeUsuarioSistema = "usuario", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
-                context.Usuarios.Add(new Usuario() { UsuarioId = 4, NomeCompleto = "Usuário Professor 1", Email = "professor@Hotmail.com", NomeUsuarioSistema = "professor", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 3, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
-                context.Usuarios.Add(new Usuario() { UsuarioId = 5, NomeCompleto = "Usuário Professor 2", Email = "professor2@Hotmail.com", NomeUsuarioSistema = "professor2", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 3, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 3, NomeCompleto = "Usuário Comum de Teste", Email = "usuario@Hotmail.com", NomeUsuarioSistema = "usuario", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 2, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 4, NomeCompleto = "Isral Cabrera", Email = "professor@Hotmail.com", NomeUsuarioSistema = "professor", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 3, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
+                context.Usuarios.Add(new Usuario() { UsuarioId = 5, NomeCompleto = "Ruben Heeren", Email = "professor2@Hotmail.com", NomeUsuarioSistema = "professor2", Senha = Criptografar("123"), DataCriacao = dataAgora, UsuarioTipoId = 3, Foto = "", IsAtivo = 1, IsPremium = 1, IsVerificado = 1 });
             }
 
             if (!context.UsuariosInformacoes.Any())

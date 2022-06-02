@@ -163,6 +163,28 @@ a {
     flex-direction: column;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-=-=- Input pesquisa =-=-=-=-=-=-=-=-=-=-=-=- */
+.inputFiltro {
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: 100%;
+    padding: 0 3.2em 0 1rem;
+    border: none;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+    background: transparent;
+    color: var(--branco);
+    font-family: inherit;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1;
+    outline: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px white solid;
+}
+
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- animate.css =-=-=-=-=-=-=-=-=-=-=-=- */
 .animate__animated.delay03 {
     -webkit-animation-delay: .3s;
@@ -590,12 +612,20 @@ code div button svg {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
+    .inputFiltro {
+        font-size: 2rem;
+    }
 }
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (max-width:600px) {
     .titulo {
         font-size: 2rem;
+    }
+   
+    .inputFiltro {
+        font-size: 1.5rem;
     }
 }
 

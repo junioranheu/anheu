@@ -5,7 +5,7 @@ import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
 export default function Post({ post }) {
-    console.log(post);
+    // console.log(post);
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {

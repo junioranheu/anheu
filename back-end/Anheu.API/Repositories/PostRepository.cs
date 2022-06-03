@@ -19,7 +19,7 @@ namespace Anheu.API.Repositories
             var itens = await _context.Posts.
                 Include(pc => pc.PostsCategorias).
                 Include(u => u.Usuarios).
-                OrderBy(n => n.Titulo).AsNoTracking().ToListAsync();
+                OrderByDescending(n => n.DataRegistro).AsNoTracking().ToListAsync();
 
             return itens;
         }
@@ -84,7 +84,8 @@ namespace Anheu.API.Repositories
             var itens = await _context.Posts.
                 Include(pc => pc.PostsCategorias).
                 Include(u => u.Usuarios).
-                Where(p => p.PostCategoriaId == postCategoriaId).AsNoTracking().ToListAsync();
+                Where(p => p.PostCategoriaId == postCategoriaId).
+                OrderByDescending(n => n.DataRegistro).AsNoTracking().ToListAsync();
 
             return itens;
         }

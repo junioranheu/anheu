@@ -5,7 +5,7 @@ import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
 export default function Post({ post }) {
-    // console.log(post);
+    console.log(post);
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
@@ -20,11 +20,11 @@ export default function Post({ post }) {
     return (
         <section className='flexColumn paddingPadrao margem50'>
             <div className='centralizarTexto'>
-                <span className='titulo'>aea</span>
+                <span className='titulo'>{post.titulo}</span>
             </div>
 
             <div className='margem30'>
-                <h1>aea</h1>
+                <div className='texto' dangerouslySetInnerHTML={{ __html: post.conteudoPost }}></div>
             </div>
 
             {/* Espaço a mais */}

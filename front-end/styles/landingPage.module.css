@@ -231,9 +231,14 @@
     margin-right: -30px;
 }
 
-.personalizarItemRow:hover span {
+.personalizarItemRow:hover {
+    transform: translateY(-4px);
+    transition: box-shadow .2s, transform .2s, -webkit-box-shadow .2s, -webkit-transform .2s;
+}
+
+.personalizarItemRow:hover span:first-child {
     color: var(--cor-principal) !important;
-    transition: .2s ease-in-out;
+    transition: .35s ease-in-out;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

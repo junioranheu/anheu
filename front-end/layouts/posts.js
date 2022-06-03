@@ -10,7 +10,7 @@ import Styles from '../styles/posts.module.css';
 
 export default function Posts({ Component, pageProps }) {
     const router = useRouter();
- 
+
     // Renovar animação a cada mudança de URL (router.asPath);
     const [efeitoAnimar, setEfeitoAnimar] = useState('');
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function Posts({ Component, pageProps }) {
                     minWidth={250}
                     maxWidth={400}
                 >
-                     <aside className={Styles.bordaDireita}>
+                    <aside className={Styles.bordaDireita}>
                         <SidebarEsquerda />
                     </aside>
                 </Resizable>

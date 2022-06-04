@@ -6,18 +6,13 @@ export const UsuarioContext = createContext();
 
 // Provider: para "segurar" uma informação e passar para todos os componentes "child";
 export const UsuarioProvider = props => {
-    // https://stackoverflow.com/questions/68189273/referenceerror-localstorage-is-not-defined-using-local-storage-in-nextjs
-    if (typeof window !== 'undefined') {
-        const [isAuth, setIsAuth] = useState(localStorage.getItem('usuarioAutenticado') !== null ? true : false);
+    const [isAuth, setIsAuth] = useState(localStorage.getItem('usuarioAutenticado') !== null ? true : false);
 
-        return (
-            <UsuarioContext.Provider value={[isAuth, setIsAuth]}>
-                {props.children}
-            </UsuarioContext.Provider>
-        );
-    } else {
-        return null;
-    }
+    return (
+        <UsuarioContext.Provider value={[isAuth, setIsAuth]}>
+            {props.children}
+        </UsuarioContext.Provider>
+    );
 }
 
 // Funções referentes à autenticação do usuário;

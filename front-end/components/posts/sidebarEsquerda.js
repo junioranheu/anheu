@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Styles from '../../styles/posts.module.css';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 
 export default function SidebarEsquerda() {
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const usuarioTipoId = isAuth ? Auth?.getUsuarioLogado()?.usuarioTipoId : '';
+
     const itens = [
         { item: 'Início', url: '/posts' },
         { item: 'Post mais recente', url: '/xxx' },
@@ -20,7 +24,16 @@ export default function SidebarEsquerda() {
     }, [asPath]);
 
     return (
+
         <section className={`${Styles.sessaoNavbar} animate__animated animate__fadeIn delay03`}>
+            {
+                usuarioTipoId === 1 && (
+                    <Link key={1} href='/posts/criar-post'>
+                        <a className={`cor-principal-hover ${(urlAtual === '/posts/criar-post' ? 'opacidade' : '')}`}>Criar novo post <span className='efeito-new'>adm</span></a>
+                    </Link>
+                )
+            }
+
             {
                 itens?.map((item, i) => (
                     <Link key={i} href={item.url}>

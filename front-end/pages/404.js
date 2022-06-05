@@ -15,7 +15,7 @@ export default function Erro() {
             let msgFinal = '';
 
             if (msg === 'sem-acesso') {
-                msgFinal = 'Você não está autenticado para executar a ação requisitada';
+                msgFinal = 'Você não está autenticado ou não tem permissão para executar a ação requisitada';
             } else if (msg === 'autenticado') {
                 msgFinal = 'Você já está autenticado, portanto não pode mais executar a ação requisitada';
             }

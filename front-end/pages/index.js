@@ -4,7 +4,6 @@ import Sessao2 from '../components/landingPage/sessao2';
 import Sessao3 from '../components/landingPage/sessao3';
 import Sessao4 from '../components/landingPage/sessao4';
 import Sessao5 from '../components/landingPage/sessao5';
-import Styles from '../styles/landingPage.module.css';
 import { Auth, UsuarioContext } from '../utils/context/usuarioContext';
 import paginaCarregada from '../utils/outros/paginaCarregada';
 
@@ -13,7 +12,6 @@ export default function Index() {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const nomeUsuario = isAuth ? Auth?.getUsuarioLogado()?.nomeUsuarioSistema : '';
     const usuarioGenero = isAuth ? Auth?.getUsuarioLogado()?.genero : 'o';
-    const usuarioTipoId = isAuth ? Auth?.getUsuarioLogado()?.usuarioTipoId : '';
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
@@ -26,13 +24,6 @@ export default function Index() {
 
     return (
         <section>
-            {
-                usuarioTipoId === 1 && (
-                    // Teste
-                    <span className={Styles.efeitoTextoCorPrincipal}>Olá, adm</span>
-                )
-            }
-
             <Sessao1 isAuth={isAuth} nomeUsuario={nomeUsuario} usuarioGenero={usuarioGenero} />
             <Sessao2 />
             <Sessao3 />

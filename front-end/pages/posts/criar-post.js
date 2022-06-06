@@ -17,7 +17,7 @@ export default function CriarPost() {
         return false;
     }
 
-    if (usuarioTipoId !== 1){
+    if (usuarioTipoId !== 1) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;
     }
@@ -26,9 +26,7 @@ export default function CriarPost() {
         <section className={'flexColumn paddingPadrao margem50'}>
             <span className='titulo'>Criar novo post</span>
 
-            <div className='margem30'>
-                <span className='tituloDesc'>Fique à vontade para navegar entre as categorias abaixo e aprender com os posts e tutoriais</span>
-            </div>
+       {/* INPUTS AQUI */}
 
             {/* Espaço a mais */}
             <div className='espacoBottom'></div>

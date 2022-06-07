@@ -16,7 +16,7 @@ export default function CriarPost() {
     if (!isLoaded) {
         return false;
     }
-
+ 
     if (usuarioTipoId !== 1) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;

@@ -26,7 +26,7 @@ export default function CriarPost() {
         <section className={'flexColumn paddingPadrao margem50'}>
             <span className='titulo'>Criar novo post</span>
 
-       {/* INPUTS AQUI */} 
+            {/* INPUTS AQUI */} 
 
             {/* Espaço a mais */}
             <div className='espacoBottom'></div>

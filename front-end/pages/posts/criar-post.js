@@ -21,7 +21,7 @@ export default function CriarPost() {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;
     }
- 
+  
     return (
         <section className={'flexColumn paddingPadrao margem50'}>
             <span className='titulo'>Criar novo post</span>

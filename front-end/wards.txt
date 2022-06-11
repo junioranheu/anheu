@@ -1,1 +1,2 @@
 --
+unificar os inputs de criarPost e entrar.css

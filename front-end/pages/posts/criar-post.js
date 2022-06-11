@@ -60,11 +60,11 @@ export default function CriarPost() {
             <span className='tituloDesc'>xxx</span>
 
             <div className='margem10'>
-                <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='xxx'
+                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='xxx'
                     name='xxx' onChange={handleChange} ref={refUsuario}
                 />
 
-                <input className={`${Styles.input} ${Styles.margemTopP}`} type='password' placeholder='yyy'
+                <input className={`input ${Styles.margemTopP}`} type='password' placeholder='yyy'
                     name='yyy' onChange={handleChange} ref={refSenha}
                 />
 

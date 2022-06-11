@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/entrar.module.css';
@@ -113,11 +113,11 @@ export default function SessaoEsquerda() {
 
             {/* Inputs */}
             <div className={Styles.divLogin}>
-                <input className={`${Styles.input} ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'
+                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='E-mail ou nome de usuário'
                     name='usuario' onChange={handleChange} ref={refUsuario} onKeyPress={handleKeyPress}
                 />
 
-                <input className={`${Styles.input} ${Styles.margemTopP}`} type='password' placeholder='Senha'
+                <input className={`input ${Styles.margemTopP}`} type='password' placeholder='Senha'
                     name='senha' onChange={handleChange} ref={refSenha} onKeyPress={handleKeyPress}
                 />
 

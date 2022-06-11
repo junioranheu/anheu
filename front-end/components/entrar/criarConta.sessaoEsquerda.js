@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import React, { useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Anheu from '../../components/svg/anheu';
@@ -162,31 +162,31 @@ export default function SessaoEsquerda() {
             {/* Inputs */}
             <div>
                 <div className={Styles.margemTopP}>
-                    <input className={Styles.input} type='text' placeholder='Nome completo' name='nomeCompleto'
+                    <input className='input' type='text' placeholder='Nome completo' name='nomeCompleto'
                         onChange={handleChange} onKeyPress={handleKeyPress} ref={refNomeCompleto}
                     />
                 </div>
 
                 <div className={Styles.margemTopP}>
-                    <input className={Styles.input} type='email' placeholder='E-mail' name='email'
+                    <input className='input' type='email' placeholder='E-mail' name='email'
                         onChange={handleChange} onKeyPress={handleKeyPress} ref={refEmail}
                     />
                 </div>
 
                 <div className={Styles.margemTopP}>
-                    <input className={Styles.input} type='text' placeholder='Nome de usuário' name='nomeUsuarioSistema'
+                    <input className='input' type='text' placeholder='Nome de usuário' name='nomeUsuarioSistema'
                         onChange={(e) => (handleChange(e), handleKeyPressNaoPermitirEspaco(e))} onKeyPress={handleKeyPress} ref={refNomeUsuario}
                     />
                 </div>
 
                 <div className={Styles.margemTopP}>
-                    <input className={Styles.input} type='password' placeholder='Senha' autoComplete='new-password' name='senha'
+                    <input className='input' type='password' placeholder='Senha' autoComplete='new-password' name='senha'
                         onChange={handleChange} onKeyPress={handleKeyPress} ref={refSenha}
                     />
                 </div>
 
                 <div className={Styles.margemTopP}>
-                    <input className={Styles.input} type='password' placeholder='Confirme sua senha' name='confirmarSenha'
+                    <input className='input' type='password' placeholder='Confirme sua senha' name='confirmarSenha'
                         onChange={handleChange} onKeyPress={handleKeyPress} ref={refConfirmarSenha}
                     />
                 </div>

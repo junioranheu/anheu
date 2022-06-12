@@ -4,9 +4,11 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/criarPost.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
+import CONSTANTS_POSTS_CATEGORIAS from '../../utils/data/constPostsCategorias';
+import { Fetch } from '../../utils/outros/fetch';
 import paginaCarregada from '../../utils/outros/paginaCarregada';
 
-export default function CriarPost() {
+export default function CriarPost(postsCategorias) {
     document.title = 'Anheu — Criar novo post';
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const usuarioTipoId = isAuth ? Auth?.getUsuarioLogado()?.usuarioTipoId : '';
@@ -16,8 +18,9 @@ export default function CriarPost() {
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, []);
 
-    const refUsuario = useRef();
-    const refSenha = useRef();
+    const refCategoria = useRef();
+    const refTitulo = useRef();
+    const refConteudo = useRef();
     const refBtn = useRef();
 
     // Ao alterar os valores dos inputs, insira os valores nas variaveis do formData;
@@ -57,15 +60,26 @@ export default function CriarPost() {
     return (
         <section className={'flexColumn paddingPadrao margem50'}>
             <span className='titulo'>Criar novo post</span>
-            <span className='tituloDesc'>xxx</span>
+            {/* <span className='tituloDesc'>xxx</span> */}
 
             <div className='margem10'>
-                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='xxx'
-                    name='xxx' onChange={handleChange} ref={refUsuario}
+                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Categoria'
+                    name='categoriaId' onChange={handleChange} ref={refCategoria}
                 />
 
-                <input className={`input ${Styles.margemTopP}`} type='password' placeholder='yyy'
-                    name='yyy' onChange={handleChange} ref={refSenha}
+                <select className={`input ${Styles.margemTopP}`} name='categoriaId'>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Título'
+                    name='titulo' onChange={handleChange} ref={refTitulo}
+                />
+
+                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Conteúdo'
+                    name='conteudo' onChange={handleChange} ref={refConteudo}
                 />
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>
@@ -79,3 +93,15 @@ export default function CriarPost() {
     )
 }
 
+export async function getStaticProps() {
+    // Categorias dos posts;
+    const url = CONSTANTS_POSTS_CATEGORIAS.API_URL_GET_TODOS;
+    const postsCategorias = await Fetch.getApi(url, null);
+
+    return {
+        props: {
+            postsCategorias
+        },
+        // revalidate: 10 // segundos
+    }
+}

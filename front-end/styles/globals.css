@@ -190,6 +190,15 @@ a {
     outline-width: 0px;
 }
 
+select {
+    /* Ajustar o arrow dos selects; */
+    border-right: 16px solid transparent !important;
+}
+
+select:focus {
+    box-shadow: none !important;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Input pesquisa =-=-=-=-=-=-=-=-=-=-=-=- */
 .inputFiltro {
     top: 0;
@@ -650,7 +659,7 @@ code div button svg {
     .titulo {
         font-size: 2rem;
     }
-   
+
     .inputFiltro {
         font-size: 1.5rem;
     }

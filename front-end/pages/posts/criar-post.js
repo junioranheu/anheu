@@ -2,6 +2,7 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import { useContext, useEffect, useRef, useState } from 'react';
 import Botao from '../../components/outros/botao.js';
+import Dropdown from '../../components/outros/dropdown.js';
 import Styles from '../../styles/criarPost.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_POSTS_CATEGORIAS from '../../utils/data/constPostsCategorias';
@@ -63,16 +64,15 @@ export default function CriarPost(postsCategorias) {
             {/* <span className='tituloDesc'>xxx</span> */}
 
             <div className='margem10'>
-                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Categoria'
-                    name='categoriaId' onChange={handleChange} ref={refCategoria}
-                />
-
-                <select className={`input ${Styles.margemTopP}`} name='categoriaId'>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
+                <div className={Styles.margemTopP}>
+                    <Dropdown
+                        placeholder='Selecione uma categoria'
+                        data={postsCategorias.postsCategorias}
+                        ref={refCategoria}
+                        name='categoriaId'
+                        onChangeHandler={handleChange}
+                    />
+                </div>
 
                 <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Título'
                     name='titulo' onChange={handleChange} ref={refTitulo}
@@ -97,6 +97,15 @@ export async function getStaticProps() {
     // Categorias dos posts;
     const url = CONSTANTS_POSTS_CATEGORIAS.API_URL_GET_TODOS;
     const postsCategorias = await Fetch.getApi(url, null);
+
+    // Normalizar o array, para que o campo "categoria" seja "texto" e "postCategoriaId" seja "id, por exemplo;
+    // Assim sendo possível usar esses valores no componente Dropdown;
+    for (let i = 0; i < postsCategorias.length; i++) {
+        postsCategorias[i].id = postsCategorias[i]['postCategoriaId'];
+        postsCategorias[i].texto = postsCategorias[i]['categoria'];
+        delete postsCategorias[i].postCategoriaId;
+        delete postsCategorias[i].categoria;
+    }
 
     return {
         props: {

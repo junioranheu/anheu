@@ -1,8 +1,10 @@
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { useContext, useEffect, useRef, useState } from 'react';
+import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Dropdown from '../../components/outros/dropdown.js';
+import RichTextEditor from '../../components/outros/richTextEditor';
 import Styles from '../../styles/criarPost.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_POSTS_CATEGORIAS from '../../utils/data/constPostsCategorias';
@@ -39,14 +41,17 @@ export default function CriarPost(postsCategorias) {
         refBtn.current.disabled = true;
         e.preventDefault();
 
-        if (!formData || !formData.usuario || !formData.senha) {
+        console.log(formData);
+
+        if (!formData || !formData.categoriaId || !formData.titulo || !formData.conteudo) {
             NProgress.done();
-            Aviso.warn('O nome de usuário e/ou e-mail estão vazios!', 5000);
-            refSenha.current.value = '';
-            refUsuario.current.select();
+            Aviso.warn('Existem campos vazios. Verifique-os, por favor!', 5000);
             refBtn.current.disabled = false;
             return false;
         }
+
+        console.log('ok');
+        refBtn.current.disabled = true;
     };
 
     if (!isLoaded) {
@@ -68,7 +73,7 @@ export default function CriarPost(postsCategorias) {
                     <Dropdown
                         placeholder='Selecione uma categoria'
                         data={postsCategorias.postsCategorias}
-                        ref={refCategoria}
+                        referencia={refCategoria}
                         name='categoriaId'
                         onChangeHandler={handleChange}
                     />
@@ -78,9 +83,13 @@ export default function CriarPost(postsCategorias) {
                     name='titulo' onChange={handleChange} ref={refTitulo}
                 />
 
-                <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Conteúdo'
+                {/* <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Conteúdo'
                     name='conteudo' onChange={handleChange} ref={refConteudo}
-                />
+                /> */}
+
+                <div className={Styles.margemTopP}>
+                    <RichTextEditor  />
+                </div>
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>
                     <Botao texto={'Criar post'} url={''} isNovaAba={false} Svg='' refBtn={refBtn} isEnabled={true} />
@@ -98,7 +107,7 @@ export async function getStaticProps() {
     const url = CONSTANTS_POSTS_CATEGORIAS.API_URL_GET_TODOS;
     const postsCategorias = await Fetch.getApi(url, null);
 
-    // Normalizar o array, para que o campo "categoria" seja "texto" e "postCategoriaId" seja "id, por exemplo;
+    // Normalizar o array, para que o campo 'categoria' seja 'texto' e 'postCategoriaId' seja 'id, por exemplo;
     // Assim sendo possível usar esses valores no componente Dropdown;
     for (let i = 0; i < postsCategorias.length; i++) {
         postsCategorias[i].id = postsCategorias[i]['postCategoriaId'];

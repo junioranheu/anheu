@@ -1,8 +1,8 @@
 
-export default function Dropdown({ placeholder, data, ref, name, onChangeHandler }) {
+export default function Dropdown({ placeholder, data, referencia, name, onChangeHandler }) {
     return (
-        <select className='input' ref={ref} name={name} onChange={onChangeHandler}>
-            <option disabled selected value>{placeholder}</option>
+        <select defaultValue='0' className='input' ref={referencia} name={name} onChange={onChangeHandler}>
+            <option disabled value='0'>{placeholder}</option>
 
             {
                 data?.map((item, i) => (

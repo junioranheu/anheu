@@ -23,11 +23,11 @@ export default function CriarPost(postsCategorias) {
 
     const refCategoria = useRef();
     const refTitulo = useRef();
-    const refConteudo = useRef();
     const refBtn = useRef();
 
     // Ao alterar os valores dos inputs, insira os valores nas variaveis do formData;
-    const [formData, setFormData] = useState(null);
+    const formDataInicial = { categoriaId: 0, titulo: '', conteudo: '' };
+    const [formData, setFormData] = useState(formDataInicial);
     function handleChange(e) {
         setFormData({
             ...formData,
@@ -35,13 +35,16 @@ export default function CriarPost(postsCategorias) {
         });
     };
 
+    function atualizarFormDataConteudo(str){
+        // console.log('str: ' + str);
+        formData.conteudo = str;
+    }
+
     // Ao clicar no botão para criar novo post;
     async function handleSubmit(e) {
         NProgress.start();
         refBtn.current.disabled = true;
         e.preventDefault();
-
-        console.log(formData);
 
         if (!formData || !formData.categoriaId || !formData.titulo || !formData.conteudo) {
             NProgress.done();
@@ -83,12 +86,8 @@ export default function CriarPost(postsCategorias) {
                     name='titulo' onChange={handleChange} ref={refTitulo}
                 />
 
-                {/* <input className={`input ${Styles.margemTopP}`} type='text' placeholder='Conteúdo'
-                    name='conteudo' onChange={handleChange} ref={refConteudo}
-                /> */}
-
                 <div className={Styles.margemTopP}>
-                    <RichTextEditor  />
+                    <RichTextEditor atualizarFormDataConteudo={atualizarFormDataConteudo} />
                 </div>
 
                 <div className={`${Styles.botaoCustom} ${Styles.margemTopP}`} onClick={handleSubmit}>

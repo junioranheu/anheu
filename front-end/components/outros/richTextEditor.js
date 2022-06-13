@@ -3,12 +3,20 @@ import StarterKit from '@tiptap/starter-kit';
 import Styles from '../../styles/richTextEditor.module.css';
 
 // https://tiptap.dev/installation/nextjs
-export default function RichTextEditor() {
+export default function RichTextEditor({ atualizarFormDataConteudo }) {
     const editor = useEditor({
         extensions: [
             StarterKit,
         ],
-        content: ''
+        content: '',
+
+        // https://tiptap.dev/guide/output
+        onUpdate: ({ editor }) => {
+            const html = editor.getHTML();
+            // console.log(html);
+
+            atualizarFormDataConteudo(html);
+        }
     })
 
     const MenuBar = ({ editor }) => {
@@ -22,38 +30,38 @@ export default function RichTextEditor() {
                     onClick={() => editor.chain().focus().toggleBold().run()}
                     className={editor.isActive('negrito') ? 'is-active' : ''}
                 >
-                    negrito
+                    Negrito
                 </button>
 
                 <button
                     onClick={() => editor.chain().focus().toggleItalic().run()}
                     className={editor.isActive('itálico') ? 'is-active' : ''}
                 >
-                    itálico
+                    Itálico
                 </button>
 
                 <button
                     onClick={() => editor.chain().focus().toggleStrike().run()}
                     className={editor.isActive('riscar') ? 'is-active' : ''}
                 >
-                    riscar
+                    Riscar
                 </button>
 
                 <button
                     onClick={() => editor.chain().focus().toggleCode().run()}
                     className={editor.isActive('código') ? 'is-active' : ''}
                 >
-                    código
+                    Código
                 </button>
 
                 <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-                    limpar efeitos
+                    Limpar efeitos
                 </button>
 
                 <button onClick={() => editor.chain().focus().clearNodes().run()}>
-                    limpar nodes
+                    Limpar nodes
                 </button>
-                
+
                 <button
                     onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
                     className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
@@ -100,37 +108,37 @@ export default function RichTextEditor() {
                     onClick={() => editor.chain().focus().toggleBulletList().run()}
                     className={editor.isActive('bulletList') ? 'is-active' : ''}
                 >
-                    lista
+                    Lista
                 </button>
 
                 <button
                     onClick={() => editor.chain().focus().toggleOrderedList().run()}
                     className={editor.isActive('orderedList') ? 'is-active' : ''}
                 >
-                    lista ordenada
+                    Lista ordenada
                 </button>
 
                 <button
                     onClick={() => editor.chain().focus().toggleBlockquote().run()}
                     className={editor.isActive('citar') ? 'is-active' : ''}
                 >
-                    citar
+                    Citar
                 </button>
 
                 <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-                    HR
+                    hr
                 </button>
 
                 <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-                    pular linha
+                    Pular linha
                 </button>
 
                 <button onClick={() => editor.chain().focus().undo().run()}>
-                    desfazer
+                    Desfazer
                 </button>
 
                 <button onClick={() => editor.chain().focus().redo().run()}>
-                    redesfazer
+                    Redesfazer
                 </button>
             </>
         )

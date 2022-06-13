@@ -1,7 +1,57 @@
 .divEditor {
-    background-color: pink;
+    /* background-color: pink; */
+    background-color: rgb(59, 59, 59);
+    border-radius: 12px;
+    padding: 0px 16px;
 }
 
-.divEditor button {
-    background-color: red;
+/* =-=-=-=-=-=-=-=-= Menu =-=-=-=-=-=-=-=-= */
+.divMenu {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 1rem;
+}
+
+.divMenu button {
+    height: 40px;
+    padding: 0 1em;
+    border: none;
+    margin: 0;
+    background: var(--cor-principal-gradient);
+    border-radius: 12px;
+    color: var(--branco);
+    cursor: pointer;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    outline: none;
+    place-content: center;
+    place-items: center;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+.divEditor button:hover {
+    opacity: 0.5;
+}
+
+/* =-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-= */
+.divInput {
+    background-color: rgb(29, 28, 28);
+    border-radius: 12px;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    font-size: 1rem;
+    outline: 0px;
+    transition: box-shadow 0.2s ease 0s, color 0.2s ease 0s;
+    min-height: 100px;
+}
+
+.divInput:focus {
+    box-shadow: inset 0 0 0 1px var(--cor-principal) !important;
+    outline-width: 0px;
 }

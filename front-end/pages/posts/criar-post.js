@@ -65,7 +65,7 @@ export default function CriarPost(postsCategorias) {
 
     return (
         <section className={'flexColumn paddingPadrao margem50'}>
-            <span className='titulo'>Criar novo post</span>
+            <span className='titulo'>Novo post</span>
             {/* <span className='tituloDesc'>xxx</span> */}
 
             <div className='margem10'>

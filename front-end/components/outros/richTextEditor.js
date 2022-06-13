@@ -132,8 +132,13 @@ export default function RichTextEditor() {
 
     return (
         <div className={Styles.divEditor}>
-            <MenuBar editor={editor} />
-            <EditorContent editor={editor} />
+            <div className={Styles.divMenu}>
+                <MenuBar editor={editor} />
+            </div>
+
+            <div className={Styles.divInput}>
+                <EditorContent editor={editor} />
+            </div>
         </div>
     )
 }

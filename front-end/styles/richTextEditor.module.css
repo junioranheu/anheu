@@ -1,8 +1,7 @@
 .divEditor {
-    /* background-color: pink; */
     background-color: rgb(59, 59, 59);
     border-radius: 12px;
-    padding: 0px 16px;
+    padding: 1rem;
 }
 
 /* =-=-=-=-=-=-=-=-= Menu =-=-=-=-=-=-=-=-= */
@@ -11,7 +10,6 @@
     flex-flow: wrap;
     justify-content: center;
     gap: 10px;
-    padding-top: 1rem;
 }
 
 .divMenu button {
@@ -41,7 +39,11 @@
 
 /* =-=-=-=-=-=-=-=-= Input =-=-=-=-=-=-=-=-= */
 .divInput {
-    background-color: rgb(29, 28, 28);
+    margin-top: 1rem;
+}
+
+.divInput div {
+    background-color: var(--preto);
     border-radius: 12px;
     border: none;
     color: rgba(255, 255, 255, 1);
@@ -49,9 +51,10 @@
     outline: 0px;
     transition: box-shadow 0.2s ease 0s, color 0.2s ease 0s;
     min-height: 100px;
+    padding: 0.5rem;
 }
 
-.divInput:focus {
+.divInput div:focus {
     box-shadow: inset 0 0 0 1px var(--cor-principal) !important;
     outline-width: 0px;
 }

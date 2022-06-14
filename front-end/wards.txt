@@ -1,4 +1,2 @@
 --
-
 tip tap images
-tip tap bugado as vezes quando ja usa o efeito

@@ -30,7 +30,7 @@ export default function CriarPost(postsCategorias) {
     const refBtn = useRef();
 
     // Ao alterar os valores dos inputs, insira os valores nas variaveis do formData;
-    const formDataInicial = { categoriaId: 0, titulo: '', conteudo: '' };
+    const formDataInicial = { categoriaId: 0, titulo: '' };
     const [formData, setFormData] = useState(formDataInicial);
     function handleChange(e) {
         setFormData({
@@ -39,19 +39,19 @@ export default function CriarPost(postsCategorias) {
         });
     };
 
+    const [conteudo, setConteudo] = useState('');
     function atualizarFormDataConteudo(str) {
-        console.log('str: ' + str);
-        formData.conteudo = str;
+        // console.log('str: ' + str);
+        setConteudo(str);
     }
 
     // Ao clicar no botão para criar novo post;
     async function handleSubmit(e) {
-        console.log(formData);
         NProgress.start();
         refBtn.current.disabled = true;
         e.preventDefault();
 
-        if (!formData || !formData.categoriaId || !formData.titulo || !formData.conteudo) {
+        if (!formData || !formData.categoriaId || !formData.titulo || !conteudo) {
             NProgress.done();
             Aviso.warn('Existem campos vazios. Verifique-os, por favor!', 5000);
             refBtn.current.disabled = false;
@@ -61,7 +61,7 @@ export default function CriarPost(postsCategorias) {
         const urlCriarPost = CONSTANTS_POSTS.API_URL_POST_CRIAR;
         const post_a_ser_criado = {
             titulo: formData.titulo,
-            conteudoPost: formData.conteudo,
+            conteudoPost: conteudo,
             usuarioId: Auth?.getUsuarioLogado()?.usuarioId,
             dataRegistro: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
             isAtivo: 1,
@@ -84,7 +84,7 @@ export default function CriarPost(postsCategorias) {
         setTimeout(function () {
             const urlNovoPost = `/posts/${novoPostId}/${ajustarUrl(formData.titulo)}`;
             Router.push({ pathname: urlNovoPost });
-        }, numeroAleatorio(1000, 2000));
+        }, numeroAleatorio(500, 1000));
     };
 
     if (!isLoaded) {

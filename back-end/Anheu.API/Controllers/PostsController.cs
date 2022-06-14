@@ -48,16 +48,16 @@ namespace Anheu.API.Controllers
 
         [HttpPost("criar")]
         [Authorize(Roles = "1")]
-        public async Task<ActionResult<bool>> PostCriar(Post post)
+        public async Task<ActionResult<int>> PostCriar(Post post)
         {
-            var isOk = await _postRepository.PostCriar(post);
+            var novoPostId = await _postRepository.PostCriar(post);
 
-            if (isOk < 1)
+            if (novoPostId < 1)
             {
                 return NotFound();
             }
 
-            return Ok(true);
+            return Ok(novoPostId);
         }
 
         [HttpPost("atualizar")]

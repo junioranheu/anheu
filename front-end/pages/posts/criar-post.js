@@ -7,8 +7,12 @@ import Dropdown from '../../components/outros/dropdown.js';
 import RichTextEditor from '../../components/outros/richTextEditor';
 import Styles from '../../styles/criarPost.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
+import CONSTANTS_POSTS from '../../utils/data/constPosts';
 import CONSTANTS_POSTS_CATEGORIAS from '../../utils/data/constPostsCategorias';
+import ajustarUrl from '../../utils/outros/ajustarUrl';
 import { Fetch } from '../../utils/outros/fetch';
+import horarioBrasilia from '../../utils/outros/horarioBrasilia';
+import numeroAleatorio from '../../utils/outros/numeroAleatorio';
 import paginaCarregada from '../../utils/outros/paginaCarregada';
 
 export default function CriarPost(postsCategorias) {
@@ -35,13 +39,14 @@ export default function CriarPost(postsCategorias) {
         });
     };
 
-    function atualizarFormDataConteudo(str){
-        // console.log('str: ' + str);
+    function atualizarFormDataConteudo(str) {
+        console.log('str: ' + str);
         formData.conteudo = str;
     }
 
     // Ao clicar no botão para criar novo post;
     async function handleSubmit(e) {
+        console.log(formData);
         NProgress.start();
         refBtn.current.disabled = true;
         e.preventDefault();
@@ -53,8 +58,33 @@ export default function CriarPost(postsCategorias) {
             return false;
         }
 
-        console.log('ok');
+        const urlCriarPost = CONSTANTS_POSTS.API_URL_POST_CRIAR;
+        const post_a_ser_criado = {
+            titulo: formData.titulo,
+            conteudoPost: formData.conteudo,
+            usuarioId: Auth?.getUsuarioLogado()?.usuarioId,
+            dataRegistro: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+            isAtivo: 1,
+            postCategoriaId: formData.categoriaId
+        };
+
+        const token = Auth.getUsuarioLogado().token;
+        const novoPostId = await Fetch.postApi(urlCriarPost, post_a_ser_criado, token);
+        if (!novoPostId) {
+            NProgress.done();
+            Aviso.warn('Houve algum erro ao criar o novo post', 5000);
+            refBtn.current.disabled = false;
+            return false;
+        }
+
+        Aviso.success('Novo post criado', 5000);
         refBtn.current.disabled = true;
+        NProgress.done();
+
+        setTimeout(function () {
+            const urlNovoPost = `/posts/${novoPostId}/${ajustarUrl(formData.titulo)}`;
+            Router.push({ pathname: urlNovoPost });
+        }, numeroAleatorio(1000, 2000));
     };
 
     if (!isLoaded) {

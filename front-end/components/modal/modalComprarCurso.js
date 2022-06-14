@@ -1,10 +1,10 @@
-import React, { useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Styles from '../../styles/modal.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS_CURSOS from '../../utils/data/constUsuariosCursos';
 import { Fetch } from '../../utils/outros/fetch';
-import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
+import horarioBrasilia from '../../utils/outros/horarioBrasilia';
 import Botao from '../outros/botao';
 import BotaoFecharModal from '../svg/botaoFecharModal';
 
@@ -41,7 +41,7 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
             UsuarioId: Auth.getUsuarioLogado().usuarioId,
             CursoId: cursoSelecionado.cursoId,
             IsAtivo: 1,
-            DataRegistro: HorarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
+            DataRegistro: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
         }
 
         const url = CONSTANTS_USUARIOS_CURSOS.API_URL_POST_CRIAR;

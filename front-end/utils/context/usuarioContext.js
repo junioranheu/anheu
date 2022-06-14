@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
+import horarioBrasilia from '../../utils/outros/horarioBrasilia';
 
 // Criar o contexto para usar no providar abaixo;
 export const UsuarioContext = createContext();
@@ -29,7 +29,7 @@ export const Auth = {
             foto: data.foto,
             isVerificado: data.isVerificado,
             token: data.token,
-            dataAutenticacao: HorarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+            dataAutenticacao: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
             genero: data.genero
         };
         // console.log(dadosUsuario);

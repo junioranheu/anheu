@@ -10,7 +10,7 @@ import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_USUARIOS from '../../utils/data/constUsuarios';
 import consultarGeneroPorNomePessoa from '../../utils/outros/consultarGeneroPorNomePessoa';
 import { Fetch } from '../../utils/outros/fetch';
-import HorarioBrasilia from '../../utils/outros/horarioBrasilia';
+import horarioBrasilia from '../../utils/outros/horarioBrasilia';
 import PadronizarNomeCompletoUsuario from '../../utils/outros/padronizarNomeCompletoUsuario';
 import pegarPrimeiraPalavraDaFrase from '../../utils/outros/pegarPrimeiraPalavraDaFrase';
 import VerificarDadosCriarConta from '../../utils/outros/verificarDadosCriarConta';
@@ -61,7 +61,7 @@ export default function SessaoEsquerda() {
             nomeUsuarioSistema: formData.nomeUsuarioSistema,
             senha: formData.senha,
             usuarioTipoId: 2, // Usuário comum;
-            dataCriacao: HorarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+            dataCriacao: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
             foto: '',
             isAtivo: 1,
             isPremium: 0,
@@ -123,7 +123,7 @@ export default function SessaoEsquerda() {
         const urlTipo = 'Verificar conta';
         const jsonGerarUrlTemporaria = {
             chaveDinamica: email,
-            dataGeracaoUrl: HorarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
+            dataGeracaoUrl: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss'),
             isAtivo: 1
         };
         const urlGerarUrlTemporaria = `${CONSTANTS_URL_TEMPORARIA.API_URL_POST_CRIAR}?urlTipo=${urlTipo}`;

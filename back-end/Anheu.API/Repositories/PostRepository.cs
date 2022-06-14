@@ -37,9 +37,9 @@ namespace Anheu.API.Repositories
         public async Task<int> PostCriar(Post m)
         {
             _context.Add(m);
-            var isOk = await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-            return isOk;
+            return m.PostId;
         }
 
         public async Task<int> PostAtualizar(Post m)

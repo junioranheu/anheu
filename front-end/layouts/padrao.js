@@ -1,13 +1,13 @@
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Aviso } from '../components/outros/aviso';
 import Footer from '../components/outros/footer';
 import Navbar1 from '../components/outros/navbar1';
 import Navbar2 from '../components/outros/navbar2';
 import { Auth, UsuarioContext } from '../utils/context/usuarioContext';
 import diferencaEmHoras from '../utils/outros/diferencaEmHoras';
-import HorarioBrasilia from '../utils/outros/horarioBrasilia';
+import horarioBrasilia from '../utils/outros/horarioBrasilia';
 
 export default function Padrao({ Component, pageProps }) {
     const router = useRouter();
@@ -16,7 +16,7 @@ export default function Padrao({ Component, pageProps }) {
     // Verificar se o token ainda é válido;
     useEffect(() => {
         if (isAuth) {
-            const horaAgora = HorarioBrasilia();
+            const horaAgora = horarioBrasilia();
             const dataAutenticacao = Auth.getUsuarioLogado()?.dataAutenticacao;
             var diferencaHoras = diferencaEmHoras(horaAgora, dataAutenticacao);
             // console.log(diferencaHoras);

@@ -13,7 +13,7 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
         // https://tiptap.dev/guide/output
         onUpdate: ({ editor }) => {
             const html = editor.getHTML();
-            // console.log(html);
+            // console.log('onUpdate: ' + html);
 
             atualizarFormDataConteudo(html);
         }

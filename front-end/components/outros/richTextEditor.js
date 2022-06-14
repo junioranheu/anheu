@@ -1,13 +1,13 @@
+import Image from '@tiptap/extension-image';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import { useCallback } from 'react';
 import Styles from '../../styles/richTextEditor.module.css';
 
 // https://tiptap.dev/installation/nextjs
 export default function RichTextEditor({ atualizarFormDataConteudo }) {
     const editor = useEditor({
-        extensions: [
-            StarterKit,
-        ],
+        extensions: [StarterKit, Image],
         content: '',
 
         // https://tiptap.dev/guide/output
@@ -18,6 +18,15 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
             atualizarFormDataConteudo(html);
         }
     })
+
+    // https://tiptap.dev/api/nodes/image;
+    const addImage = useCallback(() => {
+        const url = window.prompt('URL')
+
+        if (url) {
+            editor.chain().focus().setImage({ src: url }).run();
+        }
+    }, [editor])
 
     const MenuBar = ({ editor }) => {
         if (!editor) {
@@ -139,6 +148,10 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
 
                 <button onClick={() => editor.chain().focus().redo().run()}>
                     Redesfazer
+                </button>
+
+                <button onClick={addImage}>
+                    Inserir imagem
                 </button>
             </>
         )

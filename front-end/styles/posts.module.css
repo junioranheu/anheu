@@ -49,6 +49,23 @@
     border-left: 1px solid var(--cor-border-hr);
 }
 
+/* =-=-=-=-=-=-=-=-=-=-=-=- \posts\[id]\[titulo].js =-=-=-=-=-=-=-=-=-=-=-=- */
+.divPost {
+    /* background-color: red !important; */
+}
+
+.divPost pre {
+    background-color: var(--cinza);
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.divPost pre code {
+    font-family: 'PTMono' !important;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

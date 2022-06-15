@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Styles from '../../../styles/posts.module.css';
 import CONSTANTS_POSTS from '../../../utils/data/constPosts';
 import ajustarUrl from '../../../utils/outros/ajustarUrl';
 import { Fetch } from '../../../utils/outros/fetch';
@@ -24,7 +25,7 @@ export default function Post({ post }) {
             </div>
 
             <div className='margem30'>
-                <div className='texto' dangerouslySetInnerHTML={{ __html: post.conteudoPost }}></div>
+                <div className={`texto ${Styles.divPost}`} dangerouslySetInnerHTML={{ __html: post.conteudoPost }}></div>
             </div>
 
             {/* Espaço a mais */}

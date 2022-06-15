@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Banner from '../../../../components/outros/banner';
 import InputFiltro from '../../../../components/outros/inputFiltro';
 import ItemRow from '../../../../components/outros/itemRow';

@@ -4,10 +4,11 @@ import CONSTANTS_POSTS from '../../../utils/data/constPosts';
 import ajustarUrl from '../../../utils/outros/ajustarUrl';
 import estilzarCodigo from '../../../utils/outros/estilizarCodigo';
 import { Fetch } from '../../../utils/outros/fetch';
+import formatarData from '../../../utils/outros/formatarData';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
 export default function Post({ post }) {
-    // console.log(post);
+    console.log(post);
 
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
@@ -23,6 +24,8 @@ export default function Post({ post }) {
         <section className='flexColumn paddingPadrao margem50'>
             <div className='centralizarTexto'>
                 <span className='titulo'><span className='grifar'>{post.titulo}</span></span>
+                <br/>
+                <span className='tituloDesc'>Publicado em {formatarData(post.dataRegistro)} por @{post.usuarios.nomeUsuarioSistema}</span>
             </div>
 
             <div className='margem30'>

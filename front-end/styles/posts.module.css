@@ -52,18 +52,34 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=- \posts\[id]\[titulo].js =-=-=-=-=-=-=-=-=-=-=-=- */
 .divPost {
     /* background-color: red !important; */
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .divPost pre {
     background-color: var(--cinza);
     font-size: 0.9rem;
-    padding: 1.5rem;
+    padding: 1.8rem;
     border-radius: 10px;
     overflow: hidden;
+    user-select: text !important;
 }
 
 .divPost pre code {
     font-family: 'PTMono' !important;
+}
+
+.divPost strong {
+    color: var(--cor-principal);
+}
+
+.divPost h1, .divPost h2, .divPost h3, .divPost h4, .divPost h5 {
+    margin-top: 2.5rem !important;
+}
+
+.divPost h1 strong, .divPost h2 strong, .divPost h3 strong, .divPost h4 strong, .divPost h5 strong {
+    color: var(--branco) !important;
+    opacity: 1 !important;
+    font-size: xx-large;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */

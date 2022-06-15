@@ -21,7 +21,7 @@ export default function Post({ post }) {
     return (
         <section className='flexColumn paddingPadrao margem50'>
             <div className='centralizarTexto'>
-                <span className='titulo'>{post.titulo}</span>
+                <span className='titulo'><span className='grifar'>{post.titulo}</span></span>
             </div>
 
             <div className='margem30'>

@@ -577,6 +577,12 @@ code div button svg {
     opacity: 1;
 }
 
+/* =-=-=-=-=-=-=-=-=-=-=-=- Estilização em \utils\outros\estilizarCodigo.js =-=-=-=-=-=-=-=-=-=-=-=- */
+.cor-js-principal {
+    color: var(--cor-principal);
+    font-weight: 600;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-= Media queries =-=-=-=-=-=-=-=-=-=-= */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Styles from '../../../styles/posts.module.css';
 import CONSTANTS_POSTS from '../../../utils/data/constPosts';
 import ajustarUrl from '../../../utils/outros/ajustarUrl';
+import estilzarCodigo from '../../../utils/outros/estilizarCodigo';
 import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
 
@@ -25,7 +26,7 @@ export default function Post({ post }) {
             </div>
 
             <div className='margem30'>
-                <div className={`texto ${Styles.divPost}`} dangerouslySetInnerHTML={{ __html: post.conteudoPost }}></div>
+                <div className={`texto ${Styles.divPost}`} dangerouslySetInnerHTML={{ __html: estilzarCodigo(post.conteudoPost) }}></div>
             </div>
 
             {/* Espaço a mais */}

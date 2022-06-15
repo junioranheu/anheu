@@ -60,7 +60,8 @@
     font-size: 0.9rem;
     padding: 1.8rem;
     border-radius: 10px;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     user-select: text !important;
 }
 

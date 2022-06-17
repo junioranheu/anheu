@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ItemRow from '../../components/outros/itemRow';
 import Styles from '../../styles/landingPage.module.css';
 import CONSTANTS_POSTS from '../../utils/data/constPosts';
@@ -12,15 +12,39 @@ import segundosParaDHMS from '../../utils/outros/segundosParaDHMS';
 export default function Sessao3() {
 
     const [ultimoPost, setUltimoPost] = useState();
+    const [postAnterior, setPostAnterior] = useState(0);
+    const [animarDiv, setAnimarDiv] = useState('');
     useEffect(() => {
         async function getUltimoPost() {
             const url = CONSTANTS_POSTS.API_URL_GET_ULTIMO_POST;
             const post = await Fetch.getApi(url, null);
             setUltimoPost(post);
+
+            // Detectar novo post;
+            // console.log(postAnterior, post.postId);
+            if (String(postAnterior) !== String(post.postId)) {
+                // console.log('Novo post detectado');
+                setAnimarDiv('animate__animated animate__shakeY');
+
+                setTimeout(function () {
+                    setAnimarDiv('');
+                }, 2000);
+            }
+
+            setPostAnterior(post.postId);
         }
 
+        // Primeira verificação do último post;
         getUltimoPost();
-    }, []);
+
+        // Rodar a função a cada X segundos - https://stackoverflow.com/questions/40510560/setinterval-with-setstate-in-react
+        const intervaloPollMs = 3500;
+        const poll = setInterval(() => {
+            getUltimoPost();
+        }, intervaloPollMs);
+
+        return () => clearInterval(poll);
+    }, [postAnterior]);
 
     return (
         <section className={Styles.principalFitContent}>
@@ -34,7 +58,7 @@ export default function Sessao3() {
 
             {
                 ultimoPost && (
-                    <div className={`${Styles.margemTopP} ${Styles.personalizarItemRow}`}>
+                    <div className={`${Styles.margemTopP} ${Styles.personalizarItemRow} ${animarDiv}`}>
                         <ItemRow
                             key={1}
                             data={ultimoPost}

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Styles from '../../styles/posts.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 
@@ -10,10 +10,10 @@ export default function SidebarEsquerda() {
 
     const itens = [
         { item: 'Início', url: '/posts' },
-        { item: 'Post mais recente', url: '/xxx' },
-        { item: 'Post mais visto do dia', url: '/xxx' },
-        { item: 'Sobre', url: '/xxx' },
-        { item: 'Contribua', url: '/xxx' }
+        { item: 'Post mais recente', url: '/posts/mais-recente' },
+        { item: 'Post mais visto do dia', url: '/posts/xxx' },
+        { item: 'Sobre', url: '/posts/xxx' },
+        { item: 'Contribua', url: '/posts/xxx' }
     ]
 
     const { asPath } = useRouter();

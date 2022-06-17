@@ -22,10 +22,9 @@ export default function Post({ post }) {
 
     return (
         <section className='flexColumn paddingPadrao margem50'>
-            <div className='centralizarTexto'>
+            <div className='centralizarTexto flexColumn'>
                 <span className='titulo'><span className='grifar'>{post.titulo}</span></span>
-                <br/>
-                <span className='tituloDesc'>Publicado em {formatarData(post.dataRegistro)} por @{post.usuarios.nomeUsuarioSistema}</span>
+                <span className='tituloDesc margem10'>Publicado em {formatarData(post.dataRegistro)} por @{post.usuarios.nomeUsuarioSistema}</span>
             </div>
  
             <div className='margem30'>

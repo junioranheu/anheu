@@ -1,13 +1,15 @@
 import Image from '@tiptap/extension-image';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import Styles from '../../styles/richTextEditor.module.css';
 
 // https://tiptap.dev/installation/nextjs
 export default function RichTextEditor({ atualizarFormDataConteudo }) {
+    const refBtnUpar = useRef();
+
     const editor = useEditor({
-        extensions: [StarterKit, Image],
+        extensions: [StarterKit, Image.configure({ allowBase64: true })],
         content: '',
 
         // https://tiptap.dev/guide/output
@@ -21,7 +23,7 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
 
     // https://tiptap.dev/api/nodes/image;
     const addImage = useCallback(() => {
-        const url = window.prompt('URL')
+        const url = window.prompt('URL');
 
         if (url) {
             editor.chain().focus().setImage({ src: url }).run();
@@ -44,7 +46,7 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
 
                 <button
                     onClick={() => editor.chain().focus().toggleItalic().run()}
-                    className={editor.isActive('itálico') ? 'is-active' : ''}
+                    className={editor.isActive('italico') ? 'is-active' : ''}
                 >
                     Itálico
                 </button>
@@ -58,7 +60,7 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
 
                 <button
                     onClick={() => editor.chain().focus().toggleCode().run()}
-                    className={editor.isActive('código') ? 'is-active' : ''}
+                    className={editor.isActive('codigo') ? 'is-active' : ''}
                 >
                     Código
                 </button>
@@ -151,11 +153,48 @@ export default function RichTextEditor({ atualizarFormDataConteudo }) {
                 </button>
 
                 <button onClick={addImage}>
-                    Inserir imagem
+                    Inserir imagem (URL)
                 </button>
+
+                <button onClick={() => refBtnUpar.current.click()}>
+                    Subir imagem
+                </button>
+
+                <input
+                    ref={refBtnUpar}
+                    onChange={subirImagem}
+                    multiple={false}
+                    type='file'
+                    accept='image/*'
+                    hidden
+                />
             </>
         )
     }
+
+    const subirImagem = useCallback((e) => {
+        const arquivoUpado = e.target.files[0];
+        // console.log(arquivoUpado);
+
+        arquivoUpado.convertToBase64(function (base64) {
+            // console.log('base64', base64);
+
+            if (base64) {
+                editor.chain().focus().setImage({ src: base64 }).run();
+            }
+        });
+    }, [editor])
+
+    // Converter URL para base64 com callback - https://stackoverflow.com/questions/17710147/image-convert-to-base64;
+    File.prototype.convertToBase64 = function (callback) {
+        var reader = new FileReader();
+
+        reader.onloadend = function (e) {
+            callback(e.target.result, e.target.error);
+        };
+
+        reader.readAsDataURL(this);
+    };
 
     return (
         <div className={Styles.divEditor}>

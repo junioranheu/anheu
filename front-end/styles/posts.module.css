@@ -83,6 +83,16 @@
     font-size: xx-large;
 }
 
+.divPost img {
+    max-width: 100%;
+    border-radius: 10px;
+
+    /* Forçar centralização interna */
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {

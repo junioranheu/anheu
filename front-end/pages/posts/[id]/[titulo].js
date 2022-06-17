@@ -27,7 +27,7 @@ export default function Post({ post }) {
                 <br/>
                 <span className='tituloDesc'>Publicado em {formatarData(post.dataRegistro)} por @{post.usuarios.nomeUsuarioSistema}</span>
             </div>
-
+ 
             <div className='margem30'>
                 <div className={`texto ${Styles.divPost}`} dangerouslySetInnerHTML={{ __html: estilzarCodigo(post.conteudoPost) }}></div>
             </div>

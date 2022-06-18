@@ -54,7 +54,7 @@ export async function getStaticPaths() {
 
     return {
         paths,
-        fallback: false
+        fallback: true // https://stackoverflow.com/questions/67787456/what-is-the-difference-between-fallback-false-vs-true-vs-blocking-of-getstaticpa
     }
 }
 

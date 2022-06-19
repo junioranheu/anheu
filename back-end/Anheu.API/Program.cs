@@ -1,17 +1,18 @@
+using Anheu.API.Data;
+using Anheu.API.Hubs;
+using Anheu.API.Interfaces;
+using Anheu.API.Repositories;
+using Anheu.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Anheu.API.Data;
-using Anheu.API.Interfaces;
-using Anheu.API.Repositories;
-using Anheu.API.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
- 
+
 // ----------------------------------------------------- Services -----------------------------------------------------
 
 // Habilitar API por IP em vez de apenas localhost: https://stackoverflow.com/questions/69532898/asp-net-core-6-0-kestrel-server-is-not-working;
@@ -74,7 +75,15 @@ builder.Services.AddScoped<IPostCategoriaRepository, PostCategoriaRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 // Cors;
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials();
+    })
+); 
 
 // Outros;
 builder.Services.AddMvc();
@@ -113,6 +122,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 // Verificando a disponibilidade dos bancos de dados da aplicação através de Health Checks: https://www.treinaweb.com.br/blog/verificando-a-integridade-da-aplicacao-asp-net-core-com-health-checks
 builder.Services.AddHealthChecks();
 
+// SignalR: https://medium.com/swlh/creating-a-simple-real-time-chat-with-net-core-reactjs-and-signalr-6367dcadd2c6
+builder.Services.AddSignalR();
+
 // ----------------------------------------------------- APP -----------------------------------------------------
 
 var app = builder.Build();
@@ -148,10 +160,10 @@ app.UseSwaggerUI(c =>
 //}
 
 // Cors;
-app.UseCors(x => x
-             .AllowAnyOrigin()
-             .AllowAnyMethod()
-             .AllowAnyHeader());
+app.UseCors("CorsPolicy");
+
+// SignalR: https://medium.com/swlh/creating-a-simple-real-time-chat-with-net-core-reactjs-and-signalr-6367dcadd2c6
+app.MapHub<ChatHub>("/hubs/chathub");
 
 // Ativa o HealthChecks;
 app.UseHealthChecks("/status");

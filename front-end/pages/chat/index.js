@@ -5,61 +5,51 @@ import ChatWindow from '../../components/chat/chatWindow';
 import CONSTANTS_HUBS from '../../utils/data/constHubs';
 
 export default function Index() {
-    const [connection, setConnection] = useState(null);
     const [chat, setChat] = useState([]);
     const latestChat = useRef(null);
 
     latestChat.current = chat;
 
     useEffect(() => {
-        const newConnection = new HubConnectionBuilder()
+        const connection = new HubConnectionBuilder()
             .withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`)
             .withAutomaticReconnect()
             .build();
 
-        setConnection(newConnection);
+        connection.start()
+            .then(result => {
+                console.log('Connected!');
+
+                connection.on('ReceiveMessage', message => {
+                    const updatedChat = [...latestChat.current];
+                    updatedChat.push(message);
+
+                    setChat(updatedChat);
+                });
+            })
+            .catch(e => console.log('Connection failed: ', e));
     }, []);
 
-    useEffect(() => {
-        if (connection) {
-            connection.start()
-                .then(result => {
-                    console.log('Connected!');
-
-                    connection.on('ReceiveMessage', message => {
-                        console.log('x');
-                        const updatedChat = [...latestChat.current];
-                        updatedChat.push(message);
-
-                        setChat(updatedChat);
-                    });
-                })
-                .catch(e => console.log('Connection failed: ', e));
-        }
-    }, [connection]);
-
     const sendMessage = async (user, message) => {
-        console.log(user, message);
-
         const chatMessage = {
-            chatId: 1,
+            chatId: 1111111111,
             usuario: user,
             mensagem: message
         };
 
-        if (connection.connection._connectionStarted) {
-            try {
-                await connection.send('SendMessage', chatMessage);
-            }
-            catch (e) {
-                console.log(e);
-            }
+        try {
+            await fetch(CONSTANTS_HUBS.API_URL_POST_ENVIAR_MENSAGEM_TODOS, {
+                method: 'POST',
+                body: JSON.stringify(chatMessage),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
         }
-        else {
-            alert('No connection to server yet.');
+        catch (e) {
+            console.log('Sending message failed.', e);
         }
     }
-
     return (
         <div>
             <ChatInput sendMessage={sendMessage} />

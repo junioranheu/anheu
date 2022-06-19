@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import ChatInput from '../../components/chat/chatInput';
 import ChatWindow from '../../components/chat/chatWindow';
 import CONSTANTS_HUBS from '../../utils/data/constHubs';
+import { Fetch } from '../../utils/outros/fetch';
 
 export default function Index() {
     const [chat, setChat] = useState([]);
@@ -38,13 +39,7 @@ export default function Index() {
         };
 
         try {
-            await fetch(CONSTANTS_HUBS.API_URL_POST_ENVIAR_MENSAGEM_TODOS, {
-                method: 'POST',
-                body: JSON.stringify(chatMessage),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+            await Fetch.postApi(CONSTANTS_HUBS.API_URL_POST_ENVIAR_MENSAGEM_TODOS, chatMessage, null);
         }
         catch (e) {
             console.log('Sending message failed.', e);

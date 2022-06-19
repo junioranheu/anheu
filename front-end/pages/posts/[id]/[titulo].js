@@ -54,7 +54,7 @@ export async function getStaticPaths() {
 
     return {
         paths,
-        fallback: true // https://stackoverflow.com/questions/67787456/what-is-the-difference-between-fallback-false-vs-true-vs-blocking-of-getstaticpa
+        fallback: 'blocking' // https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
     }
 }
 
@@ -69,6 +69,6 @@ export async function getStaticProps(context) {
         props: {
             post
         },
-        revalidate: 2 // segundos
+        revalidate: 5 // segundos
     }
 }

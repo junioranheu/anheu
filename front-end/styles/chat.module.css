@@ -62,3 +62,39 @@
     /* background-color: pink; */
     width: fit-content;
 }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+/* hi-res laptops and desktops */
+@media (max-width:1281px) {
+    .bubble {
+        max-width: 60%;
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (max-width:1025px) {}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:801px) {
+    .bubble {
+        max-width: 80%;
+    }
+
+    .botaoCustom {
+        width: 100% !important;
+    }
+
+    .botaoCustom button {
+        width: 100% !important;
+    }
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width:600px) {
+    .bubble {
+        max-width: 85%;
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (max-width:480px) {}

@@ -12,6 +12,7 @@ namespace Anheu.API.Controllers
     {
         private readonly IHubContext<ChatHub, IChatRepository> _chatHub;
 
+        // Para um bom funcionamento, deve-se ativar a opção de web sockets no Azure: https://azure.microsoft.com/pt-br/blog/introduction-to-websockets-on-windows-azure-web-sites/
         public ChatsController(IHubContext<ChatHub, IChatRepository> chatHub)
         {
             _chatHub = chatHub;

@@ -18,33 +18,53 @@ export default function Index() {
 
     const [chat, setChat] = useState([]);
     const latestChat = useRef(null);
-
     latestChat.current = chat;
 
+    const [gambiarraParaExecutarUmaVez, setGambiarraParaExecutarUmaVez] = useState(false);
     useEffect(() => {
-        NProgress.start();
-        const connection = new HubConnectionBuilder()
-            .withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`)
-            .withAutomaticReconnect()
-            .build();
-
-        connection.start()
-            .then(result => {
-                Aviso.success('Você está conectado ao chat online', 3000);
-
-                connection.on('ReceiveMessage', message => {
-                    // console.log('Nova mensagem: ', message);
-                    const updatedChat = [...latestChat.current];
-                    updatedChat.push(message);
-
-                    setChat(updatedChat);
-                });
-
-                paginaCarregada(true, 200, 500, setIsLoaded);
-                NProgress.done();
-            })
-            .catch(e => console.log('Connection failed: ', e));
+        setGambiarraParaExecutarUmaVez(true);
     }, []);
+
+    useEffect(() => {
+        // Para um bom funcionamento, deve-se ativar a opção de web sockets no Azure: https://azure.microsoft.com/pt-br/blog/introduction-to-websockets-on-windows-azure-web-sites/
+        async function conectarSingnalR() {
+            // console.log('Tentando se conectar');
+            NProgress.start();
+
+            try {
+
+                const connection = new HubConnectionBuilder()
+                    .withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`)
+                    .withAutomaticReconnect()
+                    .build();
+
+                await connection.start()
+                    .then(result => {
+                        Aviso.success('Você está conectado ao chat online', 3000);
+
+                        connection.on('ReceiveMessage', message => {
+                            // console.log('Nova mensagem: ', message);
+                            const updatedChat = [...latestChat.current];
+                            updatedChat.push(message);
+
+                            setChat(updatedChat);
+                        });
+
+                        paginaCarregada(true, 200, 500, setIsLoaded);
+                        NProgress.done();
+                    })
+                    .catch(e => console.log('Connection failed: ', e));
+            } catch (error) {
+                NProgress.done();
+                console.log(error);
+                Aviso.error('Houve um erro ao tentar se conectar com o servidor', 3000);
+            }
+        }
+
+        if (gambiarraParaExecutarUmaVez) {
+            conectarSingnalR();
+        }
+    }, [gambiarraParaExecutarUmaVez]);
 
     async function enviarMensagem(usuarioId, usuarioNomeSistema, mensagem) {
         NProgress.start();

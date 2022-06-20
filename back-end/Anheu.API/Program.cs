@@ -123,6 +123,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddHealthChecks();
 
 // SignalR: https://medium.com/swlh/creating-a-simple-real-time-chat-with-net-core-reactjs-and-signalr-6367dcadd2c6
+// Para um bom funcionamento, deve-se ativar a opção de web sockets no Azure: https://azure.microsoft.com/pt-br/blog/introduction-to-websockets-on-windows-azure-web-sites/
 builder.Services.AddSignalR();
 
 // ----------------------------------------------------- APP -----------------------------------------------------

@@ -1,51 +1,45 @@
 import { useState } from 'react';
+import { Aviso } from '../../components/outros/aviso';
+import Botao from '../../components/outros/botao.js';
+import { Auth } from '../../utils/context/usuarioContext';
 
-export default function ChatInput(props) {
-    const [user, setUser] = useState('');
-    const [message, setMessage] = useState('');
+export default function ChatInput({ enviarMensagem }) {
+    const [msg, setMsg] = useState('');
 
-    const onSubmit = (e) => {
+    function onSubmit(e) {
         e.preventDefault();
 
-        const isUserProvided = user && user !== '';
-        const isMessageProvided = message && message !== '';
+        const usuarioId = Auth.getUsuarioLogado().usuarioId;
+        const usuarioNomeSistema = Auth.getUsuarioLogado().nomeUsuarioSistema;
+        const isMessageProvided = msg && msg !== '';
 
-        if (isUserProvided && isMessageProvided) {
-            props.sendMessage(user, message);
+        if (!isMessageProvided) {
+            Aviso.warn('Sua mensagem está vazia!', 3000);
+            return false;
+        }
+
+        if (usuarioId && usuarioNomeSistema) {
+            enviarMensagem(usuarioId, usuarioNomeSistema, msg);
         }
         else {
-            alert('Please insert an user and a message.');
+            Aviso.error('Houve algum erro com relação à autenticação do seu usuário ao enviar a mensagem', 3000);
+            return false;
         }
-    }
-
-    const onUserUpdate = (e) => {
-        setUser(e.target.value);
-    }
-
-    const onMessageUpdate = (e) => {
-        setMessage(e.target.value);
     }
 
     return (
-        <div className='margem10'>
-            <label htmlFor="user">User:</label>
-            <br />
+        <div>
             <input
-                id="user"
-                name="user"
-                value={user}
-                onChange={onUserUpdate} />
-            <br />
-            <label htmlFor="message">Message:</label>
-            <br />
-            <input
-                type="text"
-                id="message"
-                name="message"
-                value={message}
-                onChange={onMessageUpdate} />
-            <br /><br />
-            <button onClick={onSubmit}>Submit</button>
+                placeholder='Escreva sua mensagem aqui'
+                type='text'
+                value={msg}
+                className='input margem10'
+                onChange={(e) => setMsg(e.target.value)}
+            />
+
+            <div onClick={(e) => onSubmit(e)} className='margem20'>
+                <Botao texto='Enviar mensagem' url={null} isNovaAba={false} Svg={null} isEnabled={true} />
+            </div>
         </div>
     )
 }

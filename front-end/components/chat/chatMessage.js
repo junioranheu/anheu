@@ -1,9 +1,9 @@
 
-export default function ChatMessage(props) {
+export default function ChatMessage({usuario, usuarioId, id, mensagem}) {
     return (
         <div style={{ background: "#eee", borderRadius: '5px', padding: '0 10px' }}>
-            <p><strong>{props.usuario}</strong> says ({props.id}):</p>
-            <p>{props.mensagem}</p>
+            <p><strong>{usuario}</strong> ({usuarioId}) disse:</p>
+            <p>{mensagem} ({id})</p>
         </div>
     )
 }

@@ -6,7 +6,8 @@ namespace Anheu.API.Models
     {
         [Key]
         public int ChatId { get; set; }
-        public string? Usuario { get; set; }
+        public string? UsuarioId { get; set; }
+        public string? UsuarioNomeSistema { get; set; }
         public string? Mensagem { get; set; }
     }
 }

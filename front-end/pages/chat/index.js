@@ -27,9 +27,10 @@ export default function Index() {
 
         connection.start()
             .then(result => {
-                console.log('Connected!');
+                Aviso.success('Você está conectado ao chat online', 3000);
 
                 connection.on('ReceiveMessage', message => {
+                    console.log('Nova mensagem: ', message);
                     const updatedChat = [...latestChat.current];
                     updatedChat.push(message);
 
@@ -41,15 +42,15 @@ export default function Index() {
             .catch(e => console.log('Connection failed: ', e));
     }, []);
 
-    async function sendMessage(user, message) {
-        const chatMessage = {
-            chatId: 1111111111,
-            usuario: user,
-            mensagem: message
+    async function enviarMensagem(usuarioId, usuarioNomeSistema, mensagem) {
+        const jsonChat = {
+            usuarioId: usuarioId,
+            usuarioNomeSistema: usuarioNomeSistema,
+            mensagem: mensagem
         };
 
         try {
-            await Fetch.postApi(CONSTANTS_HUBS.API_URL_POST_ENVIAR_MENSAGEM_TODOS, chatMessage, null);
+            await Fetch.postApi(CONSTANTS_HUBS.API_URL_POST_ENVIAR_MENSAGEM_TODOS, jsonChat, null);
         }
         catch (e) {
             const msg = 'Falha em enviar a mensagem';
@@ -72,7 +73,7 @@ export default function Index() {
             <span className='titulo'>Chat geral</span>
             {/* <span className='tituloDesc'>xxx</span> */}
 
-            <ChatInput sendMessage={sendMessage} />
+            <ChatInput enviarMensagem={enviarMensagem} />
             <ChatWindow chat={chat} />
         </section>
     );

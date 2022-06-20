@@ -1,7 +1,7 @@
 import Message from '../chat/chatMessage';
 
 export default function ChatWindow({ chat }) {
-    const chatMap = chat?.map((m, i) => (
+    const chatMap = chat?.slice(0).reverse().map((m, i) => (
         <Message
             key={(i + 1)}
             id={(i + 1)}

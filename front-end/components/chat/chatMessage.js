@@ -9,12 +9,12 @@ export default function ChatMessage({ usuario, usuarioId, id, mensagem }) {
     function isMinhaMensagem(usuarioId) {
         const isMinhaMsg = String(usuarioIdLogado) === String(usuarioId);
         // console.log(usuarioIdLogado, usuarioId, isMinhaMsg);
-        
+
         return isMinhaMsg;
     }
 
     return (
-        <div className={`${Styles.bubble} ${(!isMinhaMensagem(usuarioId) ? Styles.bubbleDireita : null)}`}>
+        <div className={`${Styles.bubble} ${(isMinhaMensagem(usuarioId) ? Styles.bubbleEsquerda : Styles.bubbleDireita)}`}>
             <p><strong>@{usuario}</strong> disse:</p>
             <p>{mensagem}</p>
         </div>

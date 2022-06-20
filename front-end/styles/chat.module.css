@@ -1,13 +1,47 @@
 .bubble {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 1rem;
-
-    width: fit-content;
-    max-width: 50%;
     margin-top: 1.5rem;
+    position: relative;
+    max-width: 40%;
+    height: auto;
+    background-color: var(--branco);
+
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+
+    padding: 1em;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: left;
+}
+
+.bubbleEsquerda:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    right: auto;
+    top: 38px;
+    bottom: auto;
+    border: 12px solid;
+    border-color: var(--branco) var(--branco) transparent transparent;
 }
 
 .bubbleDireita {
+    /* background-color: pink !important; */
     margin-left: auto;
+}
+
+.bubbleDireita:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -20px;
+    top: 38px;
+    bottom: auto;
+    border: 12px solid;
+    border-color: var(--branco) transparent transparent var(--branco);
 }

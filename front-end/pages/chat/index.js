@@ -1,5 +1,6 @@
 import { HubConnectionBuilder } from '@microsoft/signalr';
 import Router from 'next/router';
+import NProgress from 'nprogress';
 import { useContext, useEffect, useRef, useState } from 'react';
 import ChatInput from '../../components/chat/chatInput';
 import ChatWindow from '../../components/chat/chatWindow';
@@ -20,6 +21,7 @@ export default function Index() {
     latestChat.current = chat;
 
     useEffect(() => {
+        NProgress.start();
         const connection = new HubConnectionBuilder()
             .withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`)
             .withAutomaticReconnect()
@@ -30,7 +32,7 @@ export default function Index() {
                 Aviso.success('Você está conectado ao chat online', 3000);
 
                 connection.on('ReceiveMessage', message => {
-                    console.log('Nova mensagem: ', message);
+                    // console.log('Nova mensagem: ', message);
                     const updatedChat = [...latestChat.current];
                     updatedChat.push(message);
 
@@ -38,11 +40,13 @@ export default function Index() {
                 });
 
                 paginaCarregada(true, 200, 500, setIsLoaded);
+                NProgress.done();
             })
             .catch(e => console.log('Connection failed: ', e));
     }, []);
 
     async function enviarMensagem(usuarioId, usuarioNomeSistema, mensagem) {
+        NProgress.start();
         const jsonChat = {
             usuarioId: usuarioId,
             usuarioNomeSistema: usuarioNomeSistema,
@@ -51,6 +55,7 @@ export default function Index() {
 
         try {
             await Fetch.postApi(CONSTANTS_HUBS.API_URL_POST_ENVIAR_MENSAGEM_TODOS, jsonChat, null);
+            NProgress.done();
         }
         catch (e) {
             const msg = 'Falha em enviar a mensagem';

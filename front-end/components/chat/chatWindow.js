@@ -12,7 +12,7 @@ export default function ChatWindow({ chat }) {
     ));
 
     return (
-        <div className='margem10'>
+        <div>
             {chatMap}
         </div>
     )

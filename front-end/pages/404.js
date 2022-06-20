@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Botao from '../components/outros/botao';
 import Styles from '../styles/404.module.css';
 import paginaCarregada from '../utils/outros/paginaCarregada';
 
 export default function Erro() {
+    document.title = 'Anheu — 404';
     const router = useRouter();
-
+ 
     const [isLoaded, setIsLoaded] = useState(false);
     const [msg, setMsg] = useState(null);
     useEffect(() => {

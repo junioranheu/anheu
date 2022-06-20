@@ -11,7 +11,7 @@ export default function ChatWindow(props) {
     );
 
     return (
-        <div>
+        <div className='margem10'>
             {chat}
         </div>
     )

@@ -1,7 +1,7 @@
 import 'animate.css/animate.min.css';
 import { useRouter } from 'next/router';
 import 'nprogress/nprogress.css';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../fonts/GTWalsheim.css';

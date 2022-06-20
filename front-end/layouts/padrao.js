@@ -43,7 +43,7 @@ export default function Padrao({ Component, pageProps }) {
     const [efeitoAnimar, setEfeitoAnimar] = useState('');
     useEffect(() => {
         setEfeitoAnimar('animate__animated animate__fadeIn delay03');
-
+ 
         setTimeout(function () {
             setEfeitoAnimar('');
         }, 1000);

@@ -8,6 +8,7 @@ import { Aviso } from '../../components/outros/aviso';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_HUBS from '../../utils/data/constHubs';
 import { Fetch } from '../../utils/outros/fetch';
+import horarioBrasilia from '../../utils/outros/horarioBrasilia';
 import paginaCarregada from '../../utils/outros/paginaCarregada';
 
 export default function Index() {
@@ -50,7 +51,8 @@ export default function Index() {
         const jsonChat = {
             usuarioId: usuarioId,
             usuarioNomeSistema: usuarioNomeSistema,
-            mensagem: mensagem
+            mensagem: mensagem,
+            dataMensagem: horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
         };
 
         try {
@@ -80,6 +82,9 @@ export default function Index() {
 
             <ChatInput enviarMensagem={enviarMensagem} />
             <ChatWindow chat={chat} />
+
+            {/* Espaço a mais */}
+            <div className='espacoBottom'></div>
         </section>
     );
 };

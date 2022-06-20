@@ -8,6 +8,7 @@ export default function ChatWindow({ chat }) {
             usuarioId={m.usuarioId}
             usuario={m.usuarioNomeSistema}
             mensagem={m.mensagem}
+            dataMensagem={m.dataMensagem}
         />
     ));
 

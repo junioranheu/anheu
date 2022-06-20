@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import Styles from '../../styles/chat.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
+import formatarData from '../../utils/outros/formatarData';
 
-export default function ChatMessage({ usuario, usuarioId, id, mensagem }) {
+export default function ChatMessage({ usuario, usuarioId, id, mensagem, dataMensagem }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const usuarioIdLogado = isAuth ? Auth?.getUsuarioLogado()?.usuarioId : null;
 
@@ -11,12 +12,14 @@ export default function ChatMessage({ usuario, usuarioId, id, mensagem }) {
         // console.log(usuarioIdLogado, usuarioId, isMinhaMsg);
 
         return isMinhaMsg;
+
     }
 
     return (
         <div className={`${Styles.bubble} ${(isMinhaMensagem(usuarioId) ? Styles.bubbleEsquerda : Styles.bubbleDireita)}`}>
-            <p><strong>@{usuario}</strong> disse:</p>
+            <p><b>{(isMinhaMensagem(usuarioId) ? 'Você' : `@${usuario}`)}</b> disse:</p>
             <p>{mensagem}</p>
+            <p className={`${Styles.msgPequena} ${Styles.forcarTextoDireita}`}>{formatarData(dataMensagem)}</p>
         </div>
     )
 }

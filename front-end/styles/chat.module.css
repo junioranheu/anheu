@@ -1,6 +1,7 @@
 .bubble {
     margin-top: 1.5rem;
     position: relative;
+    width: fit-content;
     max-width: 40%;
     height: auto;
     background-color: var(--branco);
@@ -15,6 +16,7 @@
     text-align: left;
 }
 
+/* =-=-=-=-=-=-=-=-= Esquerda =-=-=-=-=-=-=-=-= */
 .bubbleEsquerda:after {
     content: ' ';
     position: absolute;
@@ -28,6 +30,7 @@
     border-color: var(--branco) var(--branco) transparent transparent;
 }
 
+/* =-=-=-=-=-=-=-=-= Direita =-=-=-=-=-=-=-=-= */
 .bubbleDireita {
     /* background-color: pink !important; */
     margin-left: auto;
@@ -44,4 +47,18 @@
     bottom: auto;
     border: 12px solid;
     border-color: var(--branco) transparent transparent var(--branco);
+}
+
+/* =-=-=-=-=-=-=-=-= Outros =-=-=-=-=-=-=-=-= */
+.msgPequena {
+    font-size: 0.6rem !important;
+}
+
+.forcarTextoDireita {
+    text-align: right;
+}
+
+.botaoCustom {
+    /* background-color: pink; */
+    width: fit-content;
 }

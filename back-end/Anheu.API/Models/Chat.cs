@@ -9,5 +9,6 @@ namespace Anheu.API.Models
         public string? UsuarioId { get; set; }
         public string? UsuarioNomeSistema { get; set; }
         public string? Mensagem { get; set; }
+        public DateTime? DataMensagem { get; set; }
     }
 }

@@ -2,7 +2,7 @@
     margin-top: 1.5rem;
     position: relative;
     width: fit-content;
-    max-width: 40%;
+    max-width: 60%;
     height: auto;
     background-color: var(--branco);
 
@@ -53,6 +53,9 @@
 .divPrincipal {
     /* background-color: pink; */
     max-height: 80vh !important;
+    width: 60vw !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .divMensagens {
@@ -93,8 +96,20 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
+@media (max-width:1600px) {
+    .divPrincipal {
+        /* background-color: pink; */
+        width: 80vw !important;
+    }
+}
+
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {
+    .divPrincipal {
+        /* background-color: pink; */
+        width: 100vw !important;
+    }
+
     .bubble {
         max-width: 60%;
     }

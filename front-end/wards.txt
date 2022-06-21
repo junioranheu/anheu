@@ -1,2 +1,2 @@
 --
-efeito de animação ao enviar nova mensagem
+verificar como fazer streaming de video em vez de base64

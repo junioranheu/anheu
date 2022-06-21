@@ -33,6 +33,7 @@ export default function ChatInput({ enviarMensagem }) {
             setTimeout(function () {
                 refChat.current.value = '';
                 setMsg('');
+                refChat.current.focus();
             }, 100);
         }
         else {
@@ -52,7 +53,7 @@ export default function ChatInput({ enviarMensagem }) {
                 ref={refChat}
                 onKeyPress={handleKeyPress}
             />
- 
+
             <div onClick={(e) => onSubmit(e)} className={Styles.botaoCustom}>
                 <Botao texto='Enviar mensagem' url={null} isNovaAba={false} Svg={null} refBtn={refBtnEnviarMsg} isEnabled={true} />
             </div>

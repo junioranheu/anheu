@@ -12,14 +12,13 @@ export default function ChatMessage({ usuario, usuarioId, id, mensagem, dataMens
         // console.log(usuarioIdLogado, usuarioId, isMinhaMsg);
 
         return isMinhaMsg;
-
     }
 
     return (
         <div className={`${Styles.bubble} ${(isMinhaMensagem(usuarioId) ? Styles.bubbleEsquerda : Styles.bubbleDireita)}`}>
             <p><b>{(isMinhaMensagem(usuarioId) ? 'Você' : `@${usuario}`)}</b> disse:</p>
             <p>{mensagem}</p>
-            <p className={`${Styles.msgPequena} ${Styles.forcarTextoDireita}`}>{formatarData(dataMensagem)}</p>
+            <p className={Styles.msgPequena}>{formatarData(dataMensagem)}</p>
         </div>
     )
 }

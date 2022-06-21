@@ -58,6 +58,11 @@
     text-align: right;
 }
 
+.centralizar {
+    /* background-color: pink; */
+    text-align: center;
+}
+
 .botaoCustom {
     /* background-color: pink; */
     width: fit-content;

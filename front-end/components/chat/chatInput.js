@@ -7,12 +7,19 @@ import { Auth } from '../../utils/context/usuarioContext';
 export default function ChatInput({ enviarMensagem }) {
     const [msg, setMsg] = useState('');
     const refChat = useRef();
+    const refBtnEnviarMsg = useRef();
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            refBtnEnviarMsg.current.click();
+        }
+    }
 
     function onSubmit(e) {
         e.preventDefault();
         const usuarioId = Auth.getUsuarioLogado().usuarioId;
         const usuarioNomeSistema = Auth.getUsuarioLogado().nomeUsuarioSistema;
-        const isMessageProvided = msg && msg !== '';
+        const isMessageProvided = msg.trim() && msg.trim() !== '';
 
         if (!isMessageProvided) {
             refChat.current.select();
@@ -21,7 +28,7 @@ export default function ChatInput({ enviarMensagem }) {
         }
 
         if (usuarioId && usuarioNomeSistema) {
-            enviarMensagem(usuarioId, usuarioNomeSistema, msg);
+            enviarMensagem(usuarioId, usuarioNomeSistema, msg.trim());
 
             setTimeout(function () {
                 refChat.current.value = '';
@@ -36,17 +43,18 @@ export default function ChatInput({ enviarMensagem }) {
 
     return (
         <div>
-            <input
+            <textarea
                 placeholder='Escreva sua mensagem aqui'
                 type='text'
                 value={msg}
                 className='input margem10'
                 onChange={(e) => setMsg(e.target.value)}
                 ref={refChat}
+                onKeyPress={handleKeyPress}
             />
 
-            <div onClick={(e) => onSubmit(e)} className={`margem20 ${Styles.botaoCustom}`}>
-                <Botao texto='Enviar mensagem' url={null} isNovaAba={false} Svg={null} isEnabled={true} />
+            <div onClick={(e) => onSubmit(e)} className={`margem10 ${Styles.botaoCustom}`}>
+                <Botao texto='Enviar mensagem' url={null} isNovaAba={false} Svg={null} refBtn={refBtnEnviarMsg} isEnabled={true} />
             </div>
         </div>
     )

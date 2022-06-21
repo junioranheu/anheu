@@ -5,6 +5,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import ChatInput from '../../components/chat/chatInput';
 import ChatWindow from '../../components/chat/chatWindow';
 import { Aviso } from '../../components/outros/aviso';
+import Styles from '../../styles/chat.module.css';
 import { UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_HUBS from '../../utils/data/constHubs';
 import { Fetch } from '../../utils/outros/fetch';
@@ -97,7 +98,7 @@ export default function Index() {
 
     return (
         <section className={'flexColumn paddingPadrao margem50'}>
-            <span className='titulo'>Chat geral</span>
+            <span className={`titulo ${Styles.centralizar}`}>Chat geral</span>
             {/* <span className='tituloDesc'>xxx</span> */}
 
             <ChatInput enviarMensagem={enviarMensagem} />

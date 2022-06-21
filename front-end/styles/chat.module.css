@@ -88,6 +88,10 @@
     width: 300px !important;
 }
 
+.textareaCustom {
+    min-height: 150px !important;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
 /* hi-res laptops and desktops */
 @media (max-width:1281px) {
@@ -118,6 +122,10 @@
 @media (max-width:600px) {
     .bubble {
         max-width: 85%;
+    }
+
+    .textareaCustom {
+        min-height: 100px !important;
     }
 }
 

@@ -1,9 +1,8 @@
-import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faSun } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
-import React from 'react'
-import Styles from '../../styles/footer.module.css'
+import { faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+import Styles from '../../styles/footer.module.css';
 
 export default function Footer() {
     return (
@@ -77,7 +76,7 @@ export default function Footer() {
                 <div className={Styles.direita}>
                     <div className={Styles.icones}>
                         <span title='Alternar modo dark/light'>
-                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faSun} size='lg' />
+                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faSun} size='lg' onClick={() => alert('Função não implementada ainda')}/>
                         </span>
 
                         <span title='GitHub'>
@@ -85,7 +84,8 @@ export default function Footer() {
                         </span>
 
                         <span title='Instagram'>
-                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faInstagram} size='lg' onClick={() => { window.open('https://www.instagram.com/junioranheu/', '_blank') }} />
+                            {/* <FontAwesomeIcon className='pointer cor-principal-hover' icon={faInstagram} size='lg' onClick={() => { window.open('https://www.instagram.com/junioranheu/', '_blank') }} /> */}
+                            <FontAwesomeIcon className='pointer cor-principal-hover' icon={faInstagram} size='lg' />
                         </span>
                     </div>
                 </div>

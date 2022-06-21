@@ -18,10 +18,17 @@ namespace Anheu.API.Controllers
             _chatHub = chatHub;
         }
 
-        [HttpPost("enviarMensagemTodos")]
-        public async Task<ActionResult<bool>> Post(Chat c)
+        [HttpPost("usuarioConectado")]
+        public async Task<ActionResult<bool>> UsuarioConectado(string usuarioNome, string usuarioId)
         {
-            await _chatHub.Clients.All.ReceiveMessage(c);
+            await _chatHub.Clients.All.UsuarioConectado(usuarioNome, usuarioId);
+            return Ok(true);
+        }
+
+        [HttpPost("enviarMensagemTodos")]
+        public async Task<ActionResult<bool>> EnviarMensagemTodos(Chat c)
+        {
+            await _chatHub.Clients.All.ReceberMensagem(c);
             return Ok(true);
         }
     }

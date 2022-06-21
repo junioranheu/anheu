@@ -4,6 +4,7 @@ namespace Anheu.API.Interfaces
 {
     public interface IChatRepository
     {
-        Task ReceiveMessage(Chat c);
+        Task UsuarioConectado(string usuarioNome, string usuarioId);
+        Task ReceberMensagem(Chat c);
     }
 }

@@ -6,7 +6,7 @@ import ChatInput from '../../components/chat/chatInput';
 import ChatWindow from '../../components/chat/chatWindow';
 import { Aviso } from '../../components/outros/aviso';
 import Styles from '../../styles/chat.module.css';
-import { UsuarioContext } from '../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import CONSTANTS_HUBS from '../../utils/data/constHubs';
 import { Fetch } from '../../utils/outros/fetch';
 import horarioBrasilia from '../../utils/outros/horarioBrasilia';
@@ -17,6 +17,10 @@ export default function Index() {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
     const [isLoaded, setIsLoaded] = useState(false);
 
+    const [listaUsuariosLogados, setListaUsuariosLogados] = useState([]);
+    const lastestListaUsuariosLogados = useRef(null);
+    lastestListaUsuariosLogados.current = listaUsuariosLogados;
+
     const [chat, setChat] = useState([]);
     const latestChat = useRef(null);
     latestChat.current = chat;
@@ -26,35 +30,40 @@ export default function Index() {
         setGambiarraParaExecutarUmaVez(true);
     }, []);
 
+    // conectarSignalR;
     useEffect(() => {
         // Para um bom funcionamento, deve-se ativar a opção de web sockets no Azure: https://azure.microsoft.com/pt-br/blog/introduction-to-websockets-on-windows-azure-web-sites/
-        async function conectarSingnalR() {
+        async function conectarSignalR() {
             // console.log('Tentando se conectar');
             NProgress.start();
 
             try {
-
                 const connection = new HubConnectionBuilder()
                     .withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`)
                     .withAutomaticReconnect()
                     .build();
 
-                await connection.start()
-                    .then(result => {
-                        Aviso.success('Você está conectado ao chat online', 3000);
+                await connection.start().then(result => {
+                    Aviso.success('Você está conectado ao chat online', 3000);
+                    paginaCarregada(true, 200, 500, setIsLoaded);
+                    NProgress.done();
 
-                        connection.on('ReceiveMessage', message => {
-                            // console.log('Nova mensagem: ', message);
-                            const updatedChat = [...latestChat.current];
-                            updatedChat.push(message);
+                    // #01 - UsuarioConectado;
+                    connection.on('UsuarioConectado', u => {
+                        // console.log('Usuário conectado: ', u);
+                        const updatedListaUsuariosLogados = [...lastestListaUsuariosLogados.current];
+                        updatedListaUsuariosLogados.push(u);
+                        setListaUsuariosLogados(updatedListaUsuariosLogados);
+                    });
 
-                            setChat(updatedChat);
-                        });
-
-                        paginaCarregada(true, 200, 500, setIsLoaded);
-                        NProgress.done();
-                    })
-                    .catch(e => console.log('Connection failed: ', e));
+                    // #02 - ReceberMensagem;
+                    connection.on('ReceberMensagem', m => {
+                        // console.log('Nova mensagem: ', m);
+                        const updatedChat = [...latestChat.current];
+                        updatedChat.push(m);
+                        setChat(updatedChat);
+                    });
+                }).catch(e => console.log('Falha na conexão: ', e));
             } catch (error) {
                 NProgress.done();
                 console.log(error);
@@ -63,9 +72,30 @@ export default function Index() {
         }
 
         if (gambiarraParaExecutarUmaVez) {
-            conectarSingnalR();
+            conectarSignalR();
         }
-    }, [gambiarraParaExecutarUmaVez]);
+    }, [gambiarraParaExecutarUmaVez, isAuth]);
+
+    // usuarioConectado: verificar a cada segundo;
+    useEffect(() => {
+        async function usuarioConectado(url) {
+            await Fetch.postApi(url, null, null);
+        }
+
+        if (gambiarraParaExecutarUmaVez && isLoaded) {
+            const usuarioNome = isAuth ? Auth?.getUsuarioLogado()?.nomeUsuarioSistema : '';
+            const usuarioId = isAuth ? Auth?.getUsuarioLogado()?.usuarioId : '';
+            const url = `${CONSTANTS_HUBS.API_URL_POST_CONECTAR_USUARIO}?usuarioNome=${usuarioNome}&usuarioId=${usuarioId}`;
+
+            // Rodar a função a cada X segundos - https://stackoverflow.com/questions/40510560/setinterval-with-setstate-in-react
+            const intervaloPollMs = 1000;
+            const poll = setInterval(() => {
+                usuarioConectado(url);
+            }, intervaloPollMs);
+
+            return () => clearInterval(poll);
+        }
+    }, [gambiarraParaExecutarUmaVez, isAuth, isLoaded]);
 
     async function enviarMensagem(usuarioId, usuarioNomeSistema, mensagem) {
         NProgress.start();
@@ -101,7 +131,7 @@ export default function Index() {
             {/* <span className={`titulo ${Styles.centralizar}`}>Chat geral</span> */}
             {/* <span className='tituloDesc'>xxx</span> */}
 
-            <ChatWindow chat={chat} />
+            <ChatWindow chat={chat} listaUsuariosLogados={listaUsuariosLogados} />
             <ChatInput enviarMensagem={enviarMensagem} />
         </section>
     );

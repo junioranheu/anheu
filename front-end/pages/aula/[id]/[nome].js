@@ -38,7 +38,7 @@ export default function Aula({ aulaStaticProps }) {
             NProgress.start();
             const nomePasta = 'aulas';
             const nomeSubpasta = 'video';
-            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_STREAM_AULAS_VIDEO_PROTEGIDO}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
+            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO_PROTEGIDO_STREAM}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
             const token = Auth.getUsuarioLogado().token;
 
             // Requisitar arquivo;

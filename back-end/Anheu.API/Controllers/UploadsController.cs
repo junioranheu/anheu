@@ -15,9 +15,9 @@ namespace Anheu.API.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [HttpGet("getArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
+        [HttpGet("getArquivoProtegidoBase64/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
         [Authorize] // Precisa estar autorizado com token para acessar isso!
-        public async Task<ActionResult<Tuple<string, string>>> GetArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
+        public async Task<ActionResult<Tuple<string, string>>> GetArquivoProtegidoBase64(string nomePasta, string? nomeSubpasta, string nomeArquivo)
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
@@ -55,9 +55,9 @@ namespace Anheu.API.Controllers
         }
 
         // Como "stremar" um arquivo - https://stackoverflow.com/a/56875627;
-        [HttpGet("streamArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
+        [HttpGet("getArquivoProtegidoStream/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
         [Authorize]
-        public async Task<ActionResult> StreamArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
+        public async Task<ActionResult> GetArquivoProtegidoStream(string nomePasta, string? nomeSubpasta, string nomeArquivo)
         {
             string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
             string caminho = $"{wwwPath}UploadProtegido/{nomePasta}/{nomeSubpasta}/{nomeArquivo}";

@@ -2,7 +2,7 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import Collapse from 'rc-collapse'; // https://www.npmjs.com/package/rc-collapse;
 import 'rc-collapse/assets/index.css'; // https://www.npmjs.com/package/rc-collapse;
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Aviso } from '../../../components/outros/aviso';
 import Botao from '../../../components/outros/botao';
 import BotaoAbsolute from '../../../components/outros/botaoAbsolute';
@@ -38,12 +38,28 @@ export default function Aula({ aulaStaticProps }) {
             NProgress.start();
             const nomePasta = 'aulas';
             const nomeSubpasta = 'video';
-            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_AULAS_VIDEO_PROTEGIDO}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
+            const urlVideo = `${CONSTANTS_UPLOAD.API_URL_GET_STREAM_AULAS_VIDEO_PROTEGIDO}/nomePasta=${nomePasta}&nomeSubpasta=${nomeSubpasta}&nomeArquivo=${aula.video}`;
             const token = Auth.getUsuarioLogado().token;
-            const videoBase64 = await Fetch.getApi(urlVideo, token);
-            setVideo(videoBase64.item1);
 
-            Aviso.info(`Videoaula de ${tamanhoString(videoBase64.item1)} importada em ${videoBase64.item2} milissegundos`, 3000);
+            // Requisitar arquivo;
+            const stream = await Fetch.getApiStream(urlVideo, token);
+            console.log(stream);
+
+            // Converter para blob;
+            const blob = await stream.blob();
+            console.log(blob);
+
+            // Converter blob para mp4;
+            const arquivoVideo = new File([blob], `${aula.nome}.mp4`, { type: 'video/mp4' });
+            console.log(arquivoVideo);
+
+            // Converter mp4 para url;
+            const objectURL = URL.createObjectURL(arquivoVideo);
+            console.log(objectURL);
+
+            // Finalizar processo;
+            setVideo(objectURL);
+            Aviso.info(`Videoaula de ${tamanhoString(stream.item1)} importada em ${stream.item2} milissegundos`, 3000);
             NProgress.done();
         }
 

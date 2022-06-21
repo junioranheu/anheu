@@ -53,5 +53,35 @@ namespace Anheu.API.Controllers
 
             return NotFound();
         }
+
+        // Como "stremar" um arquivo - https://stackoverflow.com/a/56875627;
+        [HttpGet("streamArquivoProtegido/nomePasta={nomePasta}&nomeSubpasta={nomeSubpasta}&nomeArquivo={nomeArquivo}")]
+        [Authorize]
+        public async Task<ActionResult> StreamArquivoProtegido(string nomePasta, string? nomeSubpasta, string nomeArquivo)
+        {
+            string wwwPath = _webHostEnvironment.WebRootPath ?? _webHostEnvironment.ContentRootPath;
+            string caminho = $"{wwwPath}UploadProtegido/{nomePasta}/{nomeSubpasta}/{nomeArquivo}";
+
+            if (!String.IsNullOrEmpty(caminho))
+            {
+                if (System.IO.File.Exists(caminho))
+                {
+                    Byte[] bytes = await System.IO.File.ReadAllBytesAsync(caminho);
+
+                    if (bytes.Length == 0)
+                    {
+                        return Problem();
+                    }
+
+                    return new FileContentResult(bytes, "application/octet-stream");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+            return NotFound();
+        }
     }
 }

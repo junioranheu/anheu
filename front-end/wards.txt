@@ -1,2 +1,5 @@
 --
 verificar como fazer streaming de video em vez de base64
+
+salvar as msgs enviadas no chat
+verificar usuários on-line no chat

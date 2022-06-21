@@ -114,5 +114,44 @@ export const Fetch = {
         }
 
         return resposta;
-    }
+    },
+
+    async getApiStream(url, token) {
+        // console.log(url);
+        let respostaStream = '';
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/octet-stream',
+            'Authorization': `Bearer ${token}`
+        }
+
+        try {
+            let respostaStream = await fetch(url, {
+                method: 'GET',
+                headers: headers
+            });
+
+            // console.log('respostaStream: ', respostaStream);
+            // console.log('respostaStream.status: ' + respostaStream.status);
+
+            // Caso o respostaStream.status seja diferente de nulo, é porque algo deu erro...
+            // Exemplo: erros 404, 400 ou 401, quando um usuário escreve na barra e procura por um ID que não existe;
+            if (respostaStream.status !== 200) {
+                console.log(`Erro ${respostaStream.status} em ${url}.`);
+                respostaStream = null;
+            } else {
+                return respostaStream;
+            }
+        } catch (erro) {
+            const e = {
+                'url': url,
+                'token': token,
+                'erro': erro.message,
+                'data': horarioBrasilia().format('YYYY-MM-DD HH:mm:ss')
+            }
+
+            console.table(e);
+            // Aviso.error('Houve uma falha na requisição GET ao servidor!', 5000);
+        }
+    },
 }

@@ -187,7 +187,8 @@ a {
 
 textarea {
     padding-top: 0.55rem !important;
-    min-height: 200px !important;
+    min-height: 150px !important;
+    resize: none;
 }
 
 select {
@@ -668,6 +669,11 @@ code div button svg {
 
     .inputFiltro {
         font-size: 1.5rem;
+    }
+
+    /* Ajustar os margem50 em todas as view "padrões" */
+    .margem50 {
+        margin-top: 10px;
     }
 }
 

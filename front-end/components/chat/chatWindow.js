@@ -1,3 +1,4 @@
+import Styles from '../../styles/chat.module.css';
 import Message from '../chat/chatMessage';
 
 export default function ChatWindow({ chat }) {
@@ -13,7 +14,7 @@ export default function ChatWindow({ chat }) {
     ));
 
     return (
-        <div>
+        <div className={Styles.divMensagens}>
             {chatMap}
         </div>
     )

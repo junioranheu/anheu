@@ -97,15 +97,12 @@ export default function Index() {
     }
 
     return (
-        <section className={'flexColumn paddingPadrao margem50'}>
+        <section className={`${Styles.divPrincipal} flexColumn paddingPadrao margem50`}>
             <span className={`titulo ${Styles.centralizar}`}>Chat geral</span>
             {/* <span className='tituloDesc'>xxx</span> */}
 
-            <ChatInput enviarMensagem={enviarMensagem} />
             <ChatWindow chat={chat} />
-
-            {/* Espaço a mais */}
-            <div className='espacoBottom'></div>
+            <ChatInput enviarMensagem={enviarMensagem} />
         </section>
     );
 };

@@ -42,7 +42,7 @@ export default function ChatInput({ enviarMensagem }) {
     }
 
     return (
-        <div>
+        <div className='margem10'>
             <textarea
                 placeholder='Escreva sua mensagem aqui'
                 type='text'
@@ -53,7 +53,7 @@ export default function ChatInput({ enviarMensagem }) {
                 onKeyPress={handleKeyPress}
             />
 
-            <div onClick={(e) => onSubmit(e)} className={`margem10 ${Styles.botaoCustom}`}>
+            <div onClick={(e) => onSubmit(e)} className={Styles.botaoCustom}>
                 <Botao texto='Enviar mensagem' url={null} isNovaAba={false} Svg={null} refBtn={refBtnEnviarMsg} isEnabled={true} />
             </div>
         </div>

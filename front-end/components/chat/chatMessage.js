@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Styles from '../../styles/chat.module.css';
 import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 import formatarData from '../../utils/outros/formatarData';
@@ -14,8 +14,15 @@ export default function ChatMessage({ usuario, usuarioId, id, mensagem, dataMens
         return isMinhaMsg;
     }
 
+    const [animarDiv, setAnimarDiv] = useState('');
+    useEffect(() => {
+        setTimeout(function () {
+            setAnimarDiv('animate__animated animate__fadeIn delay03');
+        }, 2000);
+    }, []);
+
     return (
-        <div className={`${Styles.bubble} ${(isMinhaMensagem(usuarioId) ? Styles.bubbleEsquerda : Styles.bubbleDireita)}`}>
+        <div id={id} className={`${Styles.bubble} ${(isMinhaMensagem(usuarioId) ? Styles.bubbleEsquerda : Styles.bubbleDireita)} ${animarDiv}`}>
             <p><b>{(isMinhaMensagem(usuarioId) ? 'Você' : `@${usuario}`)}</b> disse:</p>
             <p>{mensagem}</p>
             <p className={Styles.msgPequena}>{formatarData(dataMensagem)}</p>

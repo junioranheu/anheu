@@ -16,6 +16,9 @@ export default function ChatWindow({ chat }) {
     return (
         <div className={Styles.divMensagens}>
             {chatMap}
+
+            {/* Espaço a mais */}
+            <div className='espacoBottom'></div>
         </div>
     )
 }

@@ -62,8 +62,8 @@
     margin-top: 1rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-    min-height: 40vh !important;
-    max-height: 40vh !important;
+    min-height: 47vh !important;
+    max-height: 47vh !important;
     overflow-y: scroll !important;
     overflow-x: hidden;
 }

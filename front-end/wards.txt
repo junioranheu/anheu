@@ -1,2 +1,2 @@
 --
-efeito ao enviar nova mensagem
+efeito de animação ao enviar nova mensagem

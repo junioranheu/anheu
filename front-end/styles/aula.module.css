@@ -31,12 +31,14 @@
 }
 
 .topico {
+    /* background-color: pink; */
+    width: fit-content;
     color: var(--branco);
     font-size: 2.5rem;
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -.036em;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
@@ -53,7 +55,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column-reverse;
+        /* flex-direction: column-reverse; */
+        flex-direction: column;
     }
 
     .divVideo {

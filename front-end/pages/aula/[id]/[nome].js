@@ -50,9 +50,9 @@ export default function Aula({ aulaStaticProps }) {
             // console.log(blob);
 
             // Converter blob para mp4;
-            const arquivoVideo = new File([blob], `${aula.nome}.mp4`, { type: 'video/mp4' });
+            const arquivoVideo = new File([blob], `${aula.aulaId}.mp4`, { type: 'video/mp4' });
             // console.log(arquivoVideo);
-
+ 
             // Converter mp4 para url;
             const objectURL = URL.createObjectURL(arquivoVideo);
             // console.log(objectURL);

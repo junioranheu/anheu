@@ -13,9 +13,9 @@ import { Auth, UsuarioContext } from '../../../utils/context/usuarioContext';
 import CONSTANTS_AULAS from '../../../utils/data/constAulas';
 import CONSTANTS_UPLOAD from '../../../utils/data/constUpload';
 import ajustarUrl from '../../../utils/outros/ajustarUrl';
+import bytesToSize from '../../../utils/outros/bytesToSize';
 import { Fetch } from '../../../utils/outros/fetch';
 import paginaCarregada from '../../../utils/outros/paginaCarregada';
-import tamanhoString from '../../../utils/outros/tamanhoString';
 
 export default function Aula({ aulaStaticProps }) {
     const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
@@ -43,23 +43,23 @@ export default function Aula({ aulaStaticProps }) {
 
             // Requisitar arquivo;
             const stream = await Fetch.getApiStream(urlVideo, token);
-            console.log(stream);
+            // console.log(stream);
 
             // Converter para blob;
             const blob = await stream.blob();
-            console.log(blob);
+            // console.log(blob);
 
             // Converter blob para mp4;
             const arquivoVideo = new File([blob], `${aula.nome}.mp4`, { type: 'video/mp4' });
-            console.log(arquivoVideo);
+            // console.log(arquivoVideo);
 
             // Converter mp4 para url;
             const objectURL = URL.createObjectURL(arquivoVideo);
-            console.log(objectURL);
+            // console.log(objectURL);
 
             // Finalizar processo;
             setVideo(objectURL);
-            Aviso.info(`Videoaula de ${tamanhoString(stream.item1)} importada em ${stream.item2} milissegundos`, 3000);
+            Aviso.info(`Videoaula de ${bytesToSize(blob.size)} importada com sucesso`, 3000);
             NProgress.done();
         }
 

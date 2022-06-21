@@ -16,6 +16,18 @@ export default function Post({ post }) {
         paginaCarregada(true, 200, 500, setIsLoaded);
     }, [post]);
 
+    function ajustarMensagemData() {
+        let msgAjustada = formatarData(post.dataRegistro).toLocaleLowerCase();
+
+        if (msgAjustada.includes('hoje') || msgAjustada.includes('ontem')){
+            msgAjustada = msgAjustada;
+        } else {
+            msgAjustada = `em ${msgAjustada}`;
+        }
+
+        return msgAjustada;
+    }
+
     if (!isLoaded) {
         return false;
     }
@@ -24,9 +36,9 @@ export default function Post({ post }) {
         <section className='flexColumn paddingPadrao margem50'>
             <div className='centralizarTexto flexColumn'>
                 <span className='titulo'><span className='grifar'>{post.titulo}</span></span>
-                <span className='tituloDesc margem10'>Publicado em {formatarData(post.dataRegistro)} por @{post.usuarios.nomeUsuarioSistema}</span>
+                <span className='tituloDesc margem10'>Publicado {ajustarMensagemData()} por @{post.usuarios.nomeUsuarioSistema}</span>
             </div>
- 
+
             <div className='margem30'>
                 <div className={`texto ${Styles.divPost}`} dangerouslySetInnerHTML={{ __html: estilzarCodigo(post.conteudoPost) }}></div>
             </div>

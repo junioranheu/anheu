@@ -251,6 +251,12 @@ namespace Anheu.API.Data
                 context.Aulas.Add(new Aula() { AulaId = 27, DisciplinaId = 7, Nome = "Lógica intermediária", Thumbnail = "27.webp", Video = "27.mp4", ResumoAula = "Will²", DataRegistro = dataAgora, IsAtivo = 1 });
                 context.Aulas.Add(new Aula() { AulaId = 28, DisciplinaId = 7, Nome = "Lógica avançada", Thumbnail = "28.webp", Video = "28.mp4", ResumoAula = "Will³", DataRegistro = dataAgora, IsAtivo = 1 });
                 context.Aulas.Add(new Aula() { AulaId = 29, DisciplinaId = 7, Nome = "Lógica pra indianos", Thumbnail = "29.webp", Video = "29.mp4", ResumoAula = "Deuses indianos programadores apenas", DataRegistro = dataAgora, IsAtivo = 1 });
+
+                // Ciclo de vida dos softwares;
+                context.Aulas.Add(new Aula() { AulaId = 30, DisciplinaId = 8, Nome = "Conceitos básicos", Thumbnail = "30.webp", Video = "30.mp4", ResumoAula = "Conceitos básicos sobre o ciclo de vida dos softwares", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 31, DisciplinaId = 8, Nome = "Ciclos de vida", Thumbnail = "31.webp", Video = "31.mp4", ResumoAula = "Quais são os ciclos de vida de um software?", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 32, DisciplinaId = 8, Nome = "Modelos de ciclo de vida", Thumbnail = "32.webp", Video = "32.mp4", ResumoAula = "Quais são os modelos de vida de um software? ", DataRegistro = dataAgora, IsAtivo = 1 });
+                context.Aulas.Add(new Aula() { AulaId = 33, DisciplinaId = 8, Nome = "Escolha de modelos", Thumbnail = "33.webp", Video = "33.mp4", ResumoAula = "A melhor escolha do modelo ideal para seu projeto", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.AulaTimings.Any())

@@ -4,10 +4,14 @@ import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/chat.module.css';
 import { Auth } from '../../utils/context/usuarioContext';
 
-export default function ChatInput({ enviarMensagem, qtdUsuariosLogados }) {
+export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
     const [msg, setMsg] = useState('');
     const refChat = useRef();
     const refBtnEnviarMsg = useRef();
+
+    const listaUsariosLogadosMap = listaUsariosLogados?.map((u, i) => (
+        <span key={i}>{u}</span>
+    ));
 
     function handleKeyPress(e) {
         if (e.key === 'Enter') {
@@ -44,8 +48,12 @@ export default function ChatInput({ enviarMensagem, qtdUsuariosLogados }) {
 
     return (
         <div className='margem10'>
+            <div style={{ color: 'white', minHeight: '50px', backgroundColor: 'pink', padding: '1rem' }}>
+                {listaUsariosLogadosMap}
+            </div>
+
             <textarea
-                placeholder={`Escreva sua mensagem aqui para ${(qtdUsuariosLogados === 1 ? 'você mesmo (só tem você aqui 😔)' : `${qtdUsuariosLogados} pessoas`)}`}
+                placeholder='Escreva sua mensagem aqui'
                 type='text'
                 value={msg}
                 className={`input margem10 ${Styles.textareaCustom}`}

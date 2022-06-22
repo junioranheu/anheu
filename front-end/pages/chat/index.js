@@ -38,10 +38,7 @@ export default function Index() {
             NProgress.start();
 
             try {
-                const connection = new HubConnectionBuilder()
-                    .withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`)
-                    .withAutomaticReconnect()
-                    .build();
+                const connection = new HubConnectionBuilder().withUrl(`${CONSTANTS_HUBS.HUBS_CHAT}`).withAutomaticReconnect().build();
 
                 await connection.start().then(result => {
                     Aviso.success('Você está conectado ao chat online', 3000);
@@ -80,7 +77,10 @@ export default function Index() {
 
     // usuarioConectado: verificar a cada segundo;
     useEffect(() => {
-        async function usuarioConectado(url) {
+        async function postUsuarioConectado(url) {
+            // Limpar array;
+            setListaUsuariosLogados([]);
+
             // Chamada para a API - usuário logado;
             await Fetch.postApi(url, null, null);
         }
@@ -93,17 +93,12 @@ export default function Index() {
             // Rodar a função a cada X segundos - https://stackoverflow.com/questions/40510560/setinterval-with-setstate-in-react
             // Verificar usuário conectado;
             const poll = setInterval(() => {
-                usuarioConectado(url);
+                postUsuarioConectado(url);
             }, 1000);
 
-            // Limpar o array setListaUsuariosLogados para ajustar as informações caso alguém tenha saído;
-            const poll2 = setInterval(() => {
-                setListaUsuariosLogados([]);
-            }, 5000);
-
-            return () => clearInterval(poll, poll2);
+            return () => clearInterval(poll);
         }
-    }, [gambiarraParaExecutarUmaVez, isAuth, isLoaded]);
+    }, [gambiarraParaExecutarUmaVez, isAuth, isLoaded, listaUsuariosLogados]);
 
     async function enviarMensagem(usuarioId, usuarioNomeSistema, mensagem) {
         NProgress.start();
@@ -125,6 +120,23 @@ export default function Index() {
         }
     }
 
+    // https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+    function arraysEqual(a, b) {
+        if (a === b) return true;
+        if (a == null || b == null) return false;
+        if (a.length !== b.length) return false;
+
+        // If you don't care about the order of the elements inside
+        // the array, you should sort both arrays here.
+        // Please note that calling sort on an array will modify that array.
+        // you might want to clone your array first.
+
+        for (var i = 0; i < a.length; ++i) {
+            if (a[i] !== b[i]) return false;
+        }
+        return true;
+    }
+
     if (!isAuth) {
         Router.push({ pathname: '/404', query: { msg: 'sem-acesso' } });
         return false;
@@ -140,7 +152,7 @@ export default function Index() {
             {/* <span className='tituloDesc'>xxx</span> */}
 
             <ChatWindow chat={chat} listaUsuariosLogados={listaUsuariosLogados} />
-            <ChatInput enviarMensagem={enviarMensagem} qtdUsuariosLogados={(listaUsuariosLogados?.length ? listaUsuariosLogados?.length : 1)} />
+            <ChatInput enviarMensagem={enviarMensagem} listaUsariosLogados={listaUsuariosLogados} />
         </section>
     );
 };

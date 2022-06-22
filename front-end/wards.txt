@@ -1,3 +1,2 @@
 --
 salvar as msgs enviadas no chat
-verificar usuários on-line no chat

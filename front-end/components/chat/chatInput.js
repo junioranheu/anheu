@@ -4,7 +4,7 @@ import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/chat.module.css';
 import { Auth } from '../../utils/context/usuarioContext';
 
-export default function ChatInput({ enviarMensagem }) {
+export default function ChatInput({ enviarMensagem, qtdUsuariosLogados }) {
     const [msg, setMsg] = useState('');
     const refChat = useRef();
     const refBtnEnviarMsg = useRef();
@@ -45,7 +45,7 @@ export default function ChatInput({ enviarMensagem }) {
     return (
         <div className='margem10'>
             <textarea
-                placeholder='Escreva sua mensagem aqui'
+                placeholder={`Escreva sua mensagem aqui para ${(qtdUsuariosLogados === 1 ? 'você mesmo (só tem você aqui 😔)' : `${qtdUsuariosLogados} pessoas`)}`}
                 type='text'
                 value={msg}
                 className={`input margem10 ${Styles.textareaCustom}`}

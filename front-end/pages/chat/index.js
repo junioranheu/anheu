@@ -51,9 +51,11 @@ export default function Index() {
                     // #01 - UsuarioConectado;
                     connection.on('UsuarioConectado', u => {
                         // console.log('Usuário conectado: ', u);
-                        const updatedListaUsuariosLogados = [...lastestListaUsuariosLogados.current];
-                        updatedListaUsuariosLogados.push(u);
-                        setListaUsuariosLogados(updatedListaUsuariosLogados);
+                        if (!lastestListaUsuariosLogados.current.includes(u)) {
+                            const updatedListaUsuariosLogados = [...lastestListaUsuariosLogados.current];
+                            updatedListaUsuariosLogados.push(u);
+                            setListaUsuariosLogados(updatedListaUsuariosLogados);
+                        }
                     });
 
                     // #02 - ReceberMensagem;
@@ -79,6 +81,7 @@ export default function Index() {
     // usuarioConectado: verificar a cada segundo;
     useEffect(() => {
         async function usuarioConectado(url) {
+            // Chamada para a API - usuário logado;
             await Fetch.postApi(url, null, null);
         }
 
@@ -88,12 +91,17 @@ export default function Index() {
             const url = `${CONSTANTS_HUBS.API_URL_POST_CONECTAR_USUARIO}?usuarioNome=${usuarioNome}&usuarioId=${usuarioId}`;
 
             // Rodar a função a cada X segundos - https://stackoverflow.com/questions/40510560/setinterval-with-setstate-in-react
-            const intervaloPollMs = 1000;
+            // Verificar usuário conectado;
             const poll = setInterval(() => {
                 usuarioConectado(url);
-            }, intervaloPollMs);
+            }, 1000);
 
-            return () => clearInterval(poll);
+            // Limpar o array setListaUsuariosLogados para ajustar as informações caso alguém tenha saído;
+            const poll2 = setInterval(() => {
+                setListaUsuariosLogados([]);
+            }, 5000);
+
+            return () => clearInterval(poll, poll2);
         }
     }, [gambiarraParaExecutarUmaVez, isAuth, isLoaded]);
 
@@ -132,7 +140,7 @@ export default function Index() {
             {/* <span className='tituloDesc'>xxx</span> */}
 
             <ChatWindow chat={chat} listaUsuariosLogados={listaUsuariosLogados} />
-            <ChatInput enviarMensagem={enviarMensagem} />
+            <ChatInput enviarMensagem={enviarMensagem} qtdUsuariosLogados={(listaUsuariosLogados?.length ? listaUsuariosLogados?.length : 1)} />
         </section>
     );
 };

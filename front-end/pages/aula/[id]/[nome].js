@@ -45,6 +45,11 @@ export default function Aula({ aulaStaticProps }) {
             const stream = await Fetch.getApiStream(urlVideo, token);
             // console.log(stream);
 
+            if (!stream){
+                Aviso.info('Houve algum erro ao importar o vídeo dessa aula. Tente novamente mais tarde', 10000);
+                return false;
+            }
+
             // Converter para blob;
             const blob = await stream.blob();
             // console.log(blob);

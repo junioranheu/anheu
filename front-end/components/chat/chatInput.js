@@ -13,7 +13,7 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
     // Isso faz com que os dados não fiquem com "flickering";
     const [listaUsuariosLogadosOk, setListaUsuariosLogadosOk] = useState([]);
     useEffect(() => {
-        if (listaUsariosLogados?.length) {           
+        if (listaUsariosLogados?.length) {
             setListaUsuariosLogadosOk(listaUsariosLogados);
         }
     }, [listaUsariosLogados]);
@@ -53,21 +53,12 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
 
     return (
         <div className='margem10'>
-            <div className={Styles.divListaUsuariosOnline}>
-                <span>Usuários on-line: </span>
+            <div className={Styles.divListaUsuariosOnline} title='Usuários on-line agora no chat'>
+                {/* <span>Usuários on-line: </span> */}
 
                 {
                     listaUsuariosLogadosOk?.map((u, i) => (
-                        <span key={i}>
-                            <b className='cor-principal'>{u}</b>
-
-                            {/* Adicionar uma vírgula caso não seja o último usuário */}
-                            {
-                                listaUsuariosLogadosOk?.length > (i + 1) && (
-                                    <span>, </span>
-                                )
-                            }
-                        </span>
+                        <span className='tag' key={i}> {u}</span>
                     ))
                 }
             </div>

@@ -13,10 +13,8 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
     // Isso faz com que os dados não fiquem com "flickering";
     const [listaUsuariosLogadosOk, setListaUsuariosLogadosOk] = useState([]);
     useEffect(() => {
-        if (listaUsariosLogados?.length) {
-            const listaUsuariosLogadosOrdenadaAlfabeticamente = listaUsariosLogados?.sort((a, b) => a.localeCompare(b))
-            
-            setListaUsuariosLogadosOk(listaUsuariosLogadosOrdenadaAlfabeticamente);
+        if (listaUsariosLogados?.length) {           
+            setListaUsuariosLogadosOk(listaUsariosLogados);
         }
     }, [listaUsariosLogados]);
 

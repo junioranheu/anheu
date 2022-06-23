@@ -30,7 +30,7 @@ export default function Index() {
         setGambiarraParaExecutarUmaVez(true);
     }, []);
 
-    // conectarSignalR;
+    // conectarSignalR e suas subfunções;
     useEffect(() => {
         // Para um bom funcionamento, deve-se ativar a opção de web sockets no Azure: https://azure.microsoft.com/pt-br/blog/introduction-to-websockets-on-windows-azure-web-sites/
         async function conectarSignalR() {
@@ -51,7 +51,9 @@ export default function Index() {
                         if (!lastestListaUsuariosLogados.current.includes(u)) {
                             const updatedListaUsuariosLogados = [...lastestListaUsuariosLogados.current];
                             updatedListaUsuariosLogados.push(u);
-                            setListaUsuariosLogados(updatedListaUsuariosLogados);
+
+                            // Ordenar a lista alfabéticamente e inserí-la em "listaUsuariosLogados";                  
+                            setListaUsuariosLogados(updatedListaUsuariosLogados?.sort((a, b) => a.localeCompare(b)));
                         }
                     });
 
@@ -78,9 +80,6 @@ export default function Index() {
     // usuarioConectado: verificar a cada segundo;
     useEffect(() => {
         async function postUsuarioConectado(url) {
-            // Limpar array;
-            setListaUsuariosLogados([]);
-
             // Chamada para a API - usuário logado;
             await Fetch.postApi(url, null, null);
         }
@@ -96,9 +95,14 @@ export default function Index() {
                 postUsuarioConectado(url);
             }, 1000);
 
-            return () => clearInterval(poll);
+            const poll2 = setInterval(() => {
+                // Limpar array;
+                setListaUsuariosLogados([]);
+            }, 15000);
+
+            return () => clearInterval(poll, poll2);
         }
-    }, [gambiarraParaExecutarUmaVez, isAuth, isLoaded, listaUsuariosLogados]);
+    }, [gambiarraParaExecutarUmaVez, isAuth, isLoaded]);
 
     async function enviarMensagem(usuarioId, usuarioNomeSistema, mensagem) {
         NProgress.start();

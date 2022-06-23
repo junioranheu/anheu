@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/chat.module.css';
@@ -9,9 +9,14 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
     const refChat = useRef();
     const refBtnEnviarMsg = useRef();
 
-    const listaUsariosLogadosMap = listaUsariosLogados?.map((u, i) => (
-        <span key={i}>{u}</span>
-    ));
+    // Lógica para "normalizar" (com gambiarra/lógica dos deuses) a questão da lista de usuários logados;
+    // Isso faz com que os dados não fiquem com "flickering";
+    const [listaUsuariosLogadosOk, setListaUsuariosLogadosOk] = useState([]);
+    useEffect(() => {
+        if (listaUsariosLogados?.length) {
+            setListaUsuariosLogadosOk(listaUsariosLogados);
+        }
+    }, [listaUsariosLogados]);
 
     function handleKeyPress(e) {
         if (e.key === 'Enter') {
@@ -49,7 +54,11 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
     return (
         <div className='margem10'>
             <div style={{ color: 'white', minHeight: '50px', backgroundColor: 'pink', padding: '1rem' }}>
-                {listaUsariosLogadosMap}
+                {
+                    listaUsuariosLogadosOk?.map((u, i) => (
+                        <span key={i}>{u}</span>
+                    ))
+                }
             </div>
 
             <textarea

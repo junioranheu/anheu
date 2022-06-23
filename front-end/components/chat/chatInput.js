@@ -14,7 +14,9 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
     const [listaUsuariosLogadosOk, setListaUsuariosLogadosOk] = useState([]);
     useEffect(() => {
         if (listaUsariosLogados?.length) {
-            setListaUsuariosLogadosOk(listaUsariosLogados);
+            const listaUsuariosLogadosOrdenadaAlfabeticamente = listaUsariosLogados?.sort((a, b) => a.localeCompare(b))
+            
+            setListaUsuariosLogadosOk(listaUsuariosLogadosOrdenadaAlfabeticamente);
         }
     }, [listaUsariosLogados]);
 
@@ -53,10 +55,21 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
 
     return (
         <div className='margem10'>
-            <div style={{ color: 'white', minHeight: '50px', backgroundColor: 'pink', padding: '1rem' }}>
+            <div className={Styles.divListaUsuariosOnline}>
+                <span>Usuários on-line: </span>
+
                 {
                     listaUsuariosLogadosOk?.map((u, i) => (
-                        <span key={i}>{u}</span>
+                        <span key={i}>
+                            <b className='cor-principal'>{u}</b>
+
+                            {/* Adicionar uma vírgula caso não seja o último usuário */}
+                            {
+                                listaUsuariosLogadosOk?.length > (i + 1) && (
+                                    <span>, </span>
+                                )
+                            }
+                        </span>
                     ))
                 }
             </div>

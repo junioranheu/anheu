@@ -71,6 +71,13 @@
     overflow-x: hidden;
 }
 
+.divListaUsuariosOnline {
+    background-color: rgba(59, 59, 59, 0.15);
+    border-radius: 10px;
+    padding: 1rem;
+    color: var(--branco);
+}
+
 .msgPequena {
     font-size: 0.6rem !important;
 }

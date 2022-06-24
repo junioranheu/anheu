@@ -118,7 +118,7 @@ export default function Index() {
             NProgress.done();
         }
         catch (e) {
-            const msg = 'Falha em enviar a mensagem';
+            const msg = 'Houve uma falha ao enviar a mensagem';
             console.log(msg, e);
             Aviso.error(msg, 3000);
         }

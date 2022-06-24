@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Aviso } from '../../components/outros/aviso';
 import Botao from '../../components/outros/botao.js';
 import Styles from '../../styles/chat.module.css';
-import { Auth } from '../../utils/context/usuarioContext';
+import { Auth, UsuarioContext } from '../../utils/context/usuarioContext';
 
 export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
+    const [isAuth] = useContext(UsuarioContext); // Contexto do usuário;
+    const nomeUsuarioSistemaAuth = isAuth ? Auth?.getUsuarioLogado()?.nomeUsuarioSistema : null;
+
     const [msg, setMsg] = useState('');
     const refChat = useRef();
     const refBtnEnviarMsg = useRef();
@@ -22,6 +25,11 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
         if (e.key === 'Enter') {
             refBtnEnviarMsg.current.click();
         }
+    }
+
+    function isMinhaMensagem(nomeUsuarioSistema) {
+        const isMinhaMsg = nomeUsuarioSistema === nomeUsuarioSistemaAuth;
+        return isMinhaMsg;
     }
 
     function onSubmit(e) {
@@ -58,7 +66,7 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
 
                 {
                     listaUsuariosLogadosOk?.map((u, i) => (
-                        <span className='tag' key={i}> {u}</span>
+                        <span className='tag' key={i}>{(isMinhaMensagem(u) ? 'você' : `@${u}`)}</span>
                     ))
                 }
             </div>

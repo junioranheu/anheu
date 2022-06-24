@@ -66,7 +66,9 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
 
                 {
                     listaUsuariosLogadosOk?.map((u, i) => (
-                        <span className='tag' key={i}>{(isMinhaMensagem(u) ? 'você' : `@${u}`)}</span>
+                        <span className='tag' key={i} title={`Usuário on-line: @${u}`}>
+                            {(isMinhaMensagem(u) ? 'você' : `@${u}`)}
+                        </span>
                     ))
                 }
             </div>

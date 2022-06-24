@@ -93,7 +93,7 @@ export default function Index() {
             // Verificar usuário conectado;
             const poll = setInterval(() => {
                 postUsuarioConectado(url);
-            }, 1000);
+            }, 2000);
 
             const poll2 = setInterval(() => {
                 // Limpar array;

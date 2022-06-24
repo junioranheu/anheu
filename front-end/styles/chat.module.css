@@ -16,6 +16,11 @@
     text-align: left;
 }
 
+.bubble p {
+    /* color: red; */
+    word-wrap: break-word
+}
+
 /* =-=-=-=-=-=-=-=-= Esquerda =-=-=-=-=-=-=-=-= */
 .bubbleEsquerda:after {
     content: ' ';

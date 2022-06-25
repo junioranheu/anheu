@@ -75,7 +75,7 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
                     ))
                 }
             </div>
-
+ 
             <div className={Styles.divListaItens} title='Usuários on-line agora no chat'>
                 {/* <span>Usuários on-line: </span> */}
 

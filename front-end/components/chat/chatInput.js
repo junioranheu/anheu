@@ -59,9 +59,25 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
         }
     }
 
+    const listaEmojis = ['😀', '😁', '😂', '🙃', '😍', '🥲', '😝', '😑', '😒', '😪', '😞', '😭', '😠', '😡', '😈', '👿', '🤡', '💩'];
+
+    function enviarEmoji(e) {
+        const emoji = e.target.innerText;
+        setMsg(`${msg}${emoji}`);
+    }
+
     return (
-        <div className='margem10'>
-            <div className={Styles.divListaUsuariosOnline} title='Usuários on-line agora no chat'>
+        <div>
+            <div className={Styles.divListaItens}>
+                {
+                    listaEmojis?.map((item, i) => (
+                        <span className={Styles.itemLista} onClick={(e) => enviarEmoji(e)} key={i}>{item}</span>
+                    ))
+                }
+
+            </div>
+
+            <div className={Styles.divListaItens} title='Usuários on-line agora no chat'>
                 {/* <span>Usuários on-line: </span> */}
 
                 {
@@ -77,7 +93,7 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
                 placeholder='Escreva sua mensagem aqui'
                 type='text'
                 value={msg}
-                className={`input margem10 ${Styles.textareaCustom}`}
+                className={`input ${Styles.textareaCustom}`}
                 onChange={(e) => setMsg(e.target.value)}
                 ref={refChat}
                 onKeyPress={handleKeyPress}

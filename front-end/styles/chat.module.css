@@ -70,21 +70,22 @@
     margin-top: 1rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-    min-height: 47vh !important;
-    max-height: 47vh !important;
+    min-height: 40vh !important;
+    max-height: 40vh !important;
     overflow-y: auto !important;
     overflow-x: hidden;
 }
 
-.divListaUsuariosOnline {
+.divListaItens {
     background-color: rgba(59, 59, 59, 0.15);
     border-radius: 10px;
     padding: 1rem;
     color: var(--branco);
-}
+    margin-top: 1rem;
 
-.divListaUsuariosOnline span:nth-child(n+2) {
-    margin-left: 0.8rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-flow: wrap;
 }
 
 .msgPequena {
@@ -108,7 +109,20 @@
 }
 
 .textareaCustom {
-    min-height: 150px !important;
+    min-height: 120px !important;
+    margin-top: 1rem;
+}
+
+.itemLista{
+    background-color: transparent;
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
+.itemLista:hover{
+    background-color: var(--cor-principal);
+    transition: .3s ease-in-out;
+    cursor: pointer;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Media queries =-=-=-=-=-=-=-=-=-=-=-=- */
@@ -132,7 +146,13 @@
 }
 
 /* big landscape tablets, laptops, and desktops */
-@media (max-width:1025px) {}
+@media (max-width:1025px) {
+    .divMensagens {
+        /* background-color: pink; */
+        min-height: 35vh !important;
+        max-height: 35vh !important;
+    }
+}
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (max-width:801px) {

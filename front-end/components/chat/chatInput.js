@@ -68,13 +68,12 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
 
     return (
         <div>
-            <div className={Styles.divListaItens}>
+            <div className={`${Styles.divListaItens} ${Styles.divEmojis}`}>
                 {
                     listaEmojis?.map((item, i) => (
                         <span className={Styles.itemLista} onClick={(e) => enviarEmoji(e)} key={i}>{item}</span>
                     ))
                 }
-
             </div>
 
             <div className={Styles.divListaItens} title='Usuários on-line agora no chat'>

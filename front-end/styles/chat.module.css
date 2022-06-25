@@ -113,13 +113,13 @@
     margin-top: 1rem;
 }
 
-.itemLista{
+.itemLista {
     background-color: transparent;
     padding: 0.3rem;
     border-radius: 5px;
 }
 
-.itemLista:hover{
+.itemLista:hover {
     background-color: var(--cor-principal);
     transition: .3s ease-in-out;
     cursor: pointer;
@@ -151,6 +151,10 @@
         /* background-color: pink; */
         min-height: 35vh !important;
         max-height: 35vh !important;
+    }
+
+    .divEmojis {
+        display: none;
     }
 }
 

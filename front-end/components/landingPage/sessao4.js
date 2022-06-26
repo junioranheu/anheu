@@ -1,4 +1,3 @@
-import React from 'react';
 import Imagem1 from '../../static/landingPage/imgSessao4img1.webp';
 import Imagem2 from '../../static/landingPage/imgSessao4img2.webp';
 import Imagem3 from '../../static/landingPage/imgSessao4img3.webp';
@@ -34,7 +33,7 @@ export default function Sessao4() {
 
                 <Card Svg={''}
                     Img={Imagem4}
-                    titulo='Só hardware?'
+                    titulo='Apenas programação?'
                     subtitulo='Não! Aprenda hardware, software, banco de dados, business inteligence, IA, design, e muito mais.'
                     url='/xxx'
                 />

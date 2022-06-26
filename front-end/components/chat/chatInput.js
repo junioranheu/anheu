@@ -75,18 +75,22 @@ export default function ChatInput({ enviarMensagem, listaUsariosLogados }) {
                     ))
                 }
             </div>
- 
-            <div className={Styles.divListaItens} title='Usuários on-line agora no chat'>
-                {/* <span>Usuários on-line: </span> */}
 
-                {
-                    listaUsuariosLogadosOk?.map((u, i) => (
-                        <span className='tag' key={i} title={`Usuário on-line: @${u}`}>
-                            {(isMinhaMensagem(u) ? 'você' : `@${u}`)}
-                        </span>
-                    ))
-                }
-            </div>
+            {
+                listaUsuariosLogadosOk?.length > 0 && (
+                    <div className={Styles.divListaItens} title='Usuários on-line agora no chat'>
+                        {/* <span>Usuários on-line: </span> */}
+
+                        {
+                            listaUsuariosLogadosOk?.map((u, i) => (
+                                <span className='tag' key={i} title={`Usuário on-line: @${u}`}>
+                                    {(isMinhaMensagem(u) ? 'você' : `@${u}`)}
+                                </span>
+                            ))
+                        }
+                    </div>
+                )
+            }
 
             <textarea
                 placeholder='Escreva sua mensagem aqui'

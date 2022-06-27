@@ -94,28 +94,6 @@ namespace Anheu.API.Data
                 context.Disciplinas.Add(new Disciplina() { DisciplinaId = 5, Nome = "Back-end", Subtitulo = "Vai conseguir programar sem o StackOverFlow", DataRegistro = dataAgora, IsAtivo = 1 });
                 context.Disciplinas.Add(new Disciplina() { DisciplinaId = 6, Nome = "xUnit", Subtitulo = "Para testar sem console.log()", DataRegistro = dataAgora, IsAtivo = 1 });
                 context.Disciplinas.Add(new Disciplina() { DisciplinaId = 7, Nome = "Lógica de programação", Subtitulo = "Para QI's maiores que 3", DataRegistro = dataAgora, IsAtivo = 1 });
-
-                // Ciclo de vida dos softwares;
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 8, Nome = "Conceitos importantes em softwares", Subtitulo = "Lorem ipsum dolor sit amet. Aut ratione possimus aut minima illum cum totam nostrum ad error consequatur et sapiente tenetur aut voluptatem rerum", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 9, Nome = "Objetivos e conceitos de funcionamento", Subtitulo = "Aut cupiditate enim ad alias quaerat et incidunt natus. In ipsum incidunt iste soluta est consequuntur consectetur ut rerum autem et iure numquam aut aperiam nemo", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 10, Nome = "Principais características", Subtitulo = "Aut dolorum quibusdam ut omnis doloremque est sapiente voluptatum non quia doloremque sed maxime laboriosam et quia alias", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 11, Nome = "Classificação das fases", Subtitulo = "Id assumenda atque placeat quibusdam et ullam repellendus ut excepturi inventore et quisquam iste", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 12, Nome = "Operações de softwares", Subtitulo = "Aut veniam internos est alias quam ad officiis omnis non illum ipsa in neque quidem", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 13, Nome = "Aplicações e desenvolvimento de softwares", Subtitulo = "Aut excepturi expedita quo inventore veniam rem sunt temporibus eum architecto magnam sed consequatur necessitatibus", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 14, Nome = "Metodologias e conceitos auxiliares", Subtitulo = "Qui quis expedita et vitae corporis est quia delectus Quis corporis ex necessitatibus alias hic tempore consequatur", DataRegistro = dataAgora, IsAtivo = 1 });
-
-                // Métodos ágeis em softwares;
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 15, Nome = "Modelagem para desenvolvimento", Subtitulo = "Qui recusandae voluptatibus hic sapiente quia qui iusto molestiae ut odit laboriosam quo iste doloribus ea tempore totam vel nulla deserunt", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 16, Nome = "Frases de desenvolvimento", Subtitulo = "Quo rerum tenetur At internos quas qui corporis magni non perferendis placeat nam quia sapiente", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 17, Nome = "Lidando com mudanças", Subtitulo = "Qui Quis expedita et vitae corporis est quia delectus", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 18, Nome = "Métodos ágeis", Subtitulo = "Que placeat quibusdam et ullam repellendus ut excepturi inventore", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 19, Nome = "Metodologia SCRUM, Kanban e Lean", Subtitulo = "Quaerat et incidunt natus. In ipsum incidunt iste soluta est consequuntur consectetur ut rerum autem et iure numquam aut aperiam", DataRegistro = dataAgora, IsAtivo = 1 });
-
-                // Práticas de desenvolvimento e testes em softwares;
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 20, Nome = "Ferramentas para programação pareada", Subtitulo = "Cupiditate enim ad alias quaerat et incidunt natus. In ipsum incidunt", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 21, Nome = "Testes de unidades", Subtitulo = "Cum eveniet vero qui quae tempora sit itaque laborum sit maiores natus. Qui galisum doloremque est temporibus libero", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 22, Nome = "Test driven", Subtitulo = "Aut necessitatibus maiores sit excepturi quia ut voluptas quibusdam sit dolor necessitatibus sed eaque assumenda id doloribus cupiditate et enim nisi", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Disciplinas.Add(new Disciplina() { DisciplinaId = 23, Nome = "Padrões de qualidade de software", Subtitulo = "Vel suscipit autem quae saepe eos deleniti impedit qui expedita inventore et eius corporis", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.DisciplinaTags.Any())
@@ -149,23 +127,6 @@ namespace Anheu.API.Data
 
                 context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 22, DisciplinaId = 7, Tag = "#Lógica" });
                 context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 23, DisciplinaId = 7, Tag = "#Back-end" });
-
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 24, DisciplinaId = 8, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 25, DisciplinaId = 9, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 26, DisciplinaId = 10, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 27, DisciplinaId = 11, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 28, DisciplinaId = 12, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 29, DisciplinaId = 13, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 30, DisciplinaId = 14, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 31, DisciplinaId = 15, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 32, DisciplinaId = 16, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 33, DisciplinaId = 17, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 34, DisciplinaId = 18, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 35, DisciplinaId = 19, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 36, DisciplinaId = 20, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 37, DisciplinaId = 21, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 38, DisciplinaId = 22, Tag = "#Descomplica" });
-                context.DisciplinaTags.Add(new DisciplinaTag() { DisciplinaTagId = 39, DisciplinaId = 23, Tag = "#Descomplica" });
             }
 
             if (!context.CursosDisciplinas.Any())
@@ -190,28 +151,6 @@ namespace Anheu.API.Data
 
                 context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 15, CursoId = 5, DisciplinaId = 6, IsAtivo = 1, DataRegistro = dataAgora });
                 context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 16, CursoId = 5, DisciplinaId = 7, IsAtivo = 1, DataRegistro = dataAgora });
-
-                // Ciclo de vida dos softwares;
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 17, CursoId = 6, DisciplinaId = 8, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 18, CursoId = 6, DisciplinaId = 9, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 19, CursoId = 6, DisciplinaId = 10, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 20, CursoId = 6, DisciplinaId = 11, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 21, CursoId = 6, DisciplinaId = 12, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 22, CursoId = 6, DisciplinaId = 13, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 23, CursoId = 6, DisciplinaId = 14, IsAtivo = 1, DataRegistro = dataAgora });
-
-                // Métodos ágeis em softwares;
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 24, CursoId = 7, DisciplinaId = 15, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 25, CursoId = 7, DisciplinaId = 16, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 26, CursoId = 7, DisciplinaId = 17, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 27, CursoId = 7, DisciplinaId = 18, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 28, CursoId = 7, DisciplinaId = 19, IsAtivo = 1, DataRegistro = dataAgora });
-
-                // Práticas de desenvolvimento e testes em softwares;
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 29, CursoId = 8, DisciplinaId = 20, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 30, CursoId = 8, DisciplinaId = 21, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 31, CursoId = 8, DisciplinaId = 22, IsAtivo = 1, DataRegistro = dataAgora });
-                context.CursosDisciplinas.Add(new CursoDisciplina() { CursoDisciplinaId = 32, CursoId = 8, DisciplinaId = 23, IsAtivo = 1, DataRegistro = dataAgora });
             }
 
             if (!context.Aulas.Any())
@@ -251,12 +190,6 @@ namespace Anheu.API.Data
                 context.Aulas.Add(new Aula() { AulaId = 27, DisciplinaId = 7, Nome = "Lógica intermediária", Thumbnail = "27.webp", Video = "27.mp4", ResumoAula = "Will²", DataRegistro = dataAgora, IsAtivo = 1 });
                 context.Aulas.Add(new Aula() { AulaId = 28, DisciplinaId = 7, Nome = "Lógica avançada", Thumbnail = "28.webp", Video = "28.mp4", ResumoAula = "Will³", DataRegistro = dataAgora, IsAtivo = 1 });
                 context.Aulas.Add(new Aula() { AulaId = 29, DisciplinaId = 7, Nome = "Lógica pra indianos", Thumbnail = "29.webp", Video = "29.mp4", ResumoAula = "Deuses indianos programadores apenas", DataRegistro = dataAgora, IsAtivo = 1 });
-
-                // Ciclo de vida dos softwares;
-                context.Aulas.Add(new Aula() { AulaId = 30, DisciplinaId = 8, Nome = "Conceitos básicos", Thumbnail = "30.webp", Video = "30.mp4", ResumoAula = "Conceitos básicos sobre o ciclo de vida dos softwares", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 31, DisciplinaId = 8, Nome = "Ciclos de vida", Thumbnail = "31.webp", Video = "31.mp4", ResumoAula = "Quais são os ciclos de vida de um software?", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 32, DisciplinaId = 8, Nome = "Modelos de ciclo de vida", Thumbnail = "32.webp", Video = "32.mp4", ResumoAula = "Quais são os modelos de vida de um software? ", DataRegistro = dataAgora, IsAtivo = 1 });
-                context.Aulas.Add(new Aula() { AulaId = 33, DisciplinaId = 8, Nome = "Escolha de modelos", Thumbnail = "33.webp", Video = "33.mp4", ResumoAula = "A melhor escolha do modelo ideal para seu projeto", DataRegistro = dataAgora, IsAtivo = 1 });
             }
 
             if (!context.AulaTimings.Any())
@@ -302,6 +235,8 @@ namespace Anheu.API.Data
                     string conteudoPlaceholder = $"<div><span>Oi, isso é um <b>teste (${i + 1})</b></span><br/><span>{GerarPalavraAleatoria(10)}</span></div>";
                     context.Posts.Add(new Post() { PostId = i + 1, Titulo = $"Post @{GerarPalavraAleatoria(5)}", ConteudoPost = conteudoPlaceholder, UsuarioId = 1, DataRegistro = dataAgora.AddMinutes(-NumeroAleatorioRange(720, 7200)), PostCategoriaId = NumeroAleatorioRange(1, 7), IsAtivo = 1 });
                 }
+
+                context.Posts.Add(new Post() { PostId = 101, Titulo = "Como funciona na prática o Server Side Rendering em Next.js", ConteudoPost = "<h3><strong>Como funciona na prática o Server Side Rendering em Next.js</strong></h3><p>Para começar, vamos tirar toda a chamada feita pelo <em>useEffect</em> do nosso código:</p><pre><code>import React from 'react'; import api from '../service/api'; interface IProducts {    id: number;    title: string;} export default function Home() {    return (      &lt;div&gt;        &lt;h1&gt;Products&lt;/h1&gt;              &lt;section&gt;          &lt;ul&gt;            {products.map(product =&gt; {                return (                    &lt;li key={product.id}&gt;                      {product.title}                    &lt;/li&gt;                  )              })}          &lt;/ul&gt;        &lt;/section&gt;      &lt;/div&gt;    )  }</code></pre><p>Agora vamos utilizar uma função chamada getServerSideProps. Ao utilizarmos essa função, o Next.js, fará a pré renderização da página usando o retorno dessa função. É possível acessar qualquer retorno dessa função em nosso componente, através de propriedades.</p><p>Vamos transferir nossa chamada à API para essa função, fazendo algumas alterações para utilizá-la com o formado async await, que é uma sintaxe mais moderna. Além da chamada à API, como estamos utilizando Typescript, vamos tipar essa função para que possamos retornar as propriedades que precisamos. Por isso vamos importar, de dentro do Next.js, a tipagem GetServerSideProps e no retorno da função já vamos ter disponível nossas props.</p><pre><code>export const getServerSideProps: GetServerSideProps = async () =&gt; {  const response = await api.get('http://localhost:3333/products');   const products = await response.data;   return {    props: {          }  }}</code></pre><p>Porém, se buscarmos alguma informação à ser retornada dessas props não vamos encontrar nada. Por isso, vamos criar uma interface chamada ProductsProps, para explicitarmos qual ou quais propriedades queremos retornar dessa função.</p><pre><code>interface IProducts {    id: number;    title: string;} interface ProductProps {  products: IProducts[];}</code></pre><p>Essa propriedade será um array de produtos e será o parâmetro de retorno de GetServerSideProps.</p><pre><code>export const getServerSideProps: GetServerSideProps&lt;ProductProps&gt; = async () =&gt; {  const response = await api.get('http://localhost:3333/products');   const products = await response.data;   return {    props: {          }  }}</code></pre>", UsuarioId = 1, DataRegistro = dataAgora, PostCategoriaId = 1, IsAtivo = 1 });
             }
             #endregion
 

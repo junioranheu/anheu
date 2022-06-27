@@ -46,6 +46,5 @@ export default function App({ Component, pageProps }) {
                 {/* Elemento para os modais */}
                 <div id='modalWrapper'></div>
             </UsuarioProvider>
-        ) :
-        null;
+        ) : null
 }

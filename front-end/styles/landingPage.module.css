@@ -214,11 +214,21 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=- Outros =-=-=-=-=-=-=-=-=-=-=-=- */
+.personalizarItemRow {
+    max-width: 30%;
+}
+
+.personalizarItemRow>div>div {
+    /* background-color: pink !important; */
+    max-width: 90%;
+    margin: auto;
+}
+
 .personalizarItemRow>div {
     /* background-color: pink !important; */
 
     /* Forçar texto na mesma linha */
-    white-space: nowrap;
+    /* white-space: nowrap; */
 
     /* CSS igual do .divCurso:hover em itemRow.module.css */
     background-color: var(--cor-principal-opaca);
@@ -250,6 +260,10 @@
 
     .divQuatroCards {
         width: 90vw;
+    }
+
+    .personalizarItemRow {
+        max-width: 60%;
     }
 }
 
@@ -350,6 +364,10 @@
     .divQuatroCards section {
         flex: unset;
         width: 95% !important;
+    }
+
+    .personalizarItemRow {
+        max-width: 80%;
     }
 }
 

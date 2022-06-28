@@ -72,22 +72,18 @@ export default function ModalComprarCurso({ handleModal, cursoSelecionado }) {
 
                     <div className={Styles.divPrincipal}>
                         <h2 className={Styles.titulo}>
-                            Finge que aqui tem um modal para comprar o curso <span className='cor-principal'>{cursoSelecionado.nome}</span> (id {cursoSelecionado.cursoId})
+                            <span className='cor-principal'>{cursoSelecionado?.nome}</span>
                         </h2>
 
-                        <div className={Styles.conteudo}>
-                            {/* <ul className={Styles.itens}>
-                            {
-                                Idiomas('idioma').map((item, i) => (
-                                    <li className={Styles.itemLi} key={item.id} onClick={() => handleClick(item)}>
-                                        <a className={`${Styles.itemA} ${(props.idiomaSelecionado.id === item.id ? Styles.itemASelecionado : '')}`}>
-                                            <div>{item.idioma}</div>
-                                            <div>{item.regiao}</div>
-                                        </a>
-                                    </li>
-                                ))
-                            }
-                        </ul> */}
+                        <div className={Styles.conteudo}>                 
+                            <span>{cursoSelecionado?.resumoCurso}</span>
+                            <br />
+                            <br />
+                            <span>Curso sobre {cursoSelecionado?.cursosCategorias?.categoria.toLowerCase()}</span>
+                      
+                            <h2 className={Styles.titulo}>
+                                <span className='cor-principal'>R$ {cursoSelecionado?.preco}</span>
+                            </h2>
 
                             <div className={`${Styles.conteudo} flexCenter margem40`}>
                                 <div className={Styles.botaoCustom} onClick={() => funcaoTemporariaComprarCurso(cursoSelecionado)} >

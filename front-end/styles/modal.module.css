@@ -121,10 +121,10 @@
     font-size: 26px;
     line-height: 26px;
 }
-
+ 
 .conteudo {
     color: rgb(34, 34, 34);
-    font-weight: 100;
+    font-weight: 400;
     font-size: 16px;
     line-height: 20px;
     white-space: pre-wrap;

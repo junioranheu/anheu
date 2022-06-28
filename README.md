@@ -14,4 +14,4 @@ Este projeto faz parte do meu potfólio pessoal, sem fins lucrativos, a fim de e
 Desenvolvido para aprender e praticar React.js, Next.js, .NET, API Rest, JWT token, SignalR e etc.
 Todos os direitos reservados a mim mesmo.
 
-Projeto iniciado em 11 de maio e finalizado em [xxx].<br/>
+Projeto iniciado em 11 de maio e "finalizado" em 28 de junho.

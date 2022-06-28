@@ -1,45 +1,23 @@
-import { latin } from '@bbc/gel-foundations/scripts';
-import { ConsentBanner, ConsentBannerText } from '@bbc/psammead-consent-banner';
-import { useState } from 'react';
-import Botao from './botao';
+import CookieConsent from 'react-cookie-consent';
 
-// https://www.npmjs.com/package/@bbc/psammead-consent-banner
+// https://www.npmjs.com/package/react-cookie-consent
 export default function ModalCookieConsent() {
-    const [isMostrar, setIsMostrar] = useState(true);
-
-    const Accept = (
-        <div onClick={() => setIsMostrar(!isMostrar)}>
-            <Botao texto='Ok, estou de acordo' url={null} isNovaAba={false} Svg={null} refBtn={null} isEnabled={true} />
-        </div>
-    );
-
-    const Reject = (
-        <a href='https://www.bbc.co.uk/usingthebbc/your-data-matters' target='_blank'>
-            Saiba mais
-        </a>
-    );
-
-    const Text = (
-        <ConsentBannerText dir='ltr' script={latin} service='news'>
-            A sua privacidade é importante para nós. É política do Anheu respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar na plataforma.
-            <br /><br />Clicando no botão abaixo, você declara que está de acordo com a utilização dos cookies na plataforma.
-        </ConsentBannerText>
-    );
-
-    const props = {
-        dir: 'ltr',
-        title: 'Privacidade e política de cookies',
-        text: Text,
-        accept: Accept,
-        reject: null,
-        id: null,
-        hidden: false,
-        script: latin,
-        service: 'news',
-    };
-
-    return isMostrar ? (
-        <ConsentBanner {...props} />
-    ) : null
+    return (
+        <CookieConsent
+            location='bottom'
+            buttonText='Sim, estou de acordo'
+            cookieName='anheu_cookie_consent'
+            style={{ background: 'var(--super-preto)', padding: '1rem' }}
+            buttonStyle={{ background: 'var(--cor-principal)', borderRadius: '6px', fontWeight: 600 }}
+            buttonClasses='botao'
+            expires={7} // Dias;
+        >
+            <div style={{ marginBottom: '12px' }}>
+                <span>A sua privacidade é importante para nós. É política do <b className='cor-principal'>Anheu</b> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar na plataforma.</span>
+                <br />
+                <span>Clicando no botão <i>"Sim, estou de acordo"</i>, você declara que está de acordo com a utilização dos cookies na plataforma.</span>
+            </div>
+        </CookieConsent>
+    )
 }
 

@@ -1,3 +1,2 @@
 --
 salvar as msgs enviadas no chat
-criar um aviso de cookies

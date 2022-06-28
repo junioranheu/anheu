@@ -4,6 +4,7 @@ import 'nprogress/nprogress.css';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalCookieConsent from '../components/outros/modalCookieConsent';
 import '../fonts/GTWalsheim.css';
 import '../fonts/NanumPenScript.css';
 import '../fonts/PTMono.css';
@@ -45,6 +46,9 @@ export default function App({ Component, pageProps }) {
 
                 {/* Elemento para os modais */}
                 <div id='modalWrapper'></div>
+
+                {/* Consentimento de cookies */}
+                <ModalCookieConsent />
             </UsuarioProvider>
         ) : null
 }
